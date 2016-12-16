@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Card Randomizer</title>
+
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+
+<body>
+
+<!--# TODO: Figure out pagination-->
+
+
+<div class="container">
+    <h1 th:class="formHeader">Quick Links</h1>
+
+    <ul>
+        <li class="links"><a href="/login" class="links">Login</a></li>
+        <li class="links"><a href="journal/paging" class="links">Paging</a></li>
+        <li class="links"><a href="journal/new" class="links">New Entry</a></li>
+        <li class="links"><a href="user/list" class="links">Users</a></li>
+        <li class="links"><a href="secured.html" class="links">Security Status</a></li>
+        <li class="links"><a href="/registration" class="links">Registration</a></li>
+        <li class="links"><a href="/logout" class="links">Logout</a></li>
+
+    </ul>
+
+</div>
+
+</body>
+</html>
