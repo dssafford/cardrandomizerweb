@@ -6,6 +6,16 @@ package com.doug.domain;
 public class Card {
 
 	private Integer id;
+	private String cardName;
+
+	public String getCardName() {
+		return cardName;
+	}
+
+	public void setCardName(String cardName) {
+		this.cardName = cardName;
+	}
+
 	private String ImagePath;
 
 	public Integer getId() {

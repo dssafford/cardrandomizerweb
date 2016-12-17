@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Display Cards</title>
     <link rel="stylesheet" th:href="@{/style.css}"></link>
@@ -11,6 +11,11 @@
         <dt class="bookHeadline">
           <span th:text="${card.id}">Title</span> by
           <span th:text="${card.imagePath}">Author</span>
+        <!--<div class="col-md-12">-->
+          <img src=""
+               th:src="@{'/images/'+${card.imagePath}}"
+               class="center-block"/>
+        <!--</div>-->
         </dt>
         <!--<dd class="bookDescription">-->
           <!--<span th:if="${book.description}" -->

@@ -46,12 +46,12 @@ public class CardServiceImpl implements CardService{
 
 					card = new Card();
 					card.setId(i);
-					card.setImagePath(rank + "of" + suit);
+					card.setImagePath(rank + "_of_" + suit + ".png");
 //				returnDeck.add(i, rank + "of" + suit);
 
 					returnDeck.add(card);
 
-					System.out.println((i + 1) + " :You have the " + rank + " of " + suit);
+					System.out.println((i + 1) + " :You have the " + rank + " of " + suit + ".png");
 
 
 				}
