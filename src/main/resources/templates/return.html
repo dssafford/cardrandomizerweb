@@ -5,16 +5,17 @@
   </head>
 
   <body>
-  <div><a href="/one" th:class="crap">Get the next one</a></div>
+  <div><a href="/nextOne" th:class="crap">Get the next one</a></div>
     <h2>Your Reading List Doug</h2>
     <div th:unless="${#lists.isEmpty(cards)}">
       <dl th:each="card : ${cards}">
         <dt class="bookHeadline">
-          <span th:text="${card.id}">Title</span> by
-          <span th:text="${card.imagePath}">Author</span>
+          <span th:text="${card.counter}">Counter</span>
+          <span th:text="${card.id}">Title</span>
+          <span th:text="${card.cardName}">CardName</span>
         <!--<div class="col-md-12">-->
           <img src=""
-               th:src="@{'/images/'+${card.imagePath}}"
+               th:src="@{'/images/'+${card.cardName}}"
                class="center-block"/>
         <!--</div>-->
         </dt>

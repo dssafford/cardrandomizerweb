@@ -18,7 +18,7 @@ public class IndexController {
 
 	private CardService cardService;
 
-	public ArrayList<Card> cachedCard = new ArrayList();
+	public ArrayList<Card> cachedCards = new ArrayList();
 	public Integer counter=0;
 
 	@Autowired
@@ -33,25 +33,26 @@ public class IndexController {
 
 	public ArrayList<Card> CreateCards () {
 
-		Card myCard1 = new Card();
-		myCard1.setId(1);
-		myCard1.setCardName("dude1");
+//		Card myCard1 = new Card();
+//		myCard1.setId(1);
+//		myCard1.setCardName("dude1");
+//
+//		cachedCard.add(myCard1);
+//
+//		Card myCard2 = new Card();
+//		myCard2.setId(2);
+//		myCard2.setCardName("dude2");
+//
+//		cachedCard.add(myCard2);
+//
+//		Card myCard3 = new Card();
+//		myCard3.setId(1);
+//		myCard3.setCardName("dude3");
+//
+//		cachedCard.add(myCard3);
+//		Iterable<Card> myDeck = cardService.listAllCards();
 
-		cachedCard.add(myCard1);
-
-		Card myCard2 = new Card();
-		myCard2.setId(2);
-		myCard2.setCardName("dude2");
-
-		cachedCard.add(myCard2);
-
-		Card myCard3 = new Card();
-		myCard3.setId(1);
-		myCard3.setCardName("dude3");
-
-		cachedCard.add(myCard3);
-
-		return cachedCard;
+		return cardService.listAllCards();
 
 	}
 
@@ -66,27 +67,40 @@ public class IndexController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(Model model) {
 
-		cachedCard = CreateCards();
+		cachedCards = CreateCards();
 
-		Iterable<Card> myDeck = cardService.listAllCards();
+		ArrayList<Card> myDeck = cardService.listAllCards();
 
 		model.addAttribute("cards",myDeck);
 
 		return "return";
 	}
 
-	@RequestMapping(value = "/one", method = RequestMethod.GET)
+	@RequestMapping(value = "/nextOne", method = RequestMethod.GET)
 	public String getOne(Model model) {
 
-		counter = counter++;
+//		counter = counter++;
 
-		model.addAttribute(getNextCard(counter));
+		model.addAttribute(getNextCard(0));
+
+		return "click";
+	}
+
+	@RequestMapping(value = "/nextOne", method = RequestMethod.POST)
+	public String getOnePost(Model model, Card card) {
+
+//		counter = counter++;
+
+		model.addAttribute(getNextCard(card.getCounter()));
 
 		return "click";
 	}
 
 
 	private Card getNextCard(Integer id) {
-		return cachedCard.get(id);
+		Card myCard = cachedCards.get(id);
+		myCard.setCounter(id+1);
+
+		return myCard;
 	}
 }

@@ -6,17 +6,8 @@ package com.doug.domain;
 public class Card {
 
 	private Integer id;
-	private String cardName;
-
-	public String getCardName() {
-		return cardName;
-	}
-
-	public void setCardName(String cardName) {
-		this.cardName = cardName;
-	}
-
-	private String ImagePath;
+	private String CardName;
+	private Integer counter;
 
 	public Integer getId() {
 		return id;
@@ -26,11 +17,19 @@ public class Card {
 		this.id = id;
 	}
 
-	public String getImagePath() {
-		return ImagePath;
+	public String getCardName() {
+		return CardName;
 	}
 
-	public void setImagePath(String imagePath) {
-		ImagePath = imagePath;
+	public void setCardName(String cardName) {
+		CardName = cardName;
+	}
+
+	public Integer getCounter() {
+		return counter;
+	}
+
+	public void setCounter(Integer counter) {
+		this.counter = counter;
 	}
 }

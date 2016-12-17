@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CardServiceImpl implements CardService{
 
 		@Override
-		public Iterable<Card> listAllCards() {
+		public ArrayList<Card> listAllCards() {
 
 				Card card;
 
@@ -45,8 +45,8 @@ public class CardServiceImpl implements CardService{
 
 
 					card = new Card();
-					card.setId(i);
-					card.setImagePath(rank + "_of_" + suit + ".png");
+					card.setId(i+1);
+					card.setCardName(rank + "_of_" + suit + ".png");
 //				returnDeck.add(i, rank + "of" + suit);
 
 					returnDeck.add(card);
