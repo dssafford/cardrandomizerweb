@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Display Cards</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+  </head>
+
+  <body>
+    <h2>Your Reading List Doug</h2>
+    <div th:unless="${#lists.isEmpty(cards)}">
+      <dl th:each="card : ${cards}">
+        <dt class="bookHeadline">
+          <span th:text="${card.id}">Title</span> by
+          <span th:text="${card.imagePath}">Author</span>
+        </dt>
+        <!--<dd class="bookDescription">-->
+          <!--<span th:if="${book.description}" -->
+                <!--th:text="${book.description}">Description</span>-->
+          <!--<span th:if="${book.description eq null}">-->
+                <!--No description available</span>-->
+        <!--</dd>-->
+      </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(cards)}">
+      <p>You have no cards in your deck</p>
+    </div>
+
+    
+    <hr/>
+    
+    <!--<h3>Add a book</h3>-->
+    <!--<form method="POST">-->
+      <!--<label for="title">Title:</label>-->
+        <!--<input type="text" name="title" size="50"></input><br/>-->
+      <!--<label for="author">Author:</label>-->
+        <!--<input type="text" name="author" size="50"></input><br/>-->
+      <!--<label for="isbn">ISBN:</label>-->
+        <!--<input type="text" name="isbn" size="15"></input><br/>-->
+      <!--<label for="description">Description:</label><br/>-->
+        <!--<textarea name="description" cols="80" rows="5"></textarea><br/>-->
+      <!--<input type="submit"></input>-->
+    <!--</form>-->
+    
+  </body>
+</html>
