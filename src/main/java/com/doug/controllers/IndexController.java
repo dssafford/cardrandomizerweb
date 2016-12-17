@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+
 /**
  * Created by Doug on 12/17/16.
  */
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 
 	private CardService cardService;
+
+	public ArrayList<Card> cachedCard = new ArrayList();
+	public Integer counter=0;
 
 	@Autowired
 	public void setCardService(CardService cardService) {
@@ -26,6 +31,31 @@ public class IndexController {
 //		return "index";
 //	}
 
+	public ArrayList<Card> CreateCards () {
+
+		Card myCard1 = new Card();
+		myCard1.setId(1);
+		myCard1.setCardName("dude1");
+
+		cachedCard.add(myCard1);
+
+		Card myCard2 = new Card();
+		myCard2.setId(2);
+		myCard2.setCardName("dude2");
+
+		cachedCard.add(myCard2);
+
+		Card myCard3 = new Card();
+		myCard3.setId(1);
+		myCard3.setCardName("dude3");
+
+		cachedCard.add(myCard3);
+
+		return cachedCard;
+
+	}
+
+
 	@RequestMapping("/login")
 	public String loginForm(Model model){
 		model.addAttribute("cards");
@@ -36,6 +66,8 @@ public class IndexController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(Model model) {
 
+		cachedCard = CreateCards();
+
 		Iterable<Card> myDeck = cardService.listAllCards();
 
 		model.addAttribute("cards",myDeck);
@@ -43,4 +75,18 @@ public class IndexController {
 		return "return";
 	}
 
+	@RequestMapping(value = "/one", method = RequestMethod.GET)
+	public String getOne(Model model) {
+
+		counter = counter++;
+
+		model.addAttribute(getNextCard(counter));
+
+		return "click";
+	}
+
+
+	private Card getNextCard(Integer id) {
+		return cachedCard.get(id);
+	}
 }

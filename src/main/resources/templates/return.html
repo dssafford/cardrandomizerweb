@@ -5,6 +5,7 @@
   </head>
 
   <body>
+  <div><a href="/one" th:class="crap">Get the next one</a></div>
     <h2>Your Reading List Doug</h2>
     <div th:unless="${#lists.isEmpty(cards)}">
       <dl th:each="card : ${cards}">
@@ -28,6 +29,7 @@
     <div th:if="${#lists.isEmpty(cards)}">
       <p>You have no cards in your deck</p>
     </div>
+
 
     
     <hr/>

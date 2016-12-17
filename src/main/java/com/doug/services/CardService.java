@@ -8,4 +8,6 @@ import com.doug.domain.Card;
 public interface CardService {
 	Iterable<Card> listAllCards();
 
+//	Card getNext(Card card);
+
 	}
