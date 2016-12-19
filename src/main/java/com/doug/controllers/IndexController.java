@@ -26,7 +26,7 @@ public class IndexController {
 	public ArrayList answers = new ArrayList<Card>();
 	public ArrayList scoresArray = new ArrayList();
 
-	public ArrayList<Card> cachedCards = new ArrayList();
+	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 	public Integer counter=0;
 
@@ -186,7 +186,8 @@ public class IndexController {
 		deckAnswer = new DeckAnswer();
 		deckAnswer.setA1("dude");
 
-		model.addAttribute(deckAnswer);
+
+		model.addAttribute("doug", deckAnswer);
 
 		return "scores";
 
