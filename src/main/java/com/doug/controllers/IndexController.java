@@ -6,6 +6,8 @@ import com.doug.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +18,8 @@ import java.util.ArrayList;
  */
 @Controller
 public class IndexController {
+
+	public DeckAnswer deckAnswer;
 
 	private CardService cardService;
 
@@ -33,44 +37,15 @@ public class IndexController {
 
 	public ArrayList<Card> CreateMasterDeck() {
 
-//		Card myCard1 = new Card(());
-//		myCard1.setId(1());
-//		myCard1.setCardName("dude1"());
-//
-//		cachedCard.add(myCard1());
-//
-//		Card myCard2 = new Card(());
-//		myCard2.setId(2());
-//		myCard2.setCardName("dude2"());
-//
-//		cachedCard.add(myCard2());
-//
-//		Card myCard3 = new Card(());
-//		myCard3.setId(1());
-//		myCard3.setCardName("dude3"());
-//
-//		cachedCard.add(myCard3());
-//		Iterable<Card> myDeck = cardService.listAllCards(());
-
 		cachedCards = cardService.listAllCards();
 		return cachedCards;
 
-	}
-
-
-	@RequestMapping("/login")
-	public String loginForm(Model model){
-		model.addAttribute("cards");
-
-		return "/user/login";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(Model model) {
 
 		cachedCards = CreateMasterDeck();
-
-		//ArrayList<Card> myDeck = cardService.listAllCards();
 
 		model.addAttribute("cards",cachedCards);
 
@@ -203,9 +178,18 @@ public class IndexController {
 
 			SimpleCompareArrays(cachedCards, answers);
 
-			return "test";
+			return "redirect:/scores";
 
 		}
+	@RequestMapping(value = "/scores", method = RequestMethod.GET)
+	public String scores(@ModelAttribute DeckAnswer deckAnswer, Model model, BindingResult bindingResult) {
+		deckAnswer = new DeckAnswer();
+		deckAnswer.setA1("dude");
 
+		model.addAttribute(deckAnswer);
+
+		return "scores";
+
+	}
 
 }
