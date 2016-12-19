@@ -42,7 +42,7 @@ public class IndexController {
 
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/wow", method = RequestMethod.GET)
 	public String list(Model model) {
 
 		cachedCards = CreateMasterDeck();
@@ -178,18 +178,20 @@ public class IndexController {
 
 			SimpleCompareArrays(cachedCards, answers);
 
-			return "redirect:/scores";
+			return "redirect:/newScores";
 
 		}
-	@RequestMapping(value = "/scores", method = RequestMethod.GET)
-	public String scores(@ModelAttribute DeckAnswer deckAnswer, Model model, BindingResult bindingResult) {
-		deckAnswer = new DeckAnswer();
-		deckAnswer.setA1("dude");
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String scores(@ModelAttribute ArrayList<Card> cachedCards, Model model, BindingResult bindingResult) {
+//		deckAnswer = new DeckAnswer();
+//		deckAnswer.setA1("dude");
+//		model.addAttribute("doug", deckAnswer);
 
+		ArrayList<Card> myCachedCards = CreateMasterDeck();
 
-		model.addAttribute("doug", deckAnswer);
+		model.addAttribute("cachedCards", myCachedCards);
 
-		return "scores";
+		return "newScores";
 
 	}
 
