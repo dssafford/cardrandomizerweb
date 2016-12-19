@@ -2,8 +2,7 @@ package com.doug.controllers;
 
 import com.doug.domain.Card;
 import com.doug.domain.DeckAnswer;
-import com.doug.services.CardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.doug.services.Helpers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,31 +20,34 @@ public class IndexController {
 
 	public DeckAnswer deckAnswer;
 
-	private CardService cardService;
+//	private CardService cardService;
 
-	public ArrayList answers = new ArrayList<Card>();
+	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
+	public ArrayList<Card> answers = new ArrayList<Card>();
+
 	public ArrayList scoresArray = new ArrayList();
 
 	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 	public Integer counter=0;
 
-	@Autowired
-	public void setCardService(CardService cardService) {
-		this.cardService = cardService;
+//	@Autowired
+//	public void setCardService(CardService cardService) {
+//		this.cardService = cardService;
+//	}
+//
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String getIndexPage() {
+		return "index";
+
 	}
 
-	public ArrayList<Card> CreateMasterDeck() {
-
-		cachedCards = cardService.listAllCards();
-		return cachedCards;
-
-	}
-
-	@RequestMapping(value = "/wow", method = RequestMethod.GET)
+	@RequestMapping(value = "/wow1", method = RequestMethod.GET)
 	public String list(Model model) {
+		Helpers helpers = new Helpers();
 
-		cachedCards = CreateMasterDeck();
+		cachedCards = helpers.CreateMasterDeck();
 
 		model.addAttribute("cards",cachedCards);
 
@@ -54,8 +56,6 @@ public class IndexController {
 
 	@RequestMapping(value = "/nextOne", method = RequestMethod.GET)
 	public String getOne(Model model) {
-
-//		counter = counter++;
 
 		model.addAttribute(getNextCard(0));
 
@@ -79,25 +79,6 @@ public class IndexController {
 		return myCard;
 	}
 
-	private ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
-//		ArrayList scoresArray = new ArrayList();
-
-		for(int i=0;i<masterDeck.size();i++){
-			if(masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
-				scoresArray.add(true);
-				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
-			} else {
-
-				scoresArray.add(false);
-				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
-						  answerDeck.get(i).getCardName());
-			}
-		}
-		return scoresArray;
-
-
-	}
-	
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
 	public String enterAnswers(Model model) {
 		model.addAttribute("deckAnswer", new DeckAnswer());
@@ -116,78 +97,85 @@ public class IndexController {
 		public String getAnswers(DeckAnswer deckAnswer) {
 		//model.addAttribute(getNextCard(card.getCounter()());
 
-			answers.add(makeCard(deckAnswer.getA1()));
-			answers.add(makeCard(deckAnswer.getA2()));
-			answers.add(makeCard(deckAnswer.getA3()));
-			answers.add(makeCard(deckAnswer.getA4()));
-			answers.add(makeCard(deckAnswer.getA5()));
-			answers.add(makeCard(deckAnswer.getA6()));
-			answers.add(makeCard(deckAnswer.getA7()));
-			answers.add(makeCard(deckAnswer.getA8()));
-			answers.add(makeCard(deckAnswer.getA9()));
-			answers.add(makeCard(deckAnswer.getA10()));
-			answers.add(makeCard(deckAnswer.getA11()));
-			answers.add(makeCard(deckAnswer.getA12()));
-			answers.add(makeCard(deckAnswer.getA13()));
-			answers.add(makeCard(deckAnswer.getA14()));
-			answers.add(makeCard(deckAnswer.getA15()));
-			answers.add(makeCard(deckAnswer.getA16()));
-			answers.add(makeCard(deckAnswer.getA17()));
-			answers.add(makeCard(deckAnswer.getA18()));
-			answers.add(makeCard(deckAnswer.getA19()));
-			answers.add(makeCard(deckAnswer.getA20()));
-			answers.add(makeCard(deckAnswer.getA21()));
-			answers.add(makeCard(deckAnswer.getA22()));
-			answers.add(makeCard(deckAnswer.getA23()));
-			answers.add(makeCard(deckAnswer.getA24()));
-			answers.add(makeCard(deckAnswer.getA25()));
-			answers.add(makeCard(deckAnswer.getA26()));
-			answers.add(makeCard(deckAnswer.getA27()));
-			answers.add(makeCard(deckAnswer.getA28()));
-			answers.add(makeCard(deckAnswer.getA29()));
-			answers.add(makeCard(deckAnswer.getA30()));
-			answers.add(makeCard(deckAnswer.getA31()));
-			answers.add(makeCard(deckAnswer.getA32()));
-			answers.add(makeCard(deckAnswer.getA33()));
-			answers.add(makeCard(deckAnswer.getA34()));
-			answers.add(makeCard(deckAnswer.getA35()));
-			answers.add(makeCard(deckAnswer.getA36()));
-			answers.add(makeCard(deckAnswer.getA37()));
-			answers.add(makeCard(deckAnswer.getA38()));
-			answers.add(makeCard(deckAnswer.getA39()));
-			answers.add(makeCard(deckAnswer.getA40()));
-			answers.add(makeCard(deckAnswer.getA41()));
-			answers.add(makeCard(deckAnswer.getA42()));
-			answers.add(makeCard(deckAnswer.getA43()));
-			answers.add(makeCard(deckAnswer.getA44()));
-			answers.add(makeCard(deckAnswer.getA45()));
-			answers.add(makeCard(deckAnswer.getA46()));
-			answers.add(makeCard(deckAnswer.getA47()));
-			answers.add(makeCard(deckAnswer.getA48()));
-			answers.add(makeCard(deckAnswer.getA49()));
-			answers.add(makeCard(deckAnswer.getA50()));
-			answers.add(makeCard(deckAnswer.getA51()));
-			answers.add(makeCard(deckAnswer.getA52()));
+			enteredAnswers.add(makeCard(deckAnswer.getA1()));
+			enteredAnswers.add(makeCard(deckAnswer.getA2()));
+			enteredAnswers.add(makeCard(deckAnswer.getA3()));
+			enteredAnswers.add(makeCard(deckAnswer.getA4()));
+			enteredAnswers.add(makeCard(deckAnswer.getA5()));
+			enteredAnswers.add(makeCard(deckAnswer.getA6()));
+			enteredAnswers.add(makeCard(deckAnswer.getA7()));
+			enteredAnswers.add(makeCard(deckAnswer.getA8()));
+			enteredAnswers.add(makeCard(deckAnswer.getA9()));
+			enteredAnswers.add(makeCard(deckAnswer.getA10()));
+			enteredAnswers.add(makeCard(deckAnswer.getA11()));
+			enteredAnswers.add(makeCard(deckAnswer.getA12()));
+			enteredAnswers.add(makeCard(deckAnswer.getA13()));
+			enteredAnswers.add(makeCard(deckAnswer.getA14()));
+			enteredAnswers.add(makeCard(deckAnswer.getA15()));
+			enteredAnswers.add(makeCard(deckAnswer.getA16()));
+			enteredAnswers.add(makeCard(deckAnswer.getA17()));
+			enteredAnswers.add(makeCard(deckAnswer.getA18()));
+			enteredAnswers.add(makeCard(deckAnswer.getA19()));
+			enteredAnswers.add(makeCard(deckAnswer.getA20()));
+			enteredAnswers.add(makeCard(deckAnswer.getA21()));
+			enteredAnswers.add(makeCard(deckAnswer.getA22()));
+			enteredAnswers.add(makeCard(deckAnswer.getA23()));
+			enteredAnswers.add(makeCard(deckAnswer.getA24()));
+			enteredAnswers.add(makeCard(deckAnswer.getA25()));
+			enteredAnswers.add(makeCard(deckAnswer.getA26()));
+			enteredAnswers.add(makeCard(deckAnswer.getA27()));
+			enteredAnswers.add(makeCard(deckAnswer.getA28()));
+			enteredAnswers.add(makeCard(deckAnswer.getA29()));
+			enteredAnswers.add(makeCard(deckAnswer.getA30()));
+			enteredAnswers.add(makeCard(deckAnswer.getA31()));
+			enteredAnswers.add(makeCard(deckAnswer.getA32()));
+			enteredAnswers.add(makeCard(deckAnswer.getA33()));
+			enteredAnswers.add(makeCard(deckAnswer.getA34()));
+			enteredAnswers.add(makeCard(deckAnswer.getA35()));
+			enteredAnswers.add(makeCard(deckAnswer.getA36()));
+			enteredAnswers.add(makeCard(deckAnswer.getA37()));
+			enteredAnswers.add(makeCard(deckAnswer.getA38()));
+			enteredAnswers.add(makeCard(deckAnswer.getA39()));
+			enteredAnswers.add(makeCard(deckAnswer.getA40()));
+			enteredAnswers.add(makeCard(deckAnswer.getA41()));
+			enteredAnswers.add(makeCard(deckAnswer.getA42()));
+			enteredAnswers.add(makeCard(deckAnswer.getA43()));
+			enteredAnswers.add(makeCard(deckAnswer.getA44()));
+			enteredAnswers.add(makeCard(deckAnswer.getA45()));
+			enteredAnswers.add(makeCard(deckAnswer.getA46()));
+			enteredAnswers.add(makeCard(deckAnswer.getA47()));
+			enteredAnswers.add(makeCard(deckAnswer.getA48()));
+			enteredAnswers.add(makeCard(deckAnswer.getA49()));
+			enteredAnswers.add(makeCard(deckAnswer.getA50()));
+			enteredAnswers.add(makeCard(deckAnswer.getA51()));
+			enteredAnswers.add(makeCard(deckAnswer.getA52()));
+
+			//ResolveAnswers(enteredAnswers);
 
 			return "test";
 		}
 
+
 		@RequestMapping(value = "/scoreAnswers", method = RequestMethod.POST)
 		public String scoreAnswers(Model model) {
+			Helpers helpers = new Helpers();
 
-
-			SimpleCompareArrays(cachedCards, answers);
+			helpers.SimpleCompareArrays(cachedCards, enteredAnswers);
 
 			return "redirect:/newScores";
 
 		}
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/wow", method = RequestMethod.GET)
 	public String scores(@ModelAttribute ArrayList<Card> cachedCards, Model model, BindingResult bindingResult) {
 //		deckAnswer = new DeckAnswer();
 //		deckAnswer.setA1("dude");
 //		model.addAttribute("doug", deckAnswer);
 
-		ArrayList<Card> myCachedCards = CreateMasterDeck();
+
+		//ResolveAnswers();
+
+		Helpers helpers = new Helpers();
+		ArrayList<Card> myCachedCards = helpers.CreateMasterDeck();
 
 		model.addAttribute("cachedCards", myCachedCards);
 
