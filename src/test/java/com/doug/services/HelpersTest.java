@@ -9,15 +9,14 @@ import org.junit.Test;
 public class HelpersTest {
 	@Test
 	public void resolveAnswers() throws Exception {
-		Helpers helpers = new Helpers();
 
-		Assert.assertEquals("10_of_Diamonds",helpers.ResolveAnswers("1d"));
+		Assert.assertEquals("10_of_Diamonds",Helpers.ResolveAnswers("1d"));
 
-		Assert.assertEquals("Ace_of_Spades",helpers.ResolveAnswers("as"));
+		Assert.assertEquals("Ace_of_Spades",Helpers.ResolveAnswers("as"));
 
-		Assert.assertEquals("King_of_Clubs",helpers.ResolveAnswers("kc"));
+		Assert.assertEquals("King_of_Clubs",Helpers.ResolveAnswers("kc"));
 
-		Assert.assertEquals("Jack_of_Hearts",helpers.ResolveAnswers("jh"));
+		Assert.assertEquals("Jack_of_Hearts",Helpers.ResolveAnswers("jh"));
 	}
 
 }

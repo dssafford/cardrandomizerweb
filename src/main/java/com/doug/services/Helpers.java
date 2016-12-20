@@ -1,17 +1,37 @@
 package com.doug.services;
 
 import com.doug.domain.Card;
+import com.doug.domain.Score;
 
 import java.util.ArrayList;
 
 /**
  * Created by Doug on 12/19/16.
  */
-public class Helpers {
+public abstract class Helpers {
 //	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
+	public static ArrayList<Card> Score(ArrayList<Card> masterDeck, ArrayList<Card> quickAnswers){
+		ArrayList scoresArray = new ArrayList();
 
-	public String ResolveAnswers(String cardEntry) {
+		for(int i=0;i<quickAnswers.size();i++){
+			if(masterDeck.get(i).getCardName().equals(quickAnswers.get(i).getCardName())) {
+				scoresArray.add(true);
+				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + quickAnswers.get(i).getCardName());
+			} else {
+
+				scoresArray.add(false);
+				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
+						  quickAnswers.get(i).getCardName());
+			}
+		}
+		return scoresArray;
+
+
+
+	}
+
+	public static String ResolveAnswers(String cardEntry) {
 		String firstChar;
 		String cardName;
 		String suit = "";
@@ -66,19 +86,25 @@ public class Helpers {
 
 	}
 
-	public ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
-		ArrayList scoresArray = new ArrayList();
+	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
+		ArrayList<Score> scoresArray = new ArrayList();
+		Score score;
 
 		for(int i=0;i<masterDeck.size();i++){
+			score = new Score();
+			score.setId(i);
+			score.setMasterCardName(masterDeck.get(i).getCardName());
+			score.setAnswerCardName(answerDeck.get(i).getCardName());
+
 			if(masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
-				scoresArray.add(true);
+				score.setScore(true);
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
 			} else {
-
-				scoresArray.add(false);
+				score.setScore(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerDeck.get(i).getCardName());
 			}
+			scoresArray.add(i, score);
 		}
 		return scoresArray;
 
