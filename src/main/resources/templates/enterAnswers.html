@@ -12,19 +12,19 @@
 
 <div class="container">
     <form class="form-horizontal" th:object="${deckAnswer}" th:action="@{/enterAnswers}" method="post">
-        <div class="panel-body">hey
-            <table class="table table-bordered" bgcolor="#f0f8ff">
+        <div class="panel-body col-sm-10">hey
+            <table class="table-condensed">
                 <th>Number</th>
                 <th>Answer</th>
                 <th>Number</th>
                 <th>Answer</th>
                 <tr>
                     <td>1</td>
-                    <td><input th:type="text" class="form-control" th:field="*{a1}" th:tabindex="1"></input></td>
+                    <td><input th:type="text" class="form-control" th:field="*{a1}" th:tabindex="1" th:width="1000"></input></td>
                     <td>21</td>
-                    <td><input th:type="text" class="form-control" th:field="*{a21}" th:tabindex="21"></input></td>
+                    <td><input th:type="text" class="form-control" th:field="*{a21}" th:tabindex="21" th:width="1000"></input></td>
                     <td>41</td>
-                    <td><input th:type="text" class="form-control" th:field="*{a41}" th:tabindex="41"></input></td>
+                    <td><input th:type="text" class="form-control" th:field="*{a41}" th:tabindex="41" th:width="1000"></input></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -169,49 +169,6 @@
         </div>
     </form>
 </div>
-
-
-<div><a href="/nextOne" th:class="crap">Get the next one</a></div>
-<h2>Your Reading List Doug</h2>
-<div th:unless="${#lists.isEmpty(cards)}">
-    <dl th:each="card : ${cards}">
-        <dt class="bookHeadline">
-            <span th:text="${card.counter}">Counter</span>
-            <span th:text="${card.id}">Title</span>
-            <span th:text="${card.cardName}">CardName</span>
-            <!--<div class="col-md-12">-->
-            <img src=""
-                 th:src="@{'/images/'+${card.cardName}}"
-                 class="center-block"/>
-            <!--</div>-->
-        </dt>
-        <!--<dd class="bookDescription">-->
-        <!--<span th:if="${book.description}" -->
-        <!--th:text="${book.description}">Description</span>-->
-        <!--<span th:if="${book.description eq null}">-->
-        <!--No description available</span>-->
-        <!--</dd>-->
-    </dl>
-</div>
-<div th:if="${#lists.isEmpty(cards)}">
-    <p>You have no cards in your deck</p>
-</div>
-
-
-<hr/>
-
-<!--<h3>Add a book</h3>-->
-<!--<form method="POST">-->
-<!--<label for="title">Title:</label>-->
-<!--<input type="text" name="title" size="50"></input><br/>-->
-<!--<label for="author">Author:</label>-->
-<!--<input type="text" name="author" size="50"></input><br/>-->
-<!--<label for="isbn">ISBN:</label>-->
-<!--<input type="text" name="isbn" size="15"></input><br/>-->
-<!--<label for="description">Description:</label><br/>-->
-<!--<textarea name="description" cols="80" rows="5"></textarea><br/>-->
-<!--<input type="submit"></input>-->
-<!--</form>-->
 
 </body>
 </html>
