@@ -1,7 +1,6 @@
 package com.doug.services;
 
 import com.doug.domain.Card;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
@@ -9,13 +8,7 @@ import java.util.ArrayList;
  * Created by Doug on 12/19/16.
  */
 public class Helpers {
-
-	private CardService cardService;
-
-	@Autowired
-	public void setCardService(CardService cardService) {
-		this.cardService = cardService;
-	}
+//	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 
 	public String ResolveAnswers(String cardEntry) {
@@ -89,15 +82,6 @@ public class Helpers {
 		}
 		return scoresArray;
 
-
-	}
-
-	public ArrayList<Card> CreateMasterDeck() {
-
-		ArrayList<Card> cachedCards = new ArrayList<Card>();
-
-		cachedCards = cardService.listAllCards();
-		return cachedCards;
 
 	}
 

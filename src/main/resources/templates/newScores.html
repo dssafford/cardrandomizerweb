@@ -3,29 +3,18 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Login</title>
-    <!--<th:block th:include="fragments/headerinc :: head"></th:block>-->
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
 </head>
+
+<th:block th:include="fragments/header :: header"></th:block>
 <body>
-<!--<th:block th:include="fragments/header :: header"></th:block>-->
-<!--<div><a href="/nextOne" th:class="crap">Get the next one</a></div>-->
+
 <div class="container">
     <div class="row">
         <!--<div class="col-md-5 col-md-offset-4">-->
         <h2 th:class="formHeader">Test:</h2>
         <div><h2>Test here:  <span th:text="${cachedCards.size()}">Name</span></h2></div>
-        <!--${#lists.isEmpty(books)}-->
-
-        <!--<div class="col-sm-10">-->
-            <!--<input type="text" class="form-control" th:field="*{doug.A1}"/>-->
-
-            <!--&lt;!&ndash;<span class="help-block" th:if="${#fields.hasErrors('firstName')}">&ndash;&gt;-->
-                       <!--&lt;!&ndash;<ul>&ndash;&gt;-->
-                           <!--&lt;!&ndash;<li th:each="err : ${#fields.errors('firstName')}" th:text="${err}" />&ndash;&gt;-->
-                       <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--</div>-->
-
-
         <div>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>

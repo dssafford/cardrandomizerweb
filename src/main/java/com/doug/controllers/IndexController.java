@@ -2,7 +2,9 @@ package com.doug.controllers;
 
 import com.doug.domain.Card;
 import com.doug.domain.DeckAnswer;
+import com.doug.services.CardService;
 import com.doug.services.Helpers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +22,7 @@ public class IndexController {
 
 	public DeckAnswer deckAnswer;
 
-//	private CardService cardService;
+	private CardService cardService;
 
 	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 	public ArrayList<Card> answers = new ArrayList<Card>();
@@ -31,11 +33,11 @@ public class IndexController {
 
 	public Integer counter=0;
 
-//	@Autowired
-//	public void setCardService(CardService cardService) {
-//		this.cardService = cardService;
-//	}
-//
+	@Autowired
+	public void setCardService(CardService cardService) {
+		this.cardService = cardService;
+	}
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getIndexPage() {
@@ -43,15 +45,15 @@ public class IndexController {
 
 	}
 
-	@RequestMapping(value = "/wow1", method = RequestMethod.GET)
+	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
 	public String list(Model model) {
 		Helpers helpers = new Helpers();
 
-		cachedCards = helpers.CreateMasterDeck();
+		cachedCards = CreateMasterDeck();
 
 		model.addAttribute("cards",cachedCards);
 
-		return "return";
+		return "masterList";
 	}
 
 	@RequestMapping(value = "/nextOne", method = RequestMethod.GET)
@@ -165,7 +167,7 @@ public class IndexController {
 			return "redirect:/newScores";
 
 		}
-	@RequestMapping(value = "/wow", method = RequestMethod.GET)
+	@RequestMapping(value = "/showList", method = RequestMethod.GET)
 	public String scores(@ModelAttribute ArrayList<Card> cachedCards, Model model, BindingResult bindingResult) {
 //		deckAnswer = new DeckAnswer();
 //		deckAnswer.setA1("dude");
@@ -174,8 +176,7 @@ public class IndexController {
 
 		//ResolveAnswers();
 
-		Helpers helpers = new Helpers();
-		ArrayList<Card> myCachedCards = helpers.CreateMasterDeck();
+		ArrayList<Card> myCachedCards = CreateMasterDeck();
 
 		model.addAttribute("cachedCards", myCachedCards);
 
@@ -183,4 +184,10 @@ public class IndexController {
 
 	}
 
+	public ArrayList<Card> CreateMasterDeck() {
+
+		cachedCards = cardService.listAllCards();
+		return cachedCards;
+
+	}
 }
