@@ -87,7 +87,7 @@ public class CardController {
 
 	@RequestMapping(value="/enterAnswers", method = RequestMethod.POST)
 	public String getAnswers(DeckAnswer deckAnswer) {
-		//model.addAttribute(getNextCard(card.getCounter()());
+		enteredAnswers = new ArrayList<Card>();
 
 		String fullAnswerName = "";
 
@@ -152,11 +152,11 @@ public class CardController {
 
 		Helpers.Score(cachedCards, enteredAnswers);
 
-		return "test";
+		return "redirect:/scoreAnswers";
 	}
 
 
-	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.POST)
+	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.GET)
 	public String scoreAnswers(Model model) {
 
 		scoresArray = Helpers.SimpleCompareArrays(cachedCards, enteredAnswers);
