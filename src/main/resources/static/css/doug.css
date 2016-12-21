@@ -28,6 +28,9 @@ body {
 	background-color: whitesmoke!important;
 }
 
+title {
+	color: brown;
+}
 .panel-dude {
 	text-align: center !important;
 	vertical-align: bottom !important;
@@ -52,7 +55,7 @@ body {
 }
 
 h1 {
-	color: deepskyblue !important;
+	color: brown !important;
 }
 h2 {
 	color: orange !important;

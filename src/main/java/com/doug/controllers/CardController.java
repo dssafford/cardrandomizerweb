@@ -41,6 +41,11 @@ public class CardController {
 		return "studyList";
 	}
 
+	@RequestMapping(value = "/locationMasterList", method = RequestMethod.GET)
+	public String getLocationMasterList() {
+		return "locationMasterList";
+	}
+
 
 	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
 	public String list(Model model) {
