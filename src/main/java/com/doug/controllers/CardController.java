@@ -36,6 +36,11 @@ public class CardController {
 		this.cardService = cardService;
 	}
 
+	@RequestMapping(value = "/studyList", method = RequestMethod.GET)
+	public String getStudyList() {
+		return "studyList";
+	}
+
 
 	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
 	public String list(Model model) {
