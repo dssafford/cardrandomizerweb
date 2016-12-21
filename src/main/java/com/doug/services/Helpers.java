@@ -89,6 +89,7 @@ public abstract class Helpers {
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
 		ArrayList<Score> scoresArray = new ArrayList();
 		Score score;
+		Double finalScore=0.00;
 
 		for(int i=0;i<masterDeck.size();i++){
 			score = new Score();
@@ -98,6 +99,7 @@ public abstract class Helpers {
 
 			if(masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
 				score.setScore(true);
+				finalScore = finalScore+1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
 			} else {
 				score.setScore(false);
@@ -106,9 +108,26 @@ public abstract class Helpers {
 			}
 			scoresArray.add(i, score);
 		}
+
 		return scoresArray;
 
 
+	}
+
+	public static String CalcFinalScore(ArrayList<Score> scoreArray) {
+		Double finalScore = 0.0;
+
+		for(int i=0; i< scoreArray.size();i++) {
+			if(scoreArray.get(i).isScore()) {
+				finalScore = finalScore + 1;
+			}
+		}
+
+		finalScore = (finalScore/52)*100;
+
+//		"Percentage In Exam: %.2f%%%n", percent
+
+		return String.format("Percentage In Exam: %.2f%%%n", finalScore);
 	}
 
 }

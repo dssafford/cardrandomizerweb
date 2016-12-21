@@ -15,6 +15,7 @@
         <!--<div class="col-md-5 col-md-offset-4">-->
         <h2 th:class="formHeader">Scores</h2>
         <div><h2>Test here:  <span th:text="${scores.size()}">Name</span></h2></div>
+        <div><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
         <div>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>

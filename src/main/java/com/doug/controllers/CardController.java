@@ -150,7 +150,8 @@ public class CardController {
 	public String scoreAnswers(Model model) {
 
 		scoresArray = Helpers.SimpleCompareArrays(cachedCards, enteredAnswers);
-
+		String finalScore = Helpers.CalcFinalScore(scoresArray);
+		model.addAttribute("finalScore", finalScore);
 		model.addAttribute("scores", scoresArray);
 
 		return "scores";
