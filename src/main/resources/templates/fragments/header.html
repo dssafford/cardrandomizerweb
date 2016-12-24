@@ -15,9 +15,9 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar">one</span>
+                        <span class="icon-bar">two</span>
+                        <span class="icon-bar">three</span>
                     </button>
                     <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
                     <!--<button type="button" class="btn btn-default navbar-btn">Sign in</button>-->
@@ -28,16 +28,14 @@
 
                         <li><a href="#" th:href="@{/masterList}">Deal</a></li>
                         <li><a href="#" th:href="@{/enterAnswers}">Enter Answers</a></li>
-                        <li><a href="#" th:href="@{/journal/new}">Score</a></li>
-                        <li><a href="#" th:href="@{/journal/new}">Reports</a></li>
-                        <li><a href="#" th:href="@{/showList}">Show List</a></li>
-
+                        <li><a href="#" th:href="@{/studyList}">Study List</a></li>
+                        <li><a href="#" th:href="@{/}">History</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Entries <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" th:href="@{/journal/paging}">List</a></li>
-                                <li><a href="#" th:href="@{/journal/new}">New Entry</a></li>
+                                <li><a href="#" th:href="@{/studyList}">Study List</a></li>
+                                <li><a href="#" th:href="@{/masterList}">Master List</a></li>
                             </ul>
                         </li>
                     </ul>

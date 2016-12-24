@@ -80,7 +80,7 @@ public class CardController {
 	public String enterAnswers(Model model) {
 		model.addAttribute("deckAnswer", new DeckAnswer());
 
-		return "enterAnswersTest";
+		return "enterAnswers";
 
 	}
 
