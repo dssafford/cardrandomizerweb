@@ -1,6 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.Card;
+import com.doug.domain.CardInfo;
 import com.doug.domain.DeckMaster;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,43 @@ import java.util.ArrayList;
  * Created by Doug on 12/17/16.
  */
 
+//private String cardName;
+//private String mainCategoryName;
+//private String subCategoryName;
+//private String categorySuit;
+//private String personName;
+//private String action;
+//private String object;
+
 @Service
 public class CardServiceImpl implements CardService{
 
-		@Override
+	@Override
+	public ArrayList<CardInfo> listAllCardsForLearning() {
+
+		return null;
+
+	}
+
+	@Override
+	public ArrayList<CardInfo> createCardLearningMasterList() {
+		CardInfo cardInfo;
+
+		ArrayList<CardInfo> returnList = new ArrayList<CardInfo>();
+
+		cardInfo = new CardInfo("ace_of_hearts", "people we love", "sportsman",
+				"hearts", "peyton manning", "throwing", "football");
+
+
+
+
+
+
+
+		return null;
+	}
+
+	@Override
 		public ArrayList listAllCards() {
 			Card card;
 
@@ -40,7 +74,7 @@ public class CardServiceImpl implements CardService{
 
 		}
 
-		// display four cards
+		// display all cards
 		for (int i = 0; i < 52; i++) {
 			String suit = suits[deck[i] / 13];
 			String rank = ranks[deck[i] % 13];

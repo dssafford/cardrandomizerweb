@@ -1,6 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.Card;
+import com.doug.domain.CardInfo;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,10 @@ import java.util.ArrayList;
 public interface CardService {
 	ArrayList<Card> listAllCards();
 
-//	Card getNext(Card card);
+	ArrayList<CardInfo> listAllCardsForLearning();
+
+	ArrayList<CardInfo> createCardLearningMasterList();
+
+
 
 	}

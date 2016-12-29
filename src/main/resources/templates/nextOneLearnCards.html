@@ -6,12 +6,11 @@
     <th:block th:include="fragments/headerinc :: head"></th:block>
 
 </head>
-
 <th:block th:include="fragments/header :: header"></th:block>
+<body>
+
 <div><a href="/nextOne" th:class="crap">Get the next one</a></div>
 <div class="container">
-
-
     <div class="row">
         <!--<div class="col-md-5 col-md-offset-4">-->
         <h2 th:class="formHeader">Please Login:</h2>
@@ -41,9 +40,7 @@
                 <div class="col-sm-6 col-sm-offset-2">
                     <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
                 </div>
-                <div><img src=""
-                     th:src="@{'/images/'+${card.cardName}}"
-                     class="center-block"/></div>
+                <div><img th:src="@{'/images/'+${card.cardName}}" class="center-block"/></div>
             </form>
             <!--<div class="col-sm-6 col-sm-offset-5">-->
             <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
@@ -52,6 +49,5 @@
         <!--</div>-->
     </div>
 </div>
-<!--<div class="dougOne" th:type="hidden">Hey You</div>-->
 </body>
 </html>

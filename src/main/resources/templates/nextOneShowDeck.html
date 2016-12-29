@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+<th:block th:include="fragments/header :: header"></th:block>
+<body>
+
+<div><a href="/nextOne" th:class="crap">Get the next one</a></div>
+<div class="container">
+    <div class="row">
+        <!--<div class="col-md-5 col-md-offset-4">-->
+        <h2 th:class="formHeader">Please Login:</h2>
+        <div>
+            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOne}" method="post">
+                <!--<div th:if="${param.logout}" class="alert alert-success">-->
+                <!--<p>You've been logged out.</p>-->
+                <!--</div>-->
+                <div>
+                    <label class="col-sm-2 control-label">Counter: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" th:field="${card.counter}"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 control-label">ID: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" th:field="${card.id}"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 control-label">Password: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" th:field="${card.cardName}"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-sm-offset-2">
+                    <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
+                </div>
+                <div><img th:src="@{'/images/'+${card.cardName}}" class="center-block"/></div>
+            </form>
+            <!--<div class="col-sm-6 col-sm-offset-5">-->
+            <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
+            <!--</div>-->
+        </div>
+        <!--</div>-->
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.doug.controllers;
 
 import com.doug.domain.Card;
+import com.doug.domain.CardInfo;
 import com.doug.domain.DeckAnswer;
 import com.doug.domain.Score;
 import com.doug.services.CardService;
@@ -28,6 +29,11 @@ public class CardController {
 	public ArrayList<Score> scoresArray = new ArrayList<Score>();
 
 	public ArrayList<Card> cachedCards = new ArrayList<Card>();
+
+
+	public ArrayList<CardInfo> learningCards = new ArrayList<CardInfo>();
+
+
 
 	public Integer counter=0;
 
@@ -62,7 +68,7 @@ public class CardController {
 
 		model.addAttribute(getNextCard(0));
 
-		return "nextOne";
+		return "nextOneShowDeck";
 	}
 
 	@RequestMapping(value = "/nextOne", method = RequestMethod.POST)
@@ -74,6 +80,21 @@ public class CardController {
 	}
 
 
+	@RequestMapping(value = "/nextOneLearn", method = RequestMethod.GET)
+	public String getNextLearningCard(Model model) {
+
+		model.addAttribute(getNextCard(0));
+
+		return "nextOneShowDeck";
+	}
+
+	@RequestMapping(value = "/nextOneLearn", method = RequestMethod.POST)
+	public String processLearningAnswer(Model model, Card card) {
+
+		model.addAttribute(getNextCard(card.getCounter()));
+
+		return "nextOneShowDeck";
+	}
 
 
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
