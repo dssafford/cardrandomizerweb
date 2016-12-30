@@ -36,170 +36,170 @@ public class CardServiceImpl implements CardService{
 		ArrayList<CardInfo> returnList = new ArrayList<CardInfo>();
 
 		//Hearts
-		cardInfo = new CardInfo("ace_of_hearts", "people we love", "sportsmen",
-				"hearts", "peyton manning", "throwing", "football");
+		cardInfo = new CardInfo("Ace_of_Hearts", "people we love", "sportsmen",
+				"Hearts", "peyton manning", "throwing", "football");
 
 		returnList.add(cardInfo);
 
-		cardInfo = new CardInfo("2_of_hearts", "people we love", "sportswomen",
-				"hearts", "Ana Kornikova", "bending over", "small white tennis dress");
+		cardInfo = new CardInfo("2_of_Hearts", "people we love", "sportswomen",
+				"Hearts", "Ana Kornikova", "bending over", "small white tennis dress");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("3_of_hearts", "people we love", "male movie stars",
-				"hearts", "Tom Hanks", "running like Forrest Gump", "leg braces");
+		cardInfo = new CardInfo("3_of_Hearts", "people we love", "male movie stars",
+				"Hearts", "Tom Hanks", "running like Forrest Gump", "leg brAces");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("4_of_hearts", "people we love", "female movie stars",
-				"hearts", "Scarlett Johansen", "throwing up", "booze bottle");
+		cardInfo = new CardInfo("4_of_Hearts", "people we love", "female movie stars",
+				"Hearts", "Scarlett Johansen", "throwing up", "booze bottle");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("5_of_hearts", "people we love", "controversial males",
-				"hearts", "Julian Assange", "vanishing in", "puff of smoke");
+		cardInfo = new CardInfo("5_of_Hearts", "people we love", "controversial males",
+				"Hearts", "Julian Assange", "vanishing in", "puff of smoke");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("6_of_hearts", "people we love", "controversial females",
-				"hearts", "Taylor Swift", "being attacked by Kanye", "grammy trophy");
+		cardInfo = new CardInfo("6_of_Hearts", "people we love", "controversial females",
+				"Hearts", "Taylor Swift", "being attacked by Kanye", "grammy trophy");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("7_of_hearts", "people we love", "famous male physiques",
-				"hearts", "Johnny Depp", "looking out window", "window");
+		cardInfo = new CardInfo("7_of_Hearts", "people we love", "famous male physiques",
+				"Hearts", "Johnny Depp", "looQueen out window", "window");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("8_of_hearts", "people we love", "famous female physiques",
-				"hearts", "Pam Anderson", "running on beach", "orange bouy");
+		cardInfo = new CardInfo("8_of_Hearts", "people we love", "famous female physiques",
+				"Hearts", "Pam Anderson", "running on beach", "orange bouy");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("9_of_hearts", "people we love", "famous powerful men",
-				"hearts", "Steve Jobs", "presenting on stage", "the iphone");
+		cardInfo = new CardInfo("9_of_Hearts", "people we love", "famous powerful men",
+				"Hearts", "Steve Jobs", "presenting on stage", "the iphone");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("10_of_hearts", "people we love", "famous powerful women",
-				"hearts", "Ivanka Trump", "speaking at convention", "podium");
+		cardInfo = new CardInfo("10_of_Hearts", "people we love", "famous powerful women",
+				"Hearts", "Ivanka Trump", "speaKing at convention", "podium");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("jack_of_hearts", "people we love", "religious figures",
-				"hearts", "Jesus", "walking", "on lake");
+		cardInfo = new CardInfo("Jack_of_Hearts", "people we love", "religious figures",
+				"Hearts", "Jesus", "walKing", "on lake");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_hearts", "people we love", "celeb couple men",
-				"hearts", "Michelle Obama", "jumping jacks", "white house lawn");
+		cardInfo = new CardInfo("Queen_of_Hearts", "people we love", "celeb couple men",
+				"Hearts", "Michelle Obama", "jumping Jacks", "white house lawn");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_hearts", "people we love", "celeb couple women",
-				"hearts", "Barak Obama", "fly swatting", "fly");
+		cardInfo = new CardInfo("King_of_Hearts", "people we love", "celeb couple women",
+				"Hearts", "Barak Obama", "fly swatting", "fly");
 		returnList.add(cardInfo);
 
 		//Diamonds
-		cardInfo = new CardInfo("ace_of_diamonds", "rich people", "sportsmen",
-				"diamonds", "Michael Jordan", "dunking", "basketball");
+		cardInfo = new CardInfo("Ace_of_Diamonds", "rich people", "sportsmen",
+				"Diamonds", "Michael Jordan", "dunKing", "basketball");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("2_of_diamonds", "rich people", "sportswomen",
-				"diamonds", "Maria Sharopova", "swinging ", "tennis racket");
+		cardInfo = new CardInfo("2_of_Diamonds", "rich people", "sportswomen",
+				"Diamonds", "Maria Sharopova", "swinging ", "tennis racket");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("3_of_diamonds", "rich people", "male movie stars",
-				"diamonds", "George Clooney", "smoking", "cigar");
+		cardInfo = new CardInfo("3_of_Diamonds", "rich people", "male movie stars",
+				"Diamonds", "George Clooney", "smoKing", "cigar");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("4_of_diamonds", "rich people", "female movie stars",
-				"diamonds", "Julia Roberts", "pushing up", "boobs");
+		cardInfo = new CardInfo("4_of_Diamonds", "rich people", "female movie stars",
+				"Diamonds", "Julia Roberts", "pushing up", "boobs");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("5_of_diamonds", "rich people", "controversial males",
-				"diamonds", "Trump", "tweeting", "phone");
+		cardInfo = new CardInfo("5_of_Diamonds", "rich people", "controversial males",
+				"Diamonds", "Trump", "tweeting", "phone");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("6_of_diamonds", "rich people", "controversial females",
-				"diamonds", "Madonna", "dancing", "on stage");
+		cardInfo = new CardInfo("6_of_Diamonds", "rich people", "controversial females",
+				"Diamonds", "Madonna", "dancing", "on stage");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("7_of_diamonds", "rich people", "famous male physiques",
-				"diamonds", "Kevin Costner", "riding", "horse");
+		cardInfo = new CardInfo("7_of_Diamonds", "rich people", "famous male physiques",
+				"Diamonds", "Kevin Costner", "riding", "horse");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("8_of_diamonds", "rich people", "famous female physiques",
-				"diamonds", "Marilyn Monroe", "dress blowing up", "subway vent");
+		cardInfo = new CardInfo("8_of_Diamonds", "rich people", "famous female physiques",
+				"Diamonds", "Marilyn Monroe", "dress blowing up", "subway vent");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("9_of_diamonds", "rich people", "famous powerful men",
-				"diamonds", "Bill Gates", "yelling at", "pc");
+		cardInfo = new CardInfo("9_of_Diamonds", "rich people", "famous powerful men",
+				"Diamonds", "Bill Gates", "yelling at", "pc");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("10_of_diamonds", "rich people", "famous powerful women",
-				"diamonds", "Oprah", "interviewing", "couch");
+		cardInfo = new CardInfo("10_of_Diamonds", "rich people", "famous powerful women",
+				"Diamonds", "Oprah", "interviewing", "couch");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("jack_of_diamonds", "rich people", "religious figures",
-				"diamonds", "Zeus", "turning into", "swan");
+		cardInfo = new CardInfo("Jack_of_Diamonds", "rich people", "religious figures",
+				"Diamonds", "Zeus", "turning into", "swan");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_diamonds", "rich people", "celeb couple men",
-				"diamonds", "Princess Kate", "wearing beautiful dress", "church");
+		cardInfo = new CardInfo("Queen_of_Diamonds", "rich people", "celeb couple men",
+				"Diamonds", "Princess Kate", "wearing beautiful dress", "church");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_diamonds", "rich people", "celeb couple women",
-				"diamonds", "Prince William", "air lifting someone", "helicopter");
+		cardInfo = new CardInfo("King_of_Diamonds", "rich people", "celeb couple women",
+				"Diamonds", "Prince William", "air lifting someone", "helicopter");
 		returnList.add(cardInfo);
 
 		//Spades
-		cardInfo = new CardInfo("ace_of_spades", "odd people", "sportsmen",
-				"spades", "Dennis Rodman", "diving into", "cameraman");
+		cardInfo = new CardInfo("Ace_of_Spades", "odd people", "sportsmen",
+				"Spades", "Dennis Rodman", "diving into", "cameraman");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("2_of_spades", "odd people", "sportswomen",
-				"spades", "Anika Sorenstam", "driving", "golf ball");
+		cardInfo = new CardInfo("2_of_Spades", "odd people", "sportswomen",
+				"Spades", "Anika Sorenstam", "driving", "golf ball");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("3_of_spades", "odd people", "male movie stars",
-				"spades", "Ben Stiller", "getting lie detector", "Deniro");
+		cardInfo = new CardInfo("3_of_Spades", "odd people", "male movie stars",
+				"Spades", "Ben Stiller", "getting lie detector", "Deniro");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("4_of_spades", "odd people", "female movie stars",
-				"spades", "Reece Witherspoon", "playing guitar", "guitar");
+		cardInfo = new CardInfo("4_of_Spades", "odd people", "female movie stars",
+				"Spades", "Reece Witherspoon", "playing guitar", "guitar");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("5_of_spades", "odd people", "controversial males",
-				"spades", "Osama", "rapping with", "suicide bomber");
+		cardInfo = new CardInfo("5_of_Spades", "odd people", "controversial males",
+				"Spades", "Osama", "rapping with", "suicide bomber");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("6_of_spades", "odd people", "controversial females",
-				"spades", "Lady Gaga", "wearing meat dress", "meat dress");
+		cardInfo = new CardInfo("6_of_Spades", "odd people", "controversial females",
+				"Spades", "Lady Gaga", "wearing meat dress", "meat dress");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("7_of_spades", "odd people", "famous male physiques",
-				"spades", "Anthony Weiner", "taking selfie", "in mirror");
+		cardInfo = new CardInfo("7_of_Spades", "odd people", "famous male physiques",
+				"Spades", "Anthony Weiner", "taKing selfie", "in mirror");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("8_of_spades", "odd people", "famous female physiques",
-				"spades", "naomi Campbell", "hitting maid", "purse");
+		cardInfo = new CardInfo("8_of_Spades", "odd people", "famous female physiques",
+				"Spades", "naomi Campbell", "hitting maid", "purse");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("9_of_spades", "odd people", "famous powerful men",
-				"spades", "Mr Bean", "slapping", "queen");
+		cardInfo = new CardInfo("9_of_Spades", "odd people", "famous powerful men",
+				"Spades", "Mr Bean", "slapping", "Queen");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("10_of_spades", "odd people", "famous powerful women",
-				"spades", "Sarah Palin", "shooting", "moose");
+		cardInfo = new CardInfo("10_of_Spades", "odd people", "famous powerful women",
+				"Spades", "Sarah Palin", "shooting", "moose");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("jack_of_spades", "odd people", "religious figures",
-				"spades", "Dali Lama", "praying to", "buddha");
+		cardInfo = new CardInfo("Jack_of_Spades", "odd people", "religious figures",
+				"Spades", "Dali Lama", "praying to", "buddha");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_spades", "odd people", "celeb couple men",
-				"spades", "Victoria Beckham", "putting lipstick on ", "lipstick");
+		cardInfo = new CardInfo("Queen_of_Spades", "odd people", "celeb couple men",
+				"Spades", "Victoria Beckham", "putting lipstick on ", "lipstick");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_spades", "odd people", "celeb couple women",
-				"spades", "David Beckham", "kicking", "soccer ball");
+		cardInfo = new CardInfo("King_of_Spades", "odd people", "celeb couple women",
+				"Spades", "David Beckham", "kicKing", "soccer ball");
 		returnList.add(cardInfo);
 
 		
 		//Clubs
-		cardInfo = new CardInfo("ace_of_clubs", "strong people", "sportsmen",
-				"clubs", "Mohamad Ali", "punching", "butterfly");
+		cardInfo = new CardInfo("Ace_of_Clubs", "strong people", "sportsmen",
+				"Clubs", "Mohamad Ali", "punching", "butterfly");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("2_of_clubs", "strong people", "sportswomen",
-				"clubs", "Serena Williams", "lifting wimbledon trophy", "trophy");
+		cardInfo = new CardInfo("2_of_Clubs", "strong people", "sportswomen",
+				"Clubs", "Serena Williams", "lifting wimbledon trophy", "trophy");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("3_of_clubs", "strong people", "male movie stars",
-				"clubs", "Brad Pitt", "getting punched in face", "black eye");
+		cardInfo = new CardInfo("3_of_Clubs", "strong people", "male movie stars",
+				"Clubs", "Brad Pitt", "getting punched in fAce", "black eye");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("4_of_clubs", "strong people", "female movie stars",
-				"clubs", "Angelena Jolie", "throwing", "football");
+		cardInfo = new CardInfo("4_of_Clubs", "strong people", "female movie stars",
+				"Clubs", "Angelena Jolie", "throwing", "football");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("5_of_clubs", "strong people", "controversial males",
-				"clubs", "Hitler", "goosestepping", "a bunker");
+		cardInfo = new CardInfo("5_of_Clubs", "strong people", "controversial males",
+				"Clubs", "Hitler", "goosestepping", "a bunker");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("6_of_clubs", "strong people", "controversial females",
-				"clubs", "Rhianna", "holding umbrella", "rain storm");
+		cardInfo = new CardInfo("6_of_Clubs", "strong people", "controversial females",
+				"Clubs", "Rhianna", "holding umbrella", "rain storm");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("7_of_clubs", "strong people", "famous male physiques",
-				"clubs", "Arnold Swartzeneggar", "shooting gun", "gun");
+		cardInfo = new CardInfo("7_of_Clubs", "strong people", "famous male physiques",
+				"Clubs", "Arnold Swartzeneggar", "shooting gun", "gun");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("8_of_clubs", "strong people", "famous female physiques",
-				"clubs", "Medusa", "throwing", "football");
+		cardInfo = new CardInfo("8_of_Clubs", "strong people", "famous female physiques",
+				"Clubs", "Medusa", "throwing", "football");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("9_of_clubs", "strong people", "famous powerful men",
-				"clubs", "Bill Clinton", "order bombing", "baby food");
+		cardInfo = new CardInfo("9_of_Clubs", "strong people", "famous powerful men",
+				"Clubs", "Bill Clinton", "order bombing", "baby food");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("10_of_clubs", "strong people", "famous powerful women",
-				"clubs", "Hillary Clinton", "punching", "Monica Lewinsky");
+		cardInfo = new CardInfo("10_of_Clubs", "strong people", "famous powerful women",
+				"Clubs", "Hillary Clinton", "punching", "Monica Lewinsky");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("jack_of_clubs", "strong people", "religious figures",
-				"clubs", "Pope", "baptizing man", "water");
+		cardInfo = new CardInfo("Jack_of_Clubs", "strong people", "religious figures",
+				"Clubs", "Pope", "baptizing man", "water");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_clubs", "strong people", "celeb couple men",
-				"clubs", "Beyonce", "power dancing on", "beach");
+		cardInfo = new CardInfo("Queen_of_Clubs", "strong people", "celeb couple men",
+				"Clubs", "Beyonce", "power dancing on", "beach");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_clubs", "strong people", "celeb couple women",
-				"clubs", "JZ", "rapping", "giant microphone");
+		cardInfo = new CardInfo("King_of_Clubs", "strong people", "celeb couple women",
+				"Clubs", "JZ", "rapping", "giant microphone");
 		returnList.add(cardInfo);
 		
 		

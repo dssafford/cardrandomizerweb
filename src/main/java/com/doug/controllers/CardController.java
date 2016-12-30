@@ -31,14 +31,11 @@ public class CardController {
 	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 
-	public ArrayList<CardInfo> learningCards = new ArrayList<CardInfo>();
-
-	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
-
-
-
-
-	public Integer counter=0;
+//	public ArrayList<CardInfo> learningCards = new ArrayList<CardInfo>();
+//
+//	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
+//
+//	public Integer counter=0;
 
 	@Autowired
 	public void setCardService(CardService cardService) {
@@ -46,18 +43,16 @@ public class CardController {
 	}
 
 
-	@RequestMapping(value = "/learnCards")
-	public String createLearningDeck(Model model) {
-		//learningCards = cardService.createCardLearningMasterList();
-
-		cachedRandomLearningCards = CreateRandomLearningDeck();
-
-
-		model.addAttribute("cards", learningCards);
-
-		return "masterCardLearningList";
-
-	}
+//	//Create a random deck and tie to learningCards (people/object/action)
+//	@RequestMapping(value = "/learnCards")
+//	public String createLearningDeck(Model model) {
+//
+//		cachedRandomLearningCards = CreateRandomLearningDeck();
+//		model.addAttribute("cards", cachedRandomLearningCards);
+//
+//		return "masterCardLearningList";
+//
+//	}
 
 	@RequestMapping(value = "/studyList", method = RequestMethod.GET)
 	public String getStudyList() {
@@ -70,8 +65,6 @@ public class CardController {
 	}
 
 
-
-
 	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
 	public String list(Model model) {
 
@@ -82,38 +75,25 @@ public class CardController {
 		return "masterList";
 	}
 
-	@RequestMapping(value = "/nextOneShowDeck", method = RequestMethod.GET)
-	public String getOne(Model model) {
-
-		model.addAttribute(getNextCard(0));
-
-		return "nextOneShowDeck";
-	}
-
-	@RequestMapping(value = "/nextOneShowDeck", method = RequestMethod.POST)
-	public String processAnswers(Model model, Card card) {
-
-		model.addAttribute(getNextCard(card.getCounter()));
-
-		return "nextOneShowDeck";
-	}
 
 
-	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.GET)
-	public String getNextLearningCard(Model model) {
-
-		model.addAttribute(getNextCard(0));
-
-		return "nextOneLearnCards";
-	}
-
-	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.POST)
-	public String processLearningAnswer(Model model, Card card) {
-
-		model.addAttribute(getNextCard(card.getCounter()));
-
-		return "nextOneShowDeck";
-	}
+//
+//	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.GET)
+//	public String getNextLearningCard(Model model) {
+//
+//		model.addAttribute(getNextLearningCard(counter));
+//		model.addAttribute("counter", counter);
+//		return "nextOneLearnCards";
+//	}
+//
+//	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.POST)
+//	public String processLearningAnswer(Model model, CardInfo cardInfo) {
+//
+//		model.addAttribute(getNextLearningCard(counter));
+//		model.addAttribute("counter", counter);
+//
+//		return "nextOneLearnCards";
+//	}
 
 
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
@@ -226,13 +206,29 @@ public class CardController {
 //
 //	}
 
-
+//	protected String makeCardString(String cardName){
+//
+//		return cardName+".png";
+//
+//	}
+//
 	private Card makeCard(String cardName) {
 	Card card = new Card();
 	card.setCardName(cardName + ".png");
 
 	return card;
 }
+//
+//	private CardInfo getNextLearningCard(Integer id) {
+//		CardInfo myCard = cachedRandomLearningCards.get(id);
+//
+//		myCard.setCardName(makeCardString(myCard.getCardName()));
+//
+//		this.counter=id+1;
+//
+//		return myCard;
+//	}
+
 	private Card getNextCard(Integer id) {
 		Card myCard = cachedCards.get(id);
 		myCard.setCounter(id+1);
@@ -246,52 +242,56 @@ public class CardController {
 
 	}
 
-	@RequestMapping(value="/getRandomLearningList")
-	public String getRandomLearningList(Model model) {
-
-		learningCards = CreateRandomLearningDeck();
-
-
-
-		model.addAttribute("cards", learningCards);
-
-		return "masterCardLearningList";
-
-	}
-
-	private ArrayList<CardInfo> CreateRandomLearningDeck() {
-
-		ArrayList<CardInfo> workingLearningCards = new ArrayList<CardInfo>();
-
-		//Create master CardInfo Arraylist
-		learningCards = cardService.createCardLearningMasterList();
-
-		//Get random deck
-		cachedCards = cardService.listAllCards();
-
-
-		//loop through random deck and get CardInfo information
-		for(int i=0; i<cachedCards.size(); i++) {
-			workingLearningCards.add(GetCardInfo(cachedCards.get(i).getCardName()));
-		}
-
-		return workingLearningCards;
-
-	}
-
-	private CardInfo GetCardInfo(String cardName) {
-		//loop through CardInfo arraylist to find the same cardname
-		//then return the CardInfo
-		String cardNameNoSuffix = "";
-
-		for(int i=0;i<learningCards.size();i++) {
-			cardNameNoSuffix = learningCards.get(i).getCardName().substring(0, cardName.length()-4);
-			if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
-				return learningCards.get(i);
-			}
-		}
-
-		return null;
-	}
+//	@RequestMapping(value="/getRandomLearningList")
+//	public String getRandomLearningList(Model model) {
+//
+//		learningCards = CreateRandomLearningDeck();
+//
+//
+//
+//		model.addAttribute("cards", learningCards);
+//
+//		return "masterCardLearningList";
+//
+//	}
+//
+//	private ArrayList<CardInfo> CreateRandomLearningDeck() {
+//
+//		ArrayList<CardInfo> workingLearningCards = new ArrayList<CardInfo>();
+//
+//		//Create master CardInfo Arraylist
+//		learningCards = cardService.createCardLearningMasterList();
+//
+//		//Get random deck
+//		cachedCards = cardService.listAllCards();
+//
+//
+//		//loop through random deck and get CardInfo information
+//		for(int i=0; i<cachedCards.size(); i++) {
+//			workingLearningCards.add(GetCardInfo(cachedCards.get(i).getCardName()));
+//		}
+//
+//		return workingLearningCards;
+//
+//	}
+//
+//	private CardInfo GetCardInfo(String cardName) {
+//		//loop through CardInfo arraylist to find the same cardname
+//		//then return the CardInfo
+//		String cardNameNoSuffix = "";
+//
+//		for(int i=0;i<learningCards.size();i++) {
+//			cardNameNoSuffix = cardName.substring(0, cardName.length()-4);
+//
+//			System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningCards.get : " + learningCards.get(i).getCardName());
+//
+//			if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
+//				System.out.println("*************** Found one *****************************************");
+//				return learningCards.get(i);
+//			}
+//		}
+//
+//		return null;
+//	}
 
 }

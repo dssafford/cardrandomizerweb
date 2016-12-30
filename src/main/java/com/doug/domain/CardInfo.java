@@ -80,4 +80,7 @@ public class CardInfo {
         this.action = action;
         this.object = object;
     }
+
+    public CardInfo() {
+    }
 }

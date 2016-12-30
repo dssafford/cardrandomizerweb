@@ -22,25 +22,37 @@
                 <div>
                     <label class="col-sm-2 control-label">Counter: </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" th:field="${card.counter}"/>
+                        <span th:text="${counter}">Counter</span>
                     </div>
                 </div>
                 <div>
-                    <label class="col-sm-2 control-label">ID: </label>
+                    <label class="col-sm-2 control-label">Card Name: </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" th:field="${card.id}"/>
+                        <input type="text" class="form-control" th:field="${cardInfo.cardName}"/>
                     </div>
                 </div>
                 <div>
-                    <label class="col-sm-2 control-label">Password: </label>
+                    <label class="col-sm-2 control-label">Person: </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" th:field="${card.cardName}"/>
+                        <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 control-label">Object: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" th:field="${cardInfo.object}"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="col-sm-2 control-label">Action: </label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" th:field="${cardInfo.action}"/>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-offset-2">
                     <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
                 </div>
-                <div><img th:src="@{'/images/'+${card.cardName}}" class="center-block" style="border:5px solid black"/></div>
+                <div><img th:src="@{'/images/'+${cardInfo.cardName}}" class="center-block" style="border:5px solid black"/></div>
             </form>
             <!--<div class="col-sm-6 col-sm-offset-5">-->
             <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
