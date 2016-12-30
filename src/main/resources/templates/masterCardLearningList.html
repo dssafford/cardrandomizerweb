@@ -12,16 +12,17 @@
 <div class="container">
     <a href="/nextOne" th:class="crap">Get the next one</a>
     <div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>
-    <h2>Your Reading List Doug</h2>
+    <h2>Your Card List Doug</h2>
     <div th:unless="${#lists.isEmpty(cards)}">
         <dl th:each="card : ${cards}">
             <dt class="bookHeadline">
-                <span th:text="${card.counter}">Counter</span>
-                <span th:text="${card.id}">Title</span>
-               <h3> <span th:text="${card.cardName}">CardName</span></h3>
+                <h3><span th:text="${card.cardName}">Card Name | </span></h3>
+            <h3><span th:text="${card.personName}">Person | </span></h3>
+            <h3><span th:text="${card.action}">Action | </span></h3>
+            <h3><span th:text="${card.object}">Object</span></h3>
                 <!--<div class="col-md-12">-->
                 <img src=""
-                     th:src="@{'/images/'+${card.cardName}}"
+                     th:src="@{'/images/'+${card.cardName} + '.png'}"
                      class="center-block" style="border:5px solid black"/>
                 <!--</div>-->
             </dt>

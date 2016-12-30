@@ -33,6 +33,9 @@ public class CardController {
 
 	public ArrayList<CardInfo> learningCards = new ArrayList<CardInfo>();
 
+	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
+
+
 
 
 	public Integer counter=0;
@@ -40,6 +43,20 @@ public class CardController {
 	@Autowired
 	public void setCardService(CardService cardService) {
 		this.cardService = cardService;
+	}
+
+
+	@RequestMapping(value = "/learnCards")
+	public String createLearningDeck(Model model) {
+		//learningCards = cardService.createCardLearningMasterList();
+
+		cachedRandomLearningCards = CreateRandomLearningDeck();
+
+
+		model.addAttribute("cards", learningCards);
+
+		return "masterCardLearningList";
+
 	}
 
 	@RequestMapping(value = "/studyList", method = RequestMethod.GET)
@@ -53,6 +70,8 @@ public class CardController {
 	}
 
 
+
+
 	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
 	public String list(Model model) {
 
@@ -63,7 +82,7 @@ public class CardController {
 		return "masterList";
 	}
 
-	@RequestMapping(value = "/nextOne", method = RequestMethod.GET)
+	@RequestMapping(value = "/nextOneShowDeck", method = RequestMethod.GET)
 	public String getOne(Model model) {
 
 		model.addAttribute(getNextCard(0));
@@ -71,24 +90,24 @@ public class CardController {
 		return "nextOneShowDeck";
 	}
 
-	@RequestMapping(value = "/nextOne", method = RequestMethod.POST)
+	@RequestMapping(value = "/nextOneShowDeck", method = RequestMethod.POST)
 	public String processAnswers(Model model, Card card) {
 
 		model.addAttribute(getNextCard(card.getCounter()));
 
-		return "nextOne";
+		return "nextOneShowDeck";
 	}
 
 
-	@RequestMapping(value = "/nextOneLearn", method = RequestMethod.GET)
+	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.GET)
 	public String getNextLearningCard(Model model) {
 
 		model.addAttribute(getNextCard(0));
 
-		return "nextOneShowDeck";
+		return "nextOneLearnCards";
 	}
 
-	@RequestMapping(value = "/nextOneLearn", method = RequestMethod.POST)
+	@RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.POST)
 	public String processLearningAnswer(Model model, Card card) {
 
 		model.addAttribute(getNextCard(card.getCounter()));
@@ -207,6 +226,7 @@ public class CardController {
 //
 //	}
 
+
 	private Card makeCard(String cardName) {
 	Card card = new Card();
 	card.setCardName(cardName + ".png");
@@ -225,4 +245,53 @@ public class CardController {
 		return cachedCards;
 
 	}
+
+	@RequestMapping(value="/getRandomLearningList")
+	public String getRandomLearningList(Model model) {
+
+		learningCards = CreateRandomLearningDeck();
+
+
+
+		model.addAttribute("cards", learningCards);
+
+		return "masterCardLearningList";
+
+	}
+
+	private ArrayList<CardInfo> CreateRandomLearningDeck() {
+
+		ArrayList<CardInfo> workingLearningCards = new ArrayList<CardInfo>();
+
+		//Create master CardInfo Arraylist
+		learningCards = cardService.createCardLearningMasterList();
+
+		//Get random deck
+		cachedCards = cardService.listAllCards();
+
+
+		//loop through random deck and get CardInfo information
+		for(int i=0; i<cachedCards.size(); i++) {
+			workingLearningCards.add(GetCardInfo(cachedCards.get(i).getCardName()));
+		}
+
+		return workingLearningCards;
+
+	}
+
+	private CardInfo GetCardInfo(String cardName) {
+		//loop through CardInfo arraylist to find the same cardname
+		//then return the CardInfo
+		String cardNameNoSuffix = "";
+
+		for(int i=0;i<learningCards.size();i++) {
+			cardNameNoSuffix = learningCards.get(i).getCardName().substring(0, cardName.length()-4);
+			if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
+				return learningCards.get(i);
+			}
+		}
+
+		return null;
+	}
+
 }
