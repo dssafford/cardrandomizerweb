@@ -24,6 +24,7 @@ body {
 	background: transparent !important;
 }
 
+div
 .panel-default {
 	background-color: whitesmoke!important;
 }
@@ -54,6 +55,13 @@ title {
 	color: whitesmoke;
 }
 
+div.col-sm-6.right{
+	padding-right: 0% !important;
+}
+
+div.col-sm-6.left {
+	padding-left: 0% !important;
+}
 h1 {
 	color: brown !important;
 }

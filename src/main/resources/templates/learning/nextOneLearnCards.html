@@ -59,8 +59,8 @@ h
                     <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
                 </div>
                 <div class="col-sm-6 col-sm-offset-2"><p>&nbsp;</p></div>
-                <div class="col-sm-6"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png" width="222" height="323" class="center-block" style="border:5px solid black"/></div>
-                <div class="col-sm-6"><img id="card"  th:src="@{'/images/'+${cardInfo.cardName}}" class="center-block" style="visibility: hidden;border:5px solid black"/></div>
+                <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png" align="right" width="222" height="323" style="border:5px solid black"/></div>
+                <div class="col-sm-6 left"><img id="card"  th:src="@{'/images/'+${cardInfo.cardName}}" align="left" width="222" height="323" style="visibility: hidden;border:5px solid black"/></div>
             </form>
             <!--<div class="col-sm-6 col-sm-offset-5">-->
             <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
