@@ -37,13 +37,13 @@ public class LearnCardController {
 
 
     //Create a random deck and tie to learningCards (people/object/action)
-    @RequestMapping(value = "/learnCards")
+    @RequestMapping(value = "/randomLearningDeck")
     public String createLearningDeck(Model model) {
 
         cachedRandomLearningCards = CreateRandomLearningDeck();
         model.addAttribute("cards", cachedRandomLearningCards);
 
-        return "masterCardLearningList";
+        return "learning/masterCardLearningList";
 
     }
 
@@ -52,7 +52,7 @@ public class LearnCardController {
 
         model.addAttribute(getNextLearningCard(counter));
         model.addAttribute("counter", counter);
-        return "nextOneLearnCards";
+        return "learning/nextOneLearnCards";
     }
 
     @RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.POST)
@@ -61,7 +61,7 @@ public class LearnCardController {
         model.addAttribute(getNextLearningCard(counter));
         model.addAttribute("counter", counter);
 
-        return "nextOneLearnCards";
+        return "learning/nextOneLearnCards";
     }
 
     protected String makeCardString(String cardName){
@@ -96,7 +96,7 @@ public class LearnCardController {
 
         model.addAttribute("cards", learningCards);
 
-        return "masterCardLearningList";
+        return "learning/masterCardLearningList";
 
     }
 
