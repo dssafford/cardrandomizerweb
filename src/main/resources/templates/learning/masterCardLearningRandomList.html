@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display Cards</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+
+<body>
+<div class="container">
+    <a href="/nextOneLearnCards" th:class="crap">Get the next one</a>
+    <div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>
+    <h2>Your Card Learning List</h2>
+    <div th:unless="${#lists.isEmpty(cards)}">
+        <dl th:each="card : ${cards}">
+            <dt class="bookHeadline">
+                <h3><span th:text="${card.cardName}">Card Name | </span></h3>
+            <h3><span th:text="${card.personName}">Person | </span></h3>
+            <h3><span th:text="${card.action}">Action | </span></h3>
+            <h3><span th:text="${card.object}">Object</span></h3>
+                <!--<div class="col-md-12">-->
+                <img src=""
+                     th:src="@{'/images/'+${card.cardName} + '.png'}"
+                     class="center-block" style="border:5px solid black"/>
+                <!--</div>-->
+            </dt>
+        </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(cards)}">
+        <p>You have no cards in your deck</p>
+    </div>
+
+
+    <hr/>
+</div>
+</body>
+
+</html>
