@@ -37,33 +37,49 @@ public class LearnCardController {
 
 
     //Create a random deck and tie to learningCards (people/object/action)
-    @RequestMapping(value = "/randomLearningDeck")
+    @RequestMapping(value = "/masterCardLearningRandomList")
     public String createLearningDeck(Model model) {
 
         cachedRandomLearningCards = CreateRandomLearningDeck();
         model.addAttribute("cards", cachedRandomLearningCards);
 
-        return "learning/masterCardLearningList";
+        return "learning/masterCardLearningRandomList";
 
     }
 
-    @RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.GET)
-    public String getNextLearningCard(Model model) {
+    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.GET)
+    public String getNextRandomLearningCard(Model model) {
 
-        model.addAttribute(getNextLearningCard(counter));
+        model.addAttribute(getNextRandomLearningCard(counter));
         model.addAttribute("counter", counter);
-        return "learning/nextOneLearnCards";
+        return "learning/nextOneLearnRandomCards";
     }
 
-    @RequestMapping(value = "/nextOneLearnCards", method = RequestMethod.POST)
-    public String processLearningAnswer(Model model, CardInfo cardInfo) {
+    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.POST)
+    public String processRandomLearningAnswer(Model model, CardInfo cardInfo) {
 
-        model.addAttribute(getNextLearningCard(counter));
+        model.addAttribute(getNextRandomLearningCard(counter));
         model.addAttribute("counter", counter);
 
-        return "learning/nextOneLearnCards";
+        return "learning/nextOneLearnRandomCards";
     }
 
+    @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.GET)
+    public String getNextMasterLearningCard(Model model) {
+
+        model.addAttribute(getNextMasterLearningCard(counter));
+        model.addAttribute("counter", counter);
+        return "learning/nextOneLearnMasterCards";
+    }
+
+    @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.POST)
+    public String processMasterLearningAnswer(Model model, CardInfo cardInfo) {
+
+        model.addAttribute(getNextMasterLearningCard(counter));
+        model.addAttribute("counter", counter);
+
+        return "learning/nextOneLearnMasterCards";
+    }
     protected String makeCardString(String cardName){
 
         return cardName+".png";
@@ -77,7 +93,17 @@ public class LearnCardController {
         return card;
     }
 
-    private CardInfo getNextLearningCard(Integer id) {
+    private CardInfo getNextRandomLearningCard(Integer id) {
+        CardInfo myCard = cachedRandomLearningCards.get(id);
+
+        myCard.setCardName(makeCardString(myCard.getCardName()));
+
+        this.counter=id+1;
+
+        return myCard;
+    }
+
+    private CardInfo getNextMasterLearningCard(Integer id) {
         CardInfo myCard = cachedRandomLearningCards.get(id);
 
         myCard.setCardName(makeCardString(myCard.getCardName()));
@@ -91,6 +117,19 @@ public class LearnCardController {
     public String getRandomLearningList(Model model) {
 
         learningCards = CreateRandomLearningDeck();
+
+
+
+        model.addAttribute("cards", learningCards);
+
+        return "learning/masterCardLearningRandomList";
+
+    }
+
+    @RequestMapping(value="/learningMasterList", method = RequestMethod.GET)
+    public String getMasterLearningList(Model model) {
+
+        learningCards = cardService.createCardLearningMasterList();
 
 
 

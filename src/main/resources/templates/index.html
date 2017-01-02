@@ -16,22 +16,34 @@
 
 
 <div class="container">
-    <h2 th:class="formHeader">Quick Links</h2>
+    <div class="row">
+        <div class="col-sm-4"><h2 th:class="formHeader">Learning Links</h2>
+            <ul>
+                <li class="links"><a href="/randomLearningDeck" class="links">Learn Cards</a></li>
+                <li class="links"><a href="/learningMasterList" class="links">Learn Master List</a></li>
+                <li class="links"><a href="/locationMasterList" class="links">Location Master</a></li>
 
-    <ul>
-        <li class="links"><a href="/randomLearningDeck" class="links">Learn Cards</a></li>
-        <li class="links"><a href="/enterAnswers" class="links">Enter Answers</a></li>
-        <li class="links"><a href="/masterList" class="links">View Master List</a></li>
-        <li class="links"><a href="/locationMasterList" class="links">Location Master</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4"><h2 th:class="formHeader">Testing Links</h2>
+            <ul>
+                <li class="links"><a href="/enterAnswers" class="links">Enter Answers</a></li>
+                <li class="links"><a href="/masterList" class="links">View Master List</a></li>
+                <li class="links"><a href="/locationMasterList" class="links">Location Master</a></li>
 
 
-        <li class="links"><a href="user/list" class="links">Users</a></li>
-        <li class="links"><a href="secured.html" class="links">Security Status</a></li>
-        <li class="links"><a href="/registration" class="links">Registration</a></li>
-        <li class="links"><a href="/logout" class="links">Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4"><h2 th:class="formHeader">User Links</h2>
+            <ul>
+                <li class="links"><a href="user/list" class="links">Users</a></li>
+                <li class="links"><a href="secured.html" class="links">Security Status</a></li>
+                <li class="links"><a href="/registration" class="links">Registration</a></li>
+                <li class="links"><a href="/logout" class="links">Logout</a></li>
 
-    </ul>
-
+            </ul>
+        </div>
+    </div>
 </div>
 
 </body>

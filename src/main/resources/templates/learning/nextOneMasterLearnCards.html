@@ -16,13 +16,13 @@ h
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
 
-<div><a href="/nextOne" th:class="crap">Get the next one</a></div>
+<div><a href="/nextOneMasterLearnCards" th:class="crap">Get the next one Master Card from list</a></div>
 <div class="container">
     <!--<div class="row">-->
         <!--<div class="col-md-5 col-md-offset-4">-->
         <!--<h2 th:class="formHeader">Please Login:</h2>-->
         <div>
-            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnCards}" method="post">
+            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneMasterLearnCards}" method="post">
 
                 <div  class="col-sm-6 col-sm-offset-2">
                     <label class="control-label">Counter: </label>
