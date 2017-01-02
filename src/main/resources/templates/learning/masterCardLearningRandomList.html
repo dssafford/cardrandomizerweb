@@ -14,17 +14,18 @@
     <div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>
     <h2>Your Card Random Learning List</h2>
     <div th:unless="${#lists.isEmpty(cards)}">
-        <dl th:each="card : ${cards}">
+        <dl th:each="card, cardStat : ${cards}">
             <dt class="bookHeadline">
-                <h3><span th:text="${card.cardName}">Card Name | </span></h3>
+            <h3><span th:text="${cardStat.index}">Card Name | </span></h3>
+            <h3><span th:text="${card.cardName}">Card Name | </span></h3>
             <h3><span th:text="${card.personName}">Person | </span></h3>
             <h3><span th:text="${card.action}">Action | </span></h3>
             <h3><span th:text="${card.object}">Object</span></h3>
-                <!--<div class="col-md-12">-->
-                <img src=""
-                     th:src="@{'/images/'+${card.cardName} + '.png'}"
-                     class="center-block" style="border:5px solid black"/>
-                <!--</div>-->
+            <!--<div class="col-md-12">-->
+            <img src=""
+                 th:src="@{'/images/'+${card.cardName} + '.png'}"
+                 class="center-block" style="border:5px solid black"/>
+            <!--</div>-->
             </dt>
         </dl>
     </div>

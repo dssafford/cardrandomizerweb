@@ -10,13 +10,15 @@
 
 <body>
 <div class="container">
-    <a href="/nextOneLearnMasterCards" th:class="crap">Get the next one</a>
+    <a href="/nextOneLearnMasterCards?cardVisible=false" th:class="crap">Get the next one</a>
     <div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>
     <h2>Your Master Card non-Random Learning List</h2>
     <div th:unless="${#lists.isEmpty(cards)}">
         <dl th:each="card : ${cards}">
             <dt class="bookHeadline">
-                <h3><span th:text="${card.cardName}">Card Name | </span></h3>
+            <div th:each="card, cardStat: ${cards}"></div>
+            <h3><span th:text="${cardStat.index}">index | </span></h3>
+            <h3><span th:text="${card.cardName}">Card Name | </span></h3>
             <h3><span th:text="${card.personName}">Person | </span></h3>
             <h3><span th:text="${card.action}">Action | </span></h3>
             <h3><span th:text="${card.object}">Object</span></h3>

@@ -8,66 +8,79 @@
 
 
         function demoVisibility() {
-            document.getElementById("card").style.visibility = "visible";
+            if (document.getElementById("card").style.visibility == "hidden") {
+                document.getElementById("card").style.visibility = "visible";
+            } else {
+                document.getElementById("card").style.visibility = "hidden"
+            }
         }
-h
+
     </script>
 </head>
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
 
-<div><a href="/nextOneRandomLearnCards" th:class="crap">Get the next one RANDOM card from list</a></div>
+
 <div class="container">
     <!--<div class="row">-->
-        <!--<div class="col-md-5 col-md-offset-4">-->
-        <!--<h2 th:class="formHeader">Please Login:</h2>-->
-        <div>
-            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneRandomLearnCards}" method="post">
+    <!--<div class="col-md-5 col-md-offset-4">-->
+    <!--<h2 th:class="formHeader">Please Login:</h2>-->
+    <div>
+        <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnRandomCards}" method="post">
 
-                <div  class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Counter: </label>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Counter: </label>
 
-                        <span th:text="${counter}">Counter</span>
+                <span th:text="${counter}">Counter</span>
 
-                </div>
+            </div>
 
-                <div  class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Card Name: </label>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Card Name: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.cardName}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.cardName}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Person: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Person: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Object: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Object: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.object}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.object}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Action: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Action: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.action}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.action}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
-                </div>
-                <div class="col-sm-6 col-sm-offset-2"><p>&nbsp;</p></div>
-                <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png" align="right" width="222" height="323" style="border:5px solid black"/></div>
-                <div class="col-sm-6 left"><img id="card"  th:src="@{'/images/'+${cardInfo.cardName}}" align="left" width="222" height="323" style="visibility: hidden;border:5px solid black"/></div>
-            </form>
-            <!--<div class="col-sm-6 col-sm-offset-5">-->
-            <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
-            <!--</div>-->
-        </div>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" align="right"><a href="/previousOneLearnRandomCards" th:class="generalLink">Previous
+                    Card</a></div>
+                <div class="col-sm-6" align="left"><a href="/nextOneLearnRandomCards" th:class="generalLink">Next
+                    Card</a></div>
+            </div>
+            <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png"
+                                             align="right" width="222" height="323" style="border:5px solid black"/>
+            </div>
+            <div class="col-sm-6 left"><img id="card" th:src="@{'/images/'+${cardInfo.cardName}}" align="left"
+                                            width="222" height="323" style="visibility: hidden;border:5px solid black"/>
+            </div>
+        </form>
+        <!--<div class="col-sm-6 col-sm-offset-5">-->
+        <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
         <!--</div>-->
     </div>
+    <!--</div>-->
+</div>
 <!--</div>-->
 </body>
 </html>
