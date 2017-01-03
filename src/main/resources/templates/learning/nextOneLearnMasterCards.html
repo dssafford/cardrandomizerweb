@@ -22,7 +22,7 @@
             if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
                 window.location = "/nextOneLearnMasterCards?cardVisible=true"; //nextOneLearnMasterCards?cardVisible=true";
             } else {
-                th:window.location = "/nextOneLearnMasterCards?cardVisible=false";
+                window.location = "/nextOneLearnMasterCards?cardVisible=false";
             }
 
             return false;
@@ -32,9 +32,9 @@
         function setPreviousCardVisible() {
 
             if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
-                th:window.location = "/previousOneLearnMasterCards?cardVisible=true";
+                window.location = "/previousOneLearnMasterCards?cardVisible=true";
             } else {
-                th:window.location = "/previousOneLearnMasterCards?cardVisible=false";
+                window.location = "/previousOneLearnMasterCards?cardVisible=false";
             }
 
             return false;
@@ -86,12 +86,12 @@
                 <!--</div>-->
                 <!--<div class="col-sm-6" align="right" th:if="${cardVisible=='false'}"><a href="#" onclick="setPreviousCardVisible()">Previous</a>-->
                 <!--</div>-->
-                <div class="col-sm-6" align="right"><input type="button" onclick="setPreviousCardVisible()" th:value="shit"></input></div>
+                <div class="col-sm-6" align="right"><a href="#" onclick="setPreviousCardVisible()">Previous</a></div>
 
-                <div class="col-sm-6" align="left" th:if="${cardVisible=='true'}"><a href="#" onclick="setNextCardVisible()">Next</a>
+                <div class="col-sm-6" align="left"><a href="#" onclick="setNextCardVisible()">Next</a>
                 </div>
-                <div class="col-sm-6" align="left" th:if="${cardVisible=='false'}"><a href="#" onclick="setNextCardVisible()">Next</a>
-                </div>
+                <!--<div class="col-sm-6" align="left" th:if="${cardVisible=='false'}"><a href="#" onclick="setNextCardVisible()">Next</a>-->
+                <!--</div>-->
 
             </div>
 
