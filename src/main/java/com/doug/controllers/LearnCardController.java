@@ -78,15 +78,14 @@ public class LearnCardController {
     }
 
     @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.GET)
-    public String getNextMasterLearningCard(@RequestParam(value="cardVisible") String myCard,
+    public String getNextMasterLearningCard(@RequestParam(value="cardVisible") String cardVisible,
                                             @RequestParam(value="firstTime", required = false) String firstTime, Model model) {
 
         if(firstTime ==null) {
 
             model.addAttribute(getNextMasterLearningCard(counter, false));
 
-
-            if (myCard.equals("true")) {
+            if (cardVisible.equals("true")) {
                 model.addAttribute("cardVisible", "true");
             } else {
                 model.addAttribute("cardVisible", "false");
@@ -94,15 +93,32 @@ public class LearnCardController {
 
         } else {
             model.addAttribute(getNextMasterLearningCard(0, true));
-            if (myCard.equals("true")) {
+            if (cardVisible.equals("true")) {
                 model.addAttribute("cardVisible", "true");
             } else {
                 model.addAttribute("cardVisible", "false");
             }
+
+
         }
 
+        if(firstTime==null && counter!=0) {
+            model.addAttribute("previousVisible", "true");
+        } else {
+            model.addAttribute("previousVisible", "false");
+        }
+
+
+        if(counter!= 51) {
+            model.addAttribute("nextVisible", "true");
+        } else {
+            model.addAttribute("nextVisible", "false");
+        }
+
+
+
         model.addAttribute("counter", counter);
-        //model.addAttribute("cardVisible", "false");
+
         return "learning/nextOneLearnMasterCards";
     }
 
@@ -112,17 +128,33 @@ public class LearnCardController {
     @RequestMapping(value = "/previousOneLearnMasterCards", method = RequestMethod.GET)
     public String getPreviousMasterLearningCard(@RequestParam(value="cardVisible") String myCard, Model model) {
 
+        if(model !=null) {
 
-        model.addAttribute(getPreviousMasterLearningCard(counter));
-        model.addAttribute("counter", counter);
+            model.addAttribute(getPreviousMasterLearningCard(counter));
+            model.addAttribute("counter", counter);
 
-        if(myCard.equals("true")) {
-            model.addAttribute("cardVisible", "true");
+            if (myCard.equals("true")) {
+                model.addAttribute("cardVisible", "true");
+            } else {
+                model.addAttribute("cardVisible", "false");
+            }
+
         } else {
-            model.addAttribute("cardVisible", "false");
+
         }
 
+        if(counter!=0) {
+            model.addAttribute("previousVisible", "true");
+        } else {
+                model.addAttribute("previousVisible", "false");
+        }
 
+        if(counter!= 51) {
+            model.addAttribute("nextVisible", "true");
+        } else {
+            model.addAttribute("nextVisible", "false");
+        }
+        
         return "learning/nextOneLearnMasterCards";
     }
 //    @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.POST)
