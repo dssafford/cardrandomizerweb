@@ -5,125 +5,113 @@
     <title>Login</title>
     <th:block th:include="fragments/headerinc :: head"></th:block>
     <script>
-        var crap = "douglas";
-        function load(){
-            //alert("loading body, card visible: " + document.getElementById("card").style.visibility);
-
-            if(document.getElementById("card").style.visibility == "visible") {
-                //alert("visible");
-                //document.getElementById("card").style.visibility = "visible";
-            } else {
-                //alert("not visible");
-                //document.getElementById("card").style.visibility = "hidden"
-
-            }
-        }
+        var cardVisible = "false";
 
         function demoVisibility() {
             //alert("card visible: " + document.getElementById("card").style.visibility + "douglas:=" + crap);
             if (document.getElementById("card").style.visibility == "hidden") {
                 document.getElementById("card").style.visibility = "visible";
-                crap = "true";
+                cardVisible = "true";
             } else {
                 document.getElementById("card").style.visibility = "hidden"
-                crap = "false";
+                cardVisible = "false";
             }
         }
-        function tryThis() {
+        function setNextCardVisible() {
 
-            //window.location.href = "/nextOneLearnMasterCards?cardVisible=shit"; //nextOneLearnMasterCards?cardVisible=true";
-
-            //window.location.href = "/nextOneLearnMasterCards?cardVisible=true";
-
-            //alert("crap = " + crap);
-
-            if(crap=="true" || (document.getElementById("card").style.visibility == "visible")) {
+            if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
                 window.location = "/nextOneLearnMasterCards?cardVisible=true"; //nextOneLearnMasterCards?cardVisible=true";
             } else {
-                window.location = "/nextOneLearnMasterCards?cardVisible=false";
+                th:window.location = "/nextOneLearnMasterCards?cardVisible=false";
             }
 
             return false;
 
         }
-            //window.location="/";
+
+        function setPreviousCardVisible() {
+
+            if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
+                th:window.location = "/previousOneLearnMasterCards?cardVisible=true";
+            } else {
+                th:window.location = "/previousOneLearnMasterCards?cardVisible=false";
+            }
+
+            return false;
+
+        }
 
     </script>
 </head>
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
 <div class="container">
-    <!--<div class="row">-->
-        <!--<div class="col-md-5 col-md-offset-4">-->
-        <!--<h2 th:class="formHeader">Please Login:</h2>-->
+    <!--<h1>Visible=<span th:text="${cardVisible}">Card Visible?</span></h1>-->
+    <div>
+        <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnMasterCards}" method="post">
 
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Counter: </label>
 
-    <h1>Visible=<span th:text="${cardVisible}">Card Visible?</span></h1>
-        <div>
-            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnMasterCards}" method="post">
+                <span th:text="${counter}">Counter</span>
 
-                <div  class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Counter: </label>
+            </div>
 
-                        <span th:text="${counter}">Counter</span>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Card Name: </label>
 
-                </div>
+                <input type="text" class="form-control" th:field="${cardInfo.cardName}"/>
 
-                <div  class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Card Name: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Person: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.cardName}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Person: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Object: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.object}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Object: </label>
+            </div>
+            <div class="col-sm-6 col-sm-offset-2">
+                <label class="control-label">Action: </label>
 
-                        <input type="text" class="form-control" th:field="${cardInfo.object}"/>
+                <input type="text" class="form-control" th:field="${cardInfo.action}"/>
 
-                </div>
-                <div class="col-sm-6 col-sm-offset-2">
-                    <label class="control-label">Action: </label>
-
-                        <input type="text" class="form-control" th:field="${cardInfo.action}"/>
-
-                </div>
-                <!--<div class="col-sm-6 col-sm-offset-2">-->
-                    <!--<button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>-->
+            </div>
+            <div class="row">
+                <!--<div class="col-sm-6" align="right" th:if="${cardVisible=='true'}"><a href="#" onclick="setPreviousCardVisible()">Previous</a>-->
                 <!--</div>-->
-                <div class="row">
-                    <div class="col-sm-6" align="right"><a href="/previousOneLearnMasterCards" th:class="generalLink">PreviousCard</a></div>
+                <!--<div class="col-sm-6" align="right" th:if="${cardVisible=='false'}"><a href="#" onclick="setPreviousCardVisible()">Previous</a>-->
+                <!--</div>-->
+                <div class="col-sm-6" align="right"><input type="button" onclick="setPreviousCardVisible()" th:value="shit"></input></div>
 
-                    <div class="col-sm-6" align="left" th:if="${cardVisible=='true'}"><a href="#" onclick="tryThis()" >NextCard</a></div>
-                    <div class="col-sm-6" align="left" th:if="${cardVisible=='false'}"><a href="#" onclick="tryThis()">NextCard</a></div>
-
+                <div class="col-sm-6" align="left" th:if="${cardVisible=='true'}"><a href="#" onclick="setNextCardVisible()">Next</a>
                 </div>
-                <!--<div class="col-sm-6 right"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png"-->
-                                                 <!--align="right" width="222" height="323" style="border:5px solid black"/>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6 left"><img id="card" th:src="@{'/images/'+${cardInfo.cardName}}" align="left"-->
-                                                <!--width="222" height="323" style="visibility: hidden;border:5px solid black"/>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6" align="right"><button type="button" class="btn btn-link">Previous</button></div>-->
-                <!--<div class="col-sm-6" align="left"><button type="button" class="btn btn-link" onclick="tryThis();">Next</button></div>-->
+                <div class="col-sm-6" align="left" th:if="${cardVisible=='false'}"><a href="#" onclick="setNextCardVisible()">Next</a>
+                </div>
 
-                <!--<div class="col-sm-6 col-sm-offset-2"><p>&nbsp;</p></div>-->
-                <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility();" src="/images/back@2x.png" align="right" width="222" height="323" style="border:5px solid black"/></div>
+            </div>
 
-                <div class="col-sm-6 left" th:if="${cardVisible=='true'}">visible<img id="card"  th:src="@{'/images/'+${cardInfo.cardName}}" align="left" width="222" height="323" style="visibility: visible;border:5px solid black"/></div>
-                <div class="col-sm-6 left" th:if="${cardVisible=='false'}">not visible<img id="card"  th:src="@{'/images/'+${cardInfo.cardName}}" align="left" width="222" height="323" style="visibility: hidden;border:5px solid black"/></div>
-            </form>
-            <!--<div class="col-sm-6 col-sm-offset-5">-->
-            <!--<h4 th:class="createAccount"><a th:href="@{/registration}">Create an account</a></h4>-->
-            <!--</div>-->
-        </div>
-        <!--</div>-->
+            <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility();" src="/images/back@2x.png"
+                                             align="right" width="222" height="323" style="border:5px solid black"/>
+            </div>
+
+            <div class="col-sm-6 left" th:if="${cardVisible=='true'}"><img id="card"
+                                                                           th:src="@{'/images/'+${cardInfo.cardName}}"
+                                                                           align="left" width="222" height="323"
+                                                                           style="visibility: visible;border:5px solid black"/>
+            </div>
+            <div class="col-sm-6 left" th:if="${cardVisible=='false'}"><img id="card"
+                                                                            th:src="@{'/images/'+${cardInfo.cardName}}"
+                                                                            align="left" width="222"
+                                                                            height="323"
+                                                                            style="visibility: hidden;border:5px solid black"/>
+            </div>
+        </form>
     </div>
-<!--</div>-->
+</div>
 </body>
 </html>

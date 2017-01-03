@@ -11,14 +11,6 @@ import java.util.ArrayList;
  * Created by Doug on 12/17/16.
  */
 
-//private String cardName;
-//private String mainCategoryName;
-//private String subCategoryName;
-//private String categorySuit;
-//private String personName;
-//private String action;
-//private String object;
-
 @Service
 public class CardServiceImpl implements CardService{
 
@@ -37,10 +29,8 @@ public class CardServiceImpl implements CardService{
 
 		//Hearts
 		cardInfo = new CardInfo("Ace_of_Hearts", "people we love", "sportsmen",
-				"Hearts", "peyton manning", "throwing", "football");
-
+				"Hearts", "Peyton Manning", "throwing", "football");
 		returnList.add(cardInfo);
-
 		cardInfo = new CardInfo("2_of_Hearts", "people we love", "sportswomen",
 				"Hearts", "Ana Kornikova", "bending over", "small white tennis dress");
 		returnList.add(cardInfo);
@@ -69,7 +59,7 @@ public class CardServiceImpl implements CardService{
 				"Hearts", "Ivanka Trump", "speaKing at convention", "podium");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("Jack_of_Hearts", "people we love", "religious figures",
-				"Hearts", "Jesus", "walKing", "on lake");
+				"Hearts", "Jesus", "walking", "on lake");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("Queen_of_Hearts", "people we love", "celeb couple men",
 				"Hearts", "Michelle Obama", "jumping Jacks", "white house lawn");
@@ -80,13 +70,13 @@ public class CardServiceImpl implements CardService{
 
 		//Diamonds
 		cardInfo = new CardInfo("Ace_of_Diamonds", "rich people", "sportsmen",
-				"Diamonds", "Michael Jordan", "dunKing", "basketball");
+				"Diamonds", "Michael Jordan", "dunking", "basketball");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("2_of_Diamonds", "rich people", "sportswomen",
 				"Diamonds", "Maria Sharopova", "swinging ", "tennis racket");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_Diamonds", "rich people", "male movie stars",
-				"Diamonds", "George Clooney", "smoKing", "cigar");
+				"Diamonds", "George Clooney", "smoking", "cigar");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("4_of_Diamonds", "rich people", "female movie stars",
 				"Diamonds", "Julia Roberts", "pushing up", "boobs");
@@ -157,7 +147,7 @@ public class CardServiceImpl implements CardService{
 				"Spades", "Victoria Beckham", "putting lipstick on ", "lipstick");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("King_of_Spades", "odd people", "celeb couple women",
-				"Spades", "David Beckham", "kicKing", "soccer ball");
+				"Spades", "David Beckham", "kicking", "soccer ball");
 		returnList.add(cardInfo);
 
 		
@@ -169,7 +159,7 @@ public class CardServiceImpl implements CardService{
 				"Clubs", "Serena Williams", "lifting wimbledon trophy", "trophy");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_Clubs", "strong people", "male movie stars",
-				"Clubs", "Brad Pitt", "getting punched in fAce", "black eye");
+				"Clubs", "Brad Pitt", "getting punched in face", "black eye");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("4_of_Clubs", "strong people", "female movie stars",
 				"Clubs", "Angelena Jolie", "throwing", "football");

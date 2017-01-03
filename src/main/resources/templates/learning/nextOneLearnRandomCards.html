@@ -5,14 +5,28 @@
     <title>Login</title>
     <th:block th:include="fragments/headerinc :: head"></th:block>
     <script>
-
+        var cardVisible = "false";
 
         function demoVisibility() {
+            //alert("card visible: " + document.getElementById("card").style.visibility + "douglas:=" + crap);
             if (document.getElementById("card").style.visibility == "hidden") {
                 document.getElementById("card").style.visibility = "visible";
+                cardVisible = "true";
             } else {
                 document.getElementById("card").style.visibility = "hidden"
+                cardVisible = "false";
             }
+        }
+        function setCardVisible() {
+
+            if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
+                window.location = "/nextOneLearnRandomCards?cardVisible=true"; //nextOneLearnMasterCards?cardVisible=true";
+            } else {
+                window.location = "/nextOneLearnRandomCards?cardVisible=false";
+            }
+
+            return false;
+
         }
 
     </script>
