@@ -18,7 +18,8 @@ import java.util.ArrayList;
 @Controller
 public class LearnCardController {
 
-    public ArrayList<CardInfo> learningCards = new ArrayList<CardInfo>();
+    public ArrayList<CardInfo> learningMasterCards = new ArrayList<CardInfo>();
+    public ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
 
     public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
 
@@ -34,7 +35,7 @@ public class LearnCardController {
     }
 
 
-    //Create a random deck and tie to learningCards (people/object/action)
+    //Create a random deck and tie to learningRandomCards (people/object/action)
     @RequestMapping(value = "/masterCardLearningRandomList")
     public String createLearningDeck(Model model) {
 
@@ -115,7 +116,7 @@ public class LearnCardController {
 
         model.addAttribute("counter", counter);
 
-        return "learning/nextOneLearnMasterCards";
+        return "learning/nextOneLearnRandomCards";
     }
 
 
@@ -277,7 +278,7 @@ public class LearnCardController {
                 counter=0;
             }
 
-            CardInfo myCard = cachedRandomLearningCards.get(id);
+            CardInfo myCard = cachedRandomLearningCards.get(counter);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
 
@@ -296,7 +297,7 @@ public class LearnCardController {
             counter = id - 1;
             id=id-1;
 
-            CardInfo myCard = cachedRandomLearningCards.get(id);
+            CardInfo myCard = cachedRandomLearningCards.get(counter);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
 
@@ -315,7 +316,7 @@ public class LearnCardController {
             } else {
                 counter = 0;
             }
-            CardInfo myCard = learningCards.get(counter);
+            CardInfo myCard = learningMasterCards.get(counter);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
 
@@ -329,7 +330,7 @@ public class LearnCardController {
         if(counter != 0) {
             counter = id - 1;
             id=id-1;
-            CardInfo myCard = learningCards.get(id);
+            CardInfo myCard = learningMasterCards.get(id);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
             return myCard;
@@ -340,11 +341,11 @@ public class LearnCardController {
     @RequestMapping(value="/masterCardLearningMasterList", method = RequestMethod.GET)
     public String getMasterLearningList(Model model) {
 
-        learningCards = cardService.createCardLearningMasterList();
+        learningMasterCards = cardService.createCardLearningMasterList();
 
 
 
-        model.addAttribute("cards", learningCards);
+        model.addAttribute("cards", learningMasterCards);
 
         return "learning/masterCardLearningMasterList";
 
@@ -352,10 +353,10 @@ public class LearnCardController {
 
     private ArrayList<CardInfo> CreateRandomLearningDeck() {
 
-        ArrayList<CardInfo> workingLearningCards = new ArrayList<CardInfo>();
+        ArrayList<CardInfo> workinglearningRandomCards = new ArrayList<CardInfo>();
 
         //Create master CardInfo Arraylist
-        learningCards = cardService.createCardLearningMasterList();
+        learningRandomCards = cardService.createCardLearningMasterList();
 
         //Get random deck
         cachedCards = cardService.listAllCards();
@@ -363,10 +364,10 @@ public class LearnCardController {
 
         //loop through random deck and get CardInfo information
         for(int i=0; i<cachedCards.size(); i++) {
-            workingLearningCards.add(GetRandomCardInfo(cachedCards.get(i).getCardName()));
+            workinglearningRandomCards.add(GetRandomCardInfo(cachedCards.get(i).getCardName()));
         }
 
-        return workingLearningCards;
+        return workinglearningRandomCards;
 
     }
 
@@ -375,14 +376,14 @@ public class LearnCardController {
         //then return the CardInfo
         String cardNameNoSuffix = "";
 
-        for(int i=0;i<learningCards.size();i++) {
+        for(int i=0;i<learningMasterCards.size();i++) {
             cardNameNoSuffix = cardName.substring(0, cardName.length()-4);
 
-            System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningCards.get : " + learningCards.get(i).getCardName());
+            System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningMasterCards.get : " + learningMasterCards.get(i).getCardName());
 
-            if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
+            if(learningMasterCards.get(i).getCardName().equals(cardNameNoSuffix)){
                 System.out.println("*************** Found one *****************************************");
-                return learningCards.get(i);
+                return learningMasterCards.get(i);
             }
         }
 
@@ -394,14 +395,14 @@ public class LearnCardController {
         //then return the CardInfo
         String cardNameNoSuffix = "";
 
-        for(int i=0;i<learningCards.size();i++) {
+        for(int i=0;i<learningRandomCards.size();i++) {
             cardNameNoSuffix = cardName.substring(0, cardName.length()-4);
 
-            System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningCards.get : " + learningCards.get(i).getCardName());
+            System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningRandomCards.get : " + learningRandomCards.get(i).getCardName());
 
-            if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
+            if(learningRandomCards.get(i).getCardName().equals(cardNameNoSuffix)){
                 System.out.println("*************** Found one *****************************************");
-                return learningCards.get(i);
+                return learningRandomCards.get(i);
             }
         }
 
