@@ -46,36 +46,125 @@ public class LearnCardController {
     }
 
     @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.GET)
-    public String getNextRandomLearningCard(Model model) {
+    public String getNextRandomLearningCard(@RequestParam(value="cardVisible") String cardVisible,
+                                            @RequestParam(value="firstTime", required = false) String firstTime, Model model) {
+        if(firstTime ==null) {
 
+            model.addAttribute(getNextRandomLearningCard(counter, false));
+            if (cardVisible.equals("true")) {
+                model.addAttribute("cardVisible", "true");
+            } else {
+                model.addAttribute("cardVisible", "false");
+            }
 
-        model.addAttribute(getNextRandomLearningCard(counter));
+        } else {
+            model.addAttribute(getNextRandomLearningCard(0, true));
+            if (cardVisible.equals("true")) {
+                model.addAttribute("cardVisible", "true");
+            } else {
+                model.addAttribute("cardVisible", "false");
+            }
+        }
+        if(counter!=0) {
+            model.addAttribute("previousVisible", "true");
+        } else {
+            model.addAttribute("previousVisible", "false");
+        }
+
+        if(counter!= 51) {
+            model.addAttribute("nextVisible", "true");
+        } else {
+            model.addAttribute("nextVisible", "false");
+        }
+
         model.addAttribute("counter", counter);
-
 
         return "learning/nextOneLearnRandomCards";
     }
 
     @RequestMapping(value = "/previousOneLearnRandomCards", method = RequestMethod.GET)
-    public String getPreviousRandomLearningCard(Model model) {
+    public String getPreviousRandomLearningCard(@RequestParam(value="cardVisible") String myCard, Model model) {
 
-        model.addAttribute(getPreviousRandomLearningCard(counter));
+        if(model !=null) {
+
+            model.addAttribute(getPreviousRandomLearningCard(counter));
+
+
+            if (myCard.equals("true")) {
+                model.addAttribute("cardVisible", "true");
+            } else {
+                model.addAttribute("cardVisible", "false");
+            }
+
+        } else {
+
+        }
+
+        if(counter!=0) {
+            model.addAttribute("previousVisible", "true");
+        } else {
+            model.addAttribute("previousVisible", "false");
+        }
+
+        if(counter!= 51) {
+            model.addAttribute("nextVisible", "true");
+        } else {
+            model.addAttribute("nextVisible", "false");
+        }
+
+
         model.addAttribute("counter", counter);
 
-
-        return "learning/nextOneLearnRandomCards";
+        return "learning/nextOneLearnMasterCards";
     }
 
-    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.POST)
-    public String processRandomLearningAnswer(Model model, CardInfo cardInfo) {
 
 
-
-        model.addAttribute(getNextRandomLearningCard(counter));
-        model.addAttribute("counter", counter);
-
-        return "learning/nextOneLearnRandomCards";
-    }
+//    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.POST)
+//    public String processRandomLearningAnswer(@RequestParam(value="cardVisible") String cardVisible,
+//    @RequestParam(value="firstTime", required = false) String firstTime, Model model) {
+//
+//
+//            if(firstTime ==null) {
+//
+//            model.addAttribute(getNextRandomLearningCard(counter, false));
+//
+//            if (cardVisible.equals("true")) {
+//                model.addAttribute("cardVisible", "true");
+//            } else {
+//                model.addAttribute("cardVisible", "false");
+//            }
+//
+//        } else {
+//            model.addAttribute(getNextRandomLearningCard(0, true));
+//            if (cardVisible.equals("true")) {
+//                model.addAttribute("cardVisible", "true");
+//            } else {
+//                model.addAttribute("cardVisible", "false");
+//            }
+//
+//
+//        }
+//
+//        if(firstTime==null && counter!=0) {
+//            model.addAttribute("previousVisible", "true");
+//        } else {
+//            model.addAttribute("previousVisible", "false");
+//        }
+//
+//
+//        if(counter!= 51) {
+//            model.addAttribute("nextVisible", "true");
+//        } else {
+//            model.addAttribute("nextVisible", "false");
+//        }
+//
+//
+//
+//        model.addAttribute("counter", counter);
+//
+//        return "learning/nextOneLearnRandomCards";
+//    }
 
     @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.GET)
     public String getNextMasterLearningCard(@RequestParam(value="cardVisible") String cardVisible,
@@ -154,19 +243,9 @@ public class LearnCardController {
         } else {
             model.addAttribute("nextVisible", "false");
         }
-        
+
         return "learning/nextOneLearnMasterCards";
     }
-//    @RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.POST)
-//    public String processMasterLearningAnswer(Model model, CardInfo cardInfo) {
-//
-//        model.addAttribute(getNextMasterLearningCard(counter));
-//        model.addAttribute("counter", counter);
-//
-//
-//
-//        return "learning/nextOneLearnMasterCards";
-//    }
 
     protected String makeCardString(String cardName){
 
@@ -188,16 +267,20 @@ public class LearnCardController {
         return null;
     }
 
-    private CardInfo getNextRandomLearningCard(Integer id) {
+    private CardInfo getNextRandomLearningCard(Integer id, Boolean firstTime) {
 
 
         if(id != 51) {
+            if(firstTime==false) {
+                this.counter = id + 1;
+            } else {
+                counter=0;
+            }
 
             CardInfo myCard = cachedRandomLearningCards.get(id);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
 
-            this.counter = id + 1;
 
             return myCard;
         }
@@ -209,12 +292,14 @@ public class LearnCardController {
 
 //TODO:Work on counter going backwards
 
-        if(id != 0) {
+        if(counter != 0) {
+            counter = id - 1;
+            id=id-1;
+
             CardInfo myCard = cachedRandomLearningCards.get(id);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
 
-            this.counter = id - 1;
             return myCard;
         }
 
@@ -225,16 +310,14 @@ public class LearnCardController {
 
         if(id != 51) {
 
-            if(firstTime==false) {
+            if (firstTime == false) {
                 this.counter = id + 1;
             } else {
-                counter=0;
+                counter = 0;
             }
             CardInfo myCard = learningCards.get(counter);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
-
-
 
             return myCard;
         }
@@ -249,26 +332,10 @@ public class LearnCardController {
             CardInfo myCard = learningCards.get(id);
 
             myCard.setCardName(makeCardString(myCard.getCardName()));
-
-
-
             return myCard;
         }
         return null;
     }
-
-//    @RequestMapping(value="/getRandomLearningList")
-//    public String getRandomLearningList(Model model) {
-//
-//        learningCards = CreateRandomLearningDeck();
-//
-//
-//
-//        model.addAttribute("cards", learningCards);
-//
-//        return "learning/masterCardLearningRandomList";
-//
-//    }
 
     @RequestMapping(value="/masterCardLearningMasterList", method = RequestMethod.GET)
     public String getMasterLearningList(Model model) {
@@ -296,14 +363,33 @@ public class LearnCardController {
 
         //loop through random deck and get CardInfo information
         for(int i=0; i<cachedCards.size(); i++) {
-            workingLearningCards.add(GetCardInfo(cachedCards.get(i).getCardName()));
+            workingLearningCards.add(GetRandomCardInfo(cachedCards.get(i).getCardName()));
         }
 
         return workingLearningCards;
 
     }
 
-    private CardInfo GetCardInfo(String cardName) {
+    private CardInfo GetMasterCardInfo(String cardName) {
+        //loop through CardInfo arraylist to find the same cardname
+        //then return the CardInfo
+        String cardNameNoSuffix = "";
+
+        for(int i=0;i<learningCards.size();i++) {
+            cardNameNoSuffix = cardName.substring(0, cardName.length()-4);
+
+            System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningCards.get : " + learningCards.get(i).getCardName());
+
+            if(learningCards.get(i).getCardName().equals(cardNameNoSuffix)){
+                System.out.println("*************** Found one *****************************************");
+                return learningCards.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    private CardInfo GetRandomCardInfo(String cardName) {
         //loop through CardInfo arraylist to find the same cardname
         //then return the CardInfo
         String cardNameNoSuffix = "";

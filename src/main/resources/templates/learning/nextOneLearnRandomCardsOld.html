@@ -17,10 +17,10 @@
                 cardVisible = "false";
             }
         }
-        function setNextCardVisible() {
+        function setCardVisible() {
 
             if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
-                window.location = "/nextOneLearnRandomCards?cardVisible=true"; //nextOneLearnRandomCards?cardVisible=true";
+                window.location = "/nextOneLearnRandomCards?cardVisible=true"; //nextOneLearnMasterCards?cardVisible=true";
             } else {
                 window.location = "/nextOneLearnRandomCards?cardVisible=false";
             }
@@ -28,19 +28,6 @@
             return false;
 
         }
-
-        function setPreviousCardVisible() {
-
-            if (cardVisible == "true" || (document.getElementById("card").style.visibility == "visible")) {
-                window.location = "/previousOneLearnRandomCards?cardVisible=true";
-            } else {
-                window.location = "/previousOneLearnRandomCards?cardVisible=false";
-            }
-
-            return false;
-
-        }
-
     </script>
 </head>
 <th:block th:include="fragments/header :: header"></th:block>
@@ -80,32 +67,20 @@
                 <input type="text" class="form-control" th:field="${cardInfo.action}"/>
 
             </div>
-            <div class="row">
-                <div class="col-sm-6" th:if="(${previousVisible}=='true')"   style="visibility: visible;" align="right"><a href="#" onclick="setPreviousCardVisible()">Previous</a></div>
-                <div class="col-sm-6" th:if="(${previousVisible}=='false')"   onclick="return false;" align="right"><a href="#" >Previous</a></div>
-
-
-
-                <div class="col-sm-6" th:if="(${nextVisible}=='true')" align="left"><a href="#" onclick="setNextCardVisible()">Next</a></div>
-                <div class="col-sm-6" th:if="(${nextVisible}=='false')" align="left"><a href="#"  onclick="return false;">Next</a></div>
-
-
+            <div class="col-sm-6 col-sm-offset-2">
+                <button th:type="submit" class="btn btn-default" th:value="Submit">Submit</button>
             </div>
-
-            <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility();" src="/images/back@2x.png"
+            <div class="row">
+                <div class="col-sm-6" align="right"><a href="/previousOneLearnRandomCards" th:class="generalLink">Previous
+                    Card</a></div>
+                <div class="col-sm-6" align="left"><a href="/nextOneLearnRandomCards" th:class="generalLink">Next
+                    Card</a></div>
+            </div>
+            <div class="col-sm-6 right"><img id="blank" onclick="demoVisibility()" src="/images/back@2x.png"
                                              align="right" width="222" height="323" style="border:5px solid black"/>
             </div>
-
-            <div class="col-sm-6 left" th:if="${cardVisible=='true'}"><img id="card"
-                                                                           th:src="@{'/images/'+${cardInfo.cardName}}"
-                                                                           align="left" width="222" height="323"
-                                                                           style="visibility: visible;border:5px solid black"/>
-            </div>
-            <div class="col-sm-6 left" th:if="${cardVisible=='false'}"><img id="card"
-                                                                            th:src="@{'/images/'+${cardInfo.cardName}}"
-                                                                            align="left" width="222"
-                                                                            height="323"
-                                                                            style="visibility: hidden;border:5px solid black"/>
+            <div class="col-sm-6 left"><img id="card" th:src="@{'/images/'+${cardInfo.cardName}}" align="left"
+                                            width="222" height="323" style="visibility: hidden;border:5px solid black"/>
             </div>
         </form>
     </div>
