@@ -32,4 +32,12 @@ public class Card {
 	public void setCounter(Integer counter) {
 		this.counter = counter;
 	}
+
+	public Card(Integer id, String cardName, Integer counter) {
+		this.id = id;
+		CardName = cardName;
+		this.counter = counter;
+	}
+
+	public Card() {}
 }
