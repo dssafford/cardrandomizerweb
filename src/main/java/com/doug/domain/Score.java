@@ -1,45 +1,68 @@
 package com.doug.domain;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
+
 /**
- * Created by Doug on 12/20/16.
+ * Created by Doug on 1/8/17.
  */
 public class Score {
 
-	private Integer id;
+	@Id
+	private Integer userid;
 
-	public Integer getId() {
-		return id;
+	private Integer timestamp;
+	private ArrayList masterList;
+	private ArrayList answerList;
+	private ArrayList scoreList;
+	private String comments;
+
+	public Integer getUserid() {
+		return userid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
-	private String masterCardName;
-	private String answerCardName;
-	private boolean score;
-
-	public String getMasterCardName() {
-		return masterCardName;
+	public Integer getTimestamp() {
+		return timestamp;
 	}
 
-	public void setMasterCardName(String masterCardName) {
-		this.masterCardName = masterCardName;
+	public void setTimestamp(Integer timestamp) {
+		this.timestamp = timestamp;
 	}
 
-	public String getAnswerCardName() {
-		return answerCardName;
+	public ArrayList getMasterList() {
+		return masterList;
 	}
 
-	public void setAnswerCardName(String answerCardName) {
-		this.answerCardName = answerCardName;
+	public void setMasterList(ArrayList masterList) {
+		this.masterList = masterList;
 	}
 
-	public boolean isScore() {
-		return score;
+	public ArrayList getAnswerList() {
+		return answerList;
 	}
 
-	public void setScore(boolean score) {
-		this.score = score;
+	public void setAnswerList(ArrayList answerList) {
+		this.answerList = answerList;
+	}
+
+	public ArrayList getScoreList() {
+		return scoreList;
+	}
+
+	public void setScoreList(ArrayList scoreList) {
+		this.scoreList = scoreList;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 }

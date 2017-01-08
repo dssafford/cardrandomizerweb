@@ -1,7 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.Card;
-import com.doug.domain.Score;
+import com.doug.domain.Test;
 
 import java.util.ArrayList;
 
@@ -87,26 +87,26 @@ public abstract class Helpers {
 	}
 
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
-		ArrayList<Score> scoresArray = new ArrayList();
-		Score score;
+		ArrayList<Test> scoresArray = new ArrayList();
+		Test test;
 		Double finalScore=0.00;
 
 		for(int i=0;i<masterDeck.size();i++){
-			score = new Score();
-			score.setId(i);
-			score.setMasterCardName(masterDeck.get(i).getCardName());
-			score.setAnswerCardName(answerDeck.get(i).getCardName());
+			test = new Test();
+			test.setId(i);
+			test.setMasterCardName(masterDeck.get(i).getCardName());
+			test.setAnswerCardName(answerDeck.get(i).getCardName());
 
 			if(masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
-				score.setScore(true);
+				test.setScore(true);
 				finalScore = finalScore+1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
 			} else {
-				score.setScore(false);
+				test.setScore(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerDeck.get(i).getCardName());
 			}
-			scoresArray.add(i, score);
+			scoresArray.add(i, test);
 		}
 
 		return scoresArray;
@@ -114,11 +114,11 @@ public abstract class Helpers {
 
 	}
 
-	public static String CalcFinalScore(ArrayList<Score> scoreArray) {
+	public static String CalcFinalScore(ArrayList<Test> testArray) {
 		Double finalScore = 0.0;
 
-		for(int i=0; i< scoreArray.size();i++) {
-			if(scoreArray.get(i).isScore()) {
+		for(int i = 0; i< testArray.size(); i++) {
+			if(testArray.get(i).isTest()) {
 				finalScore = finalScore + 1;
 			}
 		}

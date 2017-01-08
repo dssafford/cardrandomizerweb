@@ -2,7 +2,7 @@ package com.doug.controllers;
 
 import com.doug.domain.Card;
 import com.doug.domain.DeckAnswer;
-import com.doug.domain.Score;
+import com.doug.domain.Test;
 import com.doug.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class CardController {
 	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 	public ArrayList<Card> fullAnswers = new ArrayList<Card>();
 
-	public ArrayList<Score> scoresArray = new ArrayList<Score>();
+	public ArrayList<Test> scoresArray = new ArrayList<Test>();
 
 	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
@@ -150,7 +150,7 @@ public class CardController {
 //			enteredAnswers.get(i).setCardName(fullAnswerName + ".png");
 //		}
 //
-//		Helpers.Score(cachedCards, enteredAnswers);
+//		Helpers.Test(cachedCards, enteredAnswers);
 //
 //		return "redirect:/scoreAnswers";
 //	}

@@ -3,7 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
 import com.doug.domain.DeckAnswer;
-import com.doug.domain.Score;
+import com.doug.domain.Test;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class LearnCardController {
 	public ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
 	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
-	public ArrayList<Score> scoresArray = new ArrayList<Score>();
+	public ArrayList<Test> scoresArray = new ArrayList<Test>();
 
 
 	public ArrayList<Card> cachedShuffledCardNames = new ArrayList<Card>();
