@@ -25,7 +25,7 @@ public class LearnCardController {
 	public ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
 	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
-	public ArrayList<Test> scoresArray = new ArrayList<Test>();
+	public ArrayList<Test> testArray = new ArrayList<Test>();
 
 
 	public ArrayList<Card> cachedShuffledCardNames = new ArrayList<Card>();
@@ -135,10 +135,10 @@ public class LearnCardController {
 	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.GET)
 	public String scoreAnswers(Model model) {
 
-		scoresArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
-		String finalScore = Helpers.CalcFinalScore(scoresArray);
+		testArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
+		String finalScore = Helpers.CalcFinalScore(testArray);
 		model.addAttribute("finalScore", finalScore);
-		model.addAttribute("scores", scoresArray);
+		model.addAttribute("scores", testArray);
 
 		return "scores";
 

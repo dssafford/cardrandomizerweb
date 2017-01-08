@@ -1,18 +1,16 @@
 package com.doug.domain;
 
-import org.springframework.data.annotation.Id;
-
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Doug on 1/8/17.
  */
 public class Score {
 
-	@Id
 	private Integer userid;
 
-	private Integer timestamp;
+	private Date timestamp;
 	private ArrayList masterList;
 	private ArrayList answerList;
 	private ArrayList scoreList;
@@ -26,11 +24,11 @@ public class Score {
 		this.userid = userid;
 	}
 
-	public Integer getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Integer timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 

@@ -1,23 +1,35 @@
 package com.doug.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * Created by Doug on 12/20/16.
  */
+@Document
 public class Test {
 
-	private Integer id;
+//	@Id
+//	private Integer id;
+//
+//	public Integer getId() {
+//		return id;
+//	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
 
 	private String masterCardName;
 	private String answerCardName;
-	private boolean score;
+	private boolean correct;
+
+	public Test(String masterCardName, String answerCardName, boolean correct) {
+		this.masterCardName = masterCardName;
+		this.answerCardName = answerCardName;
+		this.correct = correct;
+	}
+
+	public Test(){};
 
 	public String getMasterCardName() {
 		return masterCardName;
@@ -35,11 +47,11 @@ public class Test {
 		this.answerCardName = answerCardName;
 	}
 
-	public boolean isScore() {
-		return score;
+	public boolean isCorrect() {
+		return correct;
 	}
 
-	public void setScore(boolean score) {
-		this.score = score;
+	public void setCorrect(boolean correct) {
+		this.correct = correct;
 	}
 }

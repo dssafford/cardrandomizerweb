@@ -12,20 +12,20 @@ public abstract class Helpers {
 //	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 	public static ArrayList<Card> Score(ArrayList<Card> masterDeck, ArrayList<Card> quickAnswers){
-		ArrayList scoresArray = new ArrayList();
+		ArrayList testArray = new ArrayList();
 
 		for(int i=0;i<quickAnswers.size();i++){
 			if(masterDeck.get(i).getCardName().equals(quickAnswers.get(i).getCardName())) {
-				scoresArray.add(true);
+				testArray.add(true);
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + quickAnswers.get(i).getCardName());
 			} else {
 
-				scoresArray.add(false);
+				testArray.add(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  quickAnswers.get(i).getCardName());
 			}
 		}
-		return scoresArray;
+		return testArray;
 
 
 
@@ -87,29 +87,29 @@ public abstract class Helpers {
 	}
 
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
-		ArrayList<Test> scoresArray = new ArrayList();
+		ArrayList<Test> testArray = new ArrayList();
 		Test test;
 		Double finalScore=0.00;
 
 		for(int i=0;i<masterDeck.size();i++){
 			test = new Test();
-			test.setId(i);
+//			test.setId(i);
 			test.setMasterCardName(masterDeck.get(i).getCardName());
 			test.setAnswerCardName(answerDeck.get(i).getCardName());
 
 			if(masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
-				test.setScore(true);
+				test.setCorrect(true);
 				finalScore = finalScore+1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
 			} else {
-				test.setScore(false);
+				test.setCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerDeck.get(i).getCardName());
 			}
-			scoresArray.add(i, test);
+			testArray.add(i, test);
 		}
 
-		return scoresArray;
+		return testArray;
 
 
 	}
@@ -118,7 +118,7 @@ public abstract class Helpers {
 		Double finalScore = 0.0;
 
 		for(int i = 0; i< testArray.size(); i++) {
-			if(testArray.get(i).isTest()) {
+			if(testArray.get(i).isCorrect()) {
 				finalScore = finalScore + 1;
 			}
 		}

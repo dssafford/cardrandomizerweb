@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <h1>How was this????</h1>
+        <!--<div class="col-md-5 col-md-offset-4">-->
+        <!--<div> <h1 th:class="formHeader">Scores</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>-->
+        <!--<div>-->
+            <!--<form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">-->
+                <!--<div>-->
+                    <!--<table class="table table-bordered">-->
+                        <!--<tr>-->
+                            <!--<th>ID</th>-->
+                            <!--<th>Master Card</th>-->
+                            <!--<th>Entered Answer</th>-->
+                            <!--<th>Score</th>-->
+                            <!--<th>Delete</th>-->
+                        <!--</tr>-->
+                        <!--<tr th:each="test : ${scores}">-->
+                            <!--<td th:text="${test.id}"><a href="/${test(1).id}">Id</a></td>-->
+                            <!--<td th:text="${test.masterCardName}">Name</td>-->
+                            <!--<td th:text="${test.answerCardName}"><a href="/${cachedCard(1).id}">Id</a></td>-->
+                            <!--<td th:text="${test.test}">Name</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                    <!--&lt;!&ndash;<div><button type="submit">Go</button></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</form>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    </div>
+</div>
+<!--<div class="dougOne" th:type="hidden">Hey You</div>-->
+</body>
+</html>
