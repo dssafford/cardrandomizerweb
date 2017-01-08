@@ -1,9 +1,6 @@
 package com.doug.controllers;
 
-import com.doug.domain.Card;
-import com.doug.domain.CardInfo;
-import com.doug.domain.DeckAnswer;
-import com.doug.domain.Test;
+import com.doug.domain.*;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +35,47 @@ public class LearnCardController {
 	public void setCardService(CardService cardService) {
 		this.cardService = cardService;
 	}
+
+
+	@RequestMapping(value = "/answer", method = RequestMethod.GET)
+	public String testenterAnswers(Model model) {
+		model.addAttribute("deckAnswer", new DeckAnswer());
+
+
+		return "learning/testEnterAnswers";
+
+	}
+
+
+
+
+	private ArrayList<Display> createDisplayList() {
+
+		ArrayList<Display> displayArrayList = new ArrayList<Display>();
+
+		ArrayList<Card> answerList = enteredAnswers;
+		ArrayList<CardInfo> masterList = learningRandomCards;
+		ArrayList<Test> scoreList = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
+
+		Display display;
+
+		for(int i=0;i<6;i++) {
+			display = new Display();
+
+			display.setId(i);
+			display.setMasterCardName(masterList.get(i).getCardName());
+			display.setAnswerCardName(answerList.get(i).getCardName());
+			display.setAnswerCorrect(scoreList.get(i).isCorrect());
+
+			displayArrayList.add(display);
+
+		}
+
+		return displayArrayList;
+	}
+
+
+
 
 
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
@@ -490,10 +528,10 @@ public class LearnCardController {
 		for (int i = 0; i < learningMasterCards.size(); i++) {
 			cardNameNoSuffix = cardName.substring(0, cardName.length() - 4);
 
-			System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningMasterCards.get : " + learningMasterCards.get(i).getCardName());
+			//System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningMasterCards.get : " + learningMasterCards.get(i).getCardName());
 
 			if (learningMasterCards.get(i).getCardName().equals(cardNameNoSuffix)) {
-				System.out.println("*************** Found one *****************************************");
+				//System.out.println("*************** Found one *****************************************");
 				return learningMasterCards.get(i);
 			}
 		}
@@ -509,10 +547,10 @@ public class LearnCardController {
 		for (int i = 0; i < learningRandomCards.size(); i++) {
 			cardNameNoSuffix = cardName.substring(0, cardName.length() - 4);
 
-			System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningRandomCards.get : " + learningRandomCards.get(i).getCardName());
+			//System.out.println("CardNameNoSuffix :" + cardNameNoSuffix + " and learningRandomCards.get : " + learningRandomCards.get(i).getCardName());
 
 			if (learningRandomCards.get(i).getCardName().equals(cardNameNoSuffix)) {
-				System.out.println("*************** Found one *****************************************");
+				//System.out.println("*************** Found one *****************************************");
 				return learningRandomCards.get(i);
 			}
 		}

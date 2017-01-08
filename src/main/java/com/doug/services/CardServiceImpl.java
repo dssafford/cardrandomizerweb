@@ -238,7 +238,7 @@ public class CardServiceImpl implements CardService{
 			
 			returnDeck.add(card);
 
-			System.out.println((i + 1) + " :You have the " + rank + " of " + suit + ".png");
+			System.out.println((i + 1) + " :You have the " + rank + "_of_" + suit + ".png");
 
 
 		}

@@ -1,9 +1,6 @@
 package com.doug.controllers;
 
-import com.doug.domain.Card;
-import com.doug.domain.CardInfo;
-import com.doug.domain.Score;
-import com.doug.domain.Test;
+import com.doug.domain.*;
 import com.doug.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Doug on 1/8/17.
@@ -29,15 +27,57 @@ public class ScoreController {
 	@Autowired
 	private ScoreRepository scoreRepository;
 
-	@RequestMapping("/score")
+	@RequestMapping("/saveScore")
 	public String testScore(Model model) {
-
-
 		Score myScore = scoreRepository.save(createTestScore());
 
-		model.addAttribute("score",myScore );
+		model.addAttribute("score", myScore );
+//		model.addAttribute("masters", myScore.getMasterList());
+//		model.addAttribute("answers", myScore.getAnswerList());
+//		model.addAttribute("scoreLists", myScore.getScoreList());
 
-		return "testScore";
+		return "score/showScore";
+	}
+
+	@RequestMapping("/getScores")
+	public String getScores(Model model) {
+
+		//List<Score> scores = scoreRepository.findAll();
+
+		ArrayList<Display> displayList = createDisplayList();
+
+		//displayList.get(0).getMasterCardName();
+		model.addAttribute("scores", displayList );
+
+		return "score/showScores";
+
+	}
+
+	private ArrayList<Display> createDisplayList() {
+
+		ArrayList<Display> displayArrayList = new ArrayList<Display>();
+
+		ArrayList<Card> answerList = createAnswerList();
+		ArrayList<CardInfo> masterList = createTestRandomList();
+		ArrayList<Test> scoreList = createScoreList();
+
+		List<Score> scores = scoreRepository.findAll();
+
+		Display display;
+
+		for(int i=0;i<6;i++) {
+			display = new Display();
+
+			display.setId(i);
+			display.setMasterCardName(masterList.get(i).getCardName());
+			display.setAnswerCardName(answerList.get(i).getCardName());
+			display.setAnswerCorrect(scoreList.get(i).isCorrect());
+
+			displayArrayList.add(display);
+
+		}
+
+		return displayArrayList;
 	}
 
 	private Score createTestScore() {
@@ -46,7 +86,7 @@ public class ScoreController {
 		//score.setUserid(1);
 		score.setAnswerList(createAnswerList());
 		score.setMasterList(createTestRandomList());
-		score.setScoreList(createTestList());
+		score.setScoreList(createScoreList());
 		score.setComments("comments here");
 		score.setTimestamp(new Date());
 
@@ -99,20 +139,20 @@ public class ScoreController {
 		return answerList;
 	}
 
-	private ArrayList<Test> createTestList() {
+	private ArrayList<Test> createScoreList() {
 		ArrayList<Test> testList = new ArrayList<Test>();
 		Test test;
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+		test = new Test("Ace_of_Hearts", "Ace_of_Hearts",false);
+		testList.add(0,test);
+
+		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", true);
 		testList.add(0,test);
 
 		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
 		testList.add(0,test);
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
-		testList.add(0,test);
-
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", true);
 		testList.add(0,test);
 
 		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
@@ -120,4 +160,25 @@ public class ScoreController {
 
 		return testList;
 	}
+//	private ArrayList<Test> createTestList() {
+//		ArrayList<Test> testList = new ArrayList<Test>();
+//		Test test;
+//
+//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		testList.add(0,test);
+//
+//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		testList.add(0,test);
+//
+//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		testList.add(0,test);
+//
+//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		testList.add(0,test);
+//
+//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		testList.add(0,test);
+//
+//		return testList;
+//	}
 }

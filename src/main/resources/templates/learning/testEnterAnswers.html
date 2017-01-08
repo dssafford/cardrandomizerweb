@@ -1,0 +1,168 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display Cards</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+
+<body>
+<div class="container">
+    <form class="form-horizontal" th:object="${deckAnswer}" th:action="@{/enterAnswers}" method="post">
+        <div class="panel-body col-sm-10">
+            <table class="table-condensed">
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <tr>
+                    <td>1</td>
+                    <td><input th:type="text"  th:tabindex="1" th:value="Ace_of_Hearts"></input></td>
+                    <td>16</td>
+                    <td><input th:type="text"  th:tabindex="16" value="3_of_Diamonds"></input></td>
+                    <td>31</td>
+                    <td><input th:type="text"  th:tabindex="31" value="5_of_Spades"></input></td>
+                    <td>46</td>
+                    <td><input th:type="text"   th:tabindex="46" th:value="7_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input th:type="text"  th:tabindex="2" th:value="2_of_Hearts"></input></td>
+                    <td>17</td>
+                    <td><input th:type="text"  th:tabindex="17" th:value="4_of_Diamonds"></input></td>
+                    <td>32</td>
+                    <td><input th:type="text" th:tabindex="32" th:value="6_of_Spades"></input></td>
+                    <td>47</td>
+                    <td><input th:type="text" th:tabindex="47" th:value="8_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input th:type="text"   th:tabindex="3" th:value="3_of_Hearts"></input></td>
+                    <td>18</td>
+                    <td><input th:type="text"   th:tabindex="18" th:value="5_of_Diamonds"></input></td>
+                    <td>33</td>
+                    <td><input th:type="text"   th:tabindex="33" th:value="7_of_Spades"></input></td>
+                    <td>48</td>
+                    <td><input th:type="text"   th:tabindex="48" th:value="9_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input th:type="text"   th:tabindex="4" th:value="4_of_Hearts"></input></td>
+                    <td>19</td>
+                    <td><input th:type="text"   th:tabindex="19" th:value="6_of_Diamonds"></input></td>
+                    <td>34</td>
+                    <td><input th:type="text"   th:tabindex="34" th:value="8_of_Spades"></input></td>
+                    <td>49</td>
+                    <td><input th:type="text"   th:tabindex="49" th:value="10_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input th:type="text"   th:tabindex="5" th:value="5_of_Hearts"></input></td>
+                    <td>20</td>
+                    <td><input th:type="text"   th:tabindex="20" th:value="7_of_Diamonds"></input></td>
+                    <td>35</td>
+                    <td><input th:type="text"   th:tabindex="35" th:value="9_of_Spades"></input></td>
+                    <td>50</td>
+                    <td><input th:type="text"   th:tabindex="50" th:value="Jack_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><input th:type="text"   th:tabindex="6" th:value="6_of_Hearts"></input></td>
+                    <td>21</td>
+                    <td><input th:type="text"   th:tabindex="21" th:value="8_of_Diamonds"></input></td>
+                    <td>36</td>
+                    <td><input th:type="text"  th:tabindex="36" th:value="10_of_Spades"></input></td>
+                    <td>51</td>
+                    <td><input th:type="text"   th:tabindex="51" th:value="Queen_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><input th:type="text"   th:tabindex="7" th:value="7_of_Hearts"></input></td>
+                    <td>22</td>
+                    <td><input th:type="text"   th:tabindex="22" th:value="9_of_Diamonds"></input></td>
+                    <td>37</td>
+                    <td><input th:type="text"   th:tabindex="37" th:value="Jack_of_Spades"></input></td>
+                    <td>52</td>
+                    <td><input th:type="text"   th:tabindex="52" th:value="King_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><input th:type="text"   th:tabindex="8" th:value="8_of_Hearts"></input></td>
+                    <td>23</td>
+                    <td><input th:type="text"   th:tabindex="23" th:value="10_of_Diamonds"></input></td>
+                    <td>38</td>
+                    <td><input th:type="text"   th:tabindex="38" th:value="Queen_of_Spades"></input></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><input th:type="text"   th:tabindex="9" th:value="9_of_Hearts"></input></td>
+                    <td>24</td>
+                    <td><input th:type="text"  th:tabindex="24" th:value="Jack_of_Diamonds"></input></td>
+                    <td>39</td>
+                    <td><input th:type="text"   th:tabindex="39" th:value="King_of_Spades"></input></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><input th:type="text"   th:tabindex="10" th:value="10_of_Hearts"></input></td>
+                    <td>25</td>
+                    <td><input th:type="text"   th:tabindex="25" th:value="Queen_of_Diamonds"></input></td>
+                    <td>40</td>
+                    <td><input th:type="text"  th:tabindex="40" th:value="Ace_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td><input th:type="text"   th:tabindex="11" th:value="Jack_of_Hearts"></input></td>
+                    <td>26</td>
+                    <td><input th:type="text"   th:tabindex="26" th:value="King_of_Diamonds"></input></td>
+                    <td>41</td>
+                    <td><input th:type="text"   th:tabindex="41" th:value="2_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><input th:type="text"   th:tabindex="12" th:value="Queen_of_Hearts"></input></td>
+                    <td>27</td>
+                    <td><input th:type="text"   th:tabindex="27" th:value="Ace_of_Spades"></input></td>
+                    <td>42</td>
+                    <td><input th:type="text"   th:tabindex="42" th:value="3_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td><input th:type="text"   th:tabindex="13" th:value="King_of_Hearts"></input></td>
+                    <td>28</td>
+                    <td><input th:type="text"   th:tabindex="28" th:value="2_of_Spades"></input></td>
+                    <td>43</td>
+                    <td><input th:type="text"   th:tabindex="43" th:value="4_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td><input th:type="text"   th:tabindex="14" th:value="Ace_of_Diamonds"></input></td>
+                    <td>29</td>
+                    <td><input th:type="text"   th:tabindex="29" th:value="3_of_Spades"></input></td>
+                    <td>44</td>
+                    <td><input th:type="text"   th:tabindex="44" th:value="5_of_Clubs"></input></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td><input th:type="text"   th:tabindex="15" th:value="2_of_Diamonds"></input></td>
+                    <td>30</td>
+                    <td><input th:type="text"   th:tabindex="30" th:value="4_of_Spades"></input></td>
+                    <td>45</td>
+                    <td><input th:type="text"   th:tabindex="45" th:value="6_of_Clubs"></input></td>
+                </tr>
+            </table>
+            <div>
+                <p></p>
+                <button type="submit" class="col-md-5 col-md-offset-4">Go</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

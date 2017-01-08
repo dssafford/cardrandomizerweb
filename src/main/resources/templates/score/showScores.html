@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<body>
+
+<div class="container">
+    <div class="row">
+
+        <h1>How was this????</h1>
+        <div class="col-md-5 col-md-offset-4">
+        <div> <h1 th:class="formHeader">Scores</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
+        <div>
+            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
+                <div>
+                    <!--User id:<span th:text="${score.userid}">Name</span><p></p>-->
+                    <!--TimeStamp: <span th:text="${score.timestamp}">Name</span><p></p>-->
+                    <!--Comments: <span th:text="${score.comments}">Name</span><p></p>-->
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Database id</th>
+                            <th>Iter id</th>
+                            <th>Master Card</th>
+                            <th>Answer Card</th>
+                            <th>Score</th>
+                        </tr>
+                        <tr th:each="score,  scoreStat : ${scores}">
+                            <td th:text="${scoreStat.index}"><a href="/${test(1).id}">Id</a></td>
+                            <td th:text="${score.id}">index</td>
+                            <td th:text="${score.masterCardName}">index</td>
+                            <td th:text="${score.answerCardName}">index</td>
+                            <td th:text="${score.answerCorrect}">index</td>
+
+                            <!--<td th:text="${score.scoreList(0).masterCardName}">Name</td>-->
+                            <!--<td th:text="${score.scoreList(0).answerCardName}">Name</td>-->
+                            <!--<td th:text="${score.scoreList(0).correct}">Correct?</td>-->
+                        </tr>
+                    </table>
+                    <!--<div><button type="submit">Go</button></div>-->
+                    <!--</form>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
