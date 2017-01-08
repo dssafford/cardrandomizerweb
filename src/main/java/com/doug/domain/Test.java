@@ -3,7 +3,7 @@ package com.doug.domain;
 /**
  * Created by Doug on 12/20/16.
  */
-public class Score {
+public class Test {
 
 	private Integer id;
 
