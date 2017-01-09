@@ -25,11 +25,11 @@
                             <th>Score</th>
                             <th>Delete</th>
                         </tr>
-                        <tr th:each="test : ${scores}">
-                            <td th:text="${test.id}"><a href="/${test(1).id}">Id</a></td>
+                        <tr th:each="test, testStat : ${scores}">
+                            <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
                             <td th:text="${test.masterCardName}">Name</td>
                             <td th:text="${test.answerCardName}"><a href="/${cachedCard(1).id}">Id</a></td>
-                            <td th:text="${test.test}">Name</td>
+                            <td th:text="${test.correct}">Name</td>
                         </tr>
                     </table>
                     <!--<div><button type="submit">Go</button></div>-->

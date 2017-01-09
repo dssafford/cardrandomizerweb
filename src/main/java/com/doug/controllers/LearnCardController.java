@@ -98,12 +98,12 @@ public class LearnCardController {
 	}
 
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.POST)
-	public String getAnswers(DeckAnswer deckAnswer) throws Exception {
+	public String getAnswersTestOnly(DeckAnswer deckAnswer) throws Exception {
 		enteredAnswers = new ArrayList<Card>();
 
 		String fullAnswerName = "";
 
-		enteredAnswers.add(makeCard(deckAnswer.getA1()));
+		enteredAnswers.add(makeCard(""));
 		enteredAnswers.add(makeCard(deckAnswer.getA2()));
 		enteredAnswers.add(makeCard(deckAnswer.getA3()));
 		enteredAnswers.add(makeCard(deckAnswer.getA4()));
@@ -155,6 +155,7 @@ public class LearnCardController {
 		enteredAnswers.add(makeCard(deckAnswer.getA50()));
 		enteredAnswers.add(makeCard(deckAnswer.getA51()));
 		enteredAnswers.add(makeCard(deckAnswer.getA52()));
+
 		if (enteredAnswers.get(0) != null) {
 			for (int i = 0; i < enteredAnswers.size(); i++) {
 				fullAnswerName = Helpers.ResolveAnswers(enteredAnswers.get(i).getCardName());
@@ -164,11 +165,115 @@ public class LearnCardController {
 			enteredAnswers = createTestAnswers();
 		}
 
-		Helpers.Score(cachedShuffledCardNames, enteredAnswers);
+		//Helpers.Score(cachedShuffledCardNames, enteredAnswers);
 
 		return "redirect:/scoreAnswers";
 	}
 
+
+
+
+
+	@RequestMapping(value = "/enterAnswersTest", method = RequestMethod.POST)
+	public String getAnswers(DeckAnswer deckAnswer) throws Exception {
+		enteredAnswers = new ArrayList<Card>();
+
+		String fullAnswerName = "";
+
+		enteredAnswers.add(makeCard("Ace_of_Hearts"));
+		enteredAnswers.add(makeCard("2h"));
+		enteredAnswers.add(makeCard("3h"));
+		enteredAnswers.add(makeCard("4h"));
+		enteredAnswers.add(makeCard("5h"));
+		enteredAnswers.add(makeCard("6h"));
+		enteredAnswers.add(makeCard("7h"));
+		enteredAnswers.add(makeCard("8h"));
+		enteredAnswers.add(makeCard("9h"));
+		enteredAnswers.add(makeCard("10h"));
+		enteredAnswers.add(makeCard("jh"));
+		enteredAnswers.add(makeCard("qh"));
+		enteredAnswers.add(makeCard("kh"));
+		enteredAnswers.add(makeCard("ad"));
+		enteredAnswers.add(makeCard("2d"));
+		enteredAnswers.add(makeCard("3d"));
+		enteredAnswers.add(makeCard("4d"));
+		enteredAnswers.add(makeCard("5d"));
+		enteredAnswers.add(makeCard("6d"));
+		enteredAnswers.add(makeCard("7d"));
+		enteredAnswers.add(makeCard("8d"));
+		enteredAnswers.add(makeCard("9d"));
+		enteredAnswers.add(makeCard("1d"));
+		enteredAnswers.add(makeCard("jd"));
+		enteredAnswers.add(makeCard("qd"));
+		enteredAnswers.add(makeCard("kd"));
+
+		enteredAnswers.add(makeCard("as"));
+		enteredAnswers.add(makeCard("2s"));
+		enteredAnswers.add(makeCard("3s"));
+		enteredAnswers.add(makeCard("4s"));
+		enteredAnswers.add(makeCard("5s"));
+		enteredAnswers.add(makeCard("6s"));
+		enteredAnswers.add(makeCard("7s"));
+		enteredAnswers.add(makeCard("8s"));
+		enteredAnswers.add(makeCard("9s"));
+		enteredAnswers.add(makeCard("1s"));
+		enteredAnswers.add(makeCard("js"));
+		enteredAnswers.add(makeCard("qs"));
+		enteredAnswers.add(makeCard("ks"));
+		enteredAnswers.add(makeCard("ac"));
+		enteredAnswers.add(makeCard("2c"));
+		enteredAnswers.add(makeCard("3c"));
+		enteredAnswers.add(makeCard("4c"));
+		enteredAnswers.add(makeCard("5c"));
+		enteredAnswers.add(makeCard("6c"));
+		enteredAnswers.add(makeCard("7c"));
+		enteredAnswers.add(makeCard("8c"));
+		enteredAnswers.add(makeCard("9c"));
+		enteredAnswers.add(makeCard("1c"));
+		enteredAnswers.add(makeCard("jc"));
+		enteredAnswers.add(makeCard("qc"));
+		enteredAnswers.add(makeCard("kc"));
+
+		if (enteredAnswers.get(0) != null) {
+			for (int i = 0; i < enteredAnswers.size(); i++) {
+				fullAnswerName = Helpers.ResolveAnswers(enteredAnswers.get(i).getCardName());
+				enteredAnswers.get(i).setCardName(fullAnswerName + ".png");
+			}
+		} else {
+			enteredAnswers = createTestAnswers();
+		}
+
+		//Helpers.Score(cachedShuffledCardNames, enteredAnswers);
+
+		return "redirect:/scoreAnswersTest";
+	}
+
+	public ArrayList<Card> createMasterCardList () {
+		learningMasterCards = cardService.createCardLearningMasterList();
+		ArrayList<Card> justCards = new ArrayList<Card>();
+
+		for(int i=0;i<learningMasterCards.size();i++) {
+
+			justCards.add(makeCard(learningMasterCards.get(i).getCardName()));
+
+		}
+
+		return justCards;
+	}
+	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
+	public String scoreAnswersTest(Model model) {
+
+
+
+		testArray = Helpers.SimpleCompareArrays(createMasterCardList(), enteredAnswers);
+
+		String finalScore = Helpers.CalcFinalScore(testArray);
+		model.addAttribute("finalScore", finalScore);
+		model.addAttribute("scores", testArray);
+
+		return "scores";
+
+	}
 
 	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.GET)
 	public String scoreAnswers(Model model) {
@@ -272,6 +377,7 @@ public class LearnCardController {
 
 		return "learning/nextOneLearnRandomCards";
 	}
+
 
 
 //    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.POST)
@@ -409,7 +515,7 @@ public class LearnCardController {
 
 	private Card makeCard(String cardName) {
 
-		if (cardName.indexOf(".png") == 0) {
+		if (cardName.indexOf(".png") == -1) {
 			Card card = new Card();
 			card.setCardName(cardName + ".png");
 			return card;
