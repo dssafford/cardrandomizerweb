@@ -9,12 +9,18 @@
 
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
+<script>
+    function DoSomething() {
+        alert("in DoSomething");
+        window.location = "/saveTest";
+    }
 
+</script>
 <div class="container">
     <div class="row">
         <!--<div class="col-md-5 col-md-offset-4">-->
         <div> <h1 th:class="formHeader">Scores</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
-        <div>
+        <div><input type="button" onclick="DoSomething()">Go </input>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>
                     <table class="table table-bordered">
@@ -36,6 +42,7 @@
                     <!--</form>-->
                 </div>
             </form>
+
         </div>
     </div>
 </div>
