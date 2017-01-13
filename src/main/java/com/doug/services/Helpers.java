@@ -17,12 +17,12 @@ public abstract class Helpers {
 		for(int i=0;i<quickAnswers.size();i++){
 			if(masterDeck.get(i).getCardName().equals(quickAnswers.get(i).getCardName())) {
 				testArray.add(true);
-				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + quickAnswers.get(i).getCardName());
+				//System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + quickAnswers.get(i).getCardName());
 			} else {
 
 				testArray.add(false);
-				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
-						  quickAnswers.get(i).getCardName());
+				//System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
+				//		  quickAnswers.get(i).getCardName());
 			}
 		}
 		return testArray;

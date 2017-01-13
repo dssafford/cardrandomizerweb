@@ -45,6 +45,8 @@ public class LearnCardController {
 	public String testScore(Model model) {
 		Score myScore = scoreRepository.save(createTestScore());
 
+
+
 		model.addAttribute("score", myScore);
 //		model.addAttribute("masters", myScore.getMasterList());
 //		model.addAttribute("answers", myScore.getAnswerList());
@@ -64,6 +66,21 @@ public class LearnCardController {
 		model.addAttribute("scores", displayList);
 
 		return "score/showScores";
+
+	}
+	@RequestMapping("/showScoreHistory")
+	public String getAllScores(Model model) {
+
+		//List<Score> scores = scoreRepository.findAll();
+
+		//ArrayList<Display> displayList = createDisplayList();
+
+		model.addAttribute("scores", scoreRepository.findAll());
+
+		//displayList.get(0).getMasterCardName();
+		//model.addAttribute("scores", displayList);
+
+		return "score/showScoresHistory";
 
 	}
 
@@ -114,7 +131,7 @@ public class LearnCardController {
 		return answerList;
 	}
 
-	private ArrayList<Test> createScoreList() {
+	private ArrayList<Test> createScoreTestList() {
 		ArrayList<Test> testList = new ArrayList<Test>();
 		Test test;
 
@@ -185,13 +202,35 @@ public class LearnCardController {
 //		return displayArrayList;
 //	}
 
+	private void createScoreToSave() {
+		Score score = new Score();
+		score.setMasterList(learningMasterCards);
+		score.setAnswerList(enteredAnswers);
+		score.setScoreList(createScoreList());
+
+		scoreRepository.save(score);
+
+	}
+
+	public ArrayList createScoreList() {
+		ArrayList returnList = new ArrayList();
+
+		for(int i=0;i< testArray.size();i++) {
+			returnList.add(testArray.get(i).isCorrect());
+		}
+
+		return returnList;
+
+	}
+
+
 	private Score createTestScore() {
 		Score score = new Score();
 
 		//score.setUserid(1);
 		score.setAnswerList(createAnswerList());
 		score.setMasterList(createTestRandomList());
-		score.setScoreList(createScoreList());
+		score.setScoreList(createScoreTestList());
 		score.setComments("comments here");
 		score.setTimestamp(new Date());
 
