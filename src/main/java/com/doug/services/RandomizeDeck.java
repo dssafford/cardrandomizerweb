@@ -37,7 +37,7 @@ public class RandomizeDeck {
 			String suit = suits[deck[i] / 13];
 			String rank = ranks[deck[i] % 13];
 			returnDeck.add(i, rank + "of" + suit);
-			System.out.println((i + 1) + " :You have the " + rank + " of " + suit);
+			//System.out.println((i + 1) + " :You have the " + rank + " of " + suit);
 		}
 
 		return returnDeck;
