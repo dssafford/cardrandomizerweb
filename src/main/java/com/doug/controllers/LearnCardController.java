@@ -89,21 +89,21 @@ public class LearnCardController {
 		CardInfo cardInfo;
 
 		ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
-		cardInfo = new CardInfo("Ace_of_Hearts", "people we love", "sportsmen",
-				  "Hearts", "Peyton Manning", "throwing", "football");
+		cardInfo = new CardInfo("ace_of_hearts", "people we love", "sportsmen",
+				  "hearts", "Peyton Manning", "throwing", "football");
 		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("2_of_Hearts", "people we love", "sportswomen",
-				  "Hearts", "Ana Kornikova", "bending over", "small white tennis dress");
+		cardInfo = new CardInfo("2_of_hearts", "people we love", "sportswomen",
+				  "hearts", "Ana Kornikova", "bending over", "small white tennis dress");
 		learningRandomCards.add(cardInfo);
 
-		cardInfo = new CardInfo("Ace_of_Diamonds", "rich people", "sportsmen",
-				  "Diamonds", "Michael Jordan", "dunking", "basketball");
+		cardInfo = new CardInfo("ace_of_diamonds", "rich people", "sportsmen",
+				  "diamonds", "Michael Jordan", "dunking", "basketball");
 		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("2_of_Diamonds", "rich people", "sportswomen",
-				  "Diamonds", "Maria Sharopova", "swinging ", "tennis racket");
+		cardInfo = new CardInfo("2_of_diamonds", "rich people", "sportswomen",
+				  "diamonds", "Maria Sharopova", "swinging ", "tennis racket");
 		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("3_of_Diamonds", "rich people", "male movie stars",
-				  "Diamonds", "George Clooney", "smoking", "cigar");
+		cardInfo = new CardInfo("3_of_diamonds", "rich people", "male movie stars",
+				  "diamonds", "George Clooney", "smoking", "cigar");
 		learningRandomCards.add(cardInfo);
 
 		return learningRandomCards;
@@ -115,16 +115,16 @@ public class LearnCardController {
 
 		ArrayList<Card> answerList = new ArrayList<Card>();
 
-		card = new Card(0, "Ace_of_Hearts", 0);
+		card = new Card(0, "ace_of_hearts", 0);
 		answerList.add(card);
-		card = new Card(1, "2_of_Hearts", 1);
+		card = new Card(1, "2_of_hearts", 1);
 		answerList.add(card);
 
-		card = new Card(2, "Ace_of_Diamonds", 2);
+		card = new Card(2, "ace_of_diamonds", 2);
 		answerList.add(card);
-		card = new Card(3, "2_of_Diamonds", 3);
+		card = new Card(3, "2_of_diamonds", 3);
 		answerList.add(card);
-		card = new Card(4, "3_of_Diamonds", 4);
+		card = new Card(4, "3_of_diamonds", 4);
 		answerList.add(card);
 
 
@@ -135,19 +135,19 @@ public class LearnCardController {
 		ArrayList<Test> testList = new ArrayList<Test>();
 		Test test;
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 		testList.add(0, test);
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", true);
+		test = new Test("ace_of_hearts", "ace_of_hearts", true);
 		testList.add(0, test);
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 		testList.add(0, test);
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", true);
+		test = new Test("ace_of_hearts", "ace_of_hearts", true);
 		testList.add(0, test);
 
-		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 		testList.add(0, test);
 
 		return testList;
@@ -156,19 +156,19 @@ public class LearnCardController {
 //		ArrayList<Test> testList = new ArrayList<Test>();
 //		Test test;
 //
-//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 //		testList.add(0,test);
 //
-//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 //		testList.add(0,test);
 //
-//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 //		testList.add(0,test);
 //
-//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 //		testList.add(0,test);
 //
-//		test = new Test("Ace_of_Hearts", "Ace_of_Hearts", false);
+//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
 //		testList.add(0,test);
 //
 //		return testList;
@@ -292,7 +292,7 @@ public class LearnCardController {
 		ArrayList<Card> testAnswers = new ArrayList<Card>();
 
 		for (int i = 0; i < 52; i++) {
-			testAnswers.add(new Card(i, "2_of_Clubs.png", i));
+			testAnswers.add(new Card(i, "2_of_clubs.png", i));
 		}
 
 		return testAnswers;
@@ -381,7 +381,7 @@ public class LearnCardController {
 
 		String fullAnswerName = "";
 
-		enteredAnswers.add(makeCard("Ace_of_Hearts"));
+		enteredAnswers.add(makeCard("ace_of_hearts"));
 		enteredAnswers.add(makeCard("2h"));
 		enteredAnswers.add(makeCard("3h"));
 		enteredAnswers.add(makeCard("4h"));

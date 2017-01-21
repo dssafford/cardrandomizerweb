@@ -15,8 +15,8 @@ public class RandomizeDeck {
 
 		// make the cards
 		int[] deck = new int[52]; // how many total
-		String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"};
-		String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+		String[] suits = {"hearts", "diamonds", "spades", "clubs"};
+		String[] ranks = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 
 		// intitialize cards
 		for (int i = 0; i < deck.length; i++) {

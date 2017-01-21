@@ -43,16 +43,16 @@ public abstract class Helpers {
 		//Get cardName
 		switch (firstChar) {
 			case "a":
-				cardName = "Ace";
+				cardName = "ace";
 				break;
 			case "j":
-				cardName = "Jack";
+				cardName = "jack";
 				break;
 			case "k":
-				cardName = "King";
+				cardName = "king";
 				break;
 			case "q":
-				cardName = "Queen";
+				cardName = "queen";
 				break;
 			case "1":
 				cardName = "10";
@@ -65,16 +65,16 @@ public abstract class Helpers {
 		//Get suit
 		switch (suitCode) {
 			case "s":
-				suit = "Spades";
+				suit = "spades";
 				break;
 			case "h":
-				suit = "Hearts";
+				suit = "hearts";
 				break;
 			case "c":
-				suit = "Clubs";
+				suit = "clubs";
 				break;
 			case "d":
-				suit = "Diamonds";
+				suit = "diamonds";
 				break;
 			default:
 				suit=null;
