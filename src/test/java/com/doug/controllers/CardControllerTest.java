@@ -29,11 +29,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 			cardController = new CardController();
 				  mockMvc = MockMvcBuilders.standaloneSetup(cardController).build();
 				  }
-		@Ignore
 		@Test
-		public void testIndex() throws Exception{
-				  mockMvc.perform(get("/"))
+		public void testlocationMasterListView() throws Exception{
+				  mockMvc.perform(get("/locationMasterList"))
 				  .andExpect(status().isOk())
-				  .andExpect(view().name("index"));
-				  }
+				  .andExpect(view().name("learning/locationMasterList"));
+		}
+		@Test
+		public void testStudyListView() throws Exception{
+			mockMvc.perform(get("/studyList"))
+					.andExpect(status().isOk())
+					.andExpect(view().name("learning/studyList"));
+		}
+
+//		@Test
+//		public void testMasterListView() throws Exception{
+//			mockMvc.perform(get("/masterList"))
+//					.andExpect(status().isOk())
+//					.andExpect(view().name("masterList"));
+//		}
+
+
 }

@@ -418,7 +418,7 @@ public class LearnCardController {
 		enteredAnswers.add(makeCard("8s"));
 		enteredAnswers.add(makeCard("9s"));
 		enteredAnswers.add(makeCard("1s"));
-		enteredAnswers.add(makeCard("js"));
+		enteredAnswers.add(makeCard("static/js"));
 		enteredAnswers.add(makeCard("qs"));
 		enteredAnswers.add(makeCard("ks"));
 		enteredAnswers.add(makeCard("ac"));
