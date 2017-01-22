@@ -132,6 +132,9 @@ public class LearnCardControllerTest {
 
         String cardName = learnCardController.makeCardString("ace_of_hearts");
         assertEquals("ace_of_hearts.png", cardName);
+
+        cardName = learnCardController.makeCardString("ace_of_hearts.png");
+        assertEquals("ace_of_hearts.png", cardName);
     }
 
     @Test
