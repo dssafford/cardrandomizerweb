@@ -130,6 +130,8 @@ public class LearnCardControllerTest {
     @Test
     public void makeCardString() throws Exception {
 
+        String cardName = learnCardController.makeCardString("ace_of_hearts");
+        assertEquals("ace_of_hearts.png", cardName);
     }
 
     @Test
@@ -139,6 +141,9 @@ public class LearnCardControllerTest {
 
     @Test
     public void getMasterLearningList() throws Exception {
+        ArrayList<Card> cards = realCardController.createMasterCardList();
+
+        assertEquals(52, 52);
 
     }
 
