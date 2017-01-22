@@ -647,7 +647,8 @@ public class LearnCardController {
 
 	@RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.GET)
 	public String getNextMasterLearningCard(@RequestParam(value = "cardVisible") String cardVisible,
-														 @RequestParam(value = "firstTime", required = false) String firstTime, Model model) {
+														 @RequestParam(value = "firstTime", required = false) String firstTime,
+														 Model model) {
 
 		if (firstTime == null) {
 
@@ -743,7 +744,7 @@ public class LearnCardController {
 		return null;
 	}
 
-	private CardInfo getNextRandomLearningCard(Integer id, Boolean firstTime) {
+	protected CardInfo getNextRandomLearningCard(Integer id, Boolean firstTime) {
 
 
 		if (id != 51) {
