@@ -3,6 +3,7 @@ package com.doug.controllers;
 import com.doug.services.CardService;
 import com.doug.domain.Card;
 
+import com.doug.services.Helpers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -130,10 +131,10 @@ public class LearnCardControllerTest {
     @Test
     public void makeCardString() throws Exception {
 
-        String cardName = learnCardController.makeCardString("ace_of_hearts");
+        String cardName = Helpers.makeCardString("ace_of_hearts");
         assertEquals("ace_of_hearts.png", cardName);
 
-        cardName = learnCardController.makeCardString("ace_of_hearts.png");
+        cardName = Helpers.makeCardString("ace_of_hearts.png");
         assertEquals("ace_of_hearts.png", cardName);
     }
 

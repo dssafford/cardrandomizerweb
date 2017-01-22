@@ -1,9 +1,11 @@
 package com.doug.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by doug on 12/29/16.
  */
-public class CardInfo {
+public class CardInfo implements Serializable{
 
 
     private String cardName;

@@ -12,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static com.doug.services.Helpers.makeCard;
+import static com.doug.services.Helpers.makeCardString;
+import static com.doug.services.TestHelper.createTestRandomList;
 
 /**
  * Created by doug on 12/30/16.
@@ -84,126 +89,6 @@ public class LearnCardController {
 		return "score/showScoresHistory";
 
 	}
-
-
-	private ArrayList<CardInfo> createTestRandomList() {
-		CardInfo cardInfo;
-
-		ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
-		cardInfo = new CardInfo("ace_of_hearts", "people we love", "sportsmen",
-				  "hearts", "Peyton Manning", "throwing", "football");
-		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("2_of_hearts", "people we love", "sportswomen",
-				  "hearts", "Ana Kornikova", "bending over", "small white tennis dress");
-		learningRandomCards.add(cardInfo);
-
-		cardInfo = new CardInfo("ace_of_diamonds", "rich people", "sportsmen",
-				  "diamonds", "Michael Jordan", "dunking", "basketball");
-		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("2_of_diamonds", "rich people", "sportswomen",
-				  "diamonds", "Maria Sharopova", "swinging ", "tennis racket");
-		learningRandomCards.add(cardInfo);
-		cardInfo = new CardInfo("3_of_diamonds", "rich people", "male movie stars",
-				  "diamonds", "George Clooney", "smoking", "cigar");
-		learningRandomCards.add(cardInfo);
-
-		return learningRandomCards;
-	}
-
-//	private ArrayList<Card> createAnswerList() {
-//		Card card;
-//
-//		ArrayList<Card> answerList = new ArrayList<Card>();
-//
-//		card = new Card(0, "ace_of_hearts", 0);
-//		answerList.add(card);
-//		card = new Card(1, "2_of_hearts", 1);
-//		answerList.add(card);
-//
-//		card = new Card(2, "ace_of_diamonds", 2);
-//		answerList.add(card);
-//		card = new Card(3, "2_of_diamonds", 3);
-//		answerList.add(card);
-//		card = new Card(4, "3_of_diamonds", 4);
-//		answerList.add(card);
-//
-//
-//		return answerList;
-//	}
-//
-//	private ArrayList<Test> createScoreTestList() {
-//		ArrayList<Test> testList = new ArrayList<Test>();
-//		Test test;
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0, test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", true);
-//		testList.add(0, test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0, test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", true);
-//		testList.add(0, test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0, test);
-//
-//		return testList;
-//	}
-
-
-//
-//	private ArrayList<Test> createTestList() {
-//		ArrayList<Test> testList = new ArrayList<Test>();
-//		Test test;
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0,test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0,test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0,test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0,test);
-//
-//		test = new Test("ace_of_hearts", "ace_of_hearts", false);
-//		testList.add(0,test);
-//
-//		return testList;
-//	}
-
-
-//	private ArrayList<Display> createDisplayList() {
-//
-//		ArrayList<Display> displayArrayList = new ArrayList<Display>();
-//
-//		ArrayList<Card> answerList = createAnswerList();
-//		ArrayList<CardInfo> masterList = createTestRandomList();
-//		ArrayList<Test> scoreList = createScoreList();
-//
-//		List<Score> scores = scoreRepository.findAll();
-//
-//		Display display;
-//
-//		for(int i=0;i<6;i++) {
-//			display = new Display();
-//
-//			display.setId(i);
-//			display.setMasterCardName(masterList.get(i).getCardName());
-//			display.setAnswerCardName(answerList.get(i).getCardName());
-//			display.setAnswerCorrect(scoreList.get(i).isCorrect());
-//
-//			displayArrayList.add(display);
-//
-//		}
-//
-//		return displayArrayList;
-//	}
 
 	private void createScoreToSave() {
 		Score score = new Score();
@@ -277,10 +162,6 @@ public class LearnCardController {
 
 		return displayArrayList;
 	}
-
-
-
-
 
 	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
 	public String enterAnswers(Model model) {
@@ -378,81 +259,6 @@ public class LearnCardController {
 
 
 
-	@RequestMapping(value = "/enterAnswersTest", method = RequestMethod.POST)
-	public String getAnswers(DeckAnswer deckAnswer) throws Exception {
-		enteredAnswers = new ArrayList<Card>();
-
-		String fullAnswerName = "";
-
-		enteredAnswers.add(makeCard("ace_of_hearts"));
-		enteredAnswers.add(makeCard("2h"));
-		enteredAnswers.add(makeCard("3h"));
-		enteredAnswers.add(makeCard("4h"));
-		enteredAnswers.add(makeCard("5h"));
-		enteredAnswers.add(makeCard("6h"));
-		enteredAnswers.add(makeCard("7h"));
-		enteredAnswers.add(makeCard("8h"));
-		enteredAnswers.add(makeCard("9h"));
-		enteredAnswers.add(makeCard("10h"));
-		enteredAnswers.add(makeCard("jh"));
-		enteredAnswers.add(makeCard("qh"));
-		enteredAnswers.add(makeCard("kh"));
-		enteredAnswers.add(makeCard("ad"));
-		enteredAnswers.add(makeCard("2d"));
-		enteredAnswers.add(makeCard("3d"));
-		enteredAnswers.add(makeCard("4d"));
-		enteredAnswers.add(makeCard("5d"));
-		enteredAnswers.add(makeCard("6d"));
-		enteredAnswers.add(makeCard("7d"));
-		enteredAnswers.add(makeCard("8d"));
-		enteredAnswers.add(makeCard("9d"));
-		enteredAnswers.add(makeCard("1d"));
-		enteredAnswers.add(makeCard("jd"));
-		enteredAnswers.add(makeCard("qd"));
-		enteredAnswers.add(makeCard("kd"));
-
-		enteredAnswers.add(makeCard("as"));
-		enteredAnswers.add(makeCard("2s"));
-		enteredAnswers.add(makeCard("3s"));
-		enteredAnswers.add(makeCard("4s"));
-		enteredAnswers.add(makeCard("5s"));
-		enteredAnswers.add(makeCard("6s"));
-		enteredAnswers.add(makeCard("7s"));
-		enteredAnswers.add(makeCard("8s"));
-		enteredAnswers.add(makeCard("9s"));
-		enteredAnswers.add(makeCard("1s"));
-		enteredAnswers.add(makeCard("static/js"));
-		enteredAnswers.add(makeCard("qs"));
-		enteredAnswers.add(makeCard("ks"));
-		enteredAnswers.add(makeCard("ac"));
-		enteredAnswers.add(makeCard("2c"));
-		enteredAnswers.add(makeCard("3c"));
-		enteredAnswers.add(makeCard("4c"));
-		enteredAnswers.add(makeCard("5c"));
-		enteredAnswers.add(makeCard("6c"));
-		enteredAnswers.add(makeCard("7c"));
-		enteredAnswers.add(makeCard("8c"));
-		enteredAnswers.add(makeCard("9c"));
-		enteredAnswers.add(makeCard("1c"));
-		enteredAnswers.add(makeCard("jc"));
-		enteredAnswers.add(makeCard("qc"));
-		enteredAnswers.add(makeCard("kc"));
-
-		if (enteredAnswers.get(0) != null) {
-			for (int i = 0; i < enteredAnswers.size(); i++) {
-				fullAnswerName = Helpers.ResolveAnswers(enteredAnswers.get(i).getCardName());
-				enteredAnswers.get(i).setCardName(fullAnswerName + ".png");
-			}
-		} else {
-			enteredAnswers = createTestAnswers();
-		}
-
-		//Helpers.Score(cachedShuffledCardNames, enteredAnswers);
-
-		return "redirect:/scoreAnswersTest";
-	}
-
-
 	@RequestMapping("/saveTest")
 	public String saveTest() {
 		String doug = new String();
@@ -480,9 +286,10 @@ public class LearnCardController {
 		return justCards;
 	}
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
-	public String scoreAnswersTest(Model model) {
+	public String scoreAnswersTest(HttpSession session, Model model) {
 
-
+		// get answers from session
+		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 
 		testArray = Helpers.SimpleCompareArrays(createMasterCardList(), enteredAnswers);
 
@@ -598,53 +405,6 @@ public class LearnCardController {
 	}
 
 
-
-//    @RequestMapping(value = "/nextOneLearnRandomCards", method = RequestMethod.POST)
-//    public String processRandomLearningAnswer(@RequestParam(value="cardVisible") String cardVisible,
-//    @RequestParam(value="firstTime", required = false) String firstTime, Model model) {
-//
-//
-//            if(firstTime ==null) {
-//
-//            model.addAttribute(getNextRandomLearningCard(counter, false));
-//
-//            if (cardVisible.equals("true")) {
-//                model.addAttribute("cardVisible", "true");
-//            } else {
-//                model.addAttribute("cardVisible", "false");
-//            }
-//
-//        } else {
-//            model.addAttribute(getNextRandomLearningCard(0, true));
-//            if (cardVisible.equals("true")) {
-//                model.addAttribute("cardVisible", "true");
-//            } else {
-//                model.addAttribute("cardVisible", "false");
-//            }
-//
-//
-//        }
-//
-//        if(firstTime==null && counter!=0) {
-//            model.addAttribute("previousVisible", "true");
-//        } else {
-//            model.addAttribute("previousVisible", "false");
-//        }
-//
-//
-//        if(counter!= 51) {
-//            model.addAttribute("nextVisible", "true");
-//        } else {
-//            model.addAttribute("nextVisible", "false");
-//        }
-//
-//
-//
-//        model.addAttribute("counter", counter);
-//
-//        return "learning/nextOneLearnRandomCards";
-//    }
-
 	@RequestMapping(value = "/nextOneLearnMasterCards", method = RequestMethod.GET)
 	public String getNextMasterLearningCard(@RequestParam(value = "cardVisible") String cardVisible,
 														 @RequestParam(value = "firstTime", required = false) String firstTime,
@@ -724,25 +484,7 @@ public class LearnCardController {
 		return "learning/nextOneLearnMasterCards";
 	}
 
-	protected String makeCardString(String cardName) {
 
-		if (cardName.indexOf(".png") == -1) {
-			return cardName + ".png";
-		}
-
-		return cardName;
-	}
-
-	private Card makeCard(String cardName) {
-
-		if (cardName.indexOf(".png") == -1) {
-			Card card = new Card();
-			card.setCardName(cardName + ".png");
-			return card;
-		}
-
-		return null;
-	}
 
 	protected CardInfo getNextRandomLearningCard(Integer id, Boolean firstTime) {
 
@@ -815,12 +557,16 @@ public class LearnCardController {
 	}
 
 	@RequestMapping(value = "/masterCardLearningMasterList", method = RequestMethod.GET)
-	public String getMasterLearningList(Model model) {
+	public String getMasterLearningList(HttpSession session, Model model) {
 
 		learningMasterCards = cardService.createCardLearningMasterList();
 
 
 		model.addAttribute("cards", learningMasterCards);
+
+
+		//Put in Session
+		session.setAttribute("learningMasterCards", learningMasterCards);
 
 		return "learning/masterCardLearningMasterList";
 
@@ -841,6 +587,7 @@ public class LearnCardController {
 		for (int i = 0; i < cachedShuffledCardNames.size(); i++) {
 			workinglearningRandomCards.add(GetRandomCardInfo(cachedShuffledCardNames.get(i).getCardName()));
 		}
+
 
 		return workinglearningRandomCards;
 

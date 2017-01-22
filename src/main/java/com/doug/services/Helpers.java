@@ -130,4 +130,24 @@ public abstract class Helpers {
 		return String.format("Percentage In Exam: %.2f%%%n", finalScore);
 	}
 
+	public static String makeCardString(String cardName) {
+
+		if (cardName.indexOf(".png") == -1) {
+			return cardName + ".png";
+		}
+
+		return cardName;
+	}
+
+	public static Card makeCard(String cardName) {
+
+		if (cardName.indexOf(".png") == -1) {
+			Card card = new Card();
+			card.setCardName(cardName + ".png");
+			return card;
+		}
+
+		return null;
+	}
+
 }
