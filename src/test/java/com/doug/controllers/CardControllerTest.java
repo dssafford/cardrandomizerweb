@@ -2,6 +2,7 @@ package com.doug.controllers;
 
 import com.doug.controllers.CardController;
 import org.junit.Ignore;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
@@ -18,6 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+@SpringBootTest
 	public class CardControllerTest {
 
 		private MockMvc mockMvc;
@@ -35,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 				  .andExpect(status().isOk())
 				  .andExpect(view().name("learning/locationMasterList"));
 		}
+
 		@Test
 		public void testStudyListView() throws Exception{
 			mockMvc.perform(get("/studyList"))
