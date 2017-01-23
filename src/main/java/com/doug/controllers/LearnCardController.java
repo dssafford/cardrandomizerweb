@@ -1,10 +1,9 @@
 package com.doug.controllers;
 
-import com.doug.domain.*;
-import com.doug.repository.ScoreRepository;
+import com.doug.domain.Card;
+import com.doug.domain.CardInfo;
+import com.doug.domain.Test;
 import com.doug.services.CardService;
-import com.doug.services.Helpers;
-import com.doug.services.TestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static com.doug.services.Helpers.makeCard;
 import static com.doug.services.Helpers.makeCardString;
-import static com.doug.services.TestHelper.createTestRandomList;
 
 /**
  * Created by doug on 12/30/16.
@@ -42,217 +39,6 @@ public class LearnCardController {
 	@Autowired
 	public void setCardService(CardService cardService) {
 		this.cardService = cardService;
-	}
-
-	@Autowired
-	private ScoreRepository scoreRepository;
-
-	@RequestMapping("/saveScore")
-	public String testScore(Model model) {
-		Score myScore = scoreRepository.save(createTestScore());
-
-
-
-		model.addAttribute("score", myScore);
-//		model.addAttribute("masters", myScore.getMasterList());
-//		model.addAttribute("answers", myScore.getAnswerList());
-//		model.addAttribute("scoreLists", myScore.getScoreList());
-
-		return "score/showScore";
-	}
-
-	@RequestMapping("/getScores")
-	public String getScores(Model model) {
-
-		//List<Score> scores = scoreRepository.findAll();
-
-		ArrayList<Display> displayList = createDisplayList();
-
-		//displayList.get(0).getMasterCardName();
-		model.addAttribute("scores", displayList);
-
-		return "score/showScores";
-
-	}
-	@RequestMapping("/showScoreHistory")
-	public String getAllScores(Model model) {
-
-		//List<Score> scores = scoreRepository.findAll();
-
-		//ArrayList<Display> displayList = createDisplayList();
-
-		model.addAttribute("scores", scoreRepository.findAll());
-
-		//displayList.get(0).getMasterCardName();
-		//model.addAttribute("scores", displayList);
-
-		return "score/showScoresHistory";
-
-	}
-
-	private void createScoreToSave() {
-		Score score = new Score();
-		score.setMasterList(learningMasterCards);
-		score.setAnswerList(enteredAnswers);
-		score.setScoreList(createScoreList());
-
-		scoreRepository.save(score);
-
-	}
-
-	public ArrayList createScoreList() {
-		ArrayList returnList = new ArrayList();
-
-		for(int i=0;i< testArray.size();i++) {
-			returnList.add(testArray.get(i).isCorrect());
-		}
-
-		return returnList;
-
-	}
-
-
-	private Score createTestScore() {
-		Score score = new Score();
-
-		//score.setUserid(1);
-		score.setAnswerList(TestHelper.createAnswerList());
-		score.setMasterList(createTestRandomList());
-		score.setScoreList(TestHelper.createScoreTestList());
-		score.setComments("comments here");
-		score.setTimestamp(new Date());
-
-		return score;
-	}
-
-
-	@RequestMapping(value = "/answer", method = RequestMethod.GET)
-	public String testenterAnswers(Model model) {
-		model.addAttribute("deckAnswer", new DeckAnswer());
-
-
-		return "learning/testEnterAnswers";
-
-	}
-
-
-
-
-	private ArrayList<Display> createDisplayList() {
-
-		ArrayList<Display> displayArrayList = new ArrayList<Display>();
-
-		ArrayList<Card> answerList = enteredAnswers;
-		ArrayList<CardInfo> masterList = learningRandomCards;
-		ArrayList<Test> scoreList = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
-
-		Display display;
-
-		for(int i=0;i<6;i++) {
-			display = new Display();
-
-			display.setId(i);
-			display.setMasterCardName(masterList.get(i).getCardName());
-			display.setAnswerCardName(answerList.get(i).getCardName());
-			display.setAnswerCorrect(scoreList.get(i).isCorrect());
-
-			displayArrayList.add(display);
-
-		}
-
-		return displayArrayList;
-	}
-
-	@RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
-	public String enterAnswers(Model model) {
-		model.addAttribute("deckAnswer", new DeckAnswer());
-
-
-		return "enterAnswers";
-
-	}
-
-	public ArrayList<Card> createTestAnswers() {
-		ArrayList<Card> testAnswers = new ArrayList<Card>();
-
-		for (int i = 0; i < 52; i++) {
-			testAnswers.add(new Card(i, "2_of_clubs.png", i));
-		}
-
-		return testAnswers;
-	}
-
-	@RequestMapping(value = "/enterAnswers", method = RequestMethod.POST)
-	public String getAnswersTestOnly(DeckAnswer deckAnswer) throws Exception {
-		enteredAnswers = new ArrayList<Card>();
-
-		String fullAnswerName = "";
-
-		enteredAnswers.add(makeCard(""));
-		enteredAnswers.add(makeCard(deckAnswer.getA2()));
-		enteredAnswers.add(makeCard(deckAnswer.getA3()));
-		enteredAnswers.add(makeCard(deckAnswer.getA4()));
-		enteredAnswers.add(makeCard(deckAnswer.getA5()));
-		enteredAnswers.add(makeCard(deckAnswer.getA6()));
-		enteredAnswers.add(makeCard(deckAnswer.getA7()));
-		enteredAnswers.add(makeCard(deckAnswer.getA8()));
-		enteredAnswers.add(makeCard(deckAnswer.getA9()));
-		enteredAnswers.add(makeCard(deckAnswer.getA10()));
-		enteredAnswers.add(makeCard(deckAnswer.getA11()));
-		enteredAnswers.add(makeCard(deckAnswer.getA12()));
-		enteredAnswers.add(makeCard(deckAnswer.getA13()));
-		enteredAnswers.add(makeCard(deckAnswer.getA14()));
-		enteredAnswers.add(makeCard(deckAnswer.getA15()));
-		enteredAnswers.add(makeCard(deckAnswer.getA16()));
-		enteredAnswers.add(makeCard(deckAnswer.getA17()));
-		enteredAnswers.add(makeCard(deckAnswer.getA18()));
-		enteredAnswers.add(makeCard(deckAnswer.getA19()));
-		enteredAnswers.add(makeCard(deckAnswer.getA20()));
-		enteredAnswers.add(makeCard(deckAnswer.getA21()));
-		enteredAnswers.add(makeCard(deckAnswer.getA22()));
-		enteredAnswers.add(makeCard(deckAnswer.getA23()));
-		enteredAnswers.add(makeCard(deckAnswer.getA24()));
-		enteredAnswers.add(makeCard(deckAnswer.getA25()));
-		enteredAnswers.add(makeCard(deckAnswer.getA26()));
-		enteredAnswers.add(makeCard(deckAnswer.getA27()));
-		enteredAnswers.add(makeCard(deckAnswer.getA28()));
-		enteredAnswers.add(makeCard(deckAnswer.getA29()));
-		enteredAnswers.add(makeCard(deckAnswer.getA30()));
-		enteredAnswers.add(makeCard(deckAnswer.getA31()));
-		enteredAnswers.add(makeCard(deckAnswer.getA32()));
-		enteredAnswers.add(makeCard(deckAnswer.getA33()));
-		enteredAnswers.add(makeCard(deckAnswer.getA34()));
-		enteredAnswers.add(makeCard(deckAnswer.getA35()));
-		enteredAnswers.add(makeCard(deckAnswer.getA36()));
-		enteredAnswers.add(makeCard(deckAnswer.getA37()));
-		enteredAnswers.add(makeCard(deckAnswer.getA38()));
-		enteredAnswers.add(makeCard(deckAnswer.getA39()));
-		enteredAnswers.add(makeCard(deckAnswer.getA40()));
-		enteredAnswers.add(makeCard(deckAnswer.getA41()));
-		enteredAnswers.add(makeCard(deckAnswer.getA42()));
-		enteredAnswers.add(makeCard(deckAnswer.getA43()));
-		enteredAnswers.add(makeCard(deckAnswer.getA44()));
-		enteredAnswers.add(makeCard(deckAnswer.getA45()));
-		enteredAnswers.add(makeCard(deckAnswer.getA46()));
-		enteredAnswers.add(makeCard(deckAnswer.getA47()));
-		enteredAnswers.add(makeCard(deckAnswer.getA48()));
-		enteredAnswers.add(makeCard(deckAnswer.getA49()));
-		enteredAnswers.add(makeCard(deckAnswer.getA50()));
-		enteredAnswers.add(makeCard(deckAnswer.getA51()));
-		enteredAnswers.add(makeCard(deckAnswer.getA52()));
-
-		if (enteredAnswers.get(0) != null) {
-			for (int i = 0; i < enteredAnswers.size(); i++) {
-				fullAnswerName = Helpers.ResolveAnswers(enteredAnswers.get(i).getCardName());
-				enteredAnswers.get(i).setCardName(fullAnswerName + ".png");
-			}
-		} else {
-			enteredAnswers = createTestAnswers();
-		}
-
-		//Helpers.Score(cachedShuffledCardNames, enteredAnswers);
-
-		return "redirect:/scoreAnswers";
 	}
 
 
@@ -285,41 +71,16 @@ public class LearnCardController {
 
 		return justCards;
 	}
-	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
-	public String scoreAnswersTest(HttpSession session, Model model) {
-
-		// get answers from session
-		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
-
-		testArray = Helpers.SimpleCompareArrays(createMasterCardList(), enteredAnswers);
-
-		String finalScore = Helpers.CalcFinalScore(testArray);
-		model.addAttribute("finalScore", finalScore);
-		model.addAttribute("scores", testArray);
-
-		return "scores";
-
-	}
-
-	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.GET)
-	public String scoreAnswers(Model model) {
-
-		testArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
-		String finalScore = Helpers.CalcFinalScore(testArray);
-		model.addAttribute("finalScore", finalScore);
-		model.addAttribute("scores", testArray);
-
-		return "scores";
-
-	}
 
 
 	//Create a random deck and tie to learningRandomCards (people/object/action)
 	@RequestMapping(value = "/masterCardLearningRandomList")
-	public String createLearningDeck(Model model) {
+	public String createLearningDeck(HttpSession session, Model model) {
 
 		cachedRandomLearningCards = CreateRandomLearningDeck();
 		model.addAttribute("cards", cachedRandomLearningCards);
+
+		session.setAttribute("cachedRandomLearningCards", cachedRandomLearningCards);
 
 		return "learning/masterCardLearningRandomList";
 

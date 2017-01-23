@@ -6,7 +6,6 @@ import com.doug.domain.Test;
 import com.doug.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,43 +38,8 @@ public class CardController {
 		return "learning/studyList";
 	}
 
-	@RequestMapping(value = "/locationMasterList", method = RequestMethod.GET)
-	public String getLocationMasterList() {
-
-		return "learning/locationMasterList";
-	}
 
 
-//	@RequestMapping(value = "/masterList", method = RequestMethod.GET)
-//	public String list(Model model) {
-//
-//		cachedCards = CreateMasterDeck();
-//
-//		model.addAttribute("cards",cachedCards);
-//
-//		return "masterList";
-//	}
-
-
-//	private Card makeCard(String cardName) {
-//	Card card = new Card();
-//	card.setCardName(cardName + ".png");
-//
-//	return card;
-//}
-//
-//	private Card getNextCard(Integer id) {
-//		Card myCard = cachedCards.get(id);
-//		myCard.setCounter(id+1);
-//
-//		return myCard;
-//	}
-//	public ArrayList<Card> CreateMasterDeck() {
-//
-//		cachedCards = cardService.listAllCards();
-//		return cachedCards;
-//
-//	}
 
 
 }

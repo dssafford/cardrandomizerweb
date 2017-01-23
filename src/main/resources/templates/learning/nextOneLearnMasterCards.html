@@ -46,7 +46,7 @@
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
 <div class="container">
-    <!--<h1>Visible=<span th:text="${cardVisible}">Card Visible?</span></h1>-->
+    <h2>Master Deck one card at a time</h2>
     <div>
         <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnMasterCards}" method="post">
 

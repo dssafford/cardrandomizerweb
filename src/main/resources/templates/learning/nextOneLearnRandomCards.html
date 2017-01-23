@@ -45,8 +45,9 @@
 </head>
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
-<h2>Random one card at a time</h2>
+
 <div class="container">
+    <h2>Random one card at a time</h2>
     <div>
         <form class="form-horizontal" th:object="${clickForm}" th:action="@{/nextOneLearnRandomCards}" method="post">
 
@@ -82,13 +83,18 @@
 
             </div>
             <div class="row">
-                <div class="col-sm-6" th:if="(${previousVisible}=='true')"   style="visibility: visible;" align="right"><a href="#" onclick="setPreviousCardVisible()">Previous</a></div>
-                <div class="col-sm-6" th:if="(${previousVisible}=='false')"   onclick="return false;" align="right"><a href="#" >Previous</a></div>
+                <div class="col-sm-6" th:if="(${previousVisible}=='true')" style="visibility: visible;" align="right"><a
+                        href="#" onclick="setPreviousCardVisible()">Previous</a></div>
+                <div class="col-sm-6" th:if="(${previousVisible}=='false')" onclick="return false;" align="right"><a
+                        href="#">Previous</a></div>
 
 
-
-                <div class="col-sm-6" th:if="(${nextVisible}=='true')" align="left"><a href="#" onclick="setNextCardVisible()">Next</a></div>
-                <div class="col-sm-6" th:if="(${nextVisible}=='false')" align="left"><a href="#"  onclick="return false;">Next</a></div>
+                <div class="col-sm-6" th:if="(${nextVisible}=='true')" align="left"><a href="#"
+                                                                                       onclick="setNextCardVisible()">Next</a>
+                </div>
+                <div class="col-sm-6" th:if="(${nextVisible}=='false')" align="left"><a href="#"
+                                                                                        onclick="return false;">Next</a>
+                </div>
 
 
             </div>
