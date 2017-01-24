@@ -1,8 +1,10 @@
 package com.doug.controllers;
 
+import com.doug.domain.AnswerListSmall;
 import com.doug.domain.Card;
 import com.doug.domain.DeckAnswer;
 import com.doug.services.Helpers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,33 @@ import static com.doug.services.Helpers.makeCard;
 @Controller
 public class AnswerController {
 
+    @Autowired
+    private AnswerListSmall answerListSmall;
+
+    private AnswerListSmall createAnswerListSmall() {
+        answerListSmall.setCard1("ace_of_spades");
+        answerListSmall.setCard2("1_of_spades");
+        answerListSmall.setCard3("2_of_spades");
+        answerListSmall.setCard4("3_of_spades");
+        answerListSmall.setCard5("4_of_spades");
+        answerListSmall.setCard6("5_of_spades");
+        answerListSmall.setCard7("6_of_spades");
+        answerListSmall.setCard8("7_of_spades");
+        answerListSmall.setCard9("8_of_spades");
+        answerListSmall.setCard10("9_of_spades");
+
+
+        return answerListSmall;
+
+    }
+
+
+    @RequestMapping("/shit")
+    public String howaboutThis(HttpSession session) {
+        session.setAttribute("answer", createAnswerListSmall());
+
+        return "index";
+    }
 
     @RequestMapping(value = "/answer", method = RequestMethod.GET)
     public String testenterAnswers(Model model) {

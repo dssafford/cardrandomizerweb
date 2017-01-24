@@ -1,5 +1,6 @@
 package com.doug.controllers;
 
+import com.doug.domain.AnswerListSmall;
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
 import com.doug.domain.Test;
@@ -42,7 +43,8 @@ public class LearnCardController {
 	}
 
 
-
+	@Autowired
+	private AnswerListSmall answerListSmall;
 
 
 	@RequestMapping("/saveTest")

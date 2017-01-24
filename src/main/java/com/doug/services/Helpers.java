@@ -3,13 +3,13 @@ package com.doug.services;
 import com.doug.domain.Card;
 import com.doug.domain.Test;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
  * Created by Doug on 12/19/16.
  */
 public abstract class Helpers {
-//	public ArrayList<Card> cachedCards = new ArrayList<Card>();
 
 	public static ArrayList<Card> Score(ArrayList<Card> masterDeck, ArrayList<Card> quickAnswers){
 		ArrayList testArray = new ArrayList();
@@ -148,6 +148,16 @@ public abstract class Helpers {
 		}
 
 		return null;
+	}
+
+	public static String heyAnswerListSmallx(HttpSession session) {
+
+
+		Object mycard = session.getAttribute("answer");
+		String hey = "hey";
+
+		return hey;
+
 	}
 
 }

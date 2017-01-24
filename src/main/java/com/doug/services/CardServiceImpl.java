@@ -1,10 +1,13 @@
 package com.doug.services;
 
+import com.doug.domain.AnswerListSmall;
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
 import com.doug.domain.DeckMaster;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +16,20 @@ import java.util.ArrayList;
 
 @Service
 public class CardServiceImpl implements CardService{
+
+
+	@Autowired
+	private AnswerListSmall answerListSmall;
+
+
+
+	public void heyAnswerListSmall(HttpSession session) {
+
+
+		Object mycard = session.getAttribute("answer");
+		String hey = "hey";
+
+	}
 
 	@Override
 	public ArrayList<CardInfo> listAllCardsForLearning() {
