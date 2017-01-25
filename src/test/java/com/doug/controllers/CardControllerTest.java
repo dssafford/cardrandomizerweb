@@ -1,8 +1,10 @@
 package com.doug.controllers;
 
-import com.doug.controllers.CardController;
+
 import org.junit.Ignore;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
@@ -19,18 +21,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 	public class CardControllerTest {
 
 		private MockMvc mockMvc;
 
-		private CardController cardController;
-
-		@Before
-		public void setup(){
-			cardController = new CardController();
-				  mockMvc = MockMvcBuilders.standaloneSetup(cardController).build();
-				  }
+//		private CardController cardController;
+//
+//		@Before
+//		public void setup(){
+//			cardController = new CardController();
+//				  mockMvc = MockMvcBuilders.standaloneSetup(cardController).build();
+//				  }
 		@Test
 		public void testlocationMasterListView() throws Exception{
 				  mockMvc.perform(get("/locationMasterList"))

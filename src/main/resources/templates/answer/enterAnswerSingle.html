@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Doug Study App</title>
+
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+</head>
+
+<body>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<div class="container">
+    <h2 th:class="formHeader">Single Card Test</h2>
+    <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/singleCardTest}" method="post">
+        <div class="col-sm-6 col-sm-offset-2">
+        <img id="card"
+             th:src="@{'/images/'+${cardInfo.cardName}}"
+             align="left" width="222" height="323"
+             style="visibility: visible;border:5px solid black"/>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Card Name: </label>
+            <input th:type="text"  th:tabindex="1" th:field="*{cardName}"  value="3_of_diamonds"></input>
+            <!--<input type="text" class="form-control" th:field="${cardInfo.cardName}"/>-->
+
+        </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Person: </label>
+            <input th:type="text"  th:tabindex="2" th:field="*{personName}"  value="3_of_diamonds"></input>
+            <!--<input type="text" class="form-control" th:field="${cardInfo.personName}"/>-->
+
+        </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Object: </label>
+            <input th:type="text"  th:tabindex="13" th:field="*{object}"  value="3_of_diamonds"></input>
+            <input type="text" class="form-control" th:field="${cardInfo.object}"/>
+
+        </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Action: </label>
+            <input th:type="text"  th:tabindex="16" th:field="*{action}"  value="3_of_diamonds"></input>
+            <input type="text" class="form-control" th:field="${cardInfo.action}"/>
+
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

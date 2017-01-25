@@ -12,25 +12,33 @@
 
 <body>
 
-<!--# TODO: Figure out pagination-->
-
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4"><h2 th:class="formHeader">Learning Links</h2>
+        <div class="col-sm-4">
             <ul>
-                <li class="links"><a href="/masterCardLearningRandomList" class="links">Learn Random Cards</a></li>
-                <li class="links"><a href="/masterCardLearningMasterList" class="links">Learn Master (in order) List</a></li>
-                <li class="links"><a href="/locationMasterList" class="links">Location Master</a></li>
-
+                <h2>Learning Random</h2>
+                <li class="links"><a href="/masterCardLearningRandomList" class="links">Learn Random Cards Full List</a>
+                </li>
+                <li class="links"><a href="/masterCardLearningRandomList?cardVisible=false&amp;firstTime=true"
+                                     class="links">Learn Random Cards One at a time</a></li>
+                <br/><br/>
+                <h2>Learning Master</h2>
+                <li class="links"><a href="/masterCardLearningMasterList" class="links">Learn Master (in order) Full
+                    List</a></li>
+                <li class="links"><a href="/masterCardLearningMasterList?cardVisible=false&amp;firstTime=true"
+                                     class="links">Learn Master List Cards One at a time</a></li>
+                <br/><br/>
+                <h2>Learn Locations</h2>
+                <li class="links"><a href="/locationMasterList" class="links">Learn Locations Master</a></li>
             </ul>
         </div>
         <div class="col-sm-4"><h2 th:class="formHeader">Testing Links</h2>
             <ul>
-                <li class="links"><a href="/nextOneLearnRandomCards?firstTime=true&amp;cardVisible=false" class="links">Study Random Card</a></li>
                 <li class="links"><a href="/enterAnswers" class="links">Enter Answers</a></li>
-                <li class="links"><a href="/locationMasterList" class="links">Location Master</a></li>
+                <br/><br/>
                 <li class="links"><a href="/showScoreHistory" class="links">Show Score History</a></li>
+                <br/><br/>
                 <li class="links"><a href="/answer" class="links">Test answers</a></li>
 
             </ul>
@@ -40,6 +48,7 @@
                 <li class="links"><a href="user/list" class="links">Users</a></li>
                 <li class="links"><a href="secured.html" class="links">Security Status</a></li>
                 <li class="links"><a href="/registration" class="links">Registration</a></li>
+                <br/><br/>
                 <li class="links"><a href="/logout" class="links">Logout</a></li>
 
             </ul>

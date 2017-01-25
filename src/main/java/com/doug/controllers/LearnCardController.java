@@ -50,29 +50,12 @@ public class LearnCardController {
 	@RequestMapping("/saveTest")
 	public String saveTest() {
 		String doug = new String();
-
-
 		learningRandomCards.size();
-
-
-
-
 
 		return "index";
 	}
 
-	public ArrayList<Card> createMasterCardList () {
-		learningMasterCards = cardService.createCardLearningMasterList();
-		ArrayList<Card> justCards = new ArrayList<Card>();
 
-		for(int i=0;i<learningMasterCards.size();i++) {
-
-			justCards.add(makeCard(learningMasterCards.get(i).getCardName()));
-
-		}
-
-		return justCards;
-	}
 
 
 	//Create a random deck and tie to learningRandomCards (people/object/action)
@@ -271,8 +254,6 @@ public class LearnCardController {
 	}
 
 	private CardInfo getPreviousRandomLearningCard(Integer id) {
-
-//TODO:Work on counter going backwards
 
 		if (counter != 0) {
 			counter = id - 1;

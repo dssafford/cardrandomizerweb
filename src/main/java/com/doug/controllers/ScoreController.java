@@ -2,6 +2,8 @@ package com.doug.controllers;
 
 import com.doug.domain.*;
 import com.doug.repository.ScoreRepository;
+import com.doug.services.CardService;
+import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import com.doug.services.TestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +34,19 @@ public class ScoreController {
 	private ScoreRepository scoreRepository;
 
 	@Autowired
-	private LearnCardController learnCardController;
+	private CardServiceImpl cardService;
 
 
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 
+		//create test answers
+
+
 		// get answers from session
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 
-		testArray = Helpers.SimpleCompareArrays(learnCardController.createMasterCardList(), enteredAnswers);
+		testArray = Helpers.SimpleCompareArrays(cardService.createMasterCardList(session), enteredAnswers);
 
 
 		session.setAttribute("testArray", testArray);

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
+import static com.doug.services.Helpers.makeCard;
+
 /**
  * Created by Doug on 12/17/16.
  */
@@ -19,12 +21,37 @@ public class CardServiceImpl implements CardService{
 
 
 	@Autowired
-	private AnswerListSmall answerListSmall;
+	private CardService cardService;
 
 
+
+	public CardInfo GetCardInfo(String cardName, ArrayList<CardInfo> masterCardList) {
+
+		for(int i=0;i< masterCardList.size();i++){
+			if(cardName.equals(masterCardList.get(i).getCardName())){
+				return masterCardList.get(i);
+			}
+		}
+
+		return null;
+	}
+
+
+
+	public ArrayList<Card> createMasterCardList (HttpSession session) {
+		ArrayList<CardInfo> learningMasterCards = cardService.createCardLearningMasterList();
+		ArrayList<Card> justCards = new ArrayList<Card>();
+
+		for(int i=0;i<learningMasterCards.size();i++) {
+
+			justCards.add(makeCard(learningMasterCards.get(i).getCardName()));
+
+		}
+
+		return justCards;
+	}
 
 	public void heyAnswerListSmall(HttpSession session) {
-
 
 		Object mycard = session.getAttribute("answer");
 		String hey = "hey";

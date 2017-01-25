@@ -3,6 +3,7 @@ package com.doug.controllers;
 import com.doug.services.CardService;
 import com.doug.domain.Card;
 
+import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import org.junit.After;
 import org.junit.Before;
@@ -143,13 +144,13 @@ public class LearnCardControllerTest {
 
     }
 
-    @Test
-    public void getMasterLearningList() throws Exception {
-        ArrayList<Card> cards = realCardController.createMasterCardList();
-
-        assertEquals(52, 52);
-
-    }
+//    @Test
+//    public void getMasterLearningList() throws Exception {
+//        ArrayList<Card> cards = cardServiceImpl.createMasterCardList();
+//
+//        assertEquals(52, 52);
+//
+//    }
 
     @Mock //Mockito Mock object
     private CardService cardService;
@@ -161,7 +162,7 @@ public class LearnCardControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private LearnCardController realCardController;
+    private CardServiceImpl cardServiceImpl;
 
     @Before
     public void setup(){
@@ -169,14 +170,14 @@ public class LearnCardControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(learnCardController).build();
     }
 
-    @Test
-    public void testCreateMasterCardList() {
-        ArrayList<Card> cards = realCardController.createMasterCardList();
-
-        assertEquals(52, 52);
-
-
-    }
+//    @Test
+//    public void testCreateMasterCardList() {
+//        ArrayList<Card> cards = cardService.createMasterCardList();
+//
+//        assertEquals(52, 52);
+//
+//
+//    }
 
 //    @Test
 //    public void testList() throws Exception {
