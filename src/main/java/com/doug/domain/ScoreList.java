@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Doug on 1/8/17.
  */
-public class Score {
+public class ScoreList {
 
 	private Integer userid;
 

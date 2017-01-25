@@ -2,7 +2,6 @@ package com.doug.controllers;
 
 import com.doug.domain.*;
 import com.doug.repository.ScoreRepository;
-import com.doug.services.CardService;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import com.doug.services.TestHelper;
@@ -84,7 +83,7 @@ public class ScoreController {
 
 	@RequestMapping("/saveScore")
 	public String testScore(Model model) {
-		Score myScore = scoreRepository.save(createTestScore());
+		ScoreList myScore = scoreRepository.save(createTestScore());
 
 
 
@@ -129,12 +128,12 @@ public class ScoreController {
 	}
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
-		Score score = new Score();
-		score.setMasterList(learningMasterCards);
-		score.setAnswerList(enteredAnswers);
-		score.setScoreList(createScoreList());
+		ScoreList scoreList = new ScoreList();
+		scoreList.setMasterList(learningMasterCards);
+		scoreList.setAnswerList(enteredAnswers);
+		scoreList.setScoreList(createScoreList());
 
-		scoreRepository.save(score);
+		scoreRepository.save(scoreList);
 
 	}
 
@@ -150,17 +149,17 @@ public class ScoreController {
 	}
 
 
-	private Score createTestScore() {
-		Score score = new Score();
+	private ScoreList createTestScore() {
+		ScoreList scoreList = new ScoreList();
 
 		//score.setUserid(1);
-		score.setAnswerList(TestHelper.createAnswerList());
-		score.setMasterList(createTestRandomList());
-		score.setScoreList(TestHelper.createScoreTestList());
-		score.setComments("comments here");
-		score.setTimestamp(new Date());
+		scoreList.setAnswerList(TestHelper.createAnswerList());
+		scoreList.setMasterList(createTestRandomList());
+		scoreList.setScoreList(TestHelper.createScoreTestList());
+		scoreList.setComments("comments here");
+		scoreList.setTimestamp(new Date());
 
-		return score;
+		return scoreList;
 	}
 
 	private ArrayList<Display> createDisplayList(ArrayList learningRandomCards,

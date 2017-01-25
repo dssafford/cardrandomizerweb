@@ -1,6 +1,5 @@
 package com.doug.services;
 
-import com.doug.domain.AnswerListSmall;
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
 import com.doug.domain.DeckMaster;
@@ -23,9 +22,7 @@ public class CardServiceImpl implements CardService{
 	@Autowired
 	private CardService cardService;
 
-
-
-	public CardInfo GetCardInfo(String cardName, ArrayList<CardInfo> masterCardList) {
+	public CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
 
 		for(int i=0;i< masterCardList.size();i++){
 			if(cardName.equals(masterCardList.get(i).getCardName())){
@@ -34,6 +31,17 @@ public class CardServiceImpl implements CardService{
 		}
 
 		return null;
+	}
+
+	public Boolean ScoreSingleCard(String cardName, ArrayList<CardInfo> masterCardList) {
+
+		for(int i=0;i< masterCardList.size();i++){
+			if(cardName.equals(masterCardList.get(i).getCardName())){
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 

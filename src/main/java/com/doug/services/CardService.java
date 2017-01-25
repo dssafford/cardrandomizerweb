@@ -15,7 +15,9 @@ public interface CardService {
 
 	ArrayList<CardInfo> createCardLearningMasterList();
 
-	CardInfo GetCardInfo(String cardName, ArrayList<CardInfo> masterCardList);
+	Boolean ScoreSingleCard(String cardName, ArrayList<CardInfo> masterCardList);
+
+	CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList);
 
 
-	}
+}
