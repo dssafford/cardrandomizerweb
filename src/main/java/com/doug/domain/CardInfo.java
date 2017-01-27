@@ -13,8 +13,8 @@ public class CardInfo implements Serializable{
     private String subCategoryName;
     private String categorySuit;
     private String personName;
-    private String action;
-    private String object;
+    private String actionName;
+    private String objectName;
 
     public String getCardName() {
         return cardName;
@@ -56,31 +56,31 @@ public class CardInfo implements Serializable{
         this.personName = personName;
     }
 
-    public String getAction() {
-        return action;
+    public String getactionName() {
+        return actionName;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setactionName(String actionName) {
+        this.actionName = actionName;
     }
 
-    public String getObject() {
-        return object;
+    public String getobjectName() {
+        return objectName;
     }
 
-    public void setObject(String object) {
-        this.object = object;
+    public void setobjectName(String objectName) {
+        this.objectName = objectName;
     }
 
-    public CardInfo(String cardName, String mainCategoryName, String subCategoryName, String categorySuit, String personName, String action, String object) {
+    public CardInfo(String cardName, String mainCategoryName, String subCategoryName, String categorySuit, String personName, String actionName, String objectName) {
 
         this.cardName = cardName;
         this.mainCategoryName = mainCategoryName;
         this.subCategoryName = subCategoryName;
         this.categorySuit = categorySuit;
         this.personName = personName;
-        this.action = action;
-        this.object = object;
+        this.actionName = actionName;
+        this.objectName = objectName;
     }
 
     public CardInfo() {

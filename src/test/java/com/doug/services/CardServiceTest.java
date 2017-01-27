@@ -38,9 +38,9 @@ public class CardServiceTest {
         CardInfo cardInfo = new CardInfo();
 
         cardInfo.setCardName("ace_of_spades.png");
-        cardInfo.setAction("action");
+        cardInfo.setactionName("action");
         cardInfo.setCategorySuit("diamonds");
-        cardInfo.setObject("object");
+        cardInfo.setobjectName("object");
         cardInfo.setPersonName("person");
 
         CardInfo answerCard = cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterCardList);

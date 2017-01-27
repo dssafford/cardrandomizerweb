@@ -31,7 +31,7 @@ public void setup(){
 		  indexController = new IndexController();
 		  mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
 		  }
-@Ignore
+
 @Test
 public void testIndex() throws Exception{
 		  mockMvc.perform(get("/"))

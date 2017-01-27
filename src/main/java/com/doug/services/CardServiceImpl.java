@@ -17,7 +17,10 @@ import static com.doug.services.Helpers.makeCard;
 
 @Service
 public class CardServiceImpl implements CardService{
-
+	@Override
+	public Boolean ScoreSingleCard(String cardName, ArrayList<CardInfo> masterCardList) {
+		return null;
+	}
 
 	@Autowired
 	private CardService cardService;
@@ -33,16 +36,29 @@ public class CardServiceImpl implements CardService{
 		return null;
 	}
 
-	public Boolean ScoreSingleCard(String cardName, ArrayList<CardInfo> masterCardList) {
+	public Boolean ScoreSingleCardName(CardInfo cardInfo, ArrayList<CardInfo> masterCardList) {
 
 		for(int i=0;i< masterCardList.size();i++){
-			if(cardName.equals(masterCardList.get(i).getCardName())){
+			if(cardInfo.getCardName().equals(masterCardList.get(i).getCardName())){
 				return true;
 			}
 		}
-
 		return false;
 	}
+
+
+
+//		public Boolean ScoreSingleCardName(CardInfo cardInfo, ArrayList<CardInfo> masterCardList) {
+//
+//			for(int i=0;i< masterCardList.size();i++){
+//				if(cardInfo.getCardName().equals(masterCardList.get(i).getCardName())){
+//					return true;
+//				}
+//			}
+//
+//			return false;
+//		}
+
 
 
 

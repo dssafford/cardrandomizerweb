@@ -316,7 +316,7 @@ public class LearnCardController {
 
 	}
 
-	private ArrayList<CardInfo> CreateRandomLearningDeck() {
+	protected ArrayList<CardInfo> CreateRandomLearningDeck() {
 
 		ArrayList<CardInfo> workinglearningRandomCards = new ArrayList<CardInfo>();
 

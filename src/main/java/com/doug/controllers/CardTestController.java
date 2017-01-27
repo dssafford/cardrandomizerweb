@@ -1,5 +1,6 @@
 package com.doug.controllers;
 
+import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
 
 import com.doug.domain.SingleCardScore;
@@ -22,11 +23,31 @@ public class CardTestController {
     @Autowired
     CardService cardService;
 
+    @Autowired
+    private LearnCardController learnCardController;
+
+    private Integer deckIndex;
+    private ArrayList<CardInfo> cachedRandomLearningCards;
+
 
     @RequestMapping(value="/singleCardTest", method = RequestMethod.GET)
-    public String getSingleCardTest(Model model){
+    public String getSingleCardTest(HttpSession session, Model model){
+        //Create master random list and put in session
+
+
+       if(session.getAttribute("randomLearningDeck") == null){
+           cachedRandomLearningCards = learnCardController.CreateRandomLearningDeck();
+           session.setAttribute("randomLearningDeck", cachedRandomLearningCards);
+           deckIndex=0;
+           session.setAttribute("randomLearningDeckIndex", deckIndex);
+       } else {
+           cachedRandomLearningCards= (ArrayList<CardInfo>)session.getAttribute("randomLearningDeck");
+           deckIndex = (Integer)session.getAttribute("randomLearningDeckIndex")+1;
+       }
+
+
         CardInfo cardInfo = new CardInfo();
-        cardInfo.setCardName("ace_of_spades.png");
+        cardInfo.setCardName(cachedRandomLearningCards.get(deckIndex).getCardName());
 //        cardInfo.setAction("action");
 //        cardInfo.setCategorySuit("diamonds");
 //        cardInfo.setObject("object");
@@ -38,19 +59,19 @@ public class CardTestController {
     }
 
     @RequestMapping(value="/singleCardTest", method = RequestMethod.POST)
-    public String scoreSingleCardTest(HttpSession session, CardInfo cardinfo, Model model){
+    public String scoreSingleCardTest(HttpSession session, CardInfo cardInfo, Model model){
 
         SingleCardScore singleCardScore = new SingleCardScore();
 
-        CardInfo singleCardEnteredAnswer = cardinfo;
+        CardInfo singleCardEnteredAnswer = cardInfo;
 
         ArrayList<CardInfo> masterCardList = (ArrayList<CardInfo>)session.getAttribute("masterCardDeck");
 
         //Go get answer
-        Boolean foundCard = cardService.ScoreSingleCard(cardinfo.getCardName(), masterCardList);
+        Boolean foundCard = cardService.ScoreSingleCard(cardInfo.getCardName(), masterCardList);
 
-        singleCardScore.setCardName(cardinfo.getCardName());
-        singleCardScore.setCorrect(foundCard);
+        singleCardScore.setCardName(cardInfo.getCardName());
+        singleCardScore.setCardNameCorrect(foundCard);
 
         //Add to score
         ArrayList<SingleCardScore> singleCardScoreArrayList =
@@ -70,14 +91,15 @@ public class CardTestController {
 
 
 
-        //Then go to next card
-        
+        //Then go to next card, get from masterRandomList
+        cachedRandomLearningCards = (ArrayList<CardInfo>)session.getAttribute("randomLearningDeck");
+        session.getAttribute("randomLearningDeckIndex");
 
-        CardInfo cardInfo = new CardInfo();
-        cardInfo.setCardName("ace_of_spades.png");
-        cardInfo.setAction("action");
+
+        cardInfo.setCardName(cachedRandomLearningCards.get(deckIndex).getCardName());
+        cardInfo.setactionName("action");
         cardInfo.setCategorySuit("diamonds");
-        cardInfo.setObject("object");
+        cardInfo.setobjectName("object");
         cardInfo.setPersonName("person");
 
         model.addAttribute("cardInfo", cardInfo);

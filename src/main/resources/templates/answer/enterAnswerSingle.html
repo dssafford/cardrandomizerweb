@@ -15,7 +15,7 @@
     <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/singleCardTest}" method="post">
         <div class="col-sm-6 col-sm-offset-2">
             <img id="card"
-                 th:src="@{'/images/'+${cardInfo.cardName}}"
+                 th:src="@{'/images/'+${cardInfo.cardName}+'.png'}"
                  align="left" width="222" height="323"
                  style="visibility: visible;border:5px solid black"/>
         </div>

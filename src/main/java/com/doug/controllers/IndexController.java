@@ -25,10 +25,10 @@ public class IndexController {
 	public String getIndexPage(HttpSession session) {
 
 		//create master list if it doesn't exist
-		if(masterCardDeck == null){
-			masterCardDeck = cardService.createCardLearningMasterList();
-			session.setAttribute("masterCardDeck", masterCardDeck);
-		}
+//		if(masterCardDeck == null){
+//			masterCardDeck = cardService.createCardLearningMasterList();
+//			session.setAttribute("masterCardDeck", masterCardDeck);
+//		}
 
 		return "index";
 
