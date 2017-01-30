@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class SingleCardScore implements Serializable {
 	private String cardName;
 	private String personName;
-	private String action;
-	private String object;
+	private String actionName;
+	private String objectName;
 	private Boolean cardNameCorrect;
 	private Boolean personNameCorrect;
 	private Boolean actionNameCorrect;
@@ -36,20 +36,20 @@ public class SingleCardScore implements Serializable {
 		this.personName = personName;
 	}
 
-	public String getAction() {
-		return action;
+	public String getActionName() {
+		return actionName;
 	}
 
-	public void setAction(String action) {
-		this.action = action;
+	public void setActionName(String action) {
+		this.actionName = action;
 	}
 
-	public String getObject() {
-		return object;
+	public String getObjectName() {
+		return objectName;
 	}
 
-	public void setObject(String object) {
-		this.object = object;
+	public void setObjectName(String object) {
+		this.objectName = object;
 	}
 
 

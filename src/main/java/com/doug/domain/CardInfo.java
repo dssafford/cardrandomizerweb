@@ -56,19 +56,19 @@ public class CardInfo implements Serializable{
         this.personName = personName;
     }
 
-    public String getactionName() {
+    public String getActionName() {
         return actionName;
     }
 
-    public void setactionName(String actionName) {
+    public void setActionName(String actionName) {
         this.actionName = actionName;
     }
 
-    public String getobjectName() {
+    public String getObjectName() {
         return objectName;
     }
 
-    public void setobjectName(String objectName) {
+    public void setObjectName(String objectName) {
         this.objectName = objectName;
     }
 

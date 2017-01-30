@@ -14,18 +14,19 @@
     <h2 th:class="formHeader">Single Card Test</h2>
     <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/singleCardTest}" method="post">
         <div class="col-sm-6 col-sm-offset-2">
+            <h3>Card number: <span th:text="${cardNumber}"></span></h3>
+            <h3>Score: <span th:text="${score}"></span></h3>
             <img id="card"
                  th:src="@{'/images/'+${cardInfo.cardName}+'.png'}"
                  align="left" width="222" height="323"
                  style="visibility: visible;border:5px solid black"/>
         </div>
 
-
             <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Card Name: </label>
             <h3><span th:text="${cardInfo.cardName}" th:field="*{cardName}">Card Name</span></h3>
 
-            <input type="text" class="form-control" th:field="${cardInfo.cardName}" th:readonly="true">yyy
+            <input type="text" class="form-control" th:field="${cardInfo.cardName}" th:readonly="true">
             <span th:type="text" th:field="*{cardName}" value="3_of_diamonds"></span></input>
 
         </div>
@@ -35,16 +36,18 @@
             <!--<input type="text" class="form-control" th:field="${cardInfo.personName}"/>-->
 
         </div>
-        <div class="col-sm-6 col-sm-offset-2">
-            <label class="control-label">Object: </label>
-            <input th:type="text" th:tabindex="13" th:field="*{object}" value="3_of_diamonds"></input>
-            <!--<input type="text" class="form-control" th:field="${cardInfo.object}"/>-->
 
-        </div>
         <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Action: </label>
-            <input th:type="text" th:tabindex="16" th:field="*{action}" value="3_of_diamonds"></input>
+            <input th:type="text" th:tabindex="3" th:field="*{actionName}" value="3_of_diamonds"></input>
             <!--<input type="text" class="form-control" th:field="${cardInfo.action}"/>-->
+
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Object: </label>
+            <input th:type="text" th:tabindex="4" th:field="*{objectName}" value="3_of_diamonds"></input>
+            <!--<input type="text" class="form-control" th:field="${cardInfo.object}"/>-->
             <p></p>
             <button type="submit" class="col-md-5 col-md-offset-4">Score</button>
         </div>

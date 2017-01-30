@@ -1,9 +1,9 @@
 package com.doug.services;
 
 import com.doug.domain.CardInfo;
-import com.doug.domain.Product;
-import org.springframework.stereotype.Service;
+import com.doug.domain.SingleCardScore;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -11,13 +11,11 @@ import java.util.ArrayList;
  */
 public interface ScoreService {
 
-    Boolean ScoreCardName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
-    Boolean ScoreCardPersonName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
-    Boolean ScoreCardObjectName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
-    Boolean ScoreCardActionName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
-
     CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterDeckList);
 
+    SingleCardScore ScoreSingleCard(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
+
+    BigDecimal GetCumulativeScore(ArrayList<SingleCardScore> singleCardScoreArrayList);
 
 
 }

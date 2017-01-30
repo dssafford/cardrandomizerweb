@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-import static com.doug.services.Helpers.makeCard;
 import static com.doug.services.Helpers.makeCardString;
 
 /**
@@ -54,9 +53,6 @@ public class LearnCardController {
 
 		return "index";
 	}
-
-
-
 
 	//Create a random deck and tie to learningRandomCards (people/object/action)
 	@RequestMapping(value = "/masterCardLearningRandomList")

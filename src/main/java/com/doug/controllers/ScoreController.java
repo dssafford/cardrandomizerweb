@@ -38,14 +38,22 @@ public class ScoreController {
 
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
+		ArrayList<CardInfo> masterCardDeck;
+
+		masterCardDeck = (ArrayList<CardInfo>)session.getAttribute("masterCardDeck");
 
 		//create test answers
+		//create master list if it doesn't exist
+		if(masterCardDeck == null){
+			masterCardDeck = cardService.createCardLearningMasterList();
+			session.setAttribute("masterCardDeck", masterCardDeck);
+		}
 
 
 		// get answers from session
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 
-		testArray = Helpers.SimpleCompareArrays(cardService.createMasterCardList(session), enteredAnswers);
+		testArray = Helpers.SimpleCompareArrays(cardService.createmasterCardList(session), enteredAnswers);
 
 
 		session.setAttribute("testArray", testArray);
@@ -72,14 +80,10 @@ public class ScoreController {
 		model.addAttribute("finalScore", finalScore);
 		model.addAttribute("scores", testArray);
 
+
 		return "scores";
 
 	}
-
-
-
-
-
 
 	@RequestMapping("/saveScore")
 	public String testScore(Model model) {

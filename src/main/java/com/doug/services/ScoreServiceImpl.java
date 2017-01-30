@@ -1,8 +1,10 @@
 package com.doug.services;
 
 import com.doug.domain.CardInfo;
+import com.doug.domain.SingleCardScore;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -11,44 +13,35 @@ import java.util.ArrayList;
 @Service
 public class ScoreServiceImpl implements ScoreService{
 
-    @Override
-    public Boolean ScoreCardPersonName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
-        for(int i=0;i< masterDeckList.size();i++){
-            if(cardInfo.getPersonName().equals(masterDeckList.get(i).getPersonName())){
-                return true;
+
+    public BigDecimal GetCumulativeScore(ArrayList<SingleCardScore> singleCardScoreArrayList) {
+        Integer denominator = singleCardScoreArrayList.size();
+        Double numberCorrect = 0.00;
+
+        for(int i=0;i<denominator;i++){
+            if(singleCardScoreArrayList.get(i).getPersonNameCorrect()==true) {
+                numberCorrect=numberCorrect+1;
+            }
+            if(singleCardScoreArrayList.get(i).getObjectNameCorrect()==true) {
+                numberCorrect=numberCorrect+1;
+            }
+            if(singleCardScoreArrayList.get(i).getActionNameCorrect()==true) {
+                numberCorrect=numberCorrect+1;
             }
         }
-        return false;
+//        BigDecimal b = new BigDecimal("10.12556");
+//
+//        a = a.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+
+        BigDecimal b = new BigDecimal((numberCorrect/(denominator*3)*100));
+        b = b.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+
+
+        return b;
+
     }
 
-    @Override
-    public Boolean ScoreCardObjectName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
-        for(int i=0;i< masterDeckList.size();i++){
-            if(cardInfo.getobjectName().equals(masterDeckList.get(i).getobjectName())){
-                return true;
-            }
-        }
-        return false;
-    }
 
-    @Override
-    public Boolean ScoreCardActionName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
-        for(int i=0;i< masterDeckList.size();i++){
-            if(cardInfo.getactionName().equals(masterDeckList.get(i).getactionName())){
-                return true;
-            }
-        }
-        return false;
-    }
-    @Override
-    public Boolean ScoreCardName(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
-        for(int i=0;i< masterDeckList.size();i++){
-            if(cardInfo.getCardName().equals(masterDeckList.get(i).getCardName())){
-                return true;
-            }
-        }
-        return false;
-    }
 
     public CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
 
@@ -60,4 +53,44 @@ public class ScoreServiceImpl implements ScoreService{
         return null;
     }
 
+
+
+    public SingleCardScore ScoreSingleCard(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
+
+        // Get the master card
+        CardInfo masterCardInfo = GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
+
+        SingleCardScore singleCardScore = new SingleCardScore();
+        singleCardScore.setCardName(cardInfo.getCardName());
+        singleCardScore.setPersonName(cardInfo.getPersonName());
+        singleCardScore.setObjectName(cardInfo.getObjectName());
+        singleCardScore.setActionName(cardInfo.getActionName());
+
+        if(masterCardInfo!=null) {
+
+            if (cardInfo.getPersonName().equals(masterCardInfo.getPersonName())) {
+                singleCardScore.setPersonNameCorrect(true);
+            } else {
+                singleCardScore.setPersonNameCorrect(false);
+            }
+
+            if (cardInfo.getActionName().equals(masterCardInfo.getActionName())) {
+                singleCardScore.setActionNameCorrect(true);
+            } else {
+                singleCardScore.setActionNameCorrect(false);
+            }
+
+            if (cardInfo.getObjectName().equals(masterCardInfo.getObjectName())) {
+                singleCardScore.setObjectNameCorrect(true);
+            } else {
+                singleCardScore.setObjectNameCorrect(false);
+            }
+        } else {
+            singleCardScore.setPersonNameCorrect(false);
+            singleCardScore.setObjectNameCorrect(false);
+            singleCardScore.setActionNameCorrect(false);
+        }
+
+        return singleCardScore;
+    }
 }

@@ -10,9 +10,14 @@ import com.doug.domain.Product;
 
 public class ProductService {
     private ProductDao productDao;
+
+
     public void setProductDao(ProductDao productDao) {
+
         this.productDao = productDao;
     }
+
+
     public boolean buy(Product product, int orderedQuantity) throws InsufficientProductsException {
         boolean transactionStatus=false;
         int availableQuantity = productDao.getAvailableProducts(product);
