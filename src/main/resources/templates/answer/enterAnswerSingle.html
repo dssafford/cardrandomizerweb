@@ -20,9 +20,10 @@
                  th:src="@{'/images/'+${cardInfo.cardName}+'.png'}"
                  align="left" width="222" height="323"
                  style="visibility: visible;border:5px solid black"/>
+            <button type="submit">Score</button>
         </div>
 
-            <div class="col-sm-6 col-sm-offset-2">
+        <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Card Name: </label>
             <h3><span th:text="${cardInfo.cardName}" th:field="*{cardName}">Card Name</span></h3>
 
@@ -48,8 +49,7 @@
             <label class="control-label">Object: </label>
             <input th:type="text" th:tabindex="4" th:field="*{objectName}" value="3_of_diamonds"></input>
             <!--<input type="text" class="form-control" th:field="${cardInfo.object}"/>-->
-            <p></p>
-            <button type="submit" class="col-md-5 col-md-offset-4">Score</button>
+
         </div>
 
     </form>

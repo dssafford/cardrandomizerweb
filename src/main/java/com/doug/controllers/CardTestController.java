@@ -27,10 +27,20 @@ public class CardTestController {
     ScoreService scoreService;
 
     @Autowired
+    ScoreController scoreControlle;
+
+    @Autowired
     private LearnCardController learnCardController;
 
     private Integer deckIndex;
     private ArrayList<CardInfo> cachedRandomLearningCards;
+
+    BigDecimal cumulativeScore = null;
+
+    SingleCardScore singleCardScore;
+    ArrayList<SingleCardScore> singleCardScoreArrayList;
+
+
 
     @RequestMapping(value = "/singleCardTestStart", method = RequestMethod.GET)
     public String startSingleCardScoring(HttpSession session) {
@@ -44,7 +54,6 @@ public class CardTestController {
     @RequestMapping(value="/singleCardTest", method = RequestMethod.GET)
     public String getSingleCardTest(HttpSession session, Model model){
         //Create master random list and put in session
-
 
        if(session.getAttribute("randomLearningDeck") == null){
            cachedRandomLearningCards = learnCardController.CreateRandomLearningDeck();
@@ -71,64 +80,76 @@ public class CardTestController {
 
     @RequestMapping(value="/singleCardTest", method = RequestMethod.POST)
     public String scoreSingleCardTest(HttpSession session, CardInfo cardInfo, Model model){
-        ArrayList<CardInfo> masterCardDeck;
 
-        masterCardDeck = (ArrayList<CardInfo>)session.getAttribute("masterCardDeck");
 
-        //create master list if it doesn't exist
-        if(masterCardDeck == null){
-            masterCardDeck = cardService.createCardLearningMasterList();
-            session.setAttribute("masterCardDeck", masterCardDeck);
+
+        if(deckIndex<= 10) {
+
+            ArrayList<CardInfo> masterCardDeck;
+
+            masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
+
+            //create master list if it doesn't exist
+            if (masterCardDeck == null) {
+                masterCardDeck = cardService.createCardLearningMasterList();
+                session.setAttribute("masterCardDeck", masterCardDeck);
+            }
+
+
+            singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
+
+            //Add to score
+            singleCardScoreArrayList =
+                    (ArrayList<SingleCardScore>) session.getAttribute("scoreSoFar");
+
+
+            //if first one then createSingleCardScoreArrayList
+            if (deckIndex == 0) {
+
+                singleCardScoreArrayList = new ArrayList<SingleCardScore>();
+            }
+
+            singleCardScoreArrayList.add(singleCardScore);
+
+            //Set back to Session
+            session.setAttribute("scoreSoFar", singleCardScoreArrayList);
+
+            cumulativeScore = scoreService.GetCumulativeScore(singleCardScoreArrayList);
+
+            //Then go to next card, get from masterRandomList
+            cachedRandomLearningCards = (ArrayList<CardInfo>) session.getAttribute("randomLearningDeck");
+            session.getAttribute("randomLearningDeckIndex");
+
+            deckIndex = deckIndex + 1;
+            cardInfo.setCardName(cachedRandomLearningCards.get(deckIndex).getCardName());
+            cardInfo.setActionName("");
+            cardInfo.setCategorySuit("");
+            cardInfo.setObjectName("");
+            cardInfo.setPersonName("");
+
+            model.addAttribute("cardInfo", cardInfo);
+            model.addAttribute("cardNumber", deckIndex.toString());
+
+            model.addAttribute("score", cumulativeScore + "%");
+
+            //Update score just for show
+            System.out.println("number of cards in score = " + singleCardScoreArrayList.size());
+            System.out.println("Card Name = " + singleCardScore.getCardName());
+            System.out.println("Card Person = " + singleCardScore.getPersonName() + "- " + singleCardScore.getPersonNameCorrect().toString());
+            System.out.println("Card Action = " + singleCardScore.getActionName() + "- " + singleCardScore.getActionNameCorrect().toString());
+            System.out.println("Card Object = " + singleCardScore.getObjectName() + "- " + singleCardScore.getObjectNameCorrect().toString());
+            System.out.println("out of " + deckIndex + " cards, " + deckIndex * 3 + " possible answers. Score = " + cumulativeScore + "%");
+
+        } else {
+            // Ready to Score
+
+            model.addAttribute("score", cumulativeScore + "%");
+            model.addAttribute("cardNumber", "end of deck");
+
+            //Create Test Score
+            scoreControlle
+
         }
-
-
-        SingleCardScore singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
-
-        //Add to score
-        ArrayList<SingleCardScore> singleCardScoreArrayList =
-                (ArrayList<SingleCardScore>)session.getAttribute("scoreSoFar");
-
-        //if first one then createSingleCardScoreArrayList
-        if(deckIndex==0){
-
-            singleCardScoreArrayList = new ArrayList<SingleCardScore>();
-        }
-
-        singleCardScoreArrayList.add(singleCardScore);
-
-        //Set back to Session
-        session.setAttribute("scoreSoFar", singleCardScoreArrayList);
-
-        BigDecimal cumulativeScore = scoreService.GetCumulativeScore(singleCardScoreArrayList);
-
-        //Then go to next card, get from masterRandomList
-        cachedRandomLearningCards = (ArrayList<CardInfo>)session.getAttribute("randomLearningDeck");
-        session.getAttribute("randomLearningDeckIndex");
-
-        deckIndex = deckIndex+1;
-        cardInfo.setCardName(cachedRandomLearningCards.get(deckIndex).getCardName());
-        cardInfo.setActionName("");
-        cardInfo.setCategorySuit("");
-        cardInfo.setObjectName("");
-        cardInfo.setPersonName("");
-
-        model.addAttribute("cardInfo", cardInfo);
-        model.addAttribute("cardNumber", deckIndex.toString());
-
-
-//        TODO: Get to one decimal point
-
-
-        model.addAttribute("score", cumulativeScore + "%");
-
-        //Update score just for show
-        System.out.println("number of cards in score = " + singleCardScoreArrayList.size());
-        System.out.println("Card Name = " + singleCardScore.getCardName());
-        System.out.println("Card Person = " + singleCardScore.getPersonName() + "- " + singleCardScore.getPersonNameCorrect().toString());
-        System.out.println("Card Action = " + singleCardScore.getActionName()+ "- " +  singleCardScore.getActionNameCorrect().toString());
-        System.out.println("Card Object = " + singleCardScore.getObjectName() + "- " +  singleCardScore.getObjectNameCorrect().toString());
-        System.out.println("out of " + deckIndex + " cards, " + deckIndex*3 + " possible answers. Score = " + cumulativeScore + "%");
-
         return "answer/enterAnswerSingle";
     }
 
