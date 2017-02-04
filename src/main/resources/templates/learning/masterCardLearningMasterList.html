@@ -23,8 +23,8 @@
             <h3><span th:text="${cardStat.index}">index | </span></h3>
             <h3><span th:text="${card.cardName}">Card Name | </span></h3>
             <h3><span th:text="${card.personName}">Person | </span></h3>
-            <h3><span th:text="${card.action}">Action | </span></h3>
-            <h3><span th:text="${card.object}">Object</span></h3>
+            <h3><span th:text="${card.actionName}">Action | </span></h3>
+            <h3><span th:text="${card.objectName}">Object</span></h3>
                 <!--<div class="col-md-12">-->
                 <img src=""
                      th:src="@{'/images/'+${card.cardName} + '.png'}"

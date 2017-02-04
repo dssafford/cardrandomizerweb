@@ -1,5 +1,6 @@
 package com.doug.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,7 +14,16 @@ public class ScoreList {
 	private Date timestamp;
 	private ArrayList masterList;
 	private ArrayList answerList;
-	private ArrayList scoreList;
+	private BigDecimal finalScore;
+
+	public BigDecimal getFinalScore() {
+		return finalScore;
+	}
+
+	public void setFinalScore(BigDecimal finalScore) {
+		this.finalScore = finalScore;
+	}
+
 	private String comments;
 
 	public Integer getUserid() {
@@ -46,14 +56,6 @@ public class ScoreList {
 
 	public void setAnswerList(ArrayList answerList) {
 		this.answerList = answerList;
-	}
-
-	public ArrayList getScoreList() {
-		return scoreList;
-	}
-
-	public void setScoreList(ArrayList scoreList) {
-		this.scoreList = scoreList;
 	}
 
 	public String getComments() {

@@ -89,22 +89,22 @@ public class CardServiceImpl implements CardService{
 				"hearts", "peyton manning", "throwing", "football");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("2_of_hearts", "people we love", "sportswomen",
-				"hearts", "anna kornikova", "bending over", "small white tennis dress");
+				"hearts", "anna kornikova", "bending over", "white tennis dress");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_hearts", "people we love", "male movie stars",
-				"hearts", "tom hanks", "running like forrest gump", "leg braces");
+				"hearts", "tom hanks", "forrest gump running", "leg braces");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("4_of_hearts", "people we love", "female movie stars",
 				"hearts", "scarlett johansen", "throwing up", "booze bottle");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("5_of_hearts", "people we love", "controversial males",
-				"hearts", "julian assange", "vanishing in", "puff of smoke");
+				"hearts", "julian assange", "vanishing", "puff of smoke");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("6_of_hearts", "people we love", "controversial females",
 				"hearts", "taylor swift", "being attacked by Kanye", "grammy trophy");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("7_of_hearts", "people we love", "famous male physiques",
-				"hearts", "johnny depp", "looqueen out window", "window");
+				"hearts", "johnny depp", "looking out window", "window");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("8_of_hearts", "people we love", "famous female physiques",
 				"hearts", "pam anderson", "running on beach", "orange bouy");
@@ -118,11 +118,11 @@ public class CardServiceImpl implements CardService{
 		cardInfo = new CardInfo("jack_of_hearts", "people we love", "religious figures",
 				"hearts", "jesus", "walking", "on lake");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_hearts", "people we love", "celeb couple men",
+		cardInfo = new CardInfo("queen_of_hearts", "people we love", "celeb couple women",
 				"hearts", "michelle obama", "jumping jacks", "white house lawn");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_hearts", "people we love", "celeb couple women",
-				"hearts", "barak obama", "fly swatting", "fly");
+		cardInfo = new CardInfo("king_of_hearts", "people we love", "celeb couple men",
+				"hearts", "barak obama", "swatting", "fly");
 		returnList.add(cardInfo);
 
 		//diamonds
@@ -130,13 +130,13 @@ public class CardServiceImpl implements CardService{
 				"diamonds", "michael jordan", "dunking", "basketball");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("2_of_diamonds", "rich people", "sportswomen",
-				"diamonds", "maria Sharopova", "swinging ", "tennis racket");
+				"diamonds", "maria sharopova", "swinging ", "tennis racket");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_diamonds", "rich people", "male movie stars",
 				"diamonds", "george clooney", "smoking", "cigar");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("4_of_diamonds", "rich people", "female movie stars",
-				"diamonds", "julia roberts", "pushing up", "boobs");
+				"diamonds", "julia roberts", "pushing", "boobs");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("5_of_diamonds", "rich people", "controversial males",
 				"diamonds", "trump", "tweeting", "phone");
@@ -159,10 +159,10 @@ public class CardServiceImpl implements CardService{
 		cardInfo = new CardInfo("jack_of_diamonds", "rich people", "religious figures",
 				"diamonds", "zeus", "turning into", "swan");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_diamonds", "rich people", "celeb couple men",
+		cardInfo = new CardInfo("queen_of_diamonds", "rich people", "celeb couple women",
 				"diamonds", "princess kate", "wearing beautiful dress", "church");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_diamonds", "rich people", "celeb couple women",
+		cardInfo = new CardInfo("king_of_diamonds", "rich people", "celeb couple men",
 				"diamonds", "prince william", "air lifting someone", "helicopter");
 		returnList.add(cardInfo);
 
@@ -171,7 +171,7 @@ public class CardServiceImpl implements CardService{
 				"spades", "dennis rodman", "diving into", "cameraman");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("2_of_spades", "odd people", "sportswomen",
-				"spades", "anika Sorenstam", "driving", "golf ball");
+				"spades", "anika sorenstam", "driving", "golf ball");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_spades", "odd people", "male movie stars",
 				"spades", "ben stiller", "getting lie detector", "deniro");
@@ -183,7 +183,7 @@ public class CardServiceImpl implements CardService{
 				"spades", "osama", "rapping with", "suicide bomber");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("6_of_spades", "odd people", "controversial females",
-				"spades", "lady gaga", "wearing meat dress", "meat dress");
+				"spades", "lady gaga", "showing", "meat dress");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("7_of_spades", "odd people", "famous male physiques",
 				"spades", "anthony weiner", "taking selfie", "in mirror");
@@ -200,10 +200,10 @@ public class CardServiceImpl implements CardService{
 		cardInfo = new CardInfo("jack_of_spades", "odd people", "religious figures",
 				"spades", "dali lama", "praying to", "buddha");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_spades", "odd people", "celeb couple men",
+		cardInfo = new CardInfo("queen_of_spades", "odd people", "celeb couple women",
 				"spades", "victoria beckham", "putting lipstick on ", "lipstick");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_spades", "odd people", "celeb couple women",
+		cardInfo = new CardInfo("king_of_spades", "odd people", "celeb couple men",
 				"spades", "david beckham", "kicking", "soccer ball");
 		returnList.add(cardInfo);
 
@@ -216,7 +216,7 @@ public class CardServiceImpl implements CardService{
 				"clubs", "serena williams", "lifting wimbledon trophy", "trophy");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_clubs", "strong people", "male movie stars",
-				"clubs", "brad pitt", "getting punched in face", "black eye");
+				"clubs", "brad pitt", "punched in face", "black eye");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("4_of_clubs", "strong people", "female movie stars",
 				"clubs", "angelena jolie", "throwing", "football");
@@ -228,13 +228,13 @@ public class CardServiceImpl implements CardService{
 				"clubs", "rhianna", "holding umbrella", "rain storm");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("7_of_clubs", "strong people", "famous male physiques",
-				"clubs", "arnold Swartzeneggar", "shooting gun", "gun");
+				"clubs", "arnold", "shooting", "gun");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("8_of_clubs", "strong people", "famous female physiques",
-				"clubs", "medusa", "throwing", "football");
+				"clubs", "medusa", "staring", "stone");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("9_of_clubs", "strong people", "famous powerful men",
-				"clubs", "bill clinton", "order bombing", "baby food");
+				"clubs", "bill clinton", "bombing", "baby food factory");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("10_of_clubs", "strong people", "famous powerful women",
 				"clubs", "hillary clinton", "punching", "monica Lewinsky");
@@ -242,11 +242,11 @@ public class CardServiceImpl implements CardService{
 		cardInfo = new CardInfo("jack_of_clubs", "strong people", "religious figures",
 				"clubs", "pope", "baptizing man", "water");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("queen_of_clubs", "strong people", "celeb couple men",
-				"clubs", "beyonce", "power dancing on", "beach");
+		cardInfo = new CardInfo("queen_of_clubs", "strong people", "celeb couple women",
+				"clubs", "beyonce", "power dancing", "beach");
 		returnList.add(cardInfo);
-		cardInfo = new CardInfo("king_of_clubs", "strong people", "celeb couple women",
-				"clubs", "jz", "rapping", "giant microphone");
+		cardInfo = new CardInfo("king_of_clubs", "strong people", "celeb couple men",
+				"clubs", "jz", "rapping", "microphone");
 		returnList.add(cardInfo);
 		
 		

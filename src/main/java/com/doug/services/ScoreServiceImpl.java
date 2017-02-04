@@ -29,9 +29,6 @@ public class ScoreServiceImpl implements ScoreService{
                 numberCorrect=numberCorrect+1;
             }
         }
-//        BigDecimal b = new BigDecimal("10.12556");
-//
-//        a = a.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
         BigDecimal b = new BigDecimal((numberCorrect/(denominator*3)*100));
         b = b.setScale(2, BigDecimal.ROUND_HALF_EVEN);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,9 +25,6 @@ import static com.doug.services.TestHelper.createTestRandomList;
 @Controller
 public class ScoreController {
 
-	//public ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
-	//public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
-
 	ArrayList<Test> testArray = new ArrayList<>();
 
 	@Autowired
@@ -34,6 +32,8 @@ public class ScoreController {
 
 	@Autowired
 	private CardServiceImpl cardService;
+
+	BigDecimal finalScore;
 
 
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class ScoreController {
 
 		session.setAttribute("testArray", testArray);
 
-		String finalScore = Helpers.CalcFinalScore(testArray);
+		finalScore = Helpers.CalcFinalScore(testArray);
 		model.addAttribute("finalScore", finalScore);
 		model.addAttribute("scores", testArray);
 
@@ -76,7 +76,7 @@ public class ScoreController {
 
 		session.setAttribute("testArray", testArray);
 
-		String finalScore = Helpers.CalcFinalScore(testArray);
+		finalScore = Helpers.CalcFinalScore(testArray);
 		model.addAttribute("finalScore", finalScore);
 		model.addAttribute("scores", testArray);
 
@@ -135,7 +135,7 @@ public class ScoreController {
 		ScoreList scoreList = new ScoreList();
 		scoreList.setMasterList(learningMasterCards);
 		scoreList.setAnswerList(enteredAnswers);
-		scoreList.setScoreList(createScoreList());
+		scoreList.setFinalScore(finalScore);
 
 		scoreRepository.save(scoreList);
 
@@ -159,7 +159,7 @@ public class ScoreController {
 		//score.setUserid(1);
 		scoreList.setAnswerList(TestHelper.createAnswerList());
 		scoreList.setMasterList(createTestRandomList());
-		scoreList.setScoreList(TestHelper.createScoreTestList());
+		//scoreList.setFinalScore(finalScore);
 		scoreList.setComments("comments here");
 		scoreList.setTimestamp(new Date());
 

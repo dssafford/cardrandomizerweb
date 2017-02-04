@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title>Doug Study App</title>
+    <title>CardRandomizer</title>
 
     <th:block th:include="fragments/headerinc :: head"></th:block>
 </head>
@@ -11,8 +11,9 @@
 
 <th:block th:include="fragments/header :: header"></th:block>
 <div class="container">
-    <h2 th:class="formHeader">Single Card Test</h2>
+    <h2 th:class="formHeader">Single Card Show</h2>
     <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/showAnswerSingle}" method="post">
+        <a href="/singleCardTest" th:align="left">Enter Next Single Card</a>
         <div class="col-sm-6 col-sm-offset-2">
             <h3>Card number: <span th:text="${cardNumber}"></span></h3>
             <h3>Score: <span th:text="${score}"></span></h3>
@@ -24,31 +25,22 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-2">
-            <label class="control-label">Card Name: </label>
-            <!--<h3><span th:text="${cardInfo.cardName}" th:field="*{cardName}">Card Name</span></h3>-->
-
-            <input type="text" class="form-control" th:field="${cardInfo.cardName}" th:readonly="true"/>
-            <!--<span th:type="text" th:field="*{cardName}" value="3_of_diamonds"></span></input>-->
-
-        </div>
-        <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Person: </label>
-            <input th:type="text" th:tabindex="2" th:field="*{personName}" value="3_of_diamonds"></input>
-            <!--<input type="text" class="form-control" th:field="${cardInfo.personName}"/>-->
-
+            <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
+            <span th:type="text" th:text="${singleCardScore.personName}"></span>
         </div>
 
         <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Action: </label>
-            <input th:type="text" th:tabindex="3" th:field="*{actionName}" value="3_of_diamonds"></input>
-            <!--<input type="text" class="form-control" th:field="${cardInfo.action}"/>-->
+            <input type="text" class="form-control" th:field="${cardInfo.actionName}"/>
+            <span type="text"  th:text="${singleCardScore.actionName}"></span>
 
         </div>
 
         <div class="col-sm-6 col-sm-offset-2">
             <label class="control-label">Object: </label>
-            <input th:type="text" th:tabindex="4" th:field="*{objectName}" value="3_of_diamonds"></input>
-            <!--<input type="text" class="form-control" th:field="${cardInfo.object}"/>-->
+            <input type="text" class="form-control" th:field="${cardInfo.objectName}"/>
+            <span type="text" th:text="${singleCardScore.objectName}"></span>
 
         </div>
 
