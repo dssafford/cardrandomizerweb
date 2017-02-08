@@ -13,15 +13,16 @@
 <div class="container">
     <h2 th:class="formHeader">Single Card Show</h2>
     <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/showAnswerSingle}" method="post">
-        <a href="/singleCardTest" th:align="left">Enter Next Single Card</a>
+
         <div class="col-sm-6 col-sm-offset-2">
+            <a href="/singleCardTest" th:align="left">Enter Next Single Card</a>
             <h3>Card number: <span th:text="${cardNumber}"></span></h3>
             <h3>Score: <span th:text="${score}"></span></h3>
             <img id="card"
                  th:src="@{'/images/'+${cardInfo.cardName}+'.png'}"
                  align="left" width="100" height="150"
                  style="visibility: visible;border:1px solid black"/>
-            <button type="submit">Score</button>
+            <!--<button type="submit" >Score</button>-->
         </div>
 
         <div class="col-sm-6 col-sm-offset-2">

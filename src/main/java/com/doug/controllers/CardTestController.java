@@ -55,61 +55,94 @@ public class CardTestController {
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.GET)
 	public String showSingleAnswer(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
+		deckIndex = (Integer)session.getAttribute("deckIndex");
 
-		masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
+		if (deckIndex <= 3) {
+			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
 
-		CardInfo masterCard = (CardInfo)session.getAttribute("singleCardResults");
-		CardInfo cardInfo = (CardInfo)session.getAttribute("enteredCardInfo") ;
+			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
+			CardInfo cardInfo = (CardInfo) session.getAttribute("enteredCardInfo");
 
-		model.addAttribute("singleCardScore", masterCard);
-		model.addAttribute("cardInfo", cardInfo);
-		model.addAttribute("cardNumber", deckIndex.toString());
+			model.addAttribute("singleCardScore", masterCard);
+			model.addAttribute("cardInfo", cardInfo);
+			model.addAttribute("cardNumber", deckIndex.toString());
+			return "answer/showAnswerSingle";
+		} else {
+			// Ready to Score
 
-		return "answer/showAnswerSingle";
+			model.addAttribute("score", cumulativeScore + "%");
+			model.addAttribute("cardNumber", "end of deck");
+
+			//Create Test Score
+			ScoreList scoreList = new ScoreList();
+			scoreList.setMasterList(cachedRandomLearningCards);
+			scoreList.setAnswerList(singleCardScoreArrayList);
+			scoreList.setFinalScore(cumulativeScore);
+			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
+
+		}
+		return "index";
 	}
 
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.POST)
 	public String showSingleAnswerPost(HttpSession session, CardInfo cardInfo, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
 
-		if(session.getAttribute("masterCardDeck")==null){
-			masterCardDeck = cardService.createCardLearningMasterList();
-		} else {
-			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
-			cumulativeScore = (BigDecimal)session.getAttribute("cumulativeScore");
+		deckIndex = (Integer)session.getAttribute("deckIndex");
+
+		if (deckIndex <= 3) {
+
+			if (session.getAttribute("masterCardDeck") == null) {
+				masterCardDeck = cardService.createCardLearningMasterList();
+			} else {
+				masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
+				cumulativeScore = (BigDecimal) session.getAttribute("cumulativeScore");
+			}
+
+
+			CardInfo masterCardInfo = Helpers.getCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
+
+			singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
+			session.setAttribute("singleCardScore", singleCardScore);
+
+			//Add to score
+			singleCardScoreArrayList =
+					  (ArrayList<SingleCardScore>) session.getAttribute("scoreSoFar");
+
+
+			//if first one then createSingleCardScoreArrayList
+			if (deckIndex == 0) {
+
+				singleCardScoreArrayList = new ArrayList<SingleCardScore>();
+			}
+
+			singleCardScoreArrayList.add(singleCardScore);
+
+			//Set back to Session
+			session.setAttribute("scoreSoFar", singleCardScoreArrayList);
+
+
+			cumulativeScore = scoreService.GetCumulativeScore(singleCardScoreArrayList);
+			session.setAttribute("cumulativeScore", cumulativeScore);
+
+			model.addAttribute("singleCardScore", masterCardInfo);
+			model.addAttribute("cardInfo", cardInfo);
+			model.addAttribute("cardNumber", deckIndex.toString());
+			model.addAttribute("score", cumulativeScore + "%");
+		}else {
+			// Ready to Score
+
+			model.addAttribute("score", cumulativeScore + "%");
+			model.addAttribute("cardNumber", "end of deck");
+
+			//Create Test Score
+			ScoreList scoreList = new ScoreList();
+			scoreList.setMasterList(cachedRandomLearningCards);
+			scoreList.setAnswerList(singleCardScoreArrayList);
+			scoreList.setFinalScore(cumulativeScore);
+			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
+
 		}
-
-
-		CardInfo masterCardInfo = Helpers.getCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
-
-		singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
-		session.setAttribute("singleCardScore", singleCardScore);
-
-		//Add to score
-		singleCardScoreArrayList =
-				  (ArrayList<SingleCardScore>) session.getAttribute("scoreSoFar");
-
-
-		//if first one then createSingleCardScoreArrayList
-		if (deckIndex == 0) {
-
-			singleCardScoreArrayList = new ArrayList<SingleCardScore>();
-		}
-
-		singleCardScoreArrayList.add(singleCardScore);
-
-		//Set back to Session
-		session.setAttribute("scoreSoFar", singleCardScoreArrayList);
-
-
-		cumulativeScore = scoreService.GetCumulativeScore(singleCardScoreArrayList);
-		session.setAttribute("cumulativeScore", cumulativeScore);
-
-		model.addAttribute("singleCardScore", masterCardInfo);
-		model.addAttribute("cardInfo", cardInfo);
-		model.addAttribute("cardNumber", deckIndex.toString());
-		model.addAttribute("score", cumulativeScore + "%");
-
 		return "answer/showAnswerSingle";
 	}
 
@@ -164,7 +197,7 @@ public class CardTestController {
 
 		deckIndex = (Integer)session.getAttribute("deckIndex");
 
-		if (deckIndex <= 10) {
+		if (deckIndex <= 3) {
 
 			ArrayList<CardInfo> masterCardDeck;
 
