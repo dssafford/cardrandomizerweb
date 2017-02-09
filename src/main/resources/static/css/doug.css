@@ -1,9 +1,15 @@
 body {
-	background: url('../images/lightpink.jpeg') no-repeat center center fixed;
+	background: url('../images/verylightbluebackground.jpeg') no-repeat center center fixed;
 	background-size: cover;
 	//font-family: arial,helvetica,sans-serif;
 }
+.navbar-inverse {
+	background-color: #2196f3 !important;
+}
 
+.navbar-inverse.navbar-nav>li>a {
+	color: #ff5722;
+}
 .shit {
 	color: whitesmoke;
 }
@@ -30,7 +36,7 @@ div
 }
 
 title {
-	color: brown;
+	color: orangered;
 }
 .panel-dude {
 	text-align: center !important;
@@ -63,10 +69,10 @@ div.col-sm-6.left {
 	padding-left: 0% !important;
 }
 h1 {
-	color: brown !important;
+	color: #dd5555 !important;
 }
 h2 {
-	color: orange !important;
+	color: #64bddf !important;
 }
 .dougOne {
 	color: #31b0d5;
