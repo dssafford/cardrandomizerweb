@@ -2,25 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Login</title>
+    <title>Single Test View</title>
     <th:block th:include="fragments/headerinc :: head"></th:block>
 
 </head>
 
 <th:block th:include="fragments/header :: header"></th:block>
 <body>
-<script>
-    function DoSomething() {
-        //alert("in DoSomething");
-        window.location = "/saveScore";
-    }
-
-</script>
 <div class="container">
     <div class="row">
-        <!--<div class="col-md-5 col-md-offset-4">-->
         <div> <h1 th:class="formHeader">Scores</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
-        <div><input type="button" onclick="DoSomething()">Go </input>
+        <div>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>
                     <table class="table table-bordered">
@@ -37,8 +29,6 @@
                             <td th:text="${test.correct}">Name</td>
                         </tr>
                     </table>
-                    <!--<div><button type="submit">Go</button></div>-->
-                    <!--</form>-->
                 </div>
             </form>
 

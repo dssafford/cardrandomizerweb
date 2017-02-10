@@ -5,9 +5,11 @@ import com.doug.repository.ScoreRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import com.doug.services.TestHelper;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,7 +51,6 @@ public class ScoreController {
 			session.setAttribute("masterCardDeck", masterCardDeck);
 		}
 
-
 		// get answers from session
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 
@@ -59,7 +60,8 @@ public class ScoreController {
 		session.setAttribute("testArray", testArray);
 
 		finalScore = Helpers.CalcFinalScore(testArray);
-		model.addAttribute("finalScore", finalScore);
+
+		model.addAttribute("finalScore", finalScore + "%");
 		model.addAttribute("scores", testArray);
 
 		return "scores";
@@ -88,14 +90,7 @@ public class ScoreController {
 	@RequestMapping("/saveScore")
 	public String testScore(Model model) {
 		ScoreList myScore = scoreRepository.save(createTestScore());
-
-
-
 		model.addAttribute("score", myScore);
-//		model.addAttribute("masters", myScore.getMasterList());
-//		model.addAttribute("answers", myScore.getAnswerList());
-//		model.addAttribute("scoreLists", myScore.getScoreList());
-
 		return "score/showScore";
 	}
 
@@ -118,11 +113,14 @@ public class ScoreController {
 	@RequestMapping("/showScoreHistory")
 	public String getAllScores(Model model) {
 
-		//List<Score> scores = scoreRepository.findAll();
+		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
 
-		//ArrayList<Display> displayList = createDisplayList();
+//
 
-		model.addAttribute("scores", scoreRepository.findAll());
+		ArrayList<CardInfo> masterList = mylist.get(1).getMasterList();
+		String cardName = masterList.get(0).getCardName();
+
+		model.addAttribute("scores", mylist);
 
 		//displayList.get(0).getMasterCardName();
 		//model.addAttribute("scores", displayList);
@@ -130,6 +128,27 @@ public class ScoreController {
 		return "score/showScoresHistory";
 
 	}
+
+	@RequestMapping("scoreHistory/{id}")
+	public String showSingleTest(@PathVariable ObjectId id, Model model){
+
+		ScoreList myList = scoreRepository.findOne(id.toString());
+
+//		ArrayList<CardInfo> masterList = myList.getMasterList();
+//		ArrayList<CardInfo> answerList = myList.getAnswerList();
+
+		testArray = Helpers.SimpleCompareCardInfoArrays(myList.getMasterList(), myList.getAnswerList());
+
+		finalScore = Helpers.CalcFinalScore(testArray);
+
+		model.addAttribute("finalScore", finalScore + "%");
+		model.addAttribute("scores", testArray);
+//		model.addAttribute("answerList", answerList);
+//		model.addAttribute("masterList", masterList);
+
+		return "score/singleTestScores";
+	}
+
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
 		ScoreList scoreList = new ScoreList();

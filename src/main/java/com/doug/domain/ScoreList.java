@@ -1,5 +1,7 @@
 package com.doug.domain;
 
+import org.bson.types.ObjectId;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,11 +12,21 @@ import java.util.Date;
 public class ScoreList {
 
 	private Integer userid;
+	private ObjectId _id;
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
 
 	private Date timestamp;
 	private ArrayList masterList;
 	private ArrayList answerList;
 	private BigDecimal finalScore;
+	private String comments;
 
 	public BigDecimal getFinalScore() {
 		return finalScore;
@@ -23,8 +35,6 @@ public class ScoreList {
 	public void setFinalScore(BigDecimal finalScore) {
 		this.finalScore = finalScore;
 	}
-
-	private String comments;
 
 	public Integer getUserid() {
 		return userid;

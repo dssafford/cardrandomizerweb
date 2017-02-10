@@ -2,6 +2,7 @@ package com.doug.services;
 
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
+import com.doug.domain.SingleCardScore;
 import com.doug.domain.Test;
 
 import javax.servlet.http.HttpSession;
@@ -87,6 +88,34 @@ public abstract class Helpers {
 
 	}
 
+	public static ArrayList SimpleCompareCardInfoArrays(ArrayList<CardInfo> masterDeck, ArrayList<SingleCardScore> answerDeck) {
+		ArrayList<Test> testArray = new ArrayList();
+		Test test;
+		Double finalScore = 0.00;
+
+		for (int i = 0; i < answerDeck.size(); i++) {
+			test = new Test();
+//			test.setId(i);
+			test.setMasterCardName(masterDeck.get(i).getCardName());
+			test.setAnswerCardName(answerDeck.get(i).getCardName());
+
+			if (masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
+				test.setCorrect(true);
+				finalScore = finalScore + 1;
+				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
+			} else {
+				test.setCorrect(false);
+				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
+						  answerDeck.get(i).getCardName());
+			}
+			testArray.add(i, test);
+		}
+
+		return testArray;
+
+
+	}
+
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
 		ArrayList<Test> testArray = new ArrayList();
 		Test test;
@@ -124,11 +153,12 @@ public abstract class Helpers {
 			}
 		}
 
-		finalScore = (finalScore / 52) * 100;
+		//finalScore = (finalScore / 52) * 100;
 
-//		"Percentage In Exam: %.2f%%%n", percent
+		BigDecimal b = new BigDecimal((finalScore / 52) * 100);
+		b = b.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-		return new BigDecimal(finalScore);
+		return b;
 	}
 
 	public static String makeCardString(String cardName) {

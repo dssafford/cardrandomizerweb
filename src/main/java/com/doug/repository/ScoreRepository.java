@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface ScoreRepository extends MongoRepository<ScoreList, String> {
 
+	ScoreList findOne(String id);
+
 //	List<Person> findByAgeGreaterThan(int age);
 //
 //	List<Person> findByAgeGreaterThanOrderByNameAsc(int age);
