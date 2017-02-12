@@ -7,7 +7,6 @@ import com.doug.repository.ScoreRepository;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
 import com.doug.services.ScoreService;
-import com.doug.services.TestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +17,6 @@ import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static com.doug.services.TestHelper.createTestRandomList;
 
 /**
  * Created by doug on 1/24/17.
@@ -75,8 +72,8 @@ public class CardTestController {
 
 			//Create Test Score
 			ScoreList scoreList = new ScoreList();
-			scoreList.setMasterList(cachedRandomLearningCards);
-			scoreList.setAnswerList(singleCardScoreArrayList);
+//			scoreList.setMasterList(cachedRandomLearningCards);
+//			scoreList.setAnswerList(singleCardScoreArrayList);
 			scoreList.setFinalScore(cumulativeScore);
 			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
 
@@ -137,8 +134,8 @@ public class CardTestController {
 
 			//Create Test Score
 			ScoreList scoreList = new ScoreList();
-			scoreList.setMasterList(cachedRandomLearningCards);
-			scoreList.setAnswerList(singleCardScoreArrayList);
+//			scoreList.setMasterList(cachedRandomLearningCards);
+//			scoreList.setAnswerList(singleCardScoreArrayList);
 			scoreList.setFinalScore(cumulativeScore);
 			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
 
@@ -271,8 +268,8 @@ public class CardTestController {
 
 			//Create Test Score
 			ScoreList scoreList = new ScoreList();
-			scoreList.setMasterList(cachedRandomLearningCards);
-			scoreList.setAnswerList(singleCardScoreArrayList);
+//			scoreList.setMasterList(cachedRandomLearningCards);
+//			scoreList.setAnswerList(singleCardScoreArrayList);
 			scoreList.setFinalScore(cumulativeScore);
 			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
 
@@ -308,8 +305,8 @@ public class CardTestController {
 		ScoreList scoreList = new ScoreList();
 
 		//score.setUserid(1);
-		scoreList.setAnswerList(TestHelper.createAnswerList());
-		scoreList.setMasterList(createTestRandomList());
+//		scoreList.setAnswerList(TestHelper.createAnswerList());
+//		scoreList.setMasterList(createTestRandomList());
 		scoreList.setFinalScore(cumulativeScore);
 		scoreList.setComments("comments here");
 		scoreList.setTimestamp(new Date());
@@ -319,8 +316,8 @@ public class CardTestController {
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
 		ScoreList scoreList = new ScoreList();
-		scoreList.setMasterList(learningMasterCards);
-		scoreList.setAnswerList(enteredAnswers);
+//		scoreList.setMasterList(learningMasterCards);
+//		scoreList.setAnswerList(enteredAnswers);
 		scoreList.setFinalScore(cumulativeScore);
 		scoreList.setComments("comments here");
 		scoreList.setTimestamp(new Date());

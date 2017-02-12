@@ -1,47 +1,33 @@
 package com.doug.domain;
 
-import org.bson.types.ObjectId;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by Doug on 1/8/17.
  */
+
+@Entity
+@Table(name = "scores")
 public class ScoreList {
 
-	private Integer userid;
-	private ObjectId _id;
-
-	public ObjectId get_id() {
-		return _id;
-	}
-
-	public void set_id(ObjectId _id) {
-		this._id = _id;
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
 	private Date timestamp;
-	private ArrayList masterList;
-	private ArrayList answerList;
+	private Integer masterListID;
+	private Integer answerListID;
 	private BigDecimal finalScore;
 	private String comments;
 
-	public BigDecimal getFinalScore() {
-		return finalScore;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setFinalScore(BigDecimal finalScore) {
-		this.finalScore = finalScore;
-	}
-
-	public Integer getUserid() {
-		return userid;
-	}
-
-	public void setUserid(Integer userid) {
-		this.userid = userid;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Date getTimestamp() {
@@ -52,20 +38,28 @@ public class ScoreList {
 		this.timestamp = timestamp;
 	}
 
-	public ArrayList getMasterList() {
-		return masterList;
+	public Integer getMasterListID() {
+		return masterListID;
 	}
 
-	public void setMasterList(ArrayList masterList) {
-		this.masterList = masterList;
+	public void setMasterListID(Integer masterListID) {
+		this.masterListID = masterListID;
 	}
 
-	public ArrayList getAnswerList() {
-		return answerList;
+	public Integer getAnswerListID() {
+		return answerListID;
 	}
 
-	public void setAnswerList(ArrayList answerList) {
-		this.answerList = answerList;
+	public void setAnswerListID(Integer answerListID) {
+		this.answerListID = answerListID;
+	}
+
+	public BigDecimal getFinalScore() {
+		return finalScore;
+	}
+
+	public void setFinalScore(BigDecimal finalScore) {
+		this.finalScore = finalScore;
 	}
 
 	public String getComments() {

@@ -1,23 +1,22 @@
 package com.doug.domain;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Id;
 
 /**
  * Created by Doug on 12/20/16.
  */
-@Document
 public class Test {
 
-//	@Id
-//	private Integer id;
-//
-//	public Integer getId() {
-//		return id;
-//	}
+	@Id
+	private Integer id;
 
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	private String masterCardName;
 	private String answerCardName;

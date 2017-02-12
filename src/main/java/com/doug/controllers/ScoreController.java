@@ -4,8 +4,6 @@ import com.doug.domain.*;
 import com.doug.repository.ScoreRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
-import com.doug.services.TestHelper;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-
-import static com.doug.services.TestHelper.createTestRandomList;
 
 /**
  * Created by Doug on 1/8/17.
@@ -117,8 +113,8 @@ public class ScoreController {
 
 //
 
-		ArrayList<CardInfo> masterList = mylist.get(1).getMasterList();
-		String cardName = masterList.get(0).getCardName();
+//		ArrayList<CardInfo> masterList = mylist.get(1).getMasterList();
+//		String cardName = masterList.get(0).getCardName();
 
 		model.addAttribute("scores", mylist);
 
@@ -130,14 +126,14 @@ public class ScoreController {
 	}
 
 	@RequestMapping("scoreHistory/{id}")
-	public String showSingleTest(@PathVariable ObjectId id, Model model){
+	public String showSingleTest(@PathVariable Integer id, Model model){
 
-		ScoreList myList = scoreRepository.findOne(id.toString());
+//		ScoreList myList = scoreRepository.findOne(id.toString());
 
 //		ArrayList<CardInfo> masterList = myList.getMasterList();
 //		ArrayList<CardInfo> answerList = myList.getAnswerList();
 
-		testArray = Helpers.SimpleCompareCardInfoArrays(myList.getMasterList(), myList.getAnswerList());
+//		testArray = Helpers.SimpleCompareCardInfoArrays(myList.getMasterList(), myList.getAnswerList());
 
 		finalScore = Helpers.CalcFinalScore(testArray);
 
@@ -152,8 +148,8 @@ public class ScoreController {
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
 		ScoreList scoreList = new ScoreList();
-		scoreList.setMasterList(learningMasterCards);
-		scoreList.setAnswerList(enteredAnswers);
+//		scoreList.setMasterList(learningMasterCards);
+//		scoreList.setAnswerList(enteredAnswers);
 		scoreList.setFinalScore(finalScore);
 
 		scoreRepository.save(scoreList);
@@ -176,8 +172,8 @@ public class ScoreController {
 		ScoreList scoreList = new ScoreList();
 
 		//score.setUserid(1);
-		scoreList.setAnswerList(TestHelper.createAnswerList());
-		scoreList.setMasterList(createTestRandomList());
+//		scoreList.setAnswerList(TestHelper.createAnswerList());
+//		scoreList.setMasterList(createTestRandomList());
 		//scoreList.setFinalScore(finalScore);
 		scoreList.setComments("comments here");
 		scoreList.setTimestamp(new Date());
