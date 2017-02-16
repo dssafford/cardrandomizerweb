@@ -24,9 +24,27 @@ public class CardInfo implements Serializable{
     }
 
     private String cardName;
+    private String cardNumber;
     private String personName;
     private String actionName;
     private String objectName;
+    private String comments;
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
 
     public String getCardName() {
         return cardName;
