@@ -39,7 +39,6 @@ public class CardServiceTest {
 
         cardInfo.setCardName("ace_of_spades.png");
         cardInfo.setActionName("action");
-        cardInfo.setCategorySuit("diamonds");
         cardInfo.setObjectName("object");
         cardInfo.setPersonName("person");
 

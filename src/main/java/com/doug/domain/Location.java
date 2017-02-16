@@ -1,9 +1,7 @@
 package com.doug.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Doug on 2/12/17.
@@ -13,29 +11,45 @@ import javax.persistence.Id;
 public class Location {
 
 
-	private Integer location_id;
-	private String location_name;
+	private Integer locationId;
+	private Integer locationNumber;
+	private String locationName;
 	private String comments;
-	private Integer is_active;
+	private Integer isActive;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
 
-	public Integer getLocation_id() {
-		return location_id;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "location_quiz", joinColumns = @JoinColumn(name = "location_id", referencedColumnName = "id"),
+			  inverseJoinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"))
+
+	private Set<Quiz> quizzes;
+
+	public Set<Quiz> getQuizzes() {
+		return quizzes;
 	}
 
-	public void setLocation_id(Integer location_id) {
-		this.location_id = location_id;
+	public void setQuizzes(Set<Quiz> locationQuizs) {
+		this.quizzes = locationQuizs;
 	}
 
-	public String getLocation_name() {
-		return location_name;
+	public Integer getLocationId() {
+		return locationId;
 	}
 
-	public void setLocation_name(String location_name) {
-		this.location_name = location_name;
+	public void setLocationId(Integer locationId) {
+		this.locationId = locationId;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
 	}
 
 	public String getComments() {
@@ -46,12 +60,12 @@ public class Location {
 		this.comments = comments;
 	}
 
-	public Integer getIs_active() {
-		return is_active;
+	public Integer getIsActive() {
+		return isActive;
 	}
 
-	public void setIs_active(Integer is_active) {
-		this.is_active = is_active;
+	public void setIsActive(Integer isActive) {
+		this.isActive = isActive;
 	}
 
 	public Integer getId() {
@@ -61,4 +75,19 @@ public class Location {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Location(String locationName){
+		this.locationName = locationName;
+	}
+
+	public Location(String locationName, Integer locationNumber){
+		this.locationNumber = locationNumber;
+		this.locationName = locationName;
+	}
+
+	public Location(String name, Set<Quiz> quizzes){
+		this.locationName = name;
+		this.quizzes = quizzes;
+	}
+
 }

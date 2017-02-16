@@ -243,7 +243,6 @@ public class CardTestController {
 
 			cardInfo.setCardName(cachedRandomLearningCards.get(deckIndex).getCardName());
 			cardInfo.setActionName("");
-			cardInfo.setCategorySuit("");
 			cardInfo.setObjectName("");
 			cardInfo.setPersonName("");
 
