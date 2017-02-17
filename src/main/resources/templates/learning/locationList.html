@@ -21,14 +21,14 @@
             <th  style="text-align:center" >isActive</th>
             <tr th:each="location,  locationStat : ${locations}">
                 <td th:align="center" th:text="${locationStat.index}"><a href="/${test(1).id}">Id</a></td>
-                <td  th:align="center" th:text="${location.location_id}">index</td>
-                <td  th:align="center" th:text="${location.location_name}">index</td>
+                <td  th:align="center" th:text="${location.locationId}">index</td>
+                <td  th:align="center" th:text="${location.locationName}">index</td>
                 <td  th:align="center" th:text="${location.comments}">index</td>
 
-                <div th:if="${location.is_active == 1}">
+                <div th:if="${location.isActive == 1}">
                     <td  th:align="center" th:text="Yes"></td>
                 </div>
-                <div th:if="${location.is_active == 0}">
+                <div th:if="${location.isActive == 0}">
                     <td  th:align="center" th:text="No"></td>
                 </div>
             </tr>

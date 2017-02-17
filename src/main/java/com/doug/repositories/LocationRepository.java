@@ -1,4 +1,4 @@
-package com.doug.repository;
+package com.doug.repositories;
 
 import com.doug.domain.Location;
 import org.springframework.data.repository.CrudRepository;

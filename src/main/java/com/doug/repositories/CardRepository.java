@@ -1,14 +1,14 @@
-package com.doug.repository;
+package com.doug.repositories;
 
-import com.doug.domain.ScoreList;
+import com.doug.domain.Location;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by Doug on 9/10/16.
+ * Created by Doug on 2/12/17.
  */
-public interface ScoreRepository extends CrudRepository<ScoreList, Integer> {
+public interface CardRepository extends CrudRepository<Location, Integer> {
 
-//	ScoreList findOne(String id);
+//	CardInfo findOne(Integer id);
 
 //	List<Person> findByAgeGreaterThan(int age);
 //

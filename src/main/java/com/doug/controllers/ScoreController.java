@@ -1,7 +1,7 @@
 package com.doug.controllers;
 
 import com.doug.domain.*;
-import com.doug.repository.ScoreRepository;
+import com.doug.repositories.ScoreRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import org.springframework.beans.factory.annotation.Autowired;

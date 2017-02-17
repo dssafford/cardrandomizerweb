@@ -1,7 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.Location;
-import com.doug.repository.LocationRepository;
+import com.doug.repositories.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

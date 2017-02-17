@@ -76,6 +76,8 @@ public class Location {
 		this.id = id;
 	}
 
+	public Location(){}
+
 	public Location(String locationName){
 		this.locationName = locationName;
 	}

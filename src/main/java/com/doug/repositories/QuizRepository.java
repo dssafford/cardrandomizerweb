@@ -1,4 +1,4 @@
-package com.doug.repository;
+package com.doug.repositories;
 
 import com.doug.domain.Quiz;
 import org.springframework.data.jpa.repository.JpaRepository;

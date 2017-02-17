@@ -3,7 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.CardInfo;
 import com.doug.domain.ScoreList;
 import com.doug.domain.SingleCardScore;
-import com.doug.repository.ScoreRepository;
+import com.doug.repositories.ScoreRepository;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
 import com.doug.services.ScoreService;
