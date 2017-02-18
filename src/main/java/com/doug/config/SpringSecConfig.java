@@ -57,18 +57,26 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
 		authenticationManagerBuilder.authenticationProvider(authenticationProvider);
 	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
 
-		http.formLogin().loginPage("/login").permitAll()
-				  .and().authorizeRequests().antMatchers("/journal/new").permitAll()
-//				  .and().authorizeRequests().antMatchers("/journal/paging").hasAnyAuthority("ADMIN")
-				  .and().exceptionHandling().accessDeniedPage("/access_denied");
+		@Override
+		protected void configure(HttpSecurity httpSecurity) throws Exception {
+			httpSecurity.authorizeRequests().antMatchers("/").permitAll().and()
+					  .authorizeRequests().antMatchers("/console/**").permitAll();
 
-				  //.and().authorizeRequests().antMatchers("/journal/list").hasAnyAuthority("ADMIN")
+			httpSecurity.csrf().disable();
+			httpSecurity.headers().frameOptions().disable();
 
-//		http.csrf().ignoringAntMatchers("/h2-console").disable()
-//				  http.authorizeRequests().antMatchers("/**/favicon.ico") .permitAll()
+//		http.formLogin().loginPage("/login").permitAll()
+//				  .and().authorizeRequests().antMatchers("/*").permitAll()
+////				  .and().authorizeRequests().antMatchers("/journal/paging").hasAnyAuthority("ADMIN")
+//				  .and().exceptionHandling().accessDeniedPage("/access_denied");
+//
+//				  //.and().authorizeRequests().antMatchers("/journal/list").hasAnyAuthority("ADMIN")
+//
+//		http.csrf().ignoringAntMatchers("/h2").disable();
+//				  http.authorizeRequests().antMatchers("/**/favicon.ico") .permitAll();
 //				  http.authorizeRequests().antMatchers("/journals").permitAll()
 //				  .and().authorizeRequests().antMatchers("/static/**").permitAll()
 //				  .and().formLogin().loginPage("/login").permitAll()
