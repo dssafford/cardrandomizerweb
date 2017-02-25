@@ -10,8 +10,6 @@ import java.util.Set;
 @Entity
 public class Location {
 
-
-	private Integer locationId;
 	private Integer locationNumber;
 	private String locationName;
 	private String comments;
@@ -34,14 +32,6 @@ public class Location {
 
 	public void setQuizzes(Set<Quiz> locationQuizs) {
 		this.quizzes = locationQuizs;
-	}
-
-	public Integer getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(Integer locationId) {
-		this.locationId = locationId;
 	}
 
 	public String getLocationName() {

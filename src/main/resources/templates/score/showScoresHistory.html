@@ -31,7 +31,7 @@
                             <th>Comments</th>
                         </tr>
                         <tr th:each="score,  scoreStat : ${scores}">
-                            <td> <a th:href="${'/scoreHistory/'} + ${score._id}">Select</a></td>
+                            <td> <a th:href="${'/scoreHistory/'} + ${score.id}">Select</a></td>
                             <td th:text="${score.finalScore}">index</td>
                             <td th:text="${score.timestamp}">index</td>
                             <td th:text="${score.comments}">index</td>

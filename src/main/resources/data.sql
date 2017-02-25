@@ -1,4 +1,4 @@
-INSERT INTO `location` (`id`, `location_id`, `location_name`, `comments`, `is_active`)
+INSERT INTO `location` (`id`, `location_number`, `location_name`, `comments`, `is_active`)
 VALUES
 	(1, 1, 'mailbox', NULL, 1),
 	(2, 2, 'driveway', NULL, 0),
@@ -108,3 +108,16 @@ VALUES
 	(51, 51, 'queen_of_clubs', 'beyonce', 'power dancing', 'beach', NULL),
 	(52, 52, 'king_of_clubs', 'jz', 'rapping', 'microphone', NULL);
 
+-- INSERT INTO `scores` ('timestamp', `master_list_id`, `answer_list_id`, `comments`)
+-- VALUES
+-- (CURRENT_DATE, 1, 1, 99.96, '1 these are my comments'),
+-- 	(CURRENT_DATE,2, 2, 91.00, '2 these are my comments '),
+-- 	(CURRENT_DATE, 3, 3, 90.00, '3 these are my comments'),
+-- 	(CURRENT_DATE, 4, 5, 99.96, '4 these are my comments');
+
+INSERT INTO `scores` (`timestamp`, `MASTER_LISTID`, `ANSWER_LISTID`, `FINAL_SCORE`, `comments`)
+VALUES
+	('2017-02-16 00:00:00', 1, 1, 80, 'row 1 comments here for doug'),
+('2017-02-16 00:00:00', 2, 2, 80, 'row 1 comments here for doug'),
+('2017-02-16 00:00:00', 3, 4, 80, 'row 1 comments here for doug'),
+('2017-02-16 00:00:00', 4, 1, 80, 'row 1 comments here for doug');

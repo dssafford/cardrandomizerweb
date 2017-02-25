@@ -1,8 +1,6 @@
 package com.doug.controllers;
 
-import com.doug.domain.AnswerListSmall;
-import com.doug.domain.Card;
-import com.doug.domain.DeckAnswer;
+import com.doug.domain.*;
 import com.doug.services.Helpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -153,6 +151,15 @@ public class AnswerController {
 
 
 
+	@RequestMapping(value = "/enterLocationAnswers", method = RequestMethod.GET)
+	public String enterLocationAnswers(Model model) {
+
+		model.addAttribute("locationAnswer", new LocationAnswer());
+
+
+		return "enterLocationAnswers";
+
+	}
     @RequestMapping(value = "/enterAnswersTest", method = RequestMethod.POST)
     public String getAnswers(HttpSession session, DeckAnswer deckAnswer) throws Exception {
         ArrayList<Card> enteredAnswers = new ArrayList<Card>();
@@ -227,6 +234,71 @@ public class AnswerController {
         session.setAttribute("enteredAnswers", enteredAnswers);
 
         return "redirect:/scoreAnswersTest";
+    }
+    
+    
+    @RequestMapping(value = "/enterLocationAnswers", method = RequestMethod.POST)
+    public String getLocationAnswers(HttpSession session, LocationAnswer locationAnswer) {
+
+        ArrayList<Location> enteredLocationAnswers = new ArrayList<Location>();
+
+        enteredLocationAnswers.add(new Location(locationAnswer.getL1()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL2()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL3()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL4()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL5()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL6()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL7()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL8()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL9()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL10()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL11()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL12()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL13()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL14()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL15()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL16()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL17()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL18()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL19()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL20()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL21()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL22()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL23()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL24()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL25()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL26()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL27()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL28()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL29()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL30()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL31()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL32()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL33()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL34()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL35()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL36()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL37()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL38()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL39()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL40()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL41()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL42()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL43()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL44()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL45()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL46()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL47()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL48()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL49()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL50()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL51()));
+        enteredLocationAnswers.add(new Location(locationAnswer.getL52()));
+
+		 //Add to Session
+		 session.setAttribute("enteredLocationAnswers", enteredLocationAnswers);
+
+        return "redirect:scoreLocationAnswersTest";
     }
 
 }

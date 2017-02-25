@@ -1,9 +1,13 @@
 package com.doug.controllers;
 
 import com.doug.domain.*;
+import com.doug.repositories.AnswerRepository;
+import com.doug.repositories.CardRepository;
 import com.doug.repositories.ScoreRepository;
+import com.doug.services.AnswerServiceImpl;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
+import com.doug.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +35,54 @@ public class ScoreController {
 	@Autowired
 	private CardServiceImpl cardService;
 
+	@Autowired
+	private LocationService locationService;
+
+	@Autowired
+	AnswerRepository answerRepository;
+
+	@Autowired
+	private AnswerServiceImpl answerService;
+
+	@Autowired
+	CardRepository cardRepository;
+
+
 	BigDecimal finalScore;
 
 
+	@RequestMapping(value = "/scoreLocationAnswersTest", method = RequestMethod.GET)
+	public String scoreLoctionAnswersTest(HttpSession session, Model model) {
+		ArrayList<Test> locationTestArray = new ArrayList<>();
+
+		ArrayList<Location> masterLocationList;
+
+		masterLocationList = (ArrayList<Location>)session.getAttribute("locationMasterList");
+
+		//create test answers
+		//create master list if it doesn't exist
+		if(masterLocationList == null){
+			masterLocationList = (ArrayList<Location>)locationService.listAllLocations();
+			session.setAttribute("locationMasterList", masterLocationList);
+		}
+
+		// get answers from session
+		ArrayList<Location> enteredLocationAnswers =
+				  (ArrayList<Location>)session.getAttribute("enteredLocationAnswers");
+
+		locationTestArray = Helpers.SimpleCompareLocationArrays(masterLocationList, enteredLocationAnswers);
+
+
+		session.setAttribute("testArray", testArray);
+
+		finalScore = Helpers.CalcFinalScore(testArray);
+
+		model.addAttribute("finalScore", finalScore + "%");
+		model.addAttribute("scores", testArray);
+
+		return "scores";
+
+	}
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
@@ -128,14 +177,22 @@ public class ScoreController {
 	@RequestMapping("scoreHistory/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){
 
-//		ScoreList myList = scoreRepository.findOne(id.toString());
+		ScoreList myList = scoreRepository.findOne(id);
 
-//		ArrayList<CardInfo> masterList = myList.getMasterList();
-//		ArrayList<CardInfo> answerList = myList.getAnswerList();
+		Integer masterListID= myList.getMasterListID();
 
-//		testArray = Helpers.SimpleCompareCardInfoArrays(myList.getMasterList(), myList.getAnswerList());
+		Integer myListAnswerListID = myList.getAnswerListID();
 
-		finalScore = Helpers.CalcFinalScore(testArray);
+
+
+		ArrayList<Answer> answerList = (ArrayList<Answer>)answerService.findById(myListAnswerListID);
+
+		//ArrayList masterList = cardRepository.findAll(myListAnswerListID);
+
+
+//		testArray = Helpers.SimpleCompareCardInfoArrays(masterList, answerList);
+//
+//		finalScore = Helpers.CalcFinalScore(testArray);
 
 		model.addAttribute("finalScore", finalScore + "%");
 		model.addAttribute("scores", testArray);

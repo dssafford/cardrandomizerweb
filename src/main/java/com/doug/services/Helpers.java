@@ -1,9 +1,6 @@
 package com.doug.services;
 
-import com.doug.domain.Card;
-import com.doug.domain.CardInfo;
-import com.doug.domain.SingleCardScore;
-import com.doug.domain.Test;
+import com.doug.domain.*;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -107,6 +104,40 @@ public abstract class Helpers {
 				test.setCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerDeck.get(i).getCardName());
+			}
+			testArray.add(i, test);
+		}
+
+		return testArray;
+
+
+	}
+
+
+	public static ArrayList SimpleCompareLocationArrays(ArrayList<Location> masterLocationList,
+																		 ArrayList<Location> locationEnteredAnswers) {
+		ArrayList<TestLocation> testArray = new ArrayList();
+		TestLocation test;
+		Double finalScore = 0.00;
+
+
+
+
+		for (int i = 0; i < masterLocationList.size(); i++) {
+			test = new TestLocation();
+//			test.setId(i);
+			test.setMasterLocationName(masterLocationList.get(i).getLocationName());
+
+			test.setAnswerLocationName(locationEnteredAnswers.get(i).toString());
+
+			if (masterLocationList.get(i).getLocationName().equals(locationEnteredAnswers.get(i).toString())) {
+				test.setCorrect(true);
+				finalScore = finalScore + 1;
+				System.out.println("Found equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " = " + locationEnteredAnswers.get(i).toString());
+			} else {
+				test.setCorrect(false);
+				System.out.println("Found not equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " != " +
+						  locationEnteredAnswers.get(i).toString());
 			}
 			testArray.add(i, test);
 		}

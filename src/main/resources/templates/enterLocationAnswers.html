@@ -1,0 +1,168 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display Cards</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+
+<body>
+<div class="container">
+    <form class="form-horizontal" th:object="${locationAnswer}" th:action="@{/enterLocationAnswers}" method="post">
+        <div class="panel-body col-sm-10">
+            <table class="table-condensed">
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <th>Number</th>
+                <th>Answer</th>
+                <tr>
+                    <td>1</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l1}" th:tabindex="1" th:value="as" ></input></td>
+                    <td>16</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l16}" th:tabindex="16" value="as"></input></td>
+                    <td>31</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l31}" th:tabindex="31" th:value="as"></input></td>
+                    <td>46</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l46}" th:tabindex="46" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l2}" th:tabindex="2" th:value="as"></input></td>
+                    <td>17</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l17}" th:tabindex="17" th:value="as"></input></td>
+                    <td>32</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l32}" th:tabindex="32" th:value="as"></input></td>
+                    <td>47</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l47}" th:tabindex="47" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l3}" th:tabindex="3" th:value="as"></input></td>
+                    <td>18</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l18}" th:tabindex="18" th:value="as"></input></td>
+                    <td>33</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l33}" th:tabindex="33" th:value="as"></input></td>
+                    <td>48</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l48}" th:tabindex="48" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l4}" th:tabindex="4" th:value="as"></input></td>
+                    <td>19</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l19}" th:tabindex="19" th:value="as"></input></td>
+                    <td>34</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l34}" th:tabindex="34" th:value="as"></input></td>
+                    <td>49</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l49}" th:tabindex="49" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l5}" th:tabindex="5" th:value="as"></input></td>
+                    <td>20</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l20}" th:tabindex="20" th:value="as"></input></td>
+                    <td>35</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l35}" th:tabindex="35" th:value="as"></input></td>
+                    <td>50</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l50}" th:tabindex="50" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l6}" th:tabindex="6" th:value="as"></input></td>
+                    <td>21</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l21}" th:tabindex="21" th:value="as"></input></td>
+                    <td>36</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l36}" th:tabindex="36" th:value="as"></input></td>
+                    <td>51</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l51}" th:tabindex="51" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l7}" th:tabindex="7" th:value="as"></input></td>
+                    <td>22</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l22}" th:tabindex="22" th:value="as"></input></td>
+                    <td>37</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l37}" th:tabindex="37" th:value="as"></input></td>
+                    <td>52</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l52}" th:tabindex="52" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l8}" th:tabindex="8" th:value="as"></input></td>
+                    <td>23</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l23}" th:tabindex="23" th:value="as"></input></td>
+                    <td>38</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l38}" th:tabindex="38" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l9}" th:tabindex="9" th:value="as"></input></td>
+                    <td>24</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l24}" th:tabindex="24" th:value="as"></input></td>
+                    <td>39</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l39}" th:tabindex="39" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l10}" th:tabindex="10" th:value="as"></input></td>
+                    <td>25</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l25}" th:tabindex="25" th:value="as"></input></td>
+                    <td>40</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l40}" th:tabindex="40" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l11}" th:tabindex="11" th:value="as"></input></td>
+                    <td>26</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l26}" th:tabindex="26" th:value="as"></input></td>
+                    <td>41</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l41}" th:tabindex="41" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l12}" th:tabindex="12" th:value="as"></input></td>
+                    <td>27</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l27}" th:tabindex="27" th:value="as"></input></td>
+                    <td>42</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l42}" th:tabindex="42" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l13}" th:tabindex="13" th:value="as"></input></td>
+                    <td>28</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l28}" th:tabindex="28" th:value="as"></input></td>
+                    <td>43</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l43}" th:tabindex="43" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l14}" th:tabindex="14" th:value="as"></input></td>
+                    <td>29</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l29}" th:tabindex="29" th:value="as"></input></td>
+                    <td>44</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l44}" th:tabindex="44" th:value="as"></input></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l15}" th:tabindex="15" th:value="as"></input></td>
+                    <td>30</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l30}" th:tabindex="30" th:value="as"></input></td>
+                    <td>45</td>
+                    <td><input th:type="text" class="form-control" th:field="*{l45}" th:tabindex="45" th:value="as"></input></td>
+                </tr>
+            </table>
+            <div>
+                <p></p>
+                <button type="submit" class="col-md-5 col-md-offset-4">Score</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

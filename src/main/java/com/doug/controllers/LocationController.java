@@ -27,11 +27,11 @@ public class LocationController {
 	LocationService locationService;
 
 
-	@RequestMapping(value = "/locationMasterList", method = RequestMethod.GET)
-	public String getLocationMasterList() {
-
-		return "learning/locationMasterList";
-	}
+//	@RequestMapping(value = "/locationMasterList", method = RequestMethod.GET)
+//	public String getLocationMasterList() {
+//
+//		return "learning/locationMasterList";
+//	}
 
 	@RequestMapping("/shit2")
 	public String getAnswerSmall2() {

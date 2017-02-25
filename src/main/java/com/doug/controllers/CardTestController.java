@@ -3,6 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.CardInfo;
 import com.doug.domain.ScoreList;
 import com.doug.domain.SingleCardScore;
+import com.doug.repositories.CardRepository;
 import com.doug.repositories.ScoreRepository;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by doug on 1/24/17.
@@ -39,6 +41,11 @@ public class CardTestController {
 	@Autowired
 	private LearnCardController learnCardController;
 
+	@Autowired
+	private CardRepository cardRepository;
+
+
+
 	private Integer deckIndex;
 
 	private ArrayList<CardInfo> cachedRandomLearningCards;
@@ -49,6 +56,13 @@ public class CardTestController {
 	ArrayList<SingleCardScore> singleCardScoreArrayList;
 
 
+	@RequestMapping(value = "/crap")
+	public String getDiamonds() {
+		List<CardInfo> cards = cardRepository.findByCardNameLike("%diamonds%");
+
+
+		return "";
+	}
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.GET)
 	public String showSingleAnswer(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;

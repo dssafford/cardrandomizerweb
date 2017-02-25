@@ -1,22 +1,26 @@
 package com.doug.bootstrap;
 
-import com.doug.domain.User;
+import com.doug.domain.*;
 import com.doug.domain.security.Role;
+import com.doug.repositories.AnswerRepository;
+import com.doug.repositories.CDRepository;
+import com.doug.repositories.QuizRepository;
 import com.doug.services.RoleService;
 import com.doug.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jt on 12/9/15.
  */
 @Component
-@Profile("bootstrap")
+//@Profile("bootstrap")
 public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private UserService userService;
@@ -32,19 +36,115 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
         this.roleService = roleService;
     }
 
+    @Autowired
+    CDRepository cdRepository;
+
+    @Autowired
+    AnswerRepository answerRepository;
+
+    @Autowired
+    QuizRepository quizRepository;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-//        loadProducts();
-       loadUsersAndCustomers();
-////////        loadCarts();
-////////        loadOrderHistory();
-        loadRoles();
+//        loadAnswers();
 
-        assignUsersToDefaultRole();
-        assignUsersToAdminRole();
+        //        loadProducts();
+//       loadUsersAndCustomers();
+//////////        loadCarts();
+//////////        loadOrderHistory();
+//        loadRoles();
+//
+//        assignUsersToDefaultRole();
+//        assignUsersToAdminRole();
+//
+//        loadCDMusicians();
 
     }
 
+private void loadLocationQuiz() {
+        Set<Location> locations;
+
+        Set<Quiz> quizzes = new HashSet<>();
+
+        Quiz quiz1 = new Quiz();
+//        quiz1
+//
+//
+//
+//        q
+
+
+
+}
+
+private void loadAnswers(){
+    Answer answerDoug = new Answer("doug", "testing","block");
+    Answer answerBob = new Answer("bob", "jump","cliff");
+
+    Quiz quizFirstComment = new Quiz("first quiz comment");
+    Quiz quizSecondComment = new Quiz("second quiz comment");
+
+    Set<Quiz> quizzes = new HashSet<Quiz>();
+    quizzes.add(quizFirstComment);
+    quizzes.add(quizSecondComment);
+
+    answerDoug.setQuizzes(quizzes);
+    answerBob.setQuizzes(quizzes);
+
+    answerRepository.save(answerBob);
+//    answerRepository.save(answerDoug);
+
+
+    Set<Answer> answers = new HashSet<Answer>();
+    answers.add(answerDoug);
+    answers.add(answerBob);
+
+    quizFirstComment.setAnswers(answers);
+    quizSecondComment.setAnswers(answers);
+
+		quizRepository.save(quizFirstComment);
+		quizRepository.save(quizSecondComment);
+
+		//Set <Quiz>
+
+		List<Answer> answerList = answerRepository.findAll();
+		List<Quiz> quizList = quizRepository.findAll();
+
+
+		System.out.println("AnswerList Size" + answerList.size());
+		System.out.println("QuizList size" + quizList.size());
+
+		System.out.println("===================Answer info:==================");
+		answerList.forEach(answer->System.out.println(answer.toString()));
+
+		System.out.println("===================Answer info:==================");
+		quizList.forEach(quiz->System.out.println(quiz.toString()));
+
+
+
+
+}
+
+
+
+
+    private void loadCDMusicians() {
+        Set<Musicianold> beatles = new HashSet<>();
+
+        beatles.add(new Musicianold("John", "Lennon"));
+        beatles.add(new Musicianold("Paul", "McCartney"));
+        beatles.add(new Musicianold("Ringo", "Star"));
+        beatles.add(new Musicianold("George", "Harrison"));
+
+        CDold seargentPepper = new CDold("Seargent Pepper");
+        seargentPepper.setMusicianolds(beatles);
+
+        cdRepository.save(seargentPepper);
+
+
+
+    }
     private void assignUsersToDefaultRole() {
         List<Role> roles = (List<Role>) roleService.listAll();
         List<User> users = (List<User>) userService.listAll();

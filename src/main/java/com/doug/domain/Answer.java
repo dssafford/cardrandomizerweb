@@ -1,8 +1,5 @@
 package com.doug.domain;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,10 +13,46 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany()
 	@JoinTable(name = "answer_quiz", joinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"),
 			  inverseJoinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"))
 	private Set<Quiz> quizzes;
+
+	private String questionCardName;
+	private String questionCardObject;
+	private String questionCardAction;
+
+	public String getQuestionCardName() {
+		return questionCardName;
+	}
+
+	public void setQuestionCardName(String questionCardName) {
+		this.questionCardName = questionCardName;
+	}
+
+	public String getQuestionCardObject() {
+		return questionCardObject;
+	}
+
+	public void setQuestionCardObject(String questionCardObject) {
+		this.questionCardObject = questionCardObject;
+	}
+
+	public String getQuestionCardAction() {
+		return questionCardAction;
+	}
+
+	public void setQuestionCardAction(String questionCardAction) {
+		this.questionCardAction = questionCardAction;
+	}
+
+	public String getAnswerCardName() {
+		return answerCardName;
+	}
+
+	public void setAnswerCardName(String answerCardName) {
+		this.answerCardName = answerCardName;
+	}
 
 	private String answerCardName;
 	private String answerPersonName;
@@ -103,22 +136,22 @@ public class Answer {
 
 	}
 
-	@Override
-	public String toString(){
-		String info = "";
-		JSONObject jsonInfo = new JSONObject();
-		jsonInfo.put("answer person name",this.answerPersonName);
-
-		JSONArray subArray = new JSONArray();
-		this.quizzes.forEach(quiz->{
-			JSONObject subJson = new JSONObject();
-			subJson.put("Answer comments", quiz.getComments());
-			subArray.put(subJson);
-		});
-		jsonInfo.put("quizzes", subArray);
-		info = jsonInfo.toString();
-		return info;
-	}
+//	@Override
+//	public String toString(){
+//		String info = "";
+//		JSONObject jsonInfo = new JSONObject();
+//		jsonInfo.put("answer person name",this.answerPersonName);
+//
+//		JSONArray subArray = new JSONArray();
+//		this.quizzes.forEach(quiz->{
+//			JSONObject subJson = new JSONObject();
+//			subJson.put("Answer comments", quiz.getComments());
+//			subArray.put(subJson);
+//		});
+//		jsonInfo.put("quizzes", subArray);
+//		info = jsonInfo.toString();
+//		return info;
+//	}
 
 
 }
