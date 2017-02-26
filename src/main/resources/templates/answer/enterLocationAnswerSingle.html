@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Single Location Test</title>
+
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+</head>
+
+<body>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<div class="container">
+    <h2 th:class="formHeader">Single Location Test</h2>
+    <form class="form-horizontal" th:object="${locationInfo}" th:action="@{/singleLocationTest}" method="post">
+        <div class="col-sm-6 col-sm-offset-2">
+            <h3>Count: <span th:text="${locationIndex}"></span></h3>
+            <h3>Score: <span th:text="${score}"></span></h3>
+            <button type="submit">Score</button>
+        </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Location Number </label>
+            <!--<h3><span th:text="${cardInfo.cardName}" th:field="*{cardName}">Card Name</span></h3>-->
+
+            <input type="text" class="form-control" th:field="${locationInfo.locationNumber}" />
+            <!--<span th:type="text" th:field="*{cardName}" value="3_of_diamonds"></span></input>-->
+        </div>
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Location Name </label>
+            <!--<h3><span th:text="${cardInfo.cardName}" th:field="*{cardName}">Card Name</span></h3>-->
+
+            <input type="text" class="form-control" th:tabindex="0" th:autofocus="true" th:field="${locationInfo.locationName}"/>
+            <!--<span th:type="text" th:field="*{cardName}" value="3_of_diamonds"></span></input>-->
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

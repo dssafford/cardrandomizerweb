@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Show Location Answer Single</title>
+
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+</head>
+
+<body>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<div class="container">
+    <h2 th:class="formHeader">Single Location Show</h2>
+    <form class="form-horizontal" th:object="${cardInfo}" th:action="@{/showLocationAnswerSingle}" method="post">
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <a href="/singleLocationCardTest" th:align="left">Enter Next Single Location</a>
+            <h3>Card number: <span th:text="${cardNumber}"></span></h3>
+            <h3>Score: <span th:text="${score}"></span></h3>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Person: </label>
+            <input type="text" class="form-control" th:field="${cardInfo.personName}"/>
+            <span th:type="text" th:text="${singleCardScore.personName}"></span>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Action: </label>
+            <input type="text" class="form-control" th:field="${cardInfo.actionName}"/>
+            <span type="text"  th:text="${singleCardScore.actionName}"></span>
+
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-2">
+            <label class="control-label">Object: </label>
+            <input type="text" class="form-control" th:field="${cardInfo.objectName}"/>
+            <span type="text" th:text="${singleCardScore.objectName}"></span>
+
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
