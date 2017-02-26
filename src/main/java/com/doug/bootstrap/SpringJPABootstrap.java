@@ -3,7 +3,6 @@ package com.doug.bootstrap;
 import com.doug.domain.*;
 import com.doug.domain.security.Role;
 import com.doug.repositories.AnswerRepository;
-import com.doug.repositories.CDRepository;
 import com.doug.repositories.QuizRepository;
 import com.doug.services.RoleService;
 import com.doug.services.UserService;
@@ -35,9 +34,6 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
     public void setRoleService(RoleService roleService) {
         this.roleService = roleService;
     }
-
-    @Autowired
-    CDRepository cdRepository;
 
     @Autowired
     AnswerRepository answerRepository;
@@ -120,31 +116,8 @@ private void loadAnswers(){
 
 		System.out.println("===================Answer info:==================");
 		quizList.forEach(quiz->System.out.println(quiz.toString()));
-
-
-
-
 }
 
-
-
-
-    private void loadCDMusicians() {
-        Set<Musicianold> beatles = new HashSet<>();
-
-        beatles.add(new Musicianold("John", "Lennon"));
-        beatles.add(new Musicianold("Paul", "McCartney"));
-        beatles.add(new Musicianold("Ringo", "Star"));
-        beatles.add(new Musicianold("George", "Harrison"));
-
-        CDold seargentPepper = new CDold("Seargent Pepper");
-        seargentPepper.setMusicianolds(beatles);
-
-        cdRepository.save(seargentPepper);
-
-
-
-    }
     private void assignUsersToDefaultRole() {
         List<Role> roles = (List<Role>) roleService.listAll();
         List<User> users = (List<User>) userService.listAll();
