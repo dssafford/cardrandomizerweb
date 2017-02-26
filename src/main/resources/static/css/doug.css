@@ -51,6 +51,10 @@ title {
 	color: cyan !important;
 }
 
+input.form-control {
+	width: 90% !important;
+}
+
 .form-group .has-error .control-label {
 	color: cyan;
 }
