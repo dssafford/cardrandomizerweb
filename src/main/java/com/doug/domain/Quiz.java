@@ -1,11 +1,10 @@
 package com.doug.domain;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.util.Set;
 
 /**
  * Created by Doug on 2/14/17.
@@ -29,19 +28,19 @@ public class Quiz {
 		this.comments = comments;
 	}
 
-	@ManyToMany(mappedBy = "quizzes")
-	private Set<Location> locations;
+//	@ManyToMany(mappedBy = "quizzes")
+//	private Set<Location> locations;
+//
+//	@ManyToMany(mappedBy = "quizzes")
+//	private Set<Answer> answers;
 
-	@ManyToMany(mappedBy = "quizzes")
-	private Set<Answer> answers;
-
-	public Set<Answer> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(Set<Answer> answers) {
-		this.answers = answers;
-	}
+//	public Set<Answer> getAnswers() {
+//		return answers;
+//	}
+//
+//	public void setAnswers(Set<Answer> answers) {
+//		this.answers = answers;
+//	}
 
 	public int getId() {
 		return id;
@@ -59,13 +58,13 @@ public class Quiz {
 		this.finalScore = finalScore;
 	}
 
-	public Set<Location> getLocations() {
-		return locations;
-	}
-
-	public void setLocations(Set<Location> locations) {
-		this.locations = locations;
-	}
+//	public Set<Location> getLocations() {
+//		return locations;
+//	}
+//
+//	public void setLocations(Set<Location> locations) {
+//		this.locations = locations;
+//	}
 
 	public Quiz() {
 	}
@@ -79,21 +78,21 @@ public class Quiz {
 		this.finalScore = finalScore;
 	}
 
-	@Override
-	public String toString() {
-		String info = "";
-		JSONObject jsonInfo = new JSONObject();
-		jsonInfo.put("quiz comments", this.getComments());
-		JSONArray locationArray = new JSONArray();
-		if (this.locations != null && locations.size() > 0) {
-			this.locations.forEach(location -> {
-				JSONObject subJson = new JSONObject();
-				subJson.put("location name", location.getLocationName());
-				locationArray.put(subJson);
-			});
-		}
-		jsonInfo.put("locations", locationArray);
-		info = jsonInfo.toString();
-		return info;
-	}
+//	@Override
+//	public String toString() {
+//		String info = "";
+//		JSONObject jsonInfo = new JSONObject();
+//		jsonInfo.put("quiz comments", this.getComments());
+//		JSONArray locationArray = new JSONArray();
+//		if (this.locations != null && locations.size() > 0) {
+//			this.locations.forEach(location -> {
+//				JSONObject subJson = new JSONObject();
+//				subJson.put("location name", location.getLocationName());
+//				locationArray.put(subJson);
+//			});
+//		}
+//		jsonInfo.put("locations", locationArray);
+//		info = jsonInfo.toString();
+//		return info;
+//	}
 }

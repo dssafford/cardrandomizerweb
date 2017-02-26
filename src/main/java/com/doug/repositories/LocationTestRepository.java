@@ -1,6 +1,6 @@
 package com.doug.repositories;
 
-import com.doug.domain.PlaceTest;
+import com.doug.domain.LocationTest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,11 +12,11 @@ import java.util.List;
  * Created by Doug on 2/25/17.
  */
 @Repository
-public interface PlaceTestRepository extends JpaRepository<PlaceTest, Integer> {
+public interface LocationTestRepository extends JpaRepository<LocationTest, Integer> {
 
 	@Query(value = "Select * "
-		+ "FROM PLACE_TEST pt, TEST t WHERE "
+		+ "FROM Location_Test pt, TEST t WHERE "
 		+ " pt.TEST_ID = t.ID "
 		+ " AND t.ID = :id", nativeQuery = true)
-	public List<PlaceTest> findByTest(@Param("id") Integer testId);
+	public List<LocationTest> findByTest(@Param("id") Integer testId);
 }

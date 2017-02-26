@@ -9,32 +9,41 @@ import javax.persistence.Id;
  * Created by Doug on 2/25/17.
  */
 @Entity
-public class PlaceTest {
+public class LocationTest {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-//	@ManyToOne
-//	@JoinColumn(name = "place_id")
-//	private Place place;
 
-//	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-//	private Place place;
-
-	private Integer placeId;
-	private Integer placeNumber;
-	private String placeName;
+	private Integer locationNumber;
+	private String locationName;
 	private String answerPlaceName;
 	private Boolean answerIsCorrect;
 	private Integer testId;
 
-	public Integer getPlaceId() {
-		return placeId;
+	public Integer getLocationNumber() {
+		return locationNumber;
 	}
 
-	public void setPlaceId(Integer placeId) {
-		this.placeId = placeId;
+	public void setLocationNumber(Integer locationNumber) {
+		this.locationNumber = locationNumber;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public Integer getTestId() {
+		return testId;
+	}
+
+	public void setTestId(Integer testId) {
+		this.testId = testId;
 	}
 
 	public Integer getId() {
@@ -46,19 +55,19 @@ public class PlaceTest {
 	}
 
 	public Integer getPlaceNumber() {
-		return placeNumber;
+		return locationNumber;
 	}
 
-	public void setPlaceNumber(Integer placeNumber) {
-		this.placeNumber = placeNumber;
+	public void setPlaceNumber(Integer locationNumber) {
+		this.locationNumber = locationNumber;
 	}
 
 	public String getPlaceName() {
-		return placeName;
+		return locationName;
 	}
 
-	public void setPlaceName(String placeName) {
-		this.placeName = placeName;
+	public void setPlaceName(String locationName) {
+		this.locationName = locationName;
 	}
 
 	public String getAnswerPlaceName() {
@@ -85,19 +94,19 @@ public class PlaceTest {
 		this.testId = testId;
 	}
 
-	public PlaceTest(){}
+	public LocationTest(){}
 
-	public PlaceTest(Integer placeId, Integer placeNumber, String placeName, String answerPlaceName,
+	public LocationTest(Integer locationId, Integer locationNumber, String locationName, String answerPlaceName,
 						  Boolean answerIsCorrect, Integer testId){
-		this.placeNumber=placeNumber;
-		this.placeName=placeName;
+		this.locationNumber=locationNumber;
+		this.locationName=locationName;
 		this.answerPlaceName=answerPlaceName;
 		this.answerIsCorrect=answerIsCorrect;
 		this.testId=testId;
 	}
-	public PlaceTest(Integer placeNumber, String placeName){
-		this.placeNumber=placeNumber;
-		this.placeName=placeName;
+	public LocationTest(Integer locationNumber, String locationName){
+		this.locationNumber=locationNumber;
+		this.locationName=locationName;
 	}
 
 
