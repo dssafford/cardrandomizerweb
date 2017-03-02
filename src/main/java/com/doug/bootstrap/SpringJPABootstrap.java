@@ -1,17 +1,16 @@
 package com.doug.bootstrap;
 
-import com.doug.domain.User;
-import com.doug.domain.security.Role;
+//import com.doug.domain.User;
+//import com.doug.domain.security.Role;
 import com.doug.repositories.AnswerRepository;
 import com.doug.repositories.QuizRepository;
-import com.doug.services.RoleService;
-import com.doug.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+//import com.doug.services.RoleService;
+//import com.doug.services.UserService;
 
 /**
  * Created by jt on 12/9/15.
@@ -20,18 +19,18 @@ import java.util.List;
 //@Profile("bootstrap")
 public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private UserService userService;
-    private RoleService roleService;
-
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
-    @Autowired
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
-    }
+//    private UserService userService;
+//    private RoleService roleService;
+//
+////    @Autowired
+////    public void setUserService(UserService userService) {
+////        this.userService = userService;
+////    }
+//
+//    @Autowired
+//    public void setRoleService(RoleService roleService) {
+//        this.roleService = roleService;
+//    }
 
     @Autowired
     AnswerRepository answerRepository;
@@ -48,7 +47,7 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //////////        loadCarts();
 //////////        loadOrderHistory();
 //        loadRoles();
-//
+
 //        assignUsersToDefaultRole();
 //        assignUsersToAdminRole();
 
@@ -100,50 +99,50 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //		quizList.forEach(quiz->System.out.println(quiz.toString()));
 //}
 
-    private void assignUsersToDefaultRole() {
-        List<Role> roles = (List<Role>) roleService.listAll();
-        List<User> users = (List<User>) userService.listAll();
+//    private void assignUsersToDefaultRole() {
+//        List<Role> roles = (List<Role>) roleService.listAll();
+//        List<User> users = (List<User>) userService.listAll();
+//
+//        roles.forEach(role ->{
+//            if(role.getRole().equalsIgnoreCase("CUSTOMER")){
+//                users.forEach(user -> {
+//                    user.addRole(role);
+//                    userService.saveOrUpdate(user);
+//                });
+//            }
+//        });
+//    }
 
-        roles.forEach(role ->{
-            if(role.getRole().equalsIgnoreCase("CUSTOMER")){
-                users.forEach(user -> {
-                    user.addRole(role);
-                    userService.saveOrUpdate(user);
-                });
-            }
-        });
-    }
-
-    private void assignUsersToAdminRole() {
-        List<Role> roles = (List<Role>) roleService.listAll();
-        List<User> users = (List<User>) userService.listAll();
-
-        roles.forEach(role -> {
-            if (role.getRole().equalsIgnoreCase("ADMIN")) {
-                users.forEach(user -> {
-                    if (user.getUsername().equals("fglenanne")) {
-                        user.addRole(role);
-                        userService.saveOrUpdate(user);
-                    }
-                    if (user.getUsername().equals("doug")) {
-                        user.addRole(role);
-                        userService.saveOrUpdate(user);
-                    }
-                });
-            }
-        });
-    }
+//    private void assignUsersToAdminRole() {
+//        List<Role> roles = (List<Role>) roleService.listAll();
+//        List<User> users = (List<User>) userService.listAll();
+//
+//        roles.forEach(role -> {
+//            if (role.getRole().equalsIgnoreCase("ADMIN")) {
+//                users.forEach(user -> {
+//                    if (user.getUsername().equals("fglenanne")) {
+//                        user.addRole(role);
+//                        userService.saveOrUpdate(user);
+//                    }
+//                    if (user.getUsername().equals("doug")) {
+//                        user.addRole(role);
+//                        userService.saveOrUpdate(user);
+//                    }
+//                });
+//            }
+//        });
+//    }
 
 
-    private void loadRoles() {
-        Role role = new Role();
-        role.setRole("CUSTOMER");
-        roleService.saveOrUpdate(role);
-
-        Role adminRole = new Role();
-        adminRole.setRole("ADMIN");
-        roleService.saveOrUpdate(adminRole);
-    }
+//    private void loadRoles() {
+//        Role role = new Role();
+//        role.setRole("CUSTOMER");
+//        roleService.saveOrUpdate(role);
+//
+//        Role adminRole = new Role();
+//        adminRole.setRole("ADMIN");
+//        roleService.saveOrUpdate(adminRole);
+//    }
 
 //    private void loadOrderHistory() {
 //        List<User> users = (List<User>) userService.listAll();
@@ -177,10 +176,10 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        });
 //    }
 
-    public void loadUsersAndCustomers() {
-        User user1 = new User();
-        user1.setUsername("mweston");
-        user1.setPassword("password");
+//    public void loadUsersAndCustomers() {
+//        User user1 = new User();
+//        user1.setUsername("mweston");
+//        user1.setPassword("password");
 
 //        Customer customer1 = new Customer();
 //        customer1.setFirstName("Micheal");
@@ -193,11 +192,11 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        customer1.setEmail("micheal@burnnotice.com");
 //        customer1.setPhoneNumber("305.333.0101");
 //        user1.setCustomer(customer1);
-        userService.saveOrUpdate(user1);
-
-        User user2 = new User();
-        user2.setUsername("fglenanne");
-        user2.setPassword("password");
+//        userService.saveOrUpdate(user1);
+//
+//        User user2 = new User();
+//        user2.setUsername("fglenanne");
+//        user2.setPassword("password");
 
 //        Customer customer2 = new Customer();
 //        customer2.setFirstName("Fiona");
@@ -210,11 +209,11 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        customer2.setEmail("fiona@burnnotice.com");
 //        customer2.setPhoneNumber("305.323.0233");
 //        user2.setCustomer(customer2);
-        userService.saveOrUpdate(user2);
-
-        User user3 = new User();
-        user3.setUsername("saxe");
-        user3.setPassword("password");
+//        userService.saveOrUpdate(user2);
+//
+//        User user3 = new User();
+//        user3.setUsername("saxe");
+//        user3.setPassword("password");
 //        Customer customer3 = new Customer();
 //        customer3.setFirstName("Sam");
 //        customer3.setLastName("Axe");
@@ -227,11 +226,11 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        customer3.setPhoneNumber("305.426.9832");
 //
 //        user3.setCustomer(customer3);
-        userService.saveOrUpdate(user3);
-
-        User user4 = new User();
-        user4.setUsername("doug");
-        user4.setPassword("password");
+//        userService.saveOrUpdate(user3);
+//
+//        User user4 = new User();
+//        user4.setUsername("doug");
+//        user4.setPassword("password");
 
 //        Customer customer4 = new Customer();
 //        customer4.setFirstName("Doug");
@@ -244,7 +243,7 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        customer4.setEmail("doug@yahoo.com");
 //        customer4.setPhoneNumber("555.555.5555");
 //        user4.setCustomer(customer4);
-        userService.saveOrUpdate(user4);
+//        userService.saveOrUpdate(user4);
     }
 
 //    public void loadProducts(){
@@ -280,4 +279,4 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        productService.saveOrUpdate(product5);
 //
 //    }
-}
+//}
