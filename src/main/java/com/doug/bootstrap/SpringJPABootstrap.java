@@ -2,10 +2,12 @@ package com.doug.bootstrap;
 
 //import com.doug.domain.User;
 //import com.doug.domain.security.Role;
+
 import com.doug.repositories.AnswerRepository;
 import com.doug.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Component;
  * Created by jt on 12/9/15.
  */
 @Component
-//@Profile("bootstrap")
+@Profile("bootstrap")
 public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 //    private UserService userService;

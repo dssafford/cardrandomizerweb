@@ -8,7 +8,6 @@ import com.doug.repositories.LocationRepository;
 import com.doug.repositories.LocationTestRepository;
 import com.doug.repositories.TestRepository;
 import com.doug.services.CardService;
-//import com.doug.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
 import java.util.List;
+
+//import com.doug.services.UserService;
 
 /**
  * Created by Doug on 12/17/16.

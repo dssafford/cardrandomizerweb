@@ -1,6 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -9,7 +10,14 @@ import java.util.ArrayList;
 /**
  * Created by Doug on 12/19/16.
  */
+
 public abstract class Helpers {
+
+	public static String EncryptInput(String inputString){
+		String cryptedPassword=new BCryptPasswordEncoder().encode("ass");
+		System.out.println(cryptedPassword);
+		return cryptedPassword;
+	}
 
 	public static ArrayList<Card> Score(ArrayList<Card> masterDeck, ArrayList<Card> quickAnswers) {
 		ArrayList testArray = new ArrayList();
