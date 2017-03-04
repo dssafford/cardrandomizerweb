@@ -187,6 +187,12 @@ public class ScoreController {
 
 		ArrayList<Answer> answerList = (ArrayList<Answer>)answerService.findById(myListAnswerListID);
 
+		answerList.add(new Answer("doug","throw", "ball"));
+		answerList.add(new Answer("bill","throw", "kite"));
+		answerList.add(new Answer("joe","throw", "ball"));
+		answerList.add(new Answer("sally","throw", "hat"));
+
+
 		//ArrayList masterList = cardRepository.findAll(myListAnswerListID);
 
 
@@ -194,9 +200,9 @@ public class ScoreController {
 //
 //		finalScore = Helpers.CalcFinalScore(testArray);
 
-		model.addAttribute("finalScore", finalScore + "%");
-		model.addAttribute("scores", testArray);
-//		model.addAttribute("answerList", answerList);
+		model.addAttribute("finalScore", 80 + "%");
+		model.addAttribute("scores", myList);
+		model.addAttribute("tests", answerList);
 //		model.addAttribute("masterList", masterList);
 
 		return "score/singleTestScores";
