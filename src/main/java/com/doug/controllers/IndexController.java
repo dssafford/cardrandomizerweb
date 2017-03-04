@@ -130,6 +130,12 @@ public class IndexController {
 
 		return "/user/login";
 	}
+	@RequestMapping("/logout")
+	public String logout(){
+//		model.addAttribute("userform", new LoginCommand());
+
+		return "/user/logout-success";
+	}
 
 //    @RequestMapping("/dologinMenu")
 //    public String loginFormMenu(Model model){
