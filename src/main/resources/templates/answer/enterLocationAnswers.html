@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Display Cards</title>
+    <title>Location Test</title>
     <link rel="stylesheet" th:href="@{/style.css}"></link>
     <th:block th:include="fragments/headerinc :: head"></th:block>
 
@@ -11,6 +11,10 @@
 <body>
 <div class="container">
     <form class="form-horizontal" th:object="${locationAnswer}" th:action="@{/enterLocationAnswers}" method="post">
+        <div>
+            <p></p>
+            <button type="submit" class="col-md-5 col-md-offset-4">Score</button>
+        </div>
         <div class="panel-body col-sm-10">
             <table class="table-condensed">
                 <th style="text-align:left">Number</th>
@@ -156,10 +160,7 @@
                     <td><input th:type="text" class="form-control" th:field="*{l45}" th:tabindex="45" th:value="as"></input></td>
                 </tr>
             </table>
-            <div>
-                <p></p>
-                <button type="submit" class="col-md-5 col-md-offset-4">Score</button>
-            </div>
+
         </div>
     </form>
 </div>

@@ -1,13 +1,10 @@
 package com.doug.domain;
 
-import javax.persistence.Id;
-
 /**
  * Created by Doug on 12/20/16.
  */
 public class TestLocation {
 
-	@Id
 	private Integer id;
 
 	public Integer getId() {

@@ -57,43 +57,7 @@ public class ScoreController {
 	BigDecimal finalScore;
 
 
-	@RequestMapping(value = "/scoreLocationAnswersTest", method = RequestMethod.GET)
-	public String scoreLoctionAnswersTest(HttpSession session, Model model) {
-		ArrayList<Test> locationTestArray = new ArrayList<>();
 
-
-
-
-
-
-//		ArrayList<Location> masterLocationList;
-//
-//		masterLocationList = (ArrayList<Location>)session.getAttribute("locationMasterList");
-//
-//		//create test answers
-//		//create master list if it doesn't exist
-//		if(masterLocationList == null){
-//			masterLocationList = (ArrayList<Location>)locationService.listAllLocations();
-//			session.setAttribute("locationMasterList", masterLocationList);
-//		}
-//
-//		// get answers from session
-//		ArrayList<Location> enteredLocationAnswers =
-//				  (ArrayList<Location>)session.getAttribute("enteredLocationAnswers");
-//
-//		locationTestArray = Helpers.SimpleCompareLocationArrays(masterLocationList, enteredLocationAnswers);
-//
-//
-//		session.setAttribute("testArray", testArray);
-//
-//		finalScore = Helpers.CalcFinalScore(testArray);
-//
-//		model.addAttribute("finalScore", finalScore + "%");
-//		model.addAttribute("scores", testArray);
-
-		return "showLocationScoreHistory";
-
-	}
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
@@ -177,31 +141,7 @@ public class ScoreController {
 		return "score/showScoresHistory";
 	}
 
-	@RequestMapping("/showLocationScoreHistory")
-	public String getLocationScores(Model model) {
 
-		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
-
-		model.addAttribute("scores", mylist);
-
-
-		return "score/showLocationScoresHistory";
-	}
-
-	@RequestMapping("locationScore/{id}")
-	public String showSingleLocationTest(@PathVariable Integer id, Model model){
-
-		ArrayList<LocationTest> myList = (ArrayList<LocationTest>)locationScoreRepository.findByTestId(1);
-
-		finalScore = Helpers.CalcFinalScore(testArray);
-
-		model.addAttribute("finalScore", 80 + "%");
-		model.addAttribute("scores", myList);
-		model.addAttribute("tests", myList);
-//		model.addAttribute("masterList", masterList);
-
-		return "score/singleLocationTestScores";
-	}
 
 
 	@RequestMapping("scoreHistory/{id}")
@@ -300,19 +240,6 @@ public class ScoreController {
 		return displayArrayList;
 	}
 
-	@RequestMapping
-	public String saveLocationScore(){
 
-		//test data
-		Exam exam = new Exam(new BigDecimal(92.5), "my comments here");
-
-
-		//save new entry in Test table
-		Object myObj = examRepository.saveAndFlush(exam);
-
-		//then save in LocsationTest
-
-		return "index";
-	}
 
 }

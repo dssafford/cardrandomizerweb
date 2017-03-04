@@ -93,25 +93,25 @@ public abstract class Helpers {
 
 	}
 
-	public static ArrayList SimpleCompareCardInfoArrays(ArrayList<CardInfo> masterDeck, ArrayList<SingleCardScore> answerDeck) {
+	public static ArrayList SimpleCompareCardInfoArrays(ArrayList<CardInfo> masterDeck, ArrayList<SingleCardScore> answerLocationList) {
 		ArrayList<Test> testArray = new ArrayList();
 		Test test;
 		Double finalScore = 0.00;
 
-		for (int i = 0; i < answerDeck.size(); i++) {
+		for (int i = 0; i < answerLocationList.size(); i++) {
 			test = new Test();
 //			test.setId(i);
 			test.setMasterCardName(masterDeck.get(i).getCardName());
-			test.setAnswerCardName(answerDeck.get(i).getCardName());
+			test.setAnswerCardName(answerLocationList.get(i).getCardName());
 
-			if (masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
+			if (masterDeck.get(i).getCardName().equals(answerLocationList.get(i).getCardName())) {
 				test.setCorrect(true);
 				finalScore = finalScore + 1;
-				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
+				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerLocationList.get(i).getCardName());
 			} else {
 				test.setCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
-						  answerDeck.get(i).getCardName());
+						  answerLocationList.get(i).getCardName());
 			}
 			testArray.add(i, test);
 		}
@@ -121,33 +121,28 @@ public abstract class Helpers {
 
 	}
 
-
-	public static ArrayList SimpleCompareLocationArrays(ArrayList<Location> masterLocationList,
-																		 ArrayList<Location> locationEnteredAnswers) {
+	public static ArrayList SimpleCompareLocationArrays(ArrayList<Location> masterLocationList, ArrayList<Location> answerLocationList) {
 		ArrayList<TestLocation> testArray = new ArrayList();
-		TestLocation test;
+		TestLocation testLocation;
+
 		Double finalScore = 0.00;
 
-
-
-
 		for (int i = 0; i < masterLocationList.size(); i++) {
-			test = new TestLocation();
-//			test.setId(i);
-			test.setMasterLocationName(masterLocationList.get(i).getLocationName());
+			testLocation = new TestLocation();
+			testLocation.setMasterLocationName(masterLocationList.get(i).getLocationName());
+			testLocation.setAnswerLocationName(answerLocationList.get(i).getLocationName());
 
-			test.setAnswerLocationName(locationEnteredAnswers.get(i).toString());
-
-			if (masterLocationList.get(i).getLocationName().equals(locationEnteredAnswers.get(i).toString())) {
-				test.setCorrect(true);
+			if (testLocation.getMasterLocationName().equals(testLocation.getAnswerLocationName())) {
+				testLocation.setCorrect(true);
 				finalScore = finalScore + 1;
-				System.out.println("Found equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " = " + locationEnteredAnswers.get(i).toString());
+//				System.out.println("Found equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " = "
+//						  + answerLocationList.get(i).getLocationName());
 			} else {
-				test.setCorrect(false);
-				System.out.println("Found not equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " != " +
-						  locationEnteredAnswers.get(i).toString());
+				testLocation.setCorrect(false);
+//				System.out.println("Found not equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " != " +
+//						  answerLocationList.get(i).getLocationName());
 			}
-			testArray.add(i, test);
+			testArray.add(i, testLocation);
 		}
 
 		return testArray;
@@ -155,7 +150,7 @@ public abstract class Helpers {
 
 	}
 
-	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerDeck) {
+	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerLocationList) {
 		ArrayList<Test> testArray = new ArrayList();
 		Test test;
 		Double finalScore = 0.00;
@@ -164,16 +159,16 @@ public abstract class Helpers {
 			test = new Test();
 //			test.setId(i);
 			test.setMasterCardName(masterDeck.get(i).getCardName());
-			test.setAnswerCardName(answerDeck.get(i).getCardName());
+			test.setAnswerCardName(answerLocationList.get(i).getCardName());
 
-			if (masterDeck.get(i).getCardName().equals(answerDeck.get(i).getCardName())) {
+			if (masterDeck.get(i).getCardName().equals(answerLocationList.get(i).getCardName())) {
 				test.setCorrect(true);
 				finalScore = finalScore + 1;
-				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerDeck.get(i).getCardName());
+				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerLocationList.get(i).getCardName());
 			} else {
 				test.setCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
-						  answerDeck.get(i).getCardName());
+						  answerLocationList.get(i).getCardName());
 			}
 			testArray.add(i, test);
 		}

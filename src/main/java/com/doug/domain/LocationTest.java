@@ -96,6 +96,15 @@ public class LocationTest {
 
 	public LocationTest(){}
 	public LocationTest(Integer locationNumber, String locationName, String answerPlaceName,
+							  Boolean answerIsCorrect, Integer testId){
+		this.locationNumber=locationNumber;
+		this.locationName=locationName;
+		this.answerPlaceName=answerPlaceName;
+		this.answerIsCorrect=answerIsCorrect;
+		this.testId=testId;
+
+	}
+	public LocationTest(Integer locationNumber, String locationName, String answerPlaceName,
 							  Boolean answerIsCorrect){
 		this.locationNumber=locationNumber;
 		this.locationName=locationName;
