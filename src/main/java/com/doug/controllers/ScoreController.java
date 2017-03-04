@@ -1,10 +1,7 @@
 package com.doug.controllers;
 
 import com.doug.domain.*;
-import com.doug.repositories.AnswerRepository;
-import com.doug.repositories.CardRepository;
-import com.doug.repositories.LocationScoreRepository;
-import com.doug.repositories.ScoreRepository;
+import com.doug.repositories.*;
 import com.doug.services.AnswerServiceImpl;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
@@ -49,8 +46,13 @@ public class ScoreController {
 	CardRepository cardRepository;
 
 	@Autowired
-	LocationScoreRepository locationScoreRepository;
+	ExamRepository examRepository;
 
+	@Autowired
+	LocationTestRepository locationTestRepository;
+
+	@Autowired
+	LocationScoreRepository locationScoreRepository;
 
 	BigDecimal finalScore;
 
@@ -59,32 +61,37 @@ public class ScoreController {
 	public String scoreLoctionAnswersTest(HttpSession session, Model model) {
 		ArrayList<Test> locationTestArray = new ArrayList<>();
 
-		ArrayList<Location> masterLocationList;
-
-		masterLocationList = (ArrayList<Location>)session.getAttribute("locationMasterList");
-
-		//create test answers
-		//create master list if it doesn't exist
-		if(masterLocationList == null){
-			masterLocationList = (ArrayList<Location>)locationService.listAllLocations();
-			session.setAttribute("locationMasterList", masterLocationList);
-		}
-
-		// get answers from session
-		ArrayList<Location> enteredLocationAnswers =
-				  (ArrayList<Location>)session.getAttribute("enteredLocationAnswers");
-
-		locationTestArray = Helpers.SimpleCompareLocationArrays(masterLocationList, enteredLocationAnswers);
 
 
-		session.setAttribute("testArray", testArray);
 
-		finalScore = Helpers.CalcFinalScore(testArray);
 
-		model.addAttribute("finalScore", finalScore + "%");
-		model.addAttribute("scores", testArray);
 
-		return "scores";
+//		ArrayList<Location> masterLocationList;
+//
+//		masterLocationList = (ArrayList<Location>)session.getAttribute("locationMasterList");
+//
+//		//create test answers
+//		//create master list if it doesn't exist
+//		if(masterLocationList == null){
+//			masterLocationList = (ArrayList<Location>)locationService.listAllLocations();
+//			session.setAttribute("locationMasterList", masterLocationList);
+//		}
+//
+//		// get answers from session
+//		ArrayList<Location> enteredLocationAnswers =
+//				  (ArrayList<Location>)session.getAttribute("enteredLocationAnswers");
+//
+//		locationTestArray = Helpers.SimpleCompareLocationArrays(masterLocationList, enteredLocationAnswers);
+//
+//
+//		session.setAttribute("testArray", testArray);
+//
+//		finalScore = Helpers.CalcFinalScore(testArray);
+//
+//		model.addAttribute("finalScore", finalScore + "%");
+//		model.addAttribute("scores", testArray);
+
+		return "showLocationScoreHistory";
 
 	}
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
@@ -291,6 +298,21 @@ public class ScoreController {
 		}
 
 		return displayArrayList;
+	}
+
+	@RequestMapping
+	public String saveLocationScore(){
+
+		//test data
+		Exam exam = new Exam(new BigDecimal(92.5), "my comments here");
+
+
+		//save new entry in Test table
+		Object myObj = examRepository.saveAndFlush(exam);
+
+		//then save in LocsationTest
+
+		return "index";
 	}
 
 }

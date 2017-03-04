@@ -12,6 +12,7 @@ public interface LocationScoreRepository extends JpaRepository<LocationTest, Int
 
 	ArrayList<LocationTest> findByTestId(Integer id);
 
+
 //	ScoreList findOne(String id);
 
 //	List<Person> findByAgeGreaterThan(int age);

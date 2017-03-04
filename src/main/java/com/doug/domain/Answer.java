@@ -1,7 +1,9 @@
 package com.doug.domain;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by Doug on 2/14/17.
@@ -13,10 +15,10 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@ManyToMany()
-	@JoinTable(name = "answer_quiz", joinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"),
-			  inverseJoinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"))
-	private Set<Quiz> quizzes;
+//	@ManyToMany()
+//	@JoinTable(name = "answer_quiz", joinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"),
+//			  inverseJoinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"))
+//	private Set<Quiz> quizzes;
 
 	private String questionCardName;
 	private String questionCardObject;
@@ -71,12 +73,12 @@ public class Answer {
 		this.id = id;
 	}
 
-	public Set<Quiz> getQuizzes() {
-		return quizzes;
-	}
-	public void setQuizzes(Set<Quiz> answerQuizs) {
-		this.quizzes = answerQuizs;
-	}
+//	public Set<Quiz> getQuizzes() {
+//		return quizzes;
+//	}
+//	public void setQuizzes(Set<Quiz> answerQuizs) {
+//		this.quizzes = answerQuizs;
+//	}
 
 	public String getAnswerPersonName() {
 		return answerPersonName;

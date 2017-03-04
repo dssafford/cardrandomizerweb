@@ -4,7 +4,7 @@ package com.doug.bootstrap;
 //import com.doug.domain.security.Role;
 
 import com.doug.repositories.AnswerRepository;
-import com.doug.repositories.QuizRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
@@ -37,8 +37,8 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
     @Autowired
     AnswerRepository answerRepository;
 
-    @Autowired
-    QuizRepository quizRepository;
+//    @Autowired
+//    QuizRepository quizRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
