@@ -3,6 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.*;
 import com.doug.repositories.AnswerRepository;
 import com.doug.repositories.CardRepository;
+import com.doug.repositories.LocationScoreRepository;
 import com.doug.repositories.ScoreRepository;
 import com.doug.services.AnswerServiceImpl;
 import com.doug.services.CardServiceImpl;
@@ -46,6 +47,9 @@ public class ScoreController {
 
 	@Autowired
 	CardRepository cardRepository;
+
+	@Autowired
+	LocationScoreRepository locationScoreRepository;
 
 
 	BigDecimal finalScore;
@@ -160,19 +164,38 @@ public class ScoreController {
 
 		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
 
-//
+		model.addAttribute("scores", mylist);
 
-//		ArrayList<CardInfo> masterList = mylist.get(1).getMasterList();
-//		String cardName = masterList.get(0).getCardName();
+
+		return "score/showScoresHistory";
+	}
+
+	@RequestMapping("/showLocationScoreHistory")
+	public String getLocationScores(Model model) {
+
+		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
 
 		model.addAttribute("scores", mylist);
 
-		//displayList.get(0).getMasterCardName();
-		//model.addAttribute("scores", displayList);
 
-		return "score/showScoresHistory";
-
+		return "score/showLocationScoresHistory";
 	}
+
+	@RequestMapping("locationScore/{id}")
+	public String showSingleLocationTest(@PathVariable Integer id, Model model){
+
+		ArrayList<LocationTest> myList = (ArrayList<LocationTest>)locationScoreRepository.findByTestId(1);
+
+		finalScore = Helpers.CalcFinalScore(testArray);
+
+		model.addAttribute("finalScore", 80 + "%");
+		model.addAttribute("scores", myList);
+		model.addAttribute("tests", myList);
+//		model.addAttribute("masterList", masterList);
+
+		return "score/singleLocationTestScores";
+	}
+
 
 	@RequestMapping("scoreHistory/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){

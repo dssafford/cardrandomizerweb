@@ -1,7 +1,10 @@
 package com.doug.services;
 
 import com.doug.domain.CardInfo;
+import com.doug.domain.LocationTest;
 import com.doug.domain.SingleCardScore;
+import com.doug.repositories.LocationScoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -13,6 +16,16 @@ import java.util.ArrayList;
 @Service
 public class ScoreServiceImpl implements ScoreService{
 
+    @Autowired
+    LocationScoreRepository locationScoreRepository;
+
+    @Override
+    public ArrayList<LocationTest> GetLocationTestAnswers(Integer testId) {
+
+        ArrayList<LocationTest> myList = locationScoreRepository.findByTestId(testId);
+        return myList;
+
+    }
 
     public BigDecimal GetCumulativeScore(ArrayList<SingleCardScore> singleCardScoreArrayList) {
         Integer denominator = singleCardScoreArrayList.size();

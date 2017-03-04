@@ -1,6 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.CardInfo;
+import com.doug.domain.LocationTest;
 import com.doug.domain.SingleCardScore;
 
 import java.math.BigDecimal;
@@ -18,5 +19,6 @@ public interface ScoreService {
 
     BigDecimal GetCumulativeScore(ArrayList<SingleCardScore> singleCardScoreArrayList);
 
+    ArrayList<LocationTest> GetLocationTestAnswers(Integer testId);
 
 }

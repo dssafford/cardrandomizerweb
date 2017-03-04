@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Single Test View</title>
+    <title>Single Location Test View</title>
     <th:block th:include="fragments/headerinc :: head"></th:block>
 
 </head>
@@ -11,23 +11,24 @@
 <body>
 <div class="container">
     <div class="row">
-        <div> <h1 th:class="formHeader">Single Test Answers</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
+        <div> <h1 th:class="formHeader">Location Test Answers</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
         <div>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>
                     <table class="table table-bordered">
                         <tr>
                             <th>ID</th>
-                            <th>Person Name</th>
-                            <th>Action</th>
-                            <th>Object</th>
-                            <th>Correct</th>
+                            <th>Location Number</th>
+                            <th>Location Name</th>
+                            <th>Answer Name</th>
+                            <th>Answer Correct?</th>
                         </tr>
                         <tr th:each="test, testStat : ${tests}">
                             <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
-                            <td th:text="${test.answerPersonName}">Person Name</td>
-                            <td th:text="${test.answerPersonAction}"><a href="/${cachedCard(1).id}">Action</a></td>
-                            <td th:text="${test.answerPersonObject}">Object</td>
+                            <td th:text="${test.locationNumber}">Person Name</td>
+                            <td th:text="${test.locationName}"><a href="/${cachedCard(1).id}">Action</a></td>
+                            <td th:text="${test.answerPlaceName}">Object</td>
+                            <td th:text="${test.answerIsCorrect}">Object</td>
                         </tr>
                     </table>
                 </div>

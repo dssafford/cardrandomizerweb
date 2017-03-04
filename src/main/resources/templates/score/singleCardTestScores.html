@@ -21,13 +21,14 @@
                             <th>Person Name</th>
                             <th>Action</th>
                             <th>Object</th>
-                            <th>Correct</th>
+                            <th>Correct?</th>
                         </tr>
                         <tr th:each="test, testStat : ${tests}">
                             <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
                             <td th:text="${test.answerPersonName}">Person Name</td>
                             <td th:text="${test.answerPersonAction}"><a href="/${cachedCard(1).id}">Action</a></td>
                             <td th:text="${test.answerPersonObject}">Object</td>
+                            <td th:text="${test.answerCorrect}">Object</td>
                         </tr>
                     </table>
                 </div>

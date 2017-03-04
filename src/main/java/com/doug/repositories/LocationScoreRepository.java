@@ -1,12 +1,16 @@
 package com.doug.repositories;
 
-import com.doug.domain.ScoreList;
+import com.doug.domain.LocationTest;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.ArrayList;
 
 /**
  * Created by Doug on 9/10/16.
  */
-public interface ScoreRepository extends JpaRepository<ScoreList, Integer> {
+public interface LocationScoreRepository extends JpaRepository<LocationTest, Integer> {
+
+	ArrayList<LocationTest> findByTestId(Integer id);
 
 //	ScoreList findOne(String id);
 
