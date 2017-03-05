@@ -88,7 +88,7 @@ public class ScoreController {
 
 	}
 
-	@RequestMapping(value = "/scoreAnswers", method = RequestMethod.GET)
+	@RequestMapping(value = "/scoreCardAnswers", method = RequestMethod.GET)
 	public String scoreAnswers(HttpSession session, Model model) {
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 		ArrayList<Card> cachedShuffledCardNames = (ArrayList<Card>)session.getAttribute("cachedShuffledCardNames");
@@ -107,7 +107,7 @@ public class ScoreController {
 
 	}
 
-	@RequestMapping("/saveScore")
+	@RequestMapping("/saveCardScore")
 	public String testScore(Model model) {
 		ScoreList myScore = scoreRepository.save(createTestScore());
 		model.addAttribute("score", myScore);
@@ -130,7 +130,7 @@ public class ScoreController {
 		return "score/showScores";
 
 	}
-	@RequestMapping("/showScoreHistory")
+	@RequestMapping("/showCardScoreHistory")
 	public String getAllScores(Model model) {
 
 		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
@@ -144,7 +144,7 @@ public class ScoreController {
 
 
 
-	@RequestMapping("scoreHistory/{id}")
+	@RequestMapping("scoreCardHistory/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){
 
 		ScoreList myList = scoreRepository.findOne(id);

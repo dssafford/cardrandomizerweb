@@ -12,7 +12,7 @@
 <script>
     function DoSomething() {
         //alert("in DoSomething");
-        window.location = "/saveScore";
+        window.location = "/saveCardScore";
     }
 
 </script>
@@ -21,7 +21,7 @@
         <!--<div class="col-md-5 col-md-offset-4">-->
         <div> <h1 th:class="formHeader">Scores</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
         <div><input type="button" onclick="DoSomething()">Go </input>
-            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
+            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreCardAnswers}" method="post">
                 <div>
                     <table class="table table-bordered">
                         <tr>

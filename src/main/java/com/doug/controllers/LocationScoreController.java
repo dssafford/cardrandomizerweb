@@ -161,7 +161,7 @@ public class LocationScoreController {
 //		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)
 		//save new entry in Test table
-		Object myObj = examRepository.saveAndFlush(exam);
+		Object myObj = examRepository.save(exam);
 
 		ArrayList<LocationTest> locationTests = new ArrayList<>();
 		LocationTest locationTest = new LocationTest();
@@ -180,7 +180,7 @@ public class LocationScoreController {
 	@RequestMapping("/showLocationScoreHistory")
 	public String getLocationScores(Model model) {
 
-		ArrayList<LocationTest> mylist = (ArrayList<LocationTest>)locationScoreRepository.findAll();
+		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findAll();
 
 		model.addAttribute("scores", mylist);
 
