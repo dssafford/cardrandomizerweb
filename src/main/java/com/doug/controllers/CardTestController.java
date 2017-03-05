@@ -1,13 +1,16 @@
 package com.doug.controllers;
 
 import com.doug.domain.CardInfo;
+import com.doug.domain.Exam;
 import com.doug.domain.ScoreList;
 import com.doug.domain.SingleCardScore;
 import com.doug.repositories.CardRepository;
+import com.doug.repositories.ExamRepository;
 import com.doug.repositories.ScoreRepository;
 import com.doug.services.CardService;
 import com.doug.services.Helpers;
 import com.doug.services.ScoreService;
+import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +49,8 @@ public class CardTestController {
 	private CardRepository cardRepository;
 
 
+	@Autowired
+	ExamRepository examRepository;
 
 	private Integer deckIndex;
 
@@ -328,14 +334,14 @@ public class CardTestController {
 	}
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
-		ScoreList scoreList = new ScoreList();
+		Exam exam = new Exam();
 //		scoreList.setMasterList(learningMasterCards);
 //		scoreList.setAnswerList(enteredAnswers);
-		scoreList.setFinalScore(cumulativeScore);
-		scoreList.setComments("comments here");
-		scoreList.setTimestamp(new Date());
+		exam.setFinalScore(cumulativeScore);
+		exam.setComments("comments here");
+		exam.setTimestamp(new Timestamp(Time.now()));
 
-		scoreRepository.save(scoreList);
+		examRepository.save(exam);
 
 	}
 }

@@ -1,12 +1,12 @@
 package com.doug.repositories;
 
-import com.doug.domain.ScoreList;
+import com.doug.domain.Exam;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Created by Doug on 9/10/16.
  */
-public interface ScoreRepository extends JpaRepository<ScoreList, Integer> {
+public interface ScoreRepository extends JpaRepository<Exam, Integer> {
 
 //	ScoreList findOne(String id);
 

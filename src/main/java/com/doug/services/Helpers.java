@@ -5,7 +5,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Doug on 12/19/16.
@@ -13,6 +15,17 @@ import java.util.ArrayList;
 
 public abstract class Helpers {
 
+	public static Timestamp getTimeStamp() {
+		//Date object
+		Date date = new Date();
+		//getTime() returns current time in milliseconds
+		long time = date.getTime();
+		//Passed the milliseconds to constructor of Timestamp class
+		Timestamp ts = new Timestamp(time);
+
+		System.out.println("Current Time Stamp: " + ts);
+		return ts;
+	}
 	public static String EncryptInput(String inputString){
 		String cryptedPassword=new BCryptPasswordEncoder().encode("ass");
 		System.out.println(cryptedPassword);

@@ -28,13 +28,17 @@
                             <th>Iter id</th>
                             <th>Final Score</th>
                             <th>Timestamp</th>
+                            <th>Test Type</th>
                             <th>Comments</th>
+                            <th>Is Active</th>
                         </tr>
                         <tr th:each="score,  scoreStat : ${scores}">
-                            <td> <a th:href="${'/scoreHistory/'} + ${score.id}">Select</a></td>
+                            <td> <a th:href="${'/scoreCardHistory/'} + ${score.id}">Select</a></td>
                             <td th:text="${score.finalScore}">index</td>
                             <td th:text="${score.timestamp}">index</td>
+                            <td th:text="${score.test_type}">index</td>
                             <td th:text="${score.comments}">index</td>
+                            <td th:text="${score.active}">index</td>
 
                             <!--<td th:text="${score.scoreList(0).masterCardName}">Name</td>-->
                             <!--<td th:text="${score.scoreList(0).answerCardName}">Name</td>-->

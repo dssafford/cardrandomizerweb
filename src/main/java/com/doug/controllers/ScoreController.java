@@ -6,6 +6,7 @@ import com.doug.services.AnswerServiceImpl;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import com.doug.services.LocationService;
+import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Doug on 1/8/17.
@@ -25,7 +26,7 @@ import java.util.Date;
 @Controller
 public class ScoreController {
 
-	ArrayList<Test> testArray = new ArrayList<>();
+
 
 	@Autowired
 	private ScoreRepository scoreRepository;
@@ -61,7 +62,7 @@ public class ScoreController {
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
-
+		ArrayList<Test> testArray = new ArrayList<>();
 		masterCardDeck = (ArrayList<CardInfo>)session.getAttribute("masterCardDeck");
 
 		//create test answers
@@ -92,7 +93,7 @@ public class ScoreController {
 	public String scoreAnswers(HttpSession session, Model model) {
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 		ArrayList<Card> cachedShuffledCardNames = (ArrayList<Card>)session.getAttribute("cachedShuffledCardNames");
-
+		ArrayList<Test> testArray = new ArrayList<>();
 
 		testArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
 
@@ -109,7 +110,9 @@ public class ScoreController {
 
 	@RequestMapping("/saveCardScore")
 	public String testScore(Model model) {
-		ScoreList myScore = scoreRepository.save(createTestScore());
+
+		Exam myScore = examRepository.save(createTestScore());
+
 		model.addAttribute("score", myScore);
 		return "score/showScore";
 	}
@@ -133,12 +136,12 @@ public class ScoreController {
 	@RequestMapping("/showCardScoreHistory")
 	public String getAllScores(Model model) {
 
-		ArrayList<ScoreList> mylist = (ArrayList<ScoreList>)scoreRepository.findAll();
+		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("card");
 
 		model.addAttribute("scores", mylist);
 
 
-		return "score/showScoresHistory";
+		return "score/showCardScoresHistory";
 	}
 
 
@@ -147,20 +150,20 @@ public class ScoreController {
 	@RequestMapping("scoreCardHistory/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){
 
-		ScoreList myList = scoreRepository.findOne(id);
+		Exam myList = examRepository.findOne(id);
 
-		Integer masterListID= myList.getMasterListID();
+//		Integer masterListID= myList.getMasterListID();
+//
+//		Integer myListAnswerListID = myList.getAnswerListID();
 
-		Integer myListAnswerListID = myList.getAnswerListID();
 
 
-
-		ArrayList<Answer> answerList = (ArrayList<Answer>)answerService.findById(myListAnswerListID);
-
-		answerList.add(new Answer("doug","throw", "ball"));
-		answerList.add(new Answer("bill","throw", "kite"));
-		answerList.add(new Answer("joe","throw", "ball"));
-		answerList.add(new Answer("sally","throw", "hat"));
+//		ArrayList<Answer> answerList = (ArrayList<Answer>)answerService.findById(myListAnswerListID);
+//
+//		answerList.add(new Answer("doug","throw", "ball"));
+//		answerList.add(new Answer("bill","throw", "kite"));
+//		answerList.add(new Answer("joe","throw", "ball"));
+//		answerList.add(new Answer("sally","throw", "hat"));
 
 
 		//ArrayList masterList = cardRepository.findAll(myListAnswerListID);
@@ -171,8 +174,8 @@ public class ScoreController {
 //		finalScore = Helpers.CalcFinalScore(testArray);
 
 		model.addAttribute("finalScore", 80 + "%");
-		model.addAttribute("scores", myList);
-		model.addAttribute("tests", answerList);
+//		model.addAttribute("scores", myList);
+//		model.addAttribute("tests", answerList);
 //		model.addAttribute("masterList", masterList);
 
 		return "score/singleTestScores";
@@ -180,17 +183,23 @@ public class ScoreController {
 
 
 	private void createScoreToSave(ArrayList learningMasterCards, ArrayList enteredAnswers) {
-		ScoreList scoreList = new ScoreList();
+		Exam exam = new Exam();
 //		scoreList.setMasterList(learningMasterCards);
 //		scoreList.setAnswerList(enteredAnswers);
-		scoreList.setFinalScore(finalScore);
 
-		scoreRepository.save(scoreList);
+		ArrayList<Test> testArray = new ArrayList<>();
+
+		exam.setFinalScore(finalScore);
+
+		scoreRepository.save(exam);
+
 
 	}
 
-	public ArrayList createScoreList() {
+	public ArrayList createScoreList(HttpSession session) {
 		ArrayList returnList = new ArrayList();
+
+		ArrayList<Test> testArray = ((ArrayList<Test>)session.getAttribute("testArray"));
 
 		for(int i=0;i< testArray.size();i++) {
 			returnList.add(testArray.get(i).isCorrect());
@@ -201,17 +210,14 @@ public class ScoreController {
 	}
 
 
-	private ScoreList createTestScore() {
-		ScoreList scoreList = new ScoreList();
+	private Exam createTestScore() {
+		Exam exam = new Exam();
 
-		//score.setUserid(1);
-//		scoreList.setAnswerList(TestHelper.createAnswerList());
-//		scoreList.setMasterList(createTestRandomList());
-		//scoreList.setFinalScore(finalScore);
-		scoreList.setComments("comments here");
-		scoreList.setTimestamp(new Date());
+		exam.setComments("comments here");
+		exam.setTimestamp(new Timestamp(Time.now()));
+		exam.setTesttype("card");
 
-		return scoreList;
+		return exam;
 	}
 
 	private ArrayList<Display> createDisplayList(ArrayList learningRandomCards,

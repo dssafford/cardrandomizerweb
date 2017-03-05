@@ -14,9 +14,11 @@
         <div class="col-sm-12">
             <div><h1 th:class="formHeader">Location Exam Results</h1>
                 <a href="/" class="">Return</a>
+
                 <h2>Final Score = <span th:text="${finalScore}">Name</span></h2></div>
             <div>
-                <form class="form-horizontal" th:object="${clickForm}" th:action="@{/index}" method="get">
+                <form class="form-horizontal" th:object="${clickForm}" th:action="@{/saveLocationTestScore}" method="post">
+                    <button type="submit" class="col-md-5 col-md-offset-4">Save Test</button>
                     <div>
                         <table class="table table-bordered">
                             <tr>

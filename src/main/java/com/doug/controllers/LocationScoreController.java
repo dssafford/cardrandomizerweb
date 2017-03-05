@@ -149,10 +149,11 @@ public class LocationScoreController {
 		model.addAttribute("finalScore", b + "%");
 		model.addAttribute("scores", locationTestArray);
 
-		return "answer/showLocationAnswerSingle";
+		return "answer/showLocationAnswerSingleTest";
 
 	}
-	@RequestMapping("/doodie")
+
+	@RequestMapping(value = "/saveLocationTestScore", method = RequestMethod.POST)
 	public String saveLocationScore(){
 
 		//test data
@@ -180,7 +181,7 @@ public class LocationScoreController {
 	@RequestMapping("/showLocationScoreHistory")
 	public String getLocationScores(Model model) {
 
-		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findAll();
+		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("location");
 
 		model.addAttribute("scores", mylist);
 

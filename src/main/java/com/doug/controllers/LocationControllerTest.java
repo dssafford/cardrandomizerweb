@@ -1,10 +1,7 @@
 package com.doug.controllers;
 
 import com.doug.commands.JournalCommand;
-import com.doug.domain.AnswerListSmall;
-import com.doug.domain.Location;
-import com.doug.domain.LocationTest;
-import com.doug.domain.ScoreList;
+import com.doug.domain.*;
 import com.doug.repositories.LocationRepository;
 import com.doug.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +22,7 @@ import java.util.List;
  */
 
 @Controller
-public class LocationController {
+public class LocationControllerTest {
 
 	@Autowired
 	AnswerListSmall answerListSmall;
@@ -45,6 +42,12 @@ public class LocationController {
 	BigDecimal cumulativeScore = null;
 
 	ArrayList<LocationTest> singleLocationScoreArrayList;
+
+
+
+
+
+
 
 	@RequestMapping(value = "/singleLocationTestStart", method = RequestMethod.GET)
 	public String startSingleCardScoring(HttpSession session) {
@@ -147,22 +150,11 @@ public class LocationController {
 		cachedRandomLocationList = (ArrayList<Location>) session.getAttribute("randomLocationList");
 		session.getAttribute("randomLocationListIndex");
 
-//		locationIndex = locationIndex + 1;
-//		session.setAttribute("locationIndex", locationIndex);
-
 		location.setLocationNumber(cachedRandomLocationList.get(locationIndex+1).getLocationNumber());
 
 		model.addAttribute("locationInfo", location);
 
 		model.addAttribute("score", cumulativeScore + "%");
-
-		//Update score just for show
-//			System.out.println("number of cards in score = " + singleCardScoreArrayList.size());
-//			System.out.println("Card Name = " + singleCardScore.getCardName());
-//			System.out.println("Card Person = " + singleCardScore.getPersonName() + "- " + singleCardScore.getPersonNameCorrect().toString());
-//			System.out.println("Card Action = " + singleCardScore.getActionName() + "- " + singleCardScore.getActionNameCorrect().toString());
-//			System.out.println("Card Object = " + singleCardScore.getObjectName() + "- " + singleCardScore.getObjectNameCorrect().toString());
-//			System.out.println("out of " + locationIndex + " cards, " + locationIndex * 3 + " possible answers. Score = " + cumulativeScore + "%");
 
 		// Ready to Score
 
@@ -171,10 +163,8 @@ public class LocationController {
 
 		//Create Test Score
 		ScoreList scoreList = new ScoreList();
-//			scoreList.setMasterList(cachedRandomLocationList);
-//			scoreList.setAnswerList(singleCardScoreArrayList);
+
 		scoreList.setFinalScore(cumulativeScore);
-//			createScoreToSave(cachedRandomLocationList, singleLocationScoreArrayList);
 
 		return"redirect:/singleLocationTest";
 }

@@ -1,8 +1,8 @@
 package com.doug.controllers;
 
+import com.doug.domain.Exam;
+import com.doug.repositories.ExamRepository;
 import com.doug.services.CardService;
-import com.doug.domain.Card;
-
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import org.junit.After;
@@ -18,9 +18,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by doug on 1/21/17.
@@ -29,11 +31,53 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class LearnCardControllerTest {
+    @Mock //Mockito Mock object
+    private CardService cardService;
+
+    @InjectMocks //setups up controller, and injects mock objects into it.
+    private LearnCardController learnCardController;
+
+
+    private MockMvc mockMvc;
+
+    @Autowired
+    private CardServiceImpl cardServiceImpl;
+
+    @Autowired
+    ExamRepository examRepository;
+
     @After
     public void tearDown() throws Exception {
 
     }
 
+    @Test
+    public void findByTestType() throws Exception{
+
+        ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("card");
+        assertNotNull(mylist);
+
+    }
+    @Test
+    public void saveCardTest() throws Exception {
+
+        //Date object
+//        Date date= new Date();
+//        //getTime() returns current time in milliseconds
+//        long time = date.getTime();
+//        //Passed the milliseconds to constructor of Timestamp class
+//        Timestamp ts = new Timestamp(time);
+//        System.out.println("Current Time Stamp: "+ts);
+
+//        Timestamp ts = Helpers.getTimeStamp();
+        //test data
+        Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
+
+        Object myObj = examRepository.saveAndFlush(exam);
+        assertNotNull(myObj);
+        assert(((Exam)myObj).getId()>0);
+
+    }
     @Test
     public void setCardService() throws Exception {
 
@@ -144,6 +188,8 @@ public class LearnCardControllerTest {
 
     }
 
+
+
 //    @Test
 //    public void getMasterLearningList() throws Exception {
 //        ArrayList<Card> cards = cardServiceImpl.createMasterCardList();
@@ -152,17 +198,6 @@ public class LearnCardControllerTest {
 //
 //    }
 
-    @Mock //Mockito Mock object
-    private CardService cardService;
-
-    @InjectMocks //setups up controller, and injects mock objects into it.
-    private LearnCardController learnCardController;
-
-
-    private MockMvc mockMvc;
-
-    @Autowired
-    private CardServiceImpl cardServiceImpl;
 
     @Before
     public void setup(){
