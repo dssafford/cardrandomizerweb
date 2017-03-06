@@ -37,7 +37,7 @@ public class CardTestController {
 	ScoreService scoreService;
 
 	@Autowired
-	ScoreController scoreController;
+	CardScoreController scoreController;
 
 	@Autowired
 	ScoreRepository scoreRepository;

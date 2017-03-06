@@ -33,7 +33,7 @@
                             <th>Is Active</th>
                         </tr>
                         <tr th:each="score,  scoreStat : ${scores}">
-                            <td> <a th:href="${'/scoreCardHistory/'} + ${score.id}">Select</a></td>
+                            <td> <a th:href="${'/cardScore/'} + ${score.id}">Select</a></td>
                             <td th:text="${score.finalScore}">index</td>
                             <td th:text="${score.timestamp}">index</td>
                             <td th:text="${score.test_type}">index</td>

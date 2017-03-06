@@ -84,14 +84,14 @@ public class Exam {
 	public Exam() {
 	}
 
-	public Exam(String comments) {
-		this.comments = comments;
-	}
-
-	public Exam(BigDecimal finalScore, String comments) {
-		this.comments = comments;
-		this.finalScore = finalScore;
-	}
+//	public Exam(String comments) {
+//		this.comments = comments;
+//	}
+//
+//	public Exam(BigDecimal finalScore, String comments) {
+//		this.comments = comments;
+//		this.finalScore = finalScore;
+//	}
 
 	public Exam(BigDecimal finalScore, Timestamp timestamp, String testtype, String comments, Boolean isActive){
 		this.finalScore=finalScore;

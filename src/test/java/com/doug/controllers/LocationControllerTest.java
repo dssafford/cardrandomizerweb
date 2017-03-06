@@ -104,7 +104,9 @@ public class LocationControllerTest {
 
 		List<Location> locationList = locationRepository.findAll();
 		//test data
-		Exam exam = new Exam(new BigDecimal(92.5), "my comments here");
+
+		Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "location",  "my comments here", true);
+
 
 //		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)

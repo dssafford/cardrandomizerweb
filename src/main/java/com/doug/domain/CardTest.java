@@ -8,17 +8,13 @@ import javax.persistence.Id;
 /**
  * Created by Doug on 2/25/17.
  */
+
 @Entity
 public class CardTest {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
-//	@ManyToMany()
-//	@JoinTable(name = "answer_quiz", joinColumns = @JoinColumn(name = "answer_id", referencedColumnName = "id"),
-//			  inverseJoinColumns = @JoinColumn(name = "quiz_id", referencedColumnName = "id"))
-//	private Set<Quiz> quizzes;
 
 	private String questionCardName;
 	private String questionCardObject;
@@ -30,7 +26,7 @@ public class CardTest {
 	private Boolean answerPersonNameCorrect;
 	private Boolean answerPersonActionCorrect;
 	private Boolean answerPersonObjectCorrect;
-	private Integer testid;
+	private Integer testId;
 
 	public int getId() {
 		return id;
@@ -38,6 +34,14 @@ public class CardTest {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Integer getTestId() {
+		return testId;
+	}
+
+	public void setTestId(Integer testId) {
+		this.testId = testId;
 	}
 
 	public String getQuestionCardName() {
@@ -75,11 +79,11 @@ public class CardTest {
 
 
 	public Integer getTestid() {
-		return testid;
+		return testId;
 	}
 
 	public void setTestid(Integer testid) {
-		this.testid = testid;
+		this.testId = testid;
 	}
 
 	public String getAnswerPersonName() {
@@ -147,7 +151,7 @@ public class CardTest {
 		this.answerPersonNameCorrect=answerPersonNameCorrect;
 		this.answerPersonActionCorrect=answerPersonActionCorrect;
 		this.answerPersonObjectCorrect=answerPersonObjectCorrect;
-		this.testid=testid;
+		this.testId=testid;
 
 	}
 }

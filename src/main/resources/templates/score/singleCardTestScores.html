@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div> <h1 th:class="formHeader">Single Test Answers</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
+        <div> <h1 th:class="formHeader">Card Test Answers</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
         <div>
             <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
                 <div>
@@ -21,14 +21,20 @@
                             <th>Person Name</th>
                             <th>Action</th>
                             <th>Object</th>
-                            <th>Correct?</th>
+                            <th>Name Correct?</th>
+                            <th>Action Correct?</th>
+                            <th>Object Correct?</th>
+                            <th>Test ID</th>
                         </tr>
                         <tr th:each="test, testStat : ${tests}">
                             <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
                             <td th:text="${test.answerPersonName}">Person Name</td>
                             <td th:text="${test.answerPersonAction}"><a href="/${cachedCard(1).id}">Action</a></td>
                             <td th:text="${test.answerPersonObject}">Object</td>
-                            <td th:text="${test.answerCorrect}">Object</td>
+                            <td th:text="${test.answerPersonNameCorrect}">Object</td>
+                            <td th:text="${test.answerPersonActionCorrect}">Object</td>
+                            <td th:text="${test.answerPersonObjectCorrect}">Object</td>
+                            <td th:text="${test.testId}">Object</td>
                         </tr>
                     </table>
                 </div>

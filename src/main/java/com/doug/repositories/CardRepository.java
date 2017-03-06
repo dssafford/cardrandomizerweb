@@ -2,12 +2,14 @@ package com.doug.repositories;
 
 import com.doug.domain.CardInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Doug on 2/12/17.
  */
+@Repository
 public interface CardRepository extends JpaRepository<CardInfo, Integer> {
 
 	List<CardInfo> findByCardNameLike(String cardName);

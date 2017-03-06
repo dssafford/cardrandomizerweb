@@ -22,6 +22,7 @@
                             <th>Location Name</th>
                             <th>Answer Name</th>
                             <th>Answer Correct?</th>
+                            <th>Test ID</th>
                         </tr>
                         <tr th:each="test, testStat : ${tests}">
                             <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
@@ -29,6 +30,7 @@
                             <td th:text="${test.locationName}"><a href="/${cachedCard(1).id}">Action</a></td>
                             <td th:text="${test.answerPlaceName}">Object</td>
                             <td th:text="${test.answerIsCorrect}">Object</td>
+                            <td th:text="${test.testId}">Object</td>
                         </tr>
                     </table>
                 </div>

@@ -4,6 +4,7 @@ import com.doug.domain.*;
 import com.doug.repositories.ExamRepository;
 import com.doug.repositories.LocationScoreRepository;
 import com.doug.repositories.LocationTestRepository;
+import com.doug.services.Helpers;
 import com.doug.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -157,7 +158,8 @@ public class LocationScoreController {
 	public String saveLocationScore(){
 
 		//test data
-		Exam exam = new Exam(new BigDecimal(92.5), "my comments here");
+		Exam exam = new Exam(new BigDecimal(92.5), Helpers.getTimeStamp(), "location",  "my comments here", true);
+
 
 //		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)
@@ -166,11 +168,11 @@ public class LocationScoreController {
 
 		ArrayList<LocationTest> locationTests = new ArrayList<>();
 		LocationTest locationTest = new LocationTest();
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, 1));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, 1));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, 1));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, 1));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, 1));
+		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
 
 		//then save in LocationTest
 		locationTestRepository.save(locationTests);
@@ -192,7 +194,7 @@ public class LocationScoreController {
 	@RequestMapping("locationScore/{id}")
 	public String showSingleLocationTest(@PathVariable Integer id, Model model){
 
-		ArrayList<LocationTest> myList = (ArrayList<LocationTest>)locationScoreRepository.findByTestId(1);
+		ArrayList<LocationTest> myList = (ArrayList<LocationTest>)locationScoreRepository.findByTestId(id);
 
 		model.addAttribute("finalScore", 80 + "%");
 		model.addAttribute("scores", myList);

@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 
 @Controller
-public class ScoreController {
+public class CardScoreController {
 
 
 
@@ -55,9 +55,13 @@ public class ScoreController {
 	@Autowired
 	LocationScoreRepository locationScoreRepository;
 
+	@Autowired
+	CardScoreRepository cardScoreRepository;
+
+	@Autowired
+	CardTestRepository cardTestRepository;
+
 	BigDecimal finalScore;
-
-
 
 	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
@@ -111,10 +115,28 @@ public class ScoreController {
 	@RequestMapping("/saveCardScore")
 	public String testScore(Model model) {
 
-		Exam myScore = examRepository.save(createTestScore());
+//		Exam myScore = examRepository.save(createTestScore());
 
-		model.addAttribute("score", myScore);
-		return "score/showScore";
+		Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
+
+
+//public CardTest(String answerPersonName, String answerPersonAction, String answerPersonObject, Boolean answerPersonNameCorrect,
+//				  Boolean answerPersonActionCorrect, Boolean answerPersonObjectCorrect, Integer testid) {
+		//save new entry in Test table
+		Object myObj = examRepository.save(exam);
+
+		ArrayList<CardTest> cardTests = new ArrayList<>();
+		LocationTest locationTest = new LocationTest();
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		//then save in LocationTest
+		cardTestRepository.save(cardTests);
+
+
+		return "index";
 	}
 
 	@RequestMapping("/getScores")
@@ -147,10 +169,19 @@ public class ScoreController {
 
 
 
-	@RequestMapping("scoreCardHistory/{id}")
+	@RequestMapping("cardScore/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){
 
-		Exam myList = examRepository.findOne(id);
+//		Exam myList = examRepository.findOne(id);
+
+		ArrayList<CardTest> myList = (ArrayList<CardTest>)cardScoreRepository.findByTestId(id);
+
+		model.addAttribute("finalScore", 80 + "%");
+		model.addAttribute("scores", myList);
+		model.addAttribute("tests", myList);
+//		model.addAttribute("masterList", masterList);
+
+
 
 //		Integer masterListID= myList.getMasterListID();
 //
@@ -178,7 +209,7 @@ public class ScoreController {
 //		model.addAttribute("tests", answerList);
 //		model.addAttribute("masterList", masterList);
 
-		return "score/singleTestScores";
+		return "score/singleCardTestScores";
 	}
 
 
