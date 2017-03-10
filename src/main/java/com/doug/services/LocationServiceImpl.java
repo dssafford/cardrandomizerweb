@@ -15,8 +15,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocationServiceImpl implements LocationService {
 
+	private LocationRepository locationRepository;
+
+//	@Autowired
+//	LocationRepository locationRepository;
+
 	@Autowired
-	LocationRepository locationRepository;
+	public void setLocationRepository(LocationRepository locationRepository) {
+		this.locationRepository = locationRepository;
+	}
 
 	@Override
 	public Iterable<Location> listAllLocations() {
@@ -26,7 +33,9 @@ public class LocationServiceImpl implements LocationService {
 
 	@Override
 	public Location getLocationById(Integer id) {
-		return null;
+
+
+		return locationRepository.findOne(id);
 	}
 
 	@Override

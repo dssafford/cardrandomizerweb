@@ -35,9 +35,7 @@ public class IndexController {
 
 	@Autowired
 	private TestRepository testRepository;
-
-//	private UserService userService;
-
+	
 
 	@RequestMapping({"/", ""})
 	public String index(){
@@ -48,6 +46,9 @@ public class IndexController {
 
 		return "index";
 	}
+
+
+
 	private void loadLocationTests(){
 
 		loadTest1();

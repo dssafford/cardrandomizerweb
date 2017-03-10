@@ -1,7 +1,10 @@
 package com.doug.controllers;
 
 import com.doug.commands.JournalCommand;
-import com.doug.domain.*;
+import com.doug.domain.AnswerListSmall;
+import com.doug.domain.Location;
+import com.doug.domain.LocationTest;
+import com.doug.domain.ScoreList;
 import com.doug.repositories.LocationRepository;
 import com.doug.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,7 @@ import java.util.List;
  */
 
 @Controller
-public class LocationControllerTest {
+public class LocationController {
 
 	@Autowired
 	AnswerListSmall answerListSmall;
@@ -43,10 +46,12 @@ public class LocationControllerTest {
 
 	ArrayList<LocationTest> singleLocationScoreArrayList;
 
+	private static final int RANDOM_SESSION_LIMIT = 10;
 
-
-
-
+	@RequestMapping("/doug")
+	public String getDoug() {
+		return "doug";
+	}
 
 
 	@RequestMapping(value = "/singleLocationTestStart", method = RequestMethod.GET)
@@ -64,9 +69,9 @@ public class LocationControllerTest {
 	public String getSingleCardTest(HttpSession session, Model model) {
 		//Create master random list and put in session
 
-
 		if (session.getAttribute("randomLocationList") == null) {
-			cachedRandomLocationList = CreateRandomLocationList(10);
+			cachedRandomLocationList = CreateRandomLocationList(RANDOM_SESSION_LIMIT);
+
 			testLimit = cachedRandomLocationList.size();
 			session.setAttribute("randomLocationList", cachedRandomLocationList);
 			locationIndex = 0;
@@ -82,20 +87,22 @@ public class LocationControllerTest {
 			session.setAttribute("locationIndex", locationIndex);
 		}
 
+		if (locationIndex < RANDOM_SESSION_LIMIT) {
 
-		Location location = new Location();
+			Location location = new Location();
 //		if (locationIndex != 0) {
 			location.setLocationNumber(cachedRandomLocationList.get(locationIndex).getLocationNumber());
 //		} else {
 //			location.setLocationNumber(cachedRandomLocationList.get(0).getLocationNumber());
 //		}
-		location.setLocationName("");
+			location.setLocationName("");
 
-		model.addAttribute("locationIndex", locationIndex);
-		model.addAttribute("locationInfo", location);
-		model.addAttribute("score", cumulativeScore + "%");
-
-		return "answer/enterLocationAnswerSingle";
+			model.addAttribute("locationIndex", locationIndex);
+			model.addAttribute("locationInfo", location);
+			model.addAttribute("score", cumulativeScore + "%");
+			return "answer/enterLocationAnswerSingle";
+		}
+		return "index";
 	}
 
 	@RequestMapping(value = "/singleLocationTest", method = RequestMethod.POST)
@@ -104,70 +111,75 @@ public class LocationControllerTest {
 
 		locationIndex = (Integer) session.getAttribute("locationIndex");
 
-		Location tempLocation = ((Location) locationRepository.findOne(cachedRandomLocationList.get(locationIndex).getLocationNumber()));
+		if (locationIndex < RANDOM_SESSION_LIMIT-1) {
+			Location tempLocation = ((Location) locationRepository.findOne(cachedRandomLocationList.get(locationIndex).getLocationNumber()));
 
-		LocationTest locationTest = new LocationTest();
-		locationTest.setLocationNumber(location.getLocationNumber());
-		locationTest.setLocationName(tempLocation.getLocationName());
-		locationTest.setAnswerPlaceName(location.getLocationName());
+			LocationTest locationTest = new LocationTest();
+			locationTest.setLocationNumber(location.getLocationNumber());
+			locationTest.setLocationName(tempLocation.getLocationName());
+			locationTest.setAnswerPlaceName(location.getLocationName());
 
-		if (locationIndex == 0) {
+			if (locationIndex == 0) {
 
-			singleLocationScoreArrayList = new ArrayList<LocationTest>();
+				singleLocationScoreArrayList = new ArrayList<LocationTest>();
+			}
+
+
+			//compare entered with master location list
+
+			if (locationTest.getLocationName().equals(location.getLocationName())) {
+				locationTest.setAnswerIsCorrect(true);
+
+			} else {
+				locationTest.setAnswerIsCorrect(false);
+
+			}
+
+
+			//Add to score
+			singleLocationScoreArrayList =
+					  (ArrayList<LocationTest>) session.getAttribute("locationTestList");
+
+			if (singleLocationScoreArrayList == null) {
+				singleLocationScoreArrayList = new ArrayList<LocationTest>();
+			}
+			singleLocationScoreArrayList.add(locationTest);
+
+			session.setAttribute("locationTestList", singleLocationScoreArrayList);
+
+
+			BigDecimal cumulativeScore = GetCumulativeLocationScore(singleLocationScoreArrayList);
+
+			//Set back to Session
+			session.setAttribute("scoreSoFar", cumulativeScore);
+
+			session.setAttribute("cumulativeScore", cumulativeScore);
+
+			//Then go to next card, get from masterRandomList
+			cachedRandomLocationList = (ArrayList<Location>) session.getAttribute("randomLocationList");
+			session.getAttribute("randomLocationListIndex");
+
+			location.setLocationNumber(cachedRandomLocationList.get(locationIndex + 1).getLocationNumber());
+
+			model.addAttribute("locationInfo", location);
+
+			model.addAttribute("score", cumulativeScore + "%");
+
+			// Ready to Score
+
+			model.addAttribute("score", cumulativeScore + "%");
+			model.addAttribute("cardNumber", "end of deck");
+
+			//Create Test Score
+			ScoreList scoreList = new ScoreList();
+
+			scoreList.setFinalScore(cumulativeScore);
+
+			return "redirect:/singleLocationTest";
+
 		}
-
-
-		//compare entered with master location list
-
-		if (locationTest.getLocationName().equals(location.getLocationName())) {
-			locationTest.setAnswerIsCorrect(true);
-
-		} else {
-			locationTest.setAnswerIsCorrect(false);
-
-		}
-
-		//Add to score
-		singleLocationScoreArrayList =
-				  (ArrayList<LocationTest>) session.getAttribute("locationTestList");
-
-		if (singleLocationScoreArrayList == null) {
-			singleLocationScoreArrayList = new ArrayList<LocationTest>();
-		}
-		singleLocationScoreArrayList.add(locationTest);
-
-		session.setAttribute("locationTestList", singleLocationScoreArrayList);
-
-
-		BigDecimal cumulativeScore = GetCumulativeLocationScore(singleLocationScoreArrayList);
-
-		//Set back to Session
-		session.setAttribute("scoreSoFar", cumulativeScore);
-
-		session.setAttribute("cumulativeScore", cumulativeScore);
-
-		//Then go to next card, get from masterRandomList
-		cachedRandomLocationList = (ArrayList<Location>) session.getAttribute("randomLocationList");
-		session.getAttribute("randomLocationListIndex");
-
-		location.setLocationNumber(cachedRandomLocationList.get(locationIndex+1).getLocationNumber());
-
-		model.addAttribute("locationInfo", location);
-
-		model.addAttribute("score", cumulativeScore + "%");
-
-		// Ready to Score
-
-		model.addAttribute("score", cumulativeScore + "%");
-		model.addAttribute("cardNumber", "end of deck");
-
-		//Create Test Score
-		ScoreList scoreList = new ScoreList();
-
-		scoreList.setFinalScore(cumulativeScore);
-
-		return"redirect:/singleLocationTest";
-}
+		return "index";
+	}
 
 
 	@RequestMapping("/shit2")
@@ -187,6 +199,7 @@ public class LocationControllerTest {
 		model.addAttribute("locations", myLocations);
 		return "learning/locationList";
 	}
+
 
 	@RequestMapping("journal/{id}")
 	public String showJournal(@PathVariable Integer id, Model model) {

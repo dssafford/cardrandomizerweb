@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault;
  */
 
 public interface LocationService  {
+
 	Iterable<Location> listAllLocations();
 
 	Location getLocationById(Integer id);
