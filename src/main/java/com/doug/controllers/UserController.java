@@ -3,7 +3,6 @@ package com.doug.controllers;
 import com.doug.commands.UserCommand;
 import com.doug.domain.User;
 import com.doug.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
+
     private UserService userService;
 //    private RoleService roleService;
 
@@ -20,10 +20,10 @@ public class UserController {
 //    @Autowired
 //    public void setRoleService(RoleService roleService) {this.roleService = roleService;}
 
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 
 //    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
 //    public String list(Model model){

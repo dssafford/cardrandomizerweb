@@ -35,7 +35,7 @@ public class IndexController {
 
 	@Autowired
 	private TestRepository testRepository;
-	
+
 
 	@RequestMapping({"/", ""})
 	public String index(){
