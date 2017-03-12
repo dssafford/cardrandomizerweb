@@ -77,10 +77,8 @@ public class LocationController {
 			cumulativeScore = new BigDecimal(0);
 			session.setAttribute("cumulativeScore", new BigDecimal(0));
 		} else {
-//			cachedRandomLocationList = (ArrayList<CardInfo>) session.getAttribute("randomLocationList");
 
 			cumulativeScore = (BigDecimal) session.getAttribute("cumulativeScore");
-
 			locationIndex = (Integer) session.getAttribute("locationIndex") + 1;
 			session.setAttribute("locationIndex", locationIndex);
 		}
@@ -88,11 +86,7 @@ public class LocationController {
 		if (locationIndex < RANDOM_SESSION_LIMIT) {
 
 			Location location = new Location();
-//		if (locationIndex != 0) {
 			location.setLocationNumber(cachedRandomLocationList.get(locationIndex).getLocationNumber());
-//		} else {
-//			location.setLocationNumber(cachedRandomLocationList.get(0).getLocationNumber());
-//		}
 			location.setLocationName("");
 
 			model.addAttribute("locationIndex", locationIndex);
@@ -234,7 +228,7 @@ public class LocationController {
 		return partialLocationList;
 	}
 
-	private BigDecimal GetCumulativeLocationScore(ArrayList<LocationTest> locationTests) {
+	protected BigDecimal GetCumulativeLocationScore(ArrayList<LocationTest> locationTests) {
 		Integer denominator = locationTests.size();
 		Double numberCorrect = 0.00;
 
