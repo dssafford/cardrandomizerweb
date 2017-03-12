@@ -163,7 +163,7 @@ public class LocationController {
 			model.addAttribute("cardNumber", "end of deck");
 
 			//Create Test Score
-			ScoreList scoreList = new ScoreList();
+			ScoreList scoreList = new ScoreList()             ;
 
 			scoreList.setFinalScore(cumulativeScore);
 
@@ -172,20 +172,29 @@ public class LocationController {
 		}
 		return "index";
 	}
-
-
 	@RequestMapping(value = "/locationList", method = RequestMethod.GET)
-	public String list(Model model, HttpSession session) {
+	public String list(Model model) {
 
-		if(session.getAttribute("locations")==null){
-			session.setAttribute("locations", locationService.listAllLocations());
-		}
-		List<Location>myLocations = (List<Location>)session.getAttribute("locations");
+
+		List<Location> myLocations = locationRepository.findAll();
 
 		model.addAttribute("locations", myLocations);
 
 		return "learning/locationList";
 	}
+
+//	@RequestMapping(value = "/locationList", method = RequestMethod.GET)
+//	public String list(Model model, HttpSession session) {
+//
+//		if(session.getAttribute("locations")==null){
+//			session.setAttribute("locations", locationService.listAllLocations());
+//		}
+//		List<Location>myLocations = (List<Location>)session.getAttribute("locations");
+//
+//		model.addAttribute("locations", myLocations);
+//
+//		return "learning/locationList";
+//	}
 
 
 //	@RequestMapping("journal/{id}")

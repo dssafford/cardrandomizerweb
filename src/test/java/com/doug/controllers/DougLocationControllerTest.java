@@ -23,7 +23,7 @@ public class DougLocationControllerTest {
 
 	@Before
 	public void setup(){
-		locationController = new LocationController();
+//		locationController = new LocationController();
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/templates");

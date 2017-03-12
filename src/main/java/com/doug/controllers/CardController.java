@@ -28,7 +28,7 @@ import java.util.List;
  * Created by doug on 1/24/17.
  */
 @Controller
-public class CardTestController {
+public class CardController {
 
 	@Autowired
 	CardService cardService;
@@ -71,34 +71,35 @@ public class CardTestController {
 	}
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.GET)
 	public String showSingleAnswer(HttpSession session, Model model) {
-		ArrayList<CardInfo> masterCardDeck;
-		deckIndex = (Integer)session.getAttribute("deckIndex");
-
-		if (deckIndex <= 3) {
-			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
-
-			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
-			CardInfo cardInfo = (CardInfo) session.getAttribute("enteredCardInfo");
-
-			model.addAttribute("singleCardScore", masterCard);
-			model.addAttribute("cardInfo", cardInfo);
-			model.addAttribute("cardNumber", deckIndex.toString());
-			return "answer/showAnswerSingle";
-		} else {
-			// Ready to Score
-
-			model.addAttribute("score", cumulativeScore + "%");
-			model.addAttribute("cardNumber", "end of deck");
-
-			//Create Test Score
-			ScoreList scoreList = new ScoreList();
-//			scoreList.setMasterList(cachedRandomLearningCards);
-//			scoreList.setAnswerList(singleCardScoreArrayList);
-			scoreList.setFinalScore(cumulativeScore);
-			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
-
-		}
-		return "index";
+//		ArrayList<CardInfo> masterCardDeck;
+//		deckIndex = (Integer)session.getAttribute("deckIndex");
+//
+//		if (deckIndex <= 3) {
+//			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
+//
+//			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
+//			CardInfo cardInfo = (CardInfo) session.getAttribute("enteredCardInfo");
+//
+//			model.addAttribute("singleCardScore", masterCard);
+//			model.addAttribute("cardInfo", cardInfo);
+//			model.addAttribute("cardNumber", deckIndex.toString());
+//			return "answer/showAnswerSingle";
+//		} else {
+//			// Ready to Score
+//
+//			model.addAttribute("score", cumulativeScore + "%");
+//			model.addAttribute("cardNumber", "end of deck");
+//
+//			//Create Test Score
+//			ScoreList scoreList = new ScoreList();
+////			scoreList.setMasterList(cachedRandomLearningCards);
+////			scoreList.setAnswerList(singleCardScoreArrayList);
+////			scoreList.setFinalScore(cumulativeScore);
+//			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
+//
+//		}
+//		return "index";
+		return null;
 	}
 
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.POST)
@@ -156,7 +157,7 @@ public class CardTestController {
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
-			scoreList.setFinalScore(cumulativeScore);
+//			scoreList.setFinalScore(cumulativeScore);
 			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
 
 		}
@@ -289,7 +290,7 @@ public class CardTestController {
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
-			scoreList.setFinalScore(cumulativeScore);
+//			scoreList.setFinalScore(cumulativeScore);
 			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
 
 		}
@@ -326,7 +327,7 @@ public class CardTestController {
 		//score.setUserid(1);
 //		scoreList.setAnswerList(TestHelper.createAnswerList());
 //		scoreList.setMasterList(createTestRandomList());
-		scoreList.setFinalScore(cumulativeScore);
+//		scoreList.setFinalScore(cumulativeScore);
 		scoreList.setComments("comments here");
 		scoreList.setTimestamp(new Date());
 
@@ -337,7 +338,7 @@ public class CardTestController {
 		Exam exam = new Exam();
 //		scoreList.setMasterList(learningMasterCards);
 //		scoreList.setAnswerList(enteredAnswers);
-		exam.setFinalScore(cumulativeScore);
+//		exam.setFinalScore(cumulativeScore);
 		exam.setComments("comments here");
 		exam.setTimestamp(new Timestamp(Time.now()));
 

@@ -5,6 +5,7 @@ package com.doug.bootstrap;
 
 import com.doug.repositories.AnswerRepository;
 
+import com.doug.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
@@ -17,44 +18,44 @@ import org.springframework.stereotype.Component;
 /**
  * Created by jt on 12/9/15.
  */
-@Component
-@Profile("bootstrap")
-public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
+//@Component
+//@Profile("bootstrap")
+//public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 //    private UserService userService;
 //    private RoleService roleService;
 //
-////    @Autowired
-////    public void setUserService(UserService userService) {
-////        this.userService = userService;
-////    }
+//    @Autowired
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 //
 //    @Autowired
 //    public void setRoleService(RoleService roleService) {
 //        this.roleService = roleService;
 //    }
-
-    @Autowired
-    AnswerRepository answerRepository;
-
+//
+//    @Autowired
+//    AnswerRepository answerRepository;
+//
 //    @Autowired
 //    QuizRepository quizRepository;
-
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+//
+//    @Override
+//    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 //        loadAnswers();
-
-        //        loadProducts();
+//
+//                loadProducts();
 //       loadUsersAndCustomers();
 //////////        loadCarts();
 //////////        loadOrderHistory();
 //        loadRoles();
-
+//
 //        assignUsersToDefaultRole();
 //        assignUsersToAdminRole();
 
 
-    }
+//    }
 
 
 //private void loadAnswers(){
@@ -246,7 +247,7 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
 //        customer4.setPhoneNumber("555.555.5555");
 //        user4.setCustomer(customer4);
 //        userService.saveOrUpdate(user4);
-    }
+//    }
 
 //    public void loadProducts(){
 //

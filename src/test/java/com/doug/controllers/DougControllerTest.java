@@ -33,17 +33,17 @@ public class DougControllerTest {
 				  .build();
 	}
 
-	@Test
-	public void testIndex() throws Exception{
-		mockMvc.perform(get("/doug"))
-				  .andExpect(status().isOk())
-				  .andExpect(view().name("doug"));
-	}
-	@Test
-	public void testLocationTest() throws Exception{
-		mockMvc.perform(get("/singleLocationTestStart"))
-				  .andExpect(status().is3xxRedirection())
-				  .andExpect(view().name("redirect:/singleLocationTest"));
-	}
+//	@Test
+//	public void testIndex() throws Exception{
+//		mockMvc.perform(get("/doug"))
+//				  .andExpect(status().isOk())
+//				  .andExpect(view().name("doug"));
+//	}
+//	@Test
+//	public void testLocationTest() throws Exception{
+//		mockMvc.perform(get("/singleLocationTestStart"))
+//				  .andExpect(status().is3xxRedirection())
+//				  .andExpect(view().name("redirect:/singleLocationTest"));
+//	}
 
 }
