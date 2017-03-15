@@ -26,4 +26,10 @@ public class CardRepositoryTest {
 		List<CardInfo> myCardList = cardRepository.findByCardNameLike("%diam%");
 		Assert.assertEquals(13, myCardList.size());
 	}
+
+	@Test
+	public void getCardsAll_test() {
+		List<CardInfo> myCardList = cardRepository.findAll();
+		Assert.assertEquals(52, myCardList.size());
+	}
 }

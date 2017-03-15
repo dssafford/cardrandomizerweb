@@ -19,4 +19,5 @@ public interface LocationRepository extends JpaRepository<Location, Integer> {
 //	List<Person> findByAgeGreaterThanOrderByNameAsc(int age);
 //
 //	List<Person> findByAgeGreaterThanOrAgeLessThan(int over, int under);
+
 }
