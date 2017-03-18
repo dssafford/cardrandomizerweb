@@ -57,20 +57,10 @@ public class LocationControllerTest {
 	public void setupMock() {
 		initMocks(this);
 
-//		model.addAttribute("locations", new ArrayList<Location>());
-
-//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setPrefix("/templates");
-
 		mockMvc = MockMvcBuilders.standaloneSetup(locationController)
 //                .setViewResolvers(viewResolver)
 				  .build();
 
-//        mockLocationServiceImpl = new LocationServiceImpl();
-//        mockLocationServiceImpl.setLocationRepository(locationRepository);
-//
-//        locationServiceImpl = new LocationServiceImpl();
-//        locationServiceImpl.setLocationRepository(locationRepository);
 
 	}
 
@@ -81,12 +71,6 @@ public class LocationControllerTest {
 //        locationServiceImpl.setLocationRepository(locationRepository);
 
 		when(locationRepository.findAll()).thenReturn(Collections.emptyList());
-
-//		List<Location> mylocations = (List<Location>)locationServiceImpl.listAllLocations();
-
-//		//works
-//		MockHttpSession mockHttpSession = new MockHttpSession();
-//		mockHttpSession.setAttribute("locations", mylocations);
 
 		//Below works when using session
 		mockMvc.perform(get("/locationList"))
