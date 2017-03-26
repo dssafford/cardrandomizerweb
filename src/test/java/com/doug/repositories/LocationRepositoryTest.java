@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
  * Created by doug on 3/13/17.
  */
 @DataJpaTest
-//@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class LocationRepositoryTest {
 
@@ -58,14 +57,14 @@ public class LocationRepositoryTest {
 
 		List<Location> locationList = (List<Location>)locationRepository.findAll();
 
-		assertEquals(52, locationList.size());
+		assertEquals(4, locationList.size());
 	}
 
 	@Test
 	public void getOneLocation_test() {
 
-
-		Location location = locationRepository.findOne(1);
+		Location location = locationRepository.findByLocationName("mailbox");
+//		Location location = locationRepository.findOne(10);
 		assertEquals("mailbox", location.getLocationName());
 	}
 

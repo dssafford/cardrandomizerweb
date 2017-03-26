@@ -48,7 +48,7 @@ public class LocationController {
 
 	@RequestMapping("/doug")
 	public String getDoug() {
-		return "doug";
+		return "index";
 	}
 
 
@@ -172,6 +172,9 @@ public class LocationController {
 		}
 		return "index";
 	}
+
+
+
 	@RequestMapping(value = "/locationList", method = RequestMethod.GET)
 	public String list(Model model) {
 
@@ -182,42 +185,6 @@ public class LocationController {
 
 		return "learning/locationList";
 	}
-
-//	@RequestMapping(value = "/locationList", method = RequestMethod.GET)
-//	public String list(Model model, HttpSession session) {
-//
-//		if(session.getAttribute("locations")==null){
-//			session.setAttribute("locations", locationService.listAllLocations());
-//		}
-//		List<Location>myLocations = (List<Location>)session.getAttribute("locations");
-//
-//		model.addAttribute("locations", myLocations);
-//
-//		return "learning/locationList";
-//	}
-
-
-//	@RequestMapping("journal/{id}")
-//	public String showJournal(@PathVariable Integer id, Model model) {
-//		model.addAttribute("journal", locationService.getLocationById(id));
-//		return "journal/journalshow";
-//	}
-//
-//	@RequestMapping("journal/edit/{id}")
-//	public String edit(@PathVariable Integer id, Model model) {
-//		model.addAttribute("journal", locationService.getLocationById(id));
-//		model.addAttribute("journalCommand", new JournalCommand());
-//
-//		return "/journal/journaledit";
-//	}
-//
-//	@RequestMapping("journal/delete/{id}")
-//	public String delete(@PathVariable Integer id) {
-//
-//		locationService.deleteLocation(id);
-//
-//		return "redirect:/journal/paging";
-//	}
 
 	private ArrayList<Location> CreateRandomLocationList(Integer limit) {
 

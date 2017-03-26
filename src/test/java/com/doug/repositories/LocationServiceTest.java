@@ -2,7 +2,7 @@ package com.doug.repositories;
 
 import com.doug.domain.Location;
 import com.doug.services.LocationServiceImpl;
-import org.apache.maven.model.Model;
+import org.springframework.ui.Model;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

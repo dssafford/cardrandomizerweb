@@ -14,6 +14,8 @@ public interface LocationRepository extends JpaRepository<Location, Integer> {
 
 	List<Location> findAll();
 
+	Location findByLocationName(String locationName);
+
 //	List<Person> findByAgeGreaterThan(int age);
 //
 //	List<Person> findByAgeGreaterThanOrderByNameAsc(int age);
