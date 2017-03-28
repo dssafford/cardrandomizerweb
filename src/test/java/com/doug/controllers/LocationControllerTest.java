@@ -10,11 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.mock.web.MockHttpSession;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,13 +25,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by Doug on 2/26/17.
  */
-
+@SpringBootTest
 public class LocationControllerTest {
 
 	@Mock
@@ -44,6 +44,9 @@ public class LocationControllerTest {
 
 	@Mock
 	Model model;
+
+	@Mock
+	HttpSession session;
 
 	@Mock
 	private LocationServiceImpl locationServiceImpl;
@@ -61,8 +64,6 @@ public class LocationControllerTest {
 
 		mockMvc = MockMvcBuilders.standaloneSetup(locationController)
 				  .build();
-
-
 	}
 
 	@Test
@@ -74,18 +75,54 @@ public class LocationControllerTest {
 		assertEquals(12,12);
 	}
 
+//	MvcResult response = mockMvc
+//			  .perform(post("/some/super/secret/url") //
+//						 .param("someparam1", "somevalue") //
+//						 .param("someparam2", "somevalue") //
+//						 .contentType(MediaType.APPLICATION_FORM_URLENCODED) //
+//						 .accept(MediaType.APPLICATION_JSON)) //
+//			  .andExpect(status().isOk()) //
+//			  .andReturn();
+
+
+
+
+
+
 	@Test
 	public void trythis() throws Exception {
-//		@RequestMapping(value = "/singleLocationTest", method = RequestMethod.POST)
-//		public String scoreSingleCardTest(HttpSession session, Location location, Model model) {
-		mockMvc.perform(post("/singleLocationTest"))
-				  .andExpect(status().isOk())
-				  .andExpect(view().name("index"));
-		MockHttpSession mockHttpSession = new MockHttpSession();
 
-		mockHttpSession.setAttribute("locationIndex", 23);
+		//MockHttpSession mockHttpSession = new MockHttpSession();
 
-		when(locationRepository.findOne((Integer)mockHttpSession.getAttribute("locationIndex"))).thenReturn(new Location());
+		session.setAttribute("locationIndex", 23);
+
+		when(session.getAttribute("locationIndex")).thenReturn("12");
+
+		String hey = session.getAttribute("locationIndex").toString();
+
+		when(session.getId()).thenReturn("100");
+		when(location.getLocationName()).thenReturn("eat shit");
+
+
+		locationController.scoreSingleCardTestPOST(session, location, model);
+
+
+
+		when(locationRepository.findOne((Integer)session.getAttribute("locationIndex"))).thenReturn(new Location());
+
+
+
+//		mockMvc
+//				  .perform(post("/singleLocationTestPOST"))
+////				  .param("HttpSession", mockHttpSession))
+//				  .andExpect(status().isOk())
+//				  .andExpect(view().name("index"))
+//				 .andReturn();
+//
+
+
+
+
 
 		}
 	@Test

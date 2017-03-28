@@ -63,6 +63,7 @@ public class LocationController {
 
 	}
 
+
 	@RequestMapping(value = "/singleLocationTest", method = RequestMethod.GET)
 	public String getSingleCardTest(HttpSession session, Model model) {
 		//Create master random list and put in session
@@ -97,11 +98,100 @@ public class LocationController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/dude", method = RequestMethod.POST)
+	public void TryThisWithParameters(Integer one, Integer two, String three) {
+
+		Integer four = one + two;
+
+	}
+
+
 	@RequestMapping(value = "/singleLocationTest", method = RequestMethod.POST)
 	public String scoreSingleCardTest(HttpSession session, Location location, Model model) {
 
 
 		locationIndex = (Integer) session.getAttribute("locationIndex");
+
+		if (locationIndex < RANDOM_SESSION_LIMIT-1) {
+			Location tempLocation = ((Location) locationRepository.findOne(cachedRandomLocationList.get(locationIndex).getLocationNumber()));
+
+			LocationTest locationTest = new LocationTest();
+			locationTest.setLocationNumber(location.getLocationNumber());
+			locationTest.setLocationName(tempLocation.getLocationName());
+			locationTest.setAnswerPlaceName(location.getLocationName());
+
+			if (locationIndex == 0) {
+
+				singleLocationScoreArrayList = new ArrayList<LocationTest>();
+			}
+
+
+			//compare entered with master location list
+
+			if (locationTest.getLocationName().equals(location.getLocationName())) {
+				locationTest.setAnswerIsCorrect(true);
+
+			} else {
+				locationTest.setAnswerIsCorrect(false);
+
+			}
+
+
+			//Add to score
+			singleLocationScoreArrayList =
+					  (ArrayList<LocationTest>) session.getAttribute("locationTestList");
+
+			if (singleLocationScoreArrayList == null) {
+				singleLocationScoreArrayList = new ArrayList<LocationTest>();
+			}
+			singleLocationScoreArrayList.add(locationTest);
+
+			session.setAttribute("locationTestList", singleLocationScoreArrayList);
+
+
+			BigDecimal cumulativeScore = GetCumulativeLocationScore(singleLocationScoreArrayList);
+
+			//Set back to Session
+			session.setAttribute("scoreSoFar", cumulativeScore);
+
+			session.setAttribute("cumulativeScore", cumulativeScore);
+
+			//Then go to next card, get from masterRandomList
+			cachedRandomLocationList = (ArrayList<Location>) session.getAttribute("randomLocationList");
+			session.getAttribute("randomLocationListIndex");
+
+			location.setLocationNumber(cachedRandomLocationList.get(locationIndex + 1).getLocationNumber());
+
+			model.addAttribute("locationInfo", location);
+
+			model.addAttribute("score", cumulativeScore + "%");
+
+			// Ready to Score
+
+			model.addAttribute("score", cumulativeScore + "%");
+			model.addAttribute("cardNumber", "end of deck");
+
+			//Create Test Score
+			ScoreList scoreList = new ScoreList()             ;
+
+			scoreList.setFinalScore(cumulativeScore);
+
+			return "redirect:/singleLocationTest";
+
+		}
+		return "index";
+	}
+
+
+
+	@RequestMapping(value = "/singleLocationTestPOST", method = RequestMethod.POST)
+	public String scoreSingleCardTestPOST(HttpSession session, Location location, Model model) {
+
+		String mysessionId = session.getId();
+
+		String locationName = location.getLocationName();
+		String locationIndexString = session.getAttribute("locationIndex").toString();
+
 
 		if (locationIndex < RANDOM_SESSION_LIMIT-1) {
 			Location tempLocation = ((Location) locationRepository.findOne(cachedRandomLocationList.get(locationIndex).getLocationNumber()));
