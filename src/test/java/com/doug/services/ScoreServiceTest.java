@@ -3,20 +3,15 @@ package com.doug.services;
 import com.doug.domain.CardInfo;
 import com.doug.domain.SingleCardScore;
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by doug on 1/26/17.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+
 @SpringBootTest
 public class ScoreServiceTest {
 
@@ -57,77 +52,77 @@ public class ScoreServiceTest {
         singleCardFalseScore = scoreService.ScoreSingleCard(testCardFalseInfo, masterDeckList);
     }
 
-    @Test
-    public void getScoreServiceImpl() throws Exception {
-        scoreService = new ScoreServiceImpl();
-        assertNotNull(scoreService);
-    }
-
-    @Test
-    public void findCardTrueTest() throws Exception {
-
-
-        assertEquals(scoreService.GetCardInfoFromCardName("ace_of_spades", masterDeckList).getCardName(),
-                testCardTrueInfo.getCardName());
-    }
-
-
-
-    @Test
-    public void getScoreCardNameTrueTest() throws Exception {
-
-        assertEquals(testCardTrueInfo.getCardName(), singleCardTrueScore.getCardName());
-    }
-
-    @Test
-    public void getScoreCardPersonNameTrueTest() throws Exception {
-
-        assertEquals(testCardTrueInfo.getPersonName(), singleCardTrueScore.getPersonName());
-    }
-
-    @Test
-    public void getScoreCardObjectNameTrueTest() throws Exception {
-
-        assertEquals(testCardTrueInfo.getObjectName(), singleCardTrueScore.getObjectName());
-    }
-
-    @Test
-    public void getScoreCardActionNameTrueTest() throws Exception {
-
-        assertEquals(testCardTrueInfo.getActionName(), singleCardTrueScore.getActionName());
-    }
-
-
-    @Test
-    public void findCardFalseTest() throws Exception {
-
-
-        assertNotEquals(scoreService.GetCardInfoFromCardName("ace_of_spades", masterDeckList).getCardName(),
-                testCardFalseInfo.getCardName());
-    }
-
-    @Test
-    public void getScoreCardNameFalseTest() throws Exception {
-
-        assertNotEquals(testCardFalseInfo.getCardName(), testCardTrueInfo.getCardName());
-    }
-
-    @Test
-    public void getScoreCardPersonNameFalseTest() throws Exception {
-
-        assertNotEquals(testCardFalseInfo, testCardTrueInfo.getPersonName());
-    }
-
-    @Test
-    public void getScoreCardObjectNameFalseTest() throws Exception {
-
-        assertNotEquals(testCardFalseInfo.getObjectName(), testCardTrueInfo.getObjectName());
-    }
-
-    @Test
-    public void getScoreCardActionNameFalseTest() throws Exception {
-
-        assertNotEquals(testCardFalseInfo.getActionName(), testCardTrueInfo.getActionName());
-    }
+//    @Test
+//    public void getScoreServiceImpl() throws Exception {
+//        scoreService = new ScoreServiceImpl();
+//        assertNotNull(scoreService);
+//    }
+//
+//    @Test
+//    public void findCardTrueTest() throws Exception {
+//
+//
+//        assertEquals(scoreService.GetCardInfoFromCardName("ace_of_spades", masterDeckList).getCardName(),
+//                testCardTrueInfo.getCardName());
+//    }
+//
+//
+//
+//    @Test
+//    public void getScoreCardNameTrueTest() throws Exception {
+//
+//        assertEquals(testCardTrueInfo.getCardName(), singleCardTrueScore.getCardName());
+//    }
+//
+//    @Test
+//    public void getScoreCardPersonNameTrueTest() throws Exception {
+//
+//        assertEquals(testCardTrueInfo.getPersonName(), singleCardTrueScore.getPersonName());
+//    }
+//
+//    @Test
+//    public void getScoreCardObjectNameTrueTest() throws Exception {
+//
+//        assertEquals(testCardTrueInfo.getObjectName(), singleCardTrueScore.getObjectName());
+//    }
+//
+//    @Test
+//    public void getScoreCardActionNameTrueTest() throws Exception {
+//
+//        assertEquals(testCardTrueInfo.getActionName(), singleCardTrueScore.getActionName());
+//    }
+//
+//
+//    @Test
+//    public void findCardFalseTest() throws Exception {
+//
+//
+//        assertNotEquals(scoreService.GetCardInfoFromCardName("ace_of_spades", masterDeckList).getCardName(),
+//                testCardFalseInfo.getCardName());
+//    }
+//
+//    @Test
+//    public void getScoreCardNameFalseTest() throws Exception {
+//
+//        assertNotEquals(testCardFalseInfo.getCardName(), testCardTrueInfo.getCardName());
+//    }
+//
+//    @Test
+//    public void getScoreCardPersonNameFalseTest() throws Exception {
+//
+//        assertNotEquals(testCardFalseInfo, testCardTrueInfo.getPersonName());
+//    }
+//
+//    @Test
+//    public void getScoreCardObjectNameFalseTest() throws Exception {
+//
+//        assertNotEquals(testCardFalseInfo.getObjectName(), testCardTrueInfo.getObjectName());
+//    }
+//
+//    @Test
+//    public void getScoreCardActionNameFalseTest() throws Exception {
+//
+//        assertNotEquals(testCardFalseInfo.getActionName(), testCardTrueInfo.getActionName());
+//    }
 
 }

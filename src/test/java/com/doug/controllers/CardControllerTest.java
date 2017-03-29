@@ -2,9 +2,7 @@ package com.doug.controllers;
 
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.assertEquals;
@@ -13,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Doug on 12/19/16.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 	public class CardControllerTest {
 

@@ -3,11 +3,9 @@ package com.doug.services;
 import com.doug.domain.CardInfo;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 
@@ -18,7 +16,7 @@ import static org.mockito.Mockito.when;
 /**
  * Created by doug on 1/26/17.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+
 @SpringBootTest
 public class ScoreServiceMockTest {
 

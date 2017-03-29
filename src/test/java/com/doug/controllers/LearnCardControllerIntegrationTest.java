@@ -3,34 +3,22 @@ package com.doug.controllers;
 import com.doug.repositories.ExamRepository;
 import com.doug.services.CardService;
 import com.doug.services.CardServiceImpl;
-import com.doug.services.Helpers;
 import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by doug on 1/21/17.
  */
 
 @SpringBootTest
-public class LearnCardControllerTest {
-    @Mock //Mockito Mock object
+public class LearnCardControllerIntegrationTest {
+
     private CardService cardService;
 
-    @InjectMocks //setups up controller, and injects mock objects into it.
+
     private LearnCardController learnCardController;
 
-
-    private MockMvc mockMvc;
 
     @Autowired
     private CardServiceImpl cardServiceImpl;
@@ -64,115 +52,34 @@ public class LearnCardControllerTest {
 //        assert(((Exam)myObj).getId()>0);
 //
 //    }
-    @Test
-    public void setCardService() throws Exception {
 
-    }
 
-    @Test
-    public void testScore() throws Exception {
+//    }
 
-    }
-
-    @Test
-    public void getScores() throws Exception {
-
-    }
-
-    @Test
-    public void getAllScores() throws Exception {
-
-    }
-
-    @Test
-    public void createScoreList() throws Exception {
-
-    }
-
-    @Test
-    public void testenterAnswers() throws Exception {
-
-    }
-
-    @Test
-    public void enterAnswers() throws Exception {
-
-    }
-
-    @Test
-    public void createTestAnswers() throws Exception {
-
-    }
-
-    @Test
-    public void getAnswersTestOnly() throws Exception {
-
-    }
-
-    @Test
-    public void getAnswers() throws Exception {
-
-    }
-
-    @Test
-    public void saveTest() throws Exception {
-
-    }
-
-    @Test
-    public void createMasterCardList() throws Exception {
-
-    }
-
-    @Test
-    public void scoreAnswersTest() throws Exception {
-
-    }
-
-    @Test
-    public void scoreAnswers() throws Exception {
-
-    }
-
-    @Test
-    public void createLearningDeck() throws Exception {
-
-    }
-
-    @Test
-    public void getNextRandomLearningCard() throws Exception {
-
-    }
-
-    @Test
-    public void getPreviousRandomLearningCard() throws Exception {
-
-    }
-
-    @Test
-    public void getNextMasterLearningCard() throws Exception {
-
-    }
-
-    @Test
-    public void getPreviousMasterLearningCard() throws Exception {
-
-    }
-
-    @Test
-    public void makeCardString() throws Exception {
-
-        String cardName = Helpers.makeCardString("ace_of_hearts");
-        assertEquals("ace_of_hearts.png", cardName);
-
-        cardName = Helpers.makeCardString("ace_of_hearts.png");
-        assertEquals("ace_of_hearts.png", cardName);
-    }
-
-    @Test
-    public void getNextRandomLearningCard1() throws Exception {
-
-    }
+//    @Test
+//    public void getNextMasterLearningCard() throws Exception {
+//
+//    }
+//
+//    @Test
+//    public void getPreviousMasterLearningCard() throws Exception {
+//
+//    }
+//
+//    @Test
+//    public void makeCardString() throws Exception {
+//
+//        String cardName = Helpers.makeCardString("ace_of_hearts");
+//        assertEquals("ace_of_hearts.png", cardName);
+//
+//        cardName = Helpers.makeCardString("ace_of_hearts.png");
+//        assertEquals("ace_of_hearts.png", cardName);
+//    }
+//
+//    @Test
+//    public void getNextRandomLearningCard1() throws Exception {
+//
+//    }
 
 
 
@@ -184,12 +91,6 @@ public class LearnCardControllerTest {
 //
 //    }
 
-
-    @Before
-    public void setup(){
-        MockitoAnnotations.initMocks(this); //initilizes controller and mocks
-        mockMvc = MockMvcBuilders.standaloneSetup(learnCardController).build();
-    }
 
 //    @Test
 //    public void testCreateMasterCardList() {

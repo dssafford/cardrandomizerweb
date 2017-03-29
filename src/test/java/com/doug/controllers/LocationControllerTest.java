@@ -89,42 +89,43 @@ public class LocationControllerTest {
 
 
 
-	@Test
-	public void trythis() throws Exception {
-
-		//MockHttpSession mockHttpSession = new MockHttpSession();
-
-		session.setAttribute("locationIndex", 23);
-
-		when(session.getAttribute("locationIndex")).thenReturn("12");
-
-		String hey = session.getAttribute("locationIndex").toString();
-
-		when(session.getId()).thenReturn("100");
-		when(location.getLocationName()).thenReturn("eat shit");
-
-
-		locationController.scoreSingleCardTestPOST(session, location, model);
-
-
-
-		when(locationRepository.findOne((Integer)session.getAttribute("locationIndex"))).thenReturn(new Location());
-
-
-
-//		mockMvc
-//				  .perform(post("/singleLocationTestPOST"))
-////				  .param("HttpSession", mockHttpSession))
-//				  .andExpect(status().isOk())
-//				  .andExpect(view().name("index"))
-//				 .andReturn();
+//	@Test
+//	public void trythis() throws Exception {
 //
+//		//MockHttpSession mockHttpSession = new MockHttpSession();
+//
+//		session.setAttribute("locationIndex", 23);
+//
+//		when(session.getAttribute("locationIndex")).thenReturn("12");
+//
+//		String hey = session.getAttribute("locationIndex").toString();
+//
+//		when(session.getId()).thenReturn("100");
+//		when(location.getLocationName()).thenReturn("eat shit");
+//
+//
+//		locationController.scoreSingleCardTestPOST(session, location, model);
+//
+////
+////
+////		when(locationRepository.findOne((Integer)session.getAttribute("locationIndex"))).thenReturn(new Location());
+////
+//
+//
+////		mockMvc
+////				  .perform(post("/singleLocationTestPOST"))
+//////				  .param("HttpSession", mockHttpSession))
+////				  .andExpect(status().isOk())
+////				  .andExpect(view().name("index"))
+////				 .andReturn();
+////
+//
+//
+//
+//
+//
+//		}
 
-
-
-
-
-		}
 	@Test
 	public void teststartSingleCardScoring() throws Exception {
 		assertEquals(12,12);
@@ -286,19 +287,14 @@ public class LocationControllerTest {
 //				  .andExpect(status().isOk())
 //				  .andExpect(view().name("doug"));
 //	}
-	@Test
-	public void singleLocationwhatever() throws Exception {
-		mockMvc.perform(get("/singleLocationTest"))
-				  .andExpect(status().is3xxRedirection())
-				  .andExpect(view().name("index"));
-	}
 
-	@Test
-	public void testLoadingSingleLocationTestStart() throws Exception {
-		mockMvc.perform(get("/singleLocationTestStart"))
-				  .andExpect(status().is3xxRedirection())
-				  .andExpect(view().name("redirect:/singleLocationTest"));
-	}
+
+//	@Test
+//	public void testLoadingSingleLocationTestStart() throws Exception {
+//		mockMvc.perform(get("/singleLocationTestStart"))
+//				  .andExpect(status().is3xxRedirection())
+//				  .andExpect(view().name("redirect:/singleLocationTest"));
+//	}
 	//GetCumulativeLocationScore(ArrayList<LocationTest> locationTests)
 
 	@Test

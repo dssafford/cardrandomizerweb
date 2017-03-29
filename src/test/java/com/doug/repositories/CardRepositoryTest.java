@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Created by Doug on 2/18/17.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
 public class CardRepositoryTest {
 
 	@Autowired

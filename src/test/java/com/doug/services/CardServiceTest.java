@@ -11,12 +11,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by doug on 1/24/17.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
 public class CardServiceTest {
 
     @Autowired
@@ -37,14 +38,14 @@ public class CardServiceTest {
 
         CardInfo cardInfo = new CardInfo();
 
-        cardInfo.setCardName("ace_of_spades.png");
+        cardInfo.setCardName("ace_of_spades");
         cardInfo.setActionName("action");
         cardInfo.setObjectName("object");
         cardInfo.setPersonName("person");
 
         CardInfo answerCard = cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterCardList);
 
-        //assertNotNull(answerCard);
+        assertNotNull(answerCard);
 
     }
 
