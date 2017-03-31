@@ -56,6 +56,7 @@ public class AnswerController {
 
     }
 
+
     @RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
     public String enterAnswers(Model model) {
         model.addAttribute("deckAnswer", new DeckAnswer());
@@ -82,7 +83,7 @@ public class AnswerController {
 
         String fullAnswerName = "";
 
-        enteredAnswers.add(makeCard(""));
+        enteredAnswers.add(makeCard(deckAnswer.getA1()));
         enteredAnswers.add(makeCard(deckAnswer.getA2()));
         enteredAnswers.add(makeCard(deckAnswer.getA3()));
         enteredAnswers.add(makeCard(deckAnswer.getA4()));
@@ -196,7 +197,7 @@ public class AnswerController {
         enteredAnswers.add(makeCard("8s"));
         enteredAnswers.add(makeCard("9s"));
         enteredAnswers.add(makeCard("1s"));
-        enteredAnswers.add(makeCard("static/js"));
+        enteredAnswers.add(makeCard("js"));
         enteredAnswers.add(makeCard("qs"));
         enteredAnswers.add(makeCard("ks"));
         enteredAnswers.add(makeCard("ac"));

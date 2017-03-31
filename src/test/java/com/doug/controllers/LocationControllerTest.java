@@ -89,42 +89,42 @@ public class LocationControllerTest {
 
 
 
-//	@Test
-//	public void trythis() throws Exception {
-//
-//		//MockHttpSession mockHttpSession = new MockHttpSession();
-//
+	@Test
+	public void trythis() throws Exception {
+
+		//MockHttpSession mockHttpSession = new MockHttpSession();
+
 //		session.setAttribute("locationIndex", 23);
-//
-//		when(session.getAttribute("locationIndex")).thenReturn("12");
-//
-//		String hey = session.getAttribute("locationIndex").toString();
-//
-//		when(session.getId()).thenReturn("100");
-//		when(location.getLocationName()).thenReturn("eat shit");
-//
-//
-//		locationController.scoreSingleCardTestPOST(session, location, model);
-//
-////
-////
-////		when(locationRepository.findOne((Integer)session.getAttribute("locationIndex"))).thenReturn(new Location());
-////
+
+		when(session.getAttribute("locationIndex")).thenReturn(12);
+
+		String hey = session.getAttribute("locationIndex").toString();
+
+		when(session.getId()).thenReturn("100");
+		when(location.getLocationName()).thenReturn("eat shit");
+
+
+		locationController.scoreSingleCardTestPOST(session, location, model);
+
 //
 //
-////		mockMvc
-////				  .perform(post("/singleLocationTestPOST"))
-//////				  .param("HttpSession", mockHttpSession))
-////				  .andExpect(status().isOk())
-////				  .andExpect(view().name("index"))
-////				 .andReturn();
-////
+//		when(locationRepository.findOne((Integer)session.getAttribute("locationIndex"))).thenReturn(new Location());
 //
+
+
+//		mockMvc
+//				  .perform(post("/singleLocationTestPOST"))
+////				  .param("HttpSession", mockHttpSession))
+//				  .andExpect(status().isOk())
+//				  .andExpect(view().name("index"))
+//				 .andReturn();
 //
-//
-//
-//
-//		}
+
+
+
+
+
+		}
 
 	@Test
 	public void teststartSingleCardScoring() throws Exception {
@@ -372,6 +372,11 @@ public class LocationControllerTest {
 		System.out.println("Hey, here is your list" + obj);
 
 	}
+
+
+
+
+
 //
 //	@Test
 //	public void CreateRandomLocationFullList() {

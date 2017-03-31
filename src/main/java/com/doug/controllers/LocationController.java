@@ -190,7 +190,8 @@ public class LocationController {
 		String mysessionId = session.getId();
 
 		String locationName = location.getLocationName();
-		String locationIndexString = session.getAttribute("locationIndex").toString();
+
+		locationIndex = (Integer)session.getAttribute("locationIndex");
 
 
 		if (locationIndex < RANDOM_SESSION_LIMIT-1) {

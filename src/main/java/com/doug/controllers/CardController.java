@@ -66,40 +66,38 @@ public class CardController {
 	public String getDiamonds() {
 		List<CardInfo> cards = cardRepository.findByCardNameLike("%diamonds%");
 
-
-		return "";
+		return "index";
 	}
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.GET)
 	public String showSingleAnswer(HttpSession session, Model model) {
-//		ArrayList<CardInfo> masterCardDeck;
-//		deckIndex = (Integer)session.getAttribute("deckIndex");
-//
-//		if (deckIndex <= 3) {
-//			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
-//
-//			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
-//			CardInfo cardInfo = (CardInfo) session.getAttribute("enteredCardInfo");
-//
-//			model.addAttribute("singleCardScore", masterCard);
-//			model.addAttribute("cardInfo", cardInfo);
-//			model.addAttribute("cardNumber", deckIndex.toString());
-//			return "answer/showAnswerSingle";
-//		} else {
-//			// Ready to Score
-//
-//			model.addAttribute("score", cumulativeScore + "%");
-//			model.addAttribute("cardNumber", "end of deck");
-//
-//			//Create Test Score
-//			ScoreList scoreList = new ScoreList();
-////			scoreList.setMasterList(cachedRandomLearningCards);
-////			scoreList.setAnswerList(singleCardScoreArrayList);
-////			scoreList.setFinalScore(cumulativeScore);
-//			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
-//
-//		}
-//		return "index";
-		return null;
+		ArrayList<CardInfo> masterCardDeck;
+		deckIndex = (Integer)session.getAttribute("deckIndex");
+
+		if (deckIndex <= 3) {
+			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
+
+			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
+			CardInfo cardInfo = (CardInfo) session.getAttribute("enteredCardInfo");
+
+			model.addAttribute("singleCardScore", masterCard);
+			model.addAttribute("cardInfo", cardInfo);
+			model.addAttribute("cardNumber", deckIndex.toString());
+			return "answer/showAnswerSingle";
+		} else {
+			// Ready to Score
+
+			model.addAttribute("score", cumulativeScore + "%");
+			model.addAttribute("cardNumber", "end of deck");
+
+			//Create Test Score
+			ScoreList scoreList = new ScoreList();
+//			scoreList.setMasterList(cachedRandomLearningCards);
+//			scoreList.setAnswerList(singleCardScoreArrayList);
+//			scoreList.setFinalScore(cumulativeScore);
+			createScoreToSave(cachedRandomLearningCards, singleCardScoreArrayList);
+
+		}
+		return "index";
 	}
 
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.POST)
