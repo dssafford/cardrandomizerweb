@@ -34,8 +34,6 @@ public class CardScoreController {
 	@Autowired
 	private CardServiceImpl cardService;
 
-	@Autowired
-	private LocationService locationService;
 
 	@Autowired
 	AnswerRepository answerRepository;
@@ -52,8 +50,6 @@ public class CardScoreController {
 	@Autowired
 	LocationTestRepository locationTestRepository;
 
-	@Autowired
-	LocationScoreRepository locationScoreRepository;
 
 	@Autowired
 	CardScoreRepository cardScoreRepository;
@@ -63,7 +59,7 @@ public class CardScoreController {
 
 	BigDecimal finalScore;
 
-	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
+	@RequestMapping(value = "/scoreCardAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
 		ArrayList<Test> testArray = new ArrayList<>();
@@ -111,8 +107,51 @@ public class CardScoreController {
 		return "scores";
 
 	}
-
 	@RequestMapping("/saveCardScore")
+	public String testScore(Model model) {
+
+//		Exam myScore = examRepository.save(createTestScore());
+
+		Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
+
+
+//public CardTest(String answerPersonName, String answerPersonAction, String answerPersonObject, Boolean answerPersonNameCorrect,
+//				  Boolean answerPersonActionCorrect, Boolean answerPersonObjectCorrect, Integer testid) {
+		//save new entry in Test table
+		Object myObj = examRepository.save(exam);
+
+		ArrayList<CardTest> cardTests = new ArrayList<>();
+
+		ArrayList<Test> testArray = (ArrayList<Test>)session.getAttribute("testArray");
+
+		for(int i=0; i< testArray.size()-1;i++){
+			cardTests.add(new CardTest(testArray.get(i).getQuestionCardName(), testArray.get(i).getQuestionCardObject(), testArray.get(i).getQuestionCardAction()
+					,testArray.get(i).getAnswerCardName(),testArray.get(i).getAnswerPersonName(),
+					testArray.get(i).getAnswerPersonAction(),testArray.get(i).getAnswerPersonObject(),
+					testArray.get(i).getAnswerPersonNameCorrect(),testArray.get(i).getAnswerPersonActionCorrect(),
+					testArray.get(i).getAnswerPersonObjectCorrect(), testArray.get(i).getTestId()))
+
+
+		}
+
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+
+
+
+
+
+		//then save in LocationTest
+		cardTestRepository.save(cardTests);
+
+
+		return "index";
+	}
+
+	@RequestMapping("/saveCardScoreTest")
 	public String testScore(Model model) {
 
 //		Exam myScore = examRepository.save(createTestScore());
@@ -132,6 +171,11 @@ public class CardScoreController {
 		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
 		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
 		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+
+
+
+
+
 		//then save in LocationTest
 		cardTestRepository.save(cardTests);
 

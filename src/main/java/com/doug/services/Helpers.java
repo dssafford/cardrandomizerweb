@@ -134,34 +134,34 @@ public abstract class Helpers {
 
 	}
 
-	public static ArrayList SimpleCompareLocationArrays(ArrayList<Location> masterLocationList, ArrayList<Location> answerLocationList) {
-		ArrayList<TestLocation> testArray = new ArrayList();
-		TestLocation testLocation;
-
-		Double finalScore = 0.00;
-
-		for (int i = 0; i < masterLocationList.size(); i++) {
-			testLocation = new TestLocation();
-			testLocation.setMasterLocationName(masterLocationList.get(i).getLocationName());
-			testLocation.setAnswerLocationName(answerLocationList.get(i).getLocationName());
-
-			if (testLocation.getMasterLocationName().equals(testLocation.getAnswerLocationName())) {
-				testLocation.setCorrect(true);
-				finalScore = finalScore + 1;
-//				System.out.println("Found equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " = "
-//						  + answerLocationList.get(i).getLocationName());
-			} else {
-				testLocation.setCorrect(false);
-//				System.out.println("Found not equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " != " +
-//						  answerLocationList.get(i).getLocationName());
-			}
-			testArray.add(i, testLocation);
-		}
-
-		return testArray;
-
-
-	}
+//	public static ArrayList SimpleCompareLocationArrays(ArrayList<Location> masterLocationList, ArrayList<Location> answerLocationList) {
+//		ArrayList<TestLocation> testArray = new ArrayList();
+//		TestLocation testLocation;
+//
+//		Double finalScore = 0.00;
+//
+//		for (int i = 0; i < masterLocationList.size(); i++) {
+//			testLocation = new TestLocation();
+//			testLocation.setMasterLocationName(masterLocationList.get(i).getLocationName());
+//			testLocation.setAnswerLocationName(answerLocationList.get(i).getLocationName());
+//
+//			if (testLocation.getMasterLocationName().equals(testLocation.getAnswerLocationName())) {
+//				testLocation.setCorrect(true);
+//				finalScore = finalScore + 1;
+////				System.out.println("Found equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " = "
+////						  + answerLocationList.get(i).getLocationName());
+//			} else {
+//				testLocation.setCorrect(false);
+////				System.out.println("Found not equal on number " + i + " - " + masterLocationList.get(i).getLocationName() + " != " +
+////						  answerLocationList.get(i).getLocationName());
+//			}
+//			testArray.add(i, testLocation);
+//		}
+//
+//		return testArray;
+//
+//
+//	}
 
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerLocationList) {
 		ArrayList<Test> testArray = new ArrayList();

@@ -1,7 +1,9 @@
 package com.doug.controllers;
 
 import com.doug.domain.Card;
+import com.doug.domain.CardInfo;
 import com.doug.domain.Exam;
+import com.doug.repositories.CardRepository;
 import com.doug.repositories.ExamRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
@@ -17,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -37,6 +40,9 @@ public class LearnCardControllerIntegrationTest {
     private CardServiceImpl cardServiceImpl;
 
     @Autowired
+    CardRepository cardRepository;
+
+    @Autowired
     ExamRepository examRepository;
 
     @Autowired
@@ -51,7 +57,12 @@ public class LearnCardControllerIntegrationTest {
     public void tearDown() throws Exception {
 
     }
+    @Test
+    public void findByCardNameLikeTest() {
+        List<CardInfo> cards = cardRepository.findByCardNameLike("%diamonds%");
 
+        assertEquals(13, cards.size());
+    }
 
     @Test
     public void name() throws Exception {
