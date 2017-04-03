@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
  */
 
 @SpringBootTest
-public class ScoreServiceMockTest {
+public class ScoreServiceMockSimpleCardTest {
 
     @Mock
     private CardService cardService;

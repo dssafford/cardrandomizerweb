@@ -24,13 +24,13 @@
                             <th>Answer Correct?</th>
                             <th>Test ID</th>
                         </tr>
-                        <tr th:each="test, testStat : ${tests}">
-                            <td th:text="${testStat.index}"><a href="/${test(1).id}">Id</a></td>
-                            <td th:text="${test.locationNumber}">Person Name</td>
-                            <td th:text="${test.locationName}"><a href="/${cachedCard(1).id}">Action</a></td>
-                            <td th:text="${test.answerPlaceName}">Object</td>
-                            <td th:text="${test.answerIsCorrect}">Object</td>
-                            <td th:text="${test.testId}">Object</td>
+                        <tr th:each="simpleCardTest, testStat : ${tests}">
+                            <td th:text="${testStat.index}"><a href="/${simpleCardTest(1).id}">Id</a></td>
+                            <td th:text="${simpleCardTest.locationNumber}">Person Name</td>
+                            <td th:text="${simpleCardTest.locationName}"><a href="/${cachedCard(1).id}">Action</a></td>
+                            <td th:text="${simpleCardTest.answerPlaceName}">Object</td>
+                            <td th:text="${simpleCardTest.answerIsCorrect}">Object</td>
+                            <td th:text="${simpleCardTest.testId}">Object</td>
                         </tr>
                     </table>
                 </div>

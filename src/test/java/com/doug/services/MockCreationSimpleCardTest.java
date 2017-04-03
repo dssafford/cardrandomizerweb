@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by doug on 1/26/17.
  */
-public class MockCreationTest {
+public class MockCreationSimpleCardTest {
     private ProductService productService;
     private ProductDao productDao;
     private Product product;

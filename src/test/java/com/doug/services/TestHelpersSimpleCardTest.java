@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 @SpringBootTest
-public class TestHelpersTest {
+public class TestHelpersSimpleCardTest {
 
     @Test
     public void simpleTest() {

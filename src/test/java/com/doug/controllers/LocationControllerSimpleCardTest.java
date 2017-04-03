@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by Doug on 2/26/17.
  */
 @SpringBootTest
-public class LocationControllerTest {
+public class LocationControllerSimpleCardTest {
 
 	@Mock
 	LocationRepository locationRepository;
@@ -175,7 +175,7 @@ public class LocationControllerTest {
 
 	}
 
-//	@Test
+//	@SimpleCardTest
 //	public void calling_locationlist_Test() throws Exception{
 //
 //		locationServiceImpl = new LocationServiceImpl();
@@ -195,7 +195,7 @@ public class LocationControllerTest {
 //
 //	}
 
-//	@Test
+//	@SimpleCardTest
 //	public void calling_locationList_withMocks_Test() throws Exception {
 //
 ////		List<Location> mylocations = (List<Location>)mockLocationServiceImpl.listAllLocations();
@@ -261,7 +261,7 @@ public class LocationControllerTest {
 
 //		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)
-		//save new entry in Test table
+		//save new entry in SimpleCardTest table
 //        Object myObj = examRepository.save(exam);
 
 		ArrayList<LocationTest> locationTests = new ArrayList<>();
@@ -281,7 +281,7 @@ public class LocationControllerTest {
 
 
 
-//	@Test
+//	@SimpleCardTest
 //	public void testIndex() throws Exception {
 //		mockMvc.perform(get("/doug"))
 //				  .andExpect(status().isOk())
@@ -289,7 +289,7 @@ public class LocationControllerTest {
 //	}
 
 
-//	@Test
+//	@SimpleCardTest
 //	public void testLoadingSingleLocationTestStart() throws Exception {
 //		mockMvc.perform(get("/singleLocationTestStart"))
 //				  .andExpect(status().is3xxRedirection())
@@ -378,7 +378,7 @@ public class LocationControllerTest {
 
 
 //
-//	@Test
+//	@SimpleCardTest
 //	public void CreateRandomLocationFullList() {
 //
 //		List<Location> locationList = locationRepository.findAll();
@@ -389,7 +389,7 @@ public class LocationControllerTest {
 //
 //	}
 //
-////	@Test
+////	@SimpleCardTest
 ////	public void SaveLocationScoresTest() throws Exception{
 ////
 ////		Timestamp ts = Helpers.getTimeStamp();
@@ -397,7 +397,7 @@ public class LocationControllerTest {
 ////		//test data
 ////		Exam exam = new Exam(new BigDecimal(92.5), ts, "location", "my comments here", true);
 ////
-////		//save new entry in Test table
+////		//save new entry in SimpleCardTest table
 ////		Object myObj = examRepository.save(exam);
 ////
 ////		Assert.assertNotNull(myObj);
@@ -423,7 +423,7 @@ public class LocationControllerTest {
 ////
 ////	}
 //
-//	@Test
+//	@SimpleCardTest
 //	public void locationControllerTestStart() throws Exception {
 //
 ////		singleLocationTestStart

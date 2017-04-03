@@ -15,7 +15,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-public class CardRepositoryTest {
+public class CardRepositorySimpleCardTest {
 
 	@Autowired
 	CardRepository cardRepository;

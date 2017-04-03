@@ -11,9 +11,7 @@
 <body>
 <div class="container">
 
-    <!--<form class="form-horizontal" th:object="${deckAnswer}" th:action="@{/enterAnswersTest}" method="post">-->
-
-    <form class="form-horizontal" th:object="${deckAnswer}" th:action="@{/enterAnswers}" method="post">
+    <form class="form-horizontal" th:object="${deckAnswer}" th:action="@{/enterSimpleCardAnswersTest}" method="post">
         <div class="panel-body col-sm-10">
             <table class="table-condensed">
                 <th>Number</th>
@@ -26,23 +24,23 @@
                 <th>Answer</th>
                 <tr>
                     <td>1</td>
-                    <td><input type="text"  tabindex="1"  id="a1"  th:field="*{a1}" value="ace_of_hearts"></input></td>
+                    <td><input type="text"  tabindex="1"  id="a1"  th:field="*{a1}" value="ah"></input></td>
                     <td>16</td>
-                    <td><input th:type="text"  th:tabindex="16" th:field="*{a16}"  value="3_of_diamonds"></input></td>
+                    <td><input th:type="text"  th:tabindex="16" th:field="*{a16}"  value="3d"></input></td>
                     <td>31</td>
-                    <td><input th:type="text"  th:tabindex="31" th:field="*{a31}"  value="5_of_spades"></input></td>
+                    <td><input th:type="text"  th:tabindex="31" th:field="*{a31}"  value="5s"></input></td>
                     <td>46</td>
-                    <td><input th:type="text"   th:tabindex="46" th:field="*{a46}"  th:value="7_of_clubs"></input></td>
+                    <td><input th:type="text"   th:tabindex="46" th:field="*{a46}"  th:value="7c"></input></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td><input th:type="text"  th:tabindex="2"  id="a2" th:field="*{a2}" value="2_of_hearts"></input></td>
+                    <td><input th:type="text"  th:tabindex="2"  id="a2" th:field="*{a2}" value="2h"></input></td>
                     <td>17</td>
-                    <td><input th:type="text"  th:tabindex="17" th:field="*{a17}"  th:value="4_of_diamonds"></input></td>
+                    <td><input th:type="text"  th:tabindex="17" th:field="*{a17}"  th:value="4d"></input></td>
                     <td>32</td>
-                    <td><input th:type="text" th:tabindex="32"  th:field="*{a32}" th:value="6_of_spades"></input></td>
+                    <td><input th:type="text" th:tabindex="32"  th:field="*{a32}" th:value="6s"></input></td>
                     <td>47</td>
-                    <td><input th:type="text" th:tabindex="47"  th:field="*{a47}" th:value="8_of_clubs"></input></td>
+                    <td><input th:type="text" th:tabindex="47"  th:field="*{a47}" th:value="8c"></input></td>
                 </tr>
                 <tr>
                     <td>3</td>

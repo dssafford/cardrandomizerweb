@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by doug on 3/21/17.
  */
-public class RandomizeDeckTest {
+public class RandomizeDeckSimpleCardTest {
 
 	RandomizeDeck randomizeDeck;
 

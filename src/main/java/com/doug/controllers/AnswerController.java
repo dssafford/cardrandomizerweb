@@ -47,12 +47,12 @@ public class AnswerController {
         return "index";
     }
 
-    @RequestMapping(value = "/answer", method = RequestMethod.GET)
+    @RequestMapping(value = "/enterSimpleCardAnswersTest", method = RequestMethod.GET)
     public String testenterAnswers(Model model) {
         model.addAttribute("deckAnswer", new DeckAnswer());
 
 
-        return "learning/testEnterAnswers";
+        return "learning/testEnterSimpleAnswers";
 
     }
 
@@ -152,15 +152,15 @@ public class AnswerController {
 
 
 
-
-    @RequestMapping(value = "/enterAnswersTest", method = RequestMethod.POST)
+    @RequestMapping(value = "/enterSimpleCardAnswersTest", method = RequestMethod.POST)
     public String getAnswers(HttpSession session, DeckAnswer deckAnswer) throws Exception {
+
         ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 
 
         String fullAnswerName = "";
 
-        enteredAnswers.add(makeCard("ace_of_hearts"));
+        enteredAnswers.add(makeCard("ah"));
         enteredAnswers.add(makeCard("2h"));
         enteredAnswers.add(makeCard("3h"));
         enteredAnswers.add(makeCard("4h"));
@@ -178,15 +178,14 @@ public class AnswerController {
         enteredAnswers.add(makeCard("3d"));
         enteredAnswers.add(makeCard("4d"));
         enteredAnswers.add(makeCard("5d"));
-        enteredAnswers.add(makeCard("6d"));
+        enteredAnswers.add(makeCard("5d"));
         enteredAnswers.add(makeCard("7d"));
         enteredAnswers.add(makeCard("8d"));
         enteredAnswers.add(makeCard("9d"));
-        enteredAnswers.add(makeCard("1d"));
+        enteredAnswers.add(makeCard("5d"));
         enteredAnswers.add(makeCard("jd"));
         enteredAnswers.add(makeCard("qd"));
         enteredAnswers.add(makeCard("kd"));
-
         enteredAnswers.add(makeCard("as"));
         enteredAnswers.add(makeCard("2s"));
         enteredAnswers.add(makeCard("3s"));
@@ -194,7 +193,7 @@ public class AnswerController {
         enteredAnswers.add(makeCard("5s"));
         enteredAnswers.add(makeCard("6s"));
         enteredAnswers.add(makeCard("7s"));
-        enteredAnswers.add(makeCard("8s"));
+        enteredAnswers.add(makeCard("5s"));
         enteredAnswers.add(makeCard("9s"));
         enteredAnswers.add(makeCard("1s"));
         enteredAnswers.add(makeCard("js"));
@@ -209,7 +208,7 @@ public class AnswerController {
         enteredAnswers.add(makeCard("7c"));
         enteredAnswers.add(makeCard("8c"));
         enteredAnswers.add(makeCard("9c"));
-        enteredAnswers.add(makeCard("1c"));
+        enteredAnswers.add(makeCard("5c"));
         enteredAnswers.add(makeCard("jc"));
         enteredAnswers.add(makeCard("qc"));
         enteredAnswers.add(makeCard("kc"));
@@ -226,7 +225,7 @@ public class AnswerController {
         //Add to Session
         session.setAttribute("enteredAnswers", enteredAnswers);
 
-        return "redirect:/scoreAnswersTest";
+        return "redirect:/scoreSimpleCardAnswersTest";
     }
 
 

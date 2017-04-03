@@ -163,7 +163,7 @@ public class LocationScoreController {
 
 //		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)
-		//save new entry in Test table
+		//save new entry in SimpleCardTest table
 		Object myObj = examRepository.save(exam);
 
 		ArrayList<LocationTest> locationTests = new ArrayList<>();

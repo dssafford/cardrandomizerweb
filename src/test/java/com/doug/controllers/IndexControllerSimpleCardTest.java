@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @SpringBootTest
-public class IndexControllerTest {
+public class IndexControllerSimpleCardTest {
 
 private MockMvc mockMvc;
 

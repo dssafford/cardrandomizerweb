@@ -28,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
 //@DataJpaTest(showSql = true)
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class LearnCardControllerIntegrationTest {
+public class LearnCardControllerIntegrationSimpleCardTest {
 
 
     HttpSession session;
@@ -234,7 +234,7 @@ public class LearnCardControllerIntegrationTest {
 //            .andExpect(model().attribute("card", instanceOf(CardInfo.class)));
     }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testNewProduct() throws Exception {
 //        Integer id = 1;
 //
@@ -247,10 +247,10 @@ public class LearnCardControllerIntegrationTest {
 ////                .andExpect(model().attribute("product", instanceOf(Product.class)));
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void testSaveOrUpdate() throws Exception {
 //        Integer id = 1;
-//        String description = "Test Description";
+//        String description = "SimpleCardTest Description";
 //        BigDecimal price = new BigDecimal("12.00");
 //        String imageUrl = "example.com";
 //
@@ -285,7 +285,7 @@ public class LearnCardControllerIntegrationTest {
 //        assertEquals(imageUrl, boundProduct.getValue().getImageUrl());
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testDelete() throws Exception{
 //        Integer id = 1;
 //
@@ -296,7 +296,7 @@ public class LearnCardControllerIntegrationTest {
 //        verify(productService, times(1)).delete(id);
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void testNextOneLearnRandomCards() throws Exception {
 //        Integer id = 1;
 //

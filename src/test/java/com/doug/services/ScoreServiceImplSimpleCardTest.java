@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 @SpringBootTest
-public class ScoreServiceImplTest {
+public class ScoreServiceImplSimpleCardTest {
 
 	//	@Mock
 	ArrayList<SingleCardScore> myScore;
@@ -29,7 +29,7 @@ public class ScoreServiceImplTest {
 //		initMocks(this);
 	}
 
-//	@Test
+//	@SimpleCardTest
 //	public void getCumulativeScore() throws Exception {
 //		ArrayList<SingleCardScore> myscore = new ArrayList<SingleCardScore>();
 //		SingleCardScore singleCardScore = new SingleCardScore();
@@ -51,19 +51,19 @@ public class ScoreServiceImplTest {
 //
 //	}
 //
-//	@Test
+//	@SimpleCardTest
 //	public void getLocationTestAnswers() throws Exception {
 //
 //		assertNotNull(scoreService.GetLocationTestAnswers(1));
 //	}
 //
 //
-//	@Test
+//	@SimpleCardTest
 //	public void getCardInfoFromCardName() throws Exception {
 //
 //	}
 //
-//	@Test
+//	@SimpleCardTest
 //	public void scoreSingleCardTrue() throws Exception {
 //		ArrayList<SingleCardScore> myscore = new ArrayList<SingleCardScore>();
 //		SingleCardScore singleCardScore = new SingleCardScore();
@@ -92,7 +92,7 @@ public class ScoreServiceImplTest {
 //		assert (singleCardScore.getPersonNameCorrect() == false);
 //	}
 //
-//	@Test
+//	@SimpleCardTest
 //	public void scoreSingleCardFalse() throws Exception {
 //
 //		ArrayList<SingleCardScore> myscore = new ArrayList<SingleCardScore>();

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-	public class CardControllerTest {
+	public class CardControllerSimpleCardTest {
 
 		private MockMvc mockMvc;
 
@@ -31,7 +31,7 @@ import static org.junit.Assert.assertEquals;
 //				  }
 
 //		@Ignore
-//		@Test
+//		@SimpleCardTest
 //		public void testlocationMasterListView() throws Exception{
 //				  mockMvc.perform(get("/locationMasterList"))
 //				  .andExpect(status().isOk())
@@ -41,14 +41,14 @@ import static org.junit.Assert.assertEquals;
 //
 //
 //		@Ignore
-//		@Test
+//		@SimpleCardTest
 //		public void testStudyListView() throws Exception{
 //			mockMvc.perform(get("/studyList"))
 //					.andExpect(status().isOk())
 //					.andExpect(view().name("learning/studyList"));
 //		}
 
-//		@Test
+//		@SimpleCardTest
 //		public void testMasterListView() throws Exception{
 //			mockMvc.perform(get("/masterList"))
 //					.andExpect(status().isOk())

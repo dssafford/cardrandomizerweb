@@ -7,7 +7,7 @@ import org.junit.Test;
  * Created by Doug on 12/19/16.
  */
 
-public class HelpersTest {
+public class HelpersSimpleCardTest {
 
 	@Test
 	public void resolveAnswers() throws Exception {

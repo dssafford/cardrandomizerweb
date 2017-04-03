@@ -107,6 +107,11 @@
             <artifactId>selenium-chrome-driver</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
     <build>
@@ -117,7 +122,7 @@
             <!--<version>2.0.0.BUILD-SNAPSHOT</version>-->
             <executions>
                 <execution>
-                    <id>pre-integration-test</id>
+                    <id>pre-integration-simpleCardTest</id>
                     <goals>
                         <goal>start</goal>
                     </goals>
@@ -126,7 +131,7 @@
                     </configuration>
                 </execution>
                 <execution>
-                    <id>post-integration-test</id>
+                    <id>post-integration-simpleCardTest</id>
                     <goals>
                         <goal>stop</goal>
                     </goals>

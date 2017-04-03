@@ -89,7 +89,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create Test Score
+			//Create SimpleCardTest Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
@@ -151,7 +151,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create Test Score
+			//Create SimpleCardTest Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
@@ -284,7 +284,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create Test Score
+			//Create SimpleCardTest Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);

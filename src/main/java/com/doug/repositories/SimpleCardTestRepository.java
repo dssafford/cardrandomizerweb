@@ -1,6 +1,6 @@
 package com.doug.repositories;
 
-import com.doug.domain.CardTest;
+import com.doug.domain.SimpleCardTest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by doug on 3/5/17.
  */
 @Repository
-public interface CardTestRepository extends JpaRepository<CardTest, Integer> {
+public interface SimpleCardTestRepository extends JpaRepository<SimpleCardTest, Integer> {
 }

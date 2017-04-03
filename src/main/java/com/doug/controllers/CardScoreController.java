@@ -26,8 +26,6 @@ import java.util.ArrayList;
 @Controller
 public class CardScoreController {
 
-
-
 	@Autowired
 	private ScoreRepository scoreRepository;
 
@@ -59,14 +57,14 @@ public class CardScoreController {
 	CardScoreRepository cardScoreRepository;
 
 	@Autowired
-	CardTestRepository cardTestRepository;
+	SimpleCardTestRepository cardTestRepository;
 
 	BigDecimal finalScore;
 
-	@RequestMapping(value = "/scoreAnswersTest", method = RequestMethod.GET)
+	@RequestMapping(value = "/scoreSimpleCardAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
-		ArrayList<Test> testArray = new ArrayList<>();
+		ArrayList<SimpleCardTest> cardSimpleSimpleCardTestArray = new ArrayList<>();
 		masterCardDeck = (ArrayList<CardInfo>)session.getAttribute("masterCardDeck");
 
 		//create test answers
@@ -79,15 +77,15 @@ public class CardScoreController {
 		// get answers from session
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 
-		testArray = Helpers.SimpleCompareArrays(cardService.createmasterCardList(session), enteredAnswers);
+		cardSimpleSimpleCardTestArray = Helpers.SimpleCompareArrays(cardService.createmasterCardList(session), enteredAnswers);
 
 
-		session.setAttribute("testArray", testArray);
+		session.setAttribute("cardSimpleTestArray", cardSimpleSimpleCardTestArray);
 
-		finalScore = Helpers.CalcFinalScore(testArray);
+		finalScore = Helpers.CalcFinalScore(cardSimpleSimpleCardTestArray);
 
 		model.addAttribute("finalScore", finalScore + "%");
-		model.addAttribute("scores", testArray);
+		model.addAttribute("scores", cardSimpleSimpleCardTestArray);
 
 		return "scores";
 
@@ -97,15 +95,15 @@ public class CardScoreController {
 	public String scoreAnswers(HttpSession session, Model model) {
 		ArrayList<Card> enteredAnswers = (ArrayList<Card>)session.getAttribute("enteredAnswers");
 		ArrayList<Card> cachedShuffledCardNames = (ArrayList<Card>)session.getAttribute("cachedShuffledCardNames");
-		ArrayList<Test> testArray = new ArrayList<>();
+		ArrayList<SimpleCardTest> cardSimpleSimpleCardTestArray = new ArrayList<>();
 
-		testArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
+		cardSimpleSimpleCardTestArray = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
 
-		session.setAttribute("testArray", testArray);
+		session.setAttribute("cardSimpleTestArray", cardSimpleSimpleCardTestArray);
 
-		finalScore = Helpers.CalcFinalScore(testArray);
+		finalScore = Helpers.CalcFinalScore(cardSimpleSimpleCardTestArray);
 		model.addAttribute("finalScore", finalScore);
-		model.addAttribute("scores", testArray);
+		model.addAttribute("scores", cardSimpleSimpleCardTestArray);
 
 
 		return "scores";
@@ -113,28 +111,39 @@ public class CardScoreController {
 	}
 
 	@RequestMapping("/saveCardScore")
-	public String testScore(Model model) {
+	public String testScore(HttpSession session, Model model) {
 
 //		Exam myScore = examRepository.save(createTestScore());
 
-		Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
+		Exam exam = new Exam(finalScore,Helpers.getTimeStamp(), "card",  "my comments here", true);
 
 
 //public CardTest(String answerPersonName, String answerPersonAction, String answerPersonObject, Boolean answerPersonNameCorrect,
 //				  Boolean answerPersonActionCorrect, Boolean answerPersonObjectCorrect, Integer testid) {
-		//save new entry in Test table
+		//save new entry in SimpleCardTest table
 		Object myObj = examRepository.save(exam);
 
-		ArrayList<CardTest> cardTests = new ArrayList<>();
-		LocationTest locationTest = new LocationTest();
-		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
-		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
-		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
-		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
-		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
-		//then save in LocationTest
-		cardTestRepository.save(cardTests);
+		//Add to Session
+		ArrayList<SimpleCardTest> cardSimpleTestArray = (ArrayList<SimpleCardTest>)session.getAttribute("cardSimpleTestArray");
+		for(int i =0;i<cardSimpleTestArray.size()-1;i++){
+			cardSimpleTestArray.get(i).setExamId(((Exam) myObj).getId());
+		}
 
+//		ArrayList<SimpleCardTest> cardTests = new ArrayList<SimpleCardTest>();
+
+
+
+/*		for(int i = 0; i< simpleCardSimpleCardTestEnteredAnswers.size()-1; i++){
+			cardTests.add(new SimpleCardTest(simpleCardSimpleCardTestEnteredAnswers.get(i).getQuestionCardName(),
+					  simpleCardSimpleCardTestEnteredAnswers.get(i).getAnswerCardName(),
+					  simpleCardSimpleCardTestEnteredAnswers.get(i).isAnswerCardCorrect()));
+
+		}*/
+//		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
+
+
+		//then save in LocationTest
+		cardTestRepository.save(cardSimpleTestArray);
 
 		return "index";
 	}
@@ -200,9 +209,9 @@ public class CardScoreController {
 		//ArrayList masterList = cardRepository.findAll(myListAnswerListID);
 
 
-//		testArray = Helpers.SimpleCompareCardInfoArrays(masterList, answerList);
+//		cardSimpleTestArray = Helpers.SimpleCompareCardInfoArrays(masterList, answerList);
 //
-//		finalScore = Helpers.CalcFinalScore(testArray);
+//		finalScore = Helpers.CalcFinalScore(cardSimpleTestArray);
 
 		model.addAttribute("finalScore", 80 + "%");
 //		model.addAttribute("scores", myList);
@@ -218,7 +227,7 @@ public class CardScoreController {
 //		scoreList.setMasterList(learningMasterCards);
 //		scoreList.setAnswerList(enteredAnswers);
 
-		ArrayList<Test> testArray = new ArrayList<>();
+		ArrayList<SimpleCardTest> cardSimpleSimpleCardTestArray = new ArrayList<>();
 
 		exam.setFinalScore(finalScore);
 
@@ -230,10 +239,10 @@ public class CardScoreController {
 	public ArrayList createScoreList(HttpSession session) {
 		ArrayList returnList = new ArrayList();
 
-		ArrayList<Test> testArray = ((ArrayList<Test>)session.getAttribute("testArray"));
+		ArrayList<SimpleCardTest> cardSimpleSimpleCardTestArray = ((ArrayList<SimpleCardTest>)session.getAttribute("cardSimpleSimpleCardTestArray"));
 
-		for(int i=0;i< testArray.size();i++) {
-			returnList.add(testArray.get(i).isCorrect());
+		for(int i = 0; i< cardSimpleSimpleCardTestArray.size(); i++) {
+			returnList.add(cardSimpleSimpleCardTestArray.get(i).isAnswerCardNameCorrect());
 		}
 
 		return returnList;
@@ -258,7 +267,7 @@ public class CardScoreController {
 
 		ArrayList<Card> answerList = enteredAnswers;
 		ArrayList<CardInfo> masterList = learningRandomCards;
-		ArrayList<Test> scoreList = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
+		ArrayList<SimpleCardTest> scoreList = Helpers.SimpleCompareArrays(cachedShuffledCardNames, enteredAnswers);
 
 		Display display;
 
@@ -268,7 +277,7 @@ public class CardScoreController {
 			display.setId(i);
 			display.setMasterCardName(masterList.get(i).getCardName());
 			display.setAnswerCardName(answerList.get(i).getCardName());
-			display.setAnswerCorrect(scoreList.get(i).isCorrect());
+			display.setAnswerCorrect(scoreList.get(i).isAnswerCardNameCorrect());
 
 			displayArrayList.add(display);
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 @SpringBootTest
-public class ScoreServiceTest {
+public class ScoreServiceSimpleCardTest {
 
     @Autowired
     ScoreService scoreService;
@@ -52,13 +52,13 @@ public class ScoreServiceTest {
         singleCardFalseScore = scoreService.ScoreSingleCard(testCardFalseInfo, masterDeckList);
     }
 
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreServiceImpl() throws Exception {
 //        scoreService = new ScoreServiceImpl();
 //        assertNotNull(scoreService);
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void findCardTrueTest() throws Exception {
 //
 //
@@ -68,32 +68,32 @@ public class ScoreServiceTest {
 //
 //
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardNameTrueTest() throws Exception {
 //
 //        assertEquals(testCardTrueInfo.getCardName(), singleCardTrueScore.getCardName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardPersonNameTrueTest() throws Exception {
 //
 //        assertEquals(testCardTrueInfo.getPersonName(), singleCardTrueScore.getPersonName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardObjectNameTrueTest() throws Exception {
 //
 //        assertEquals(testCardTrueInfo.getObjectName(), singleCardTrueScore.getObjectName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardActionNameTrueTest() throws Exception {
 //
 //        assertEquals(testCardTrueInfo.getActionName(), singleCardTrueScore.getActionName());
 //    }
 //
 //
-//    @Test
+//    @SimpleCardTest
 //    public void findCardFalseTest() throws Exception {
 //
 //
@@ -101,25 +101,25 @@ public class ScoreServiceTest {
 //                testCardFalseInfo.getCardName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardNameFalseTest() throws Exception {
 //
 //        assertNotEquals(testCardFalseInfo.getCardName(), testCardTrueInfo.getCardName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardPersonNameFalseTest() throws Exception {
 //
 //        assertNotEquals(testCardFalseInfo, testCardTrueInfo.getPersonName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardObjectNameFalseTest() throws Exception {
 //
 //        assertNotEquals(testCardFalseInfo.getObjectName(), testCardTrueInfo.getObjectName());
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void getScoreCardActionNameFalseTest() throws Exception {
 //
 //        assertNotEquals(testCardFalseInfo.getActionName(), testCardTrueInfo.getActionName());

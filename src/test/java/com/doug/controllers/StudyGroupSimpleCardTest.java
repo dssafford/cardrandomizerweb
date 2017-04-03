@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 
 @SpringBootTest
-public class StudyGroupTest {
+public class StudyGroupSimpleCardTest {
 	@Test
 	public void getStudent() throws Exception {
 		final List<Student> testStudents = new ArrayList<Student>();

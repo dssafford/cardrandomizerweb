@@ -5,13 +5,15 @@ package com.doug.controllers;
  */
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
-
 @SpringBootTest
-public class MockCardControllerCreationTest {
+@RunWith(SpringRunner.class)
+public class MockCardControllerCreationSimpleCardTest {
 
 	@Test
 	public void simple() {
@@ -33,13 +35,13 @@ public class MockCardControllerCreationTest {
 //		realController = new CardController();
 //
 //	}
-//	@Test
+//	@SimpleCardTest
 //	public void testMockCreation(){
 //		assertNotNull(card);
 //		assertNotNull(cardController);
 //	}
 
-//	@Test
+//	@SimpleCardTest
 //	public void testMakeCard() throws Exception {
 //		String dude =  realController.makeCardString("shit");
 //

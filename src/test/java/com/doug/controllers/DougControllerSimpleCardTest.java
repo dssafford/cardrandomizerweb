@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 
 @SpringBootTest
-public class DougControllerTest {
+public class DougControllerSimpleCardTest {
 	private MockMvc mockMvc;
 
 	private DougController dougController;
@@ -33,13 +33,13 @@ public class DougControllerTest {
 				  .build();
 	}
 
-//	@Test
+//	@SimpleCardTest
 //	public void testIndex() throws Exception{
 //		mockMvc.perform(get("/doug"))
 //				  .andExpect(status().isOk())
 //				  .andExpect(view().name("doug"));
 //	}
-//	@Test
+//	@SimpleCardTest
 //	public void testLocationTest() throws Exception{
 //		mockMvc.perform(get("/singleLocationTestStart"))
 //				  .andExpect(status().is3xxRedirection())

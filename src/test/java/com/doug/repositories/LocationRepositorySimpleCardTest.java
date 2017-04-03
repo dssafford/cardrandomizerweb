@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  */
 @DataJpaTest
 @RunWith(SpringJUnit4ClassRunner.class)
-public class LocationRepositoryTest {
+public class LocationRepositorySimpleCardTest {
 
 	@Autowired
 	LocationRepository locationRepository;

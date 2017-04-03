@@ -21,7 +21,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 /**
  * Created by doug on 3/13/17.
  */
-public class LocationServiceTest {
+public class LocationServiceSimpleCardTest {
 
 //	@Autowired
 //	LocationService locationServiceImpl;

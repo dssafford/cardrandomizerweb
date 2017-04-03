@@ -2,7 +2,7 @@ package com.doug.services;
 
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
-import com.doug.domain.Test;
+import com.doug.domain.SimpleCardTest;
 
 import java.util.ArrayList;
 
@@ -56,25 +56,25 @@ public abstract class TestHelper {
         return answerList;
     }
 
-    public static ArrayList<Test> createScoreTestList() {
-        ArrayList<Test> testList = new ArrayList<Test>();
-        Test test;
+    public static ArrayList<SimpleCardTest> createScoreTestList() {
+        ArrayList<SimpleCardTest> simpleCardTestList = new ArrayList<SimpleCardTest>();
+        SimpleCardTest simpleCardTest;
 
-        test = new Test("ace_of_hearts", "ace_of_hearts", false);
-        testList.add(0, test);
+        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
+        simpleCardTestList.add(0, simpleCardTest);
 
-        test = new Test("ace_of_hearts", "ace_of_hearts", true);
-        testList.add(0, test);
+        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", true);
+        simpleCardTestList.add(0, simpleCardTest);
 
-        test = new Test("ace_of_hearts", "ace_of_hearts", false);
-        testList.add(0, test);
+        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
+        simpleCardTestList.add(0, simpleCardTest);
 
-        test = new Test("ace_of_hearts", "ace_of_hearts", true);
-        testList.add(0, test);
+        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", true);
+        simpleCardTestList.add(0, simpleCardTest);
 
-        test = new Test("ace_of_hearts", "ace_of_hearts", false);
-        testList.add(0, test);
+        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
+        simpleCardTestList.add(0, simpleCardTest);
 
-        return testList;
+        return simpleCardTestList;
     }
 }

@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 @SpringBootTest
-public class LearnCardControllerTest {
+public class LearnCardControllerSimpleCardTest {
     @Mock //Mockito Mock object
     private CardService cardService;
 
@@ -44,7 +44,7 @@ public class LearnCardControllerTest {
     }
 
 
-//    @Test
+//    @SimpleCardTest
 //    public void saveCardTest() throws Exception {
 //
 //        //Date object
@@ -176,7 +176,7 @@ public class LearnCardControllerTest {
 
 
 
-//    @Test
+//    @SimpleCardTest
 //    public void getMasterLearningList() throws Exception {
 //        ArrayList<Card> cards = cardServiceImpl.createMasterCardList();
 //
@@ -191,7 +191,7 @@ public class LearnCardControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(learnCardController).build();
     }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testCreateMasterCardList() {
 //        ArrayList<Card> cards = cardService.createMasterCardList();
 //
@@ -200,7 +200,7 @@ public class LearnCardControllerTest {
 //
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testList() throws Exception {
 //// public CardInfo(String cardName, String mainCategoryName, String subCategoryName, String categorySuit,
 ////                String personName, String action, String object)
@@ -229,7 +229,7 @@ public class LearnCardControllerTest {
 
 
     // View Tests
-//    @Test
+//    @SimpleCardTest
 //    public void testNewMasterCardLearningMasterList() throws Exception {
 //        Integer id = 1;
 //
@@ -242,7 +242,7 @@ public class LearnCardControllerTest {
 //                //.andExpect(model().attribute("journal", instanceOf(Journal.class)));
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void testNewMasterCardLearningRandomList() throws Exception {
 //        Integer id = 1;
 //
@@ -262,7 +262,7 @@ public class LearnCardControllerTest {
 
 
 
-//    @Test
+//    @SimpleCardTest
 //    public void testCreateMasterList() throws Exception {
 //        mockMvc.perform(get("/masterCardLearningRandomList"))
 //                .andExpect(status().isOk())
@@ -271,7 +271,7 @@ public class LearnCardControllerTest {
 //    }
 
 
-//    @Test
+//    @SimpleCardTest
 //    public void testGetNextRandomLearningCard() throws Exception {
 //
 //        CardInfo cardInfo = learnCardController.getNextRandomLearningCard(1, false);
@@ -281,7 +281,7 @@ public class LearnCardControllerTest {
 //
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testNextOneLearnMasterCards() throws Exception {
 //
 ////        CardInfo cardInfo = new CardInfo()
@@ -317,7 +317,7 @@ public class LearnCardControllerTest {
 //            .andExpect(model().attribute("card", instanceOf(CardInfo.class)));
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testNewProduct() throws Exception {
 //        Integer id = 1;
 //
@@ -330,10 +330,10 @@ public class LearnCardControllerTest {
 //                .andExpect(model().attribute("product", instanceOf(Product.class)));
 //    }
 //
-//    @Test
+//    @SimpleCardTest
 //    public void testSaveOrUpdate() throws Exception {
 //        Integer id = 1;
-//        String description = "Test Description";
+//        String description = "SimpleCardTest Description";
 //        BigDecimal price = new BigDecimal("12.00");
 //        String imageUrl = "example.com";
 //
@@ -368,7 +368,7 @@ public class LearnCardControllerTest {
 //        assertEquals(imageUrl, boundProduct.getValue().getImageUrl());
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testDelete() throws Exception{
 //        Integer id = 1;
 //
@@ -379,7 +379,7 @@ public class LearnCardControllerTest {
 //        verify(productService, times(1)).delete(id);
 //    }
 
-//    @Test
+//    @SimpleCardTest
 //    public void testNextOneLearnRandomCards() throws Exception {
 //        Integer id = 1;
 //

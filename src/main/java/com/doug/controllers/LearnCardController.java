@@ -3,7 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.AnswerListSmall;
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
-import com.doug.domain.Test;
+import com.doug.domain.SimpleCardTest;
 import com.doug.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class LearnCardController {
 	public ArrayList<CardInfo> learningRandomCards = new ArrayList<CardInfo>();
 	public ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 	public ArrayList<CardInfo> cachedRandomLearningCards = new ArrayList<CardInfo>();
-	public ArrayList<Test> testArray = new ArrayList<Test>();
+	public ArrayList<SimpleCardTest> simpleCardTestArray = new ArrayList<SimpleCardTest>();
 
 
 	public ArrayList<Card> cachedShuffledCardNames = new ArrayList<Card>();

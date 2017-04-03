@@ -89,7 +89,7 @@ public class CardServiceImpl implements CardService{
 				"hearts", "peyton manning", "throwing", "football");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("2_of_hearts", "people we love", "sportswomen",
-				"hearts", "anna kornikova", "bending over", "white tennis dress");
+				"hearts", "anna kornikova", "hitting", "tennis ball");
 		returnList.add(cardInfo);
 		cardInfo = new CardInfo("3_of_hearts", "people we love", "male movie stars",
 				"hearts", "tom hanks", "forrest gump running", "leg braces");

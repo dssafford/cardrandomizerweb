@@ -171,7 +171,7 @@ public class LocationController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create Test Score
+			//Create SimpleCardTest Score
 			ScoreList scoreList = new ScoreList()             ;
 
 			scoreList.setFinalScore(cumulativeScore);
@@ -253,7 +253,7 @@ public class LocationController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create Test Score
+			//Create SimpleCardTest Score
 			ScoreList scoreList = new ScoreList()             ;
 
 			scoreList.setFinalScore(cumulativeScore);

@@ -513,12 +513,12 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table test
+# Dump of table simpleCardTest
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `test`;
+DROP TABLE IF EXISTS `simpleCardTest`;
 
-CREATE TABLE `test` (
+CREATE TABLE `simpleCardTest` (
   `id` int(11) NOT NULL,
   `answer_card_name` varchar(255) DEFAULT NULL,
   `comments` varchar(255) DEFAULT NULL,
