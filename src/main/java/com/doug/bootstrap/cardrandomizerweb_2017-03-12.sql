@@ -48,7 +48,7 @@ CREATE TABLE `answer` (
 DROP TABLE IF EXISTS `card_test`;
 
 CREATE TABLE `card_test` (
-  `id` int(11) NOT NULL,
+  `id` int(11)  unsigned NOT NULL AUTO_INCREMENT,
   `answer_card_name` varchar(255) DEFAULT NULL,
   `answer_person_action` varchar(255) DEFAULT NULL,
   `answer_person_action_correct` bit(1) DEFAULT NULL,

@@ -154,4 +154,20 @@ public class CardTest {
 		this.testId=testid;
 
 	}
+
+	public CardTest(String questionCardName, String questionCardObject, String questionCardAction, String answerCardName,
+					String answerPersonName, String answerPersonAction, String answerPersonObject,
+					Boolean answerPersonNameCorrect, Boolean answerPersonActionCorrect, Boolean answerPersonObjectCorrect, Integer testId) {
+		this.questionCardName = questionCardName;
+		this.questionCardObject = questionCardObject;
+		this.questionCardAction = questionCardAction;
+		this.answerCardName = answerCardName;
+		this.answerPersonName = answerPersonName;
+		this.answerPersonAction = answerPersonAction;
+		this.answerPersonObject = answerPersonObject;
+		this.answerPersonNameCorrect = answerPersonNameCorrect;
+		this.answerPersonActionCorrect = answerPersonActionCorrect;
+		this.answerPersonObjectCorrect = answerPersonObjectCorrect;
+		this.testId = testId;
+	}
 }

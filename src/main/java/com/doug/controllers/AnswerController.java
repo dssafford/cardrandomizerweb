@@ -82,61 +82,60 @@ public class AnswerController {
         ArrayList<Card> enteredAnswers = new ArrayList<Card>();
 
         String fullAnswerName = "";
+        if (deckAnswer.getA1().isEmpty() == false) {
 
-        enteredAnswers.add(makeCard(deckAnswer.getA1()));
-        enteredAnswers.add(makeCard(deckAnswer.getA2()));
-        enteredAnswers.add(makeCard(deckAnswer.getA3()));
-        enteredAnswers.add(makeCard(deckAnswer.getA4()));
-        enteredAnswers.add(makeCard(deckAnswer.getA5()));
-        enteredAnswers.add(makeCard(deckAnswer.getA6()));
-        enteredAnswers.add(makeCard(deckAnswer.getA7()));
-        enteredAnswers.add(makeCard(deckAnswer.getA8()));
-        enteredAnswers.add(makeCard(deckAnswer.getA9()));
-        enteredAnswers.add(makeCard(deckAnswer.getA10()));
-        enteredAnswers.add(makeCard(deckAnswer.getA11()));
-        enteredAnswers.add(makeCard(deckAnswer.getA12()));
-        enteredAnswers.add(makeCard(deckAnswer.getA13()));
-        enteredAnswers.add(makeCard(deckAnswer.getA14()));
-        enteredAnswers.add(makeCard(deckAnswer.getA15()));
-        enteredAnswers.add(makeCard(deckAnswer.getA16()));
-        enteredAnswers.add(makeCard(deckAnswer.getA17()));
-        enteredAnswers.add(makeCard(deckAnswer.getA18()));
-        enteredAnswers.add(makeCard(deckAnswer.getA19()));
-        enteredAnswers.add(makeCard(deckAnswer.getA20()));
-        enteredAnswers.add(makeCard(deckAnswer.getA21()));
-        enteredAnswers.add(makeCard(deckAnswer.getA22()));
-        enteredAnswers.add(makeCard(deckAnswer.getA23()));
-        enteredAnswers.add(makeCard(deckAnswer.getA24()));
-        enteredAnswers.add(makeCard(deckAnswer.getA25()));
-        enteredAnswers.add(makeCard(deckAnswer.getA26()));
-        enteredAnswers.add(makeCard(deckAnswer.getA27()));
-        enteredAnswers.add(makeCard(deckAnswer.getA28()));
-        enteredAnswers.add(makeCard(deckAnswer.getA29()));
-        enteredAnswers.add(makeCard(deckAnswer.getA30()));
-        enteredAnswers.add(makeCard(deckAnswer.getA31()));
-        enteredAnswers.add(makeCard(deckAnswer.getA32()));
-        enteredAnswers.add(makeCard(deckAnswer.getA33()));
-        enteredAnswers.add(makeCard(deckAnswer.getA34()));
-        enteredAnswers.add(makeCard(deckAnswer.getA35()));
-        enteredAnswers.add(makeCard(deckAnswer.getA36()));
-        enteredAnswers.add(makeCard(deckAnswer.getA37()));
-        enteredAnswers.add(makeCard(deckAnswer.getA38()));
-        enteredAnswers.add(makeCard(deckAnswer.getA39()));
-        enteredAnswers.add(makeCard(deckAnswer.getA40()));
-        enteredAnswers.add(makeCard(deckAnswer.getA41()));
-        enteredAnswers.add(makeCard(deckAnswer.getA42()));
-        enteredAnswers.add(makeCard(deckAnswer.getA43()));
-        enteredAnswers.add(makeCard(deckAnswer.getA44()));
-        enteredAnswers.add(makeCard(deckAnswer.getA45()));
-        enteredAnswers.add(makeCard(deckAnswer.getA46()));
-        enteredAnswers.add(makeCard(deckAnswer.getA47()));
-        enteredAnswers.add(makeCard(deckAnswer.getA48()));
-        enteredAnswers.add(makeCard(deckAnswer.getA49()));
-        enteredAnswers.add(makeCard(deckAnswer.getA50()));
-        enteredAnswers.add(makeCard(deckAnswer.getA51()));
-        enteredAnswers.add(makeCard(deckAnswer.getA52()));
-
-        if (enteredAnswers.get(0) != null) {
+            enteredAnswers.add(makeCard(deckAnswer.getA1()));
+            enteredAnswers.add(makeCard(deckAnswer.getA2()));
+            enteredAnswers.add(makeCard(deckAnswer.getA3()));
+            enteredAnswers.add(makeCard(deckAnswer.getA4()));
+            enteredAnswers.add(makeCard(deckAnswer.getA5()));
+            enteredAnswers.add(makeCard(deckAnswer.getA6()));
+            enteredAnswers.add(makeCard(deckAnswer.getA7()));
+            enteredAnswers.add(makeCard(deckAnswer.getA8()));
+            enteredAnswers.add(makeCard(deckAnswer.getA9()));
+            enteredAnswers.add(makeCard(deckAnswer.getA10()));
+            enteredAnswers.add(makeCard(deckAnswer.getA11()));
+            enteredAnswers.add(makeCard(deckAnswer.getA12()));
+            enteredAnswers.add(makeCard(deckAnswer.getA13()));
+            enteredAnswers.add(makeCard(deckAnswer.getA14()));
+            enteredAnswers.add(makeCard(deckAnswer.getA15()));
+            enteredAnswers.add(makeCard(deckAnswer.getA16()));
+            enteredAnswers.add(makeCard(deckAnswer.getA17()));
+            enteredAnswers.add(makeCard(deckAnswer.getA18()));
+            enteredAnswers.add(makeCard(deckAnswer.getA19()));
+            enteredAnswers.add(makeCard(deckAnswer.getA20()));
+            enteredAnswers.add(makeCard(deckAnswer.getA21()));
+            enteredAnswers.add(makeCard(deckAnswer.getA22()));
+            enteredAnswers.add(makeCard(deckAnswer.getA23()));
+            enteredAnswers.add(makeCard(deckAnswer.getA24()));
+            enteredAnswers.add(makeCard(deckAnswer.getA25()));
+            enteredAnswers.add(makeCard(deckAnswer.getA26()));
+            enteredAnswers.add(makeCard(deckAnswer.getA27()));
+            enteredAnswers.add(makeCard(deckAnswer.getA28()));
+            enteredAnswers.add(makeCard(deckAnswer.getA29()));
+            enteredAnswers.add(makeCard(deckAnswer.getA30()));
+            enteredAnswers.add(makeCard(deckAnswer.getA31()));
+            enteredAnswers.add(makeCard(deckAnswer.getA32()));
+            enteredAnswers.add(makeCard(deckAnswer.getA33()));
+            enteredAnswers.add(makeCard(deckAnswer.getA34()));
+            enteredAnswers.add(makeCard(deckAnswer.getA35()));
+            enteredAnswers.add(makeCard(deckAnswer.getA36()));
+            enteredAnswers.add(makeCard(deckAnswer.getA37()));
+            enteredAnswers.add(makeCard(deckAnswer.getA38()));
+            enteredAnswers.add(makeCard(deckAnswer.getA39()));
+            enteredAnswers.add(makeCard(deckAnswer.getA40()));
+            enteredAnswers.add(makeCard(deckAnswer.getA41()));
+            enteredAnswers.add(makeCard(deckAnswer.getA42()));
+            enteredAnswers.add(makeCard(deckAnswer.getA43()));
+            enteredAnswers.add(makeCard(deckAnswer.getA44()));
+            enteredAnswers.add(makeCard(deckAnswer.getA45()));
+            enteredAnswers.add(makeCard(deckAnswer.getA46()));
+            enteredAnswers.add(makeCard(deckAnswer.getA47()));
+            enteredAnswers.add(makeCard(deckAnswer.getA48()));
+            enteredAnswers.add(makeCard(deckAnswer.getA49()));
+            enteredAnswers.add(makeCard(deckAnswer.getA50()));
+            enteredAnswers.add(makeCard(deckAnswer.getA51()));
+            enteredAnswers.add(makeCard(deckAnswer.getA52()));
             for (int i = 0; i < enteredAnswers.size(); i++) {
                 fullAnswerName = Helpers.ResolveAnswers(enteredAnswers.get(i).getCardName());
                 enteredAnswers.get(i).setCardName(fullAnswerName + ".png");
@@ -144,6 +143,7 @@ public class AnswerController {
         } else {
             enteredAnswers = createTestAnswers();
         }
+
 
         session.setAttribute("enteredAnswers", enteredAnswers);
 
