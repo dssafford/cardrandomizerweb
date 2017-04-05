@@ -181,44 +181,13 @@ public class CardScoreController {
 	@RequestMapping("cardScore/{id}")
 	public String showSingleTest(@PathVariable Integer id, Model model){
 
-//		Exam myList = examRepository.findOne(id);
+		ArrayList<SimpleCardTest> myList = (ArrayList<SimpleCardTest>)cardScoreRepository.findByExamId(id);
+		finalScore = Helpers.CalcFinalScore(myList);
 
-		ArrayList<CardTest> myList = (ArrayList<CardTest>)cardScoreRepository.findByTestId(id);
-
-		model.addAttribute("finalScore", 80 + "%");
-		model.addAttribute("scores", myList);
 		model.addAttribute("tests", myList);
-//		model.addAttribute("masterList", masterList);
+		model.addAttribute("finalScore", finalScore + "%");
 
-
-
-//		Integer masterListID= myList.getMasterListID();
-//
-//		Integer myListAnswerListID = myList.getAnswerListID();
-
-
-
-//		ArrayList<Answer> answerList = (ArrayList<Answer>)answerService.findById(myListAnswerListID);
-//
-//		answerList.add(new Answer("doug","throw", "ball"));
-//		answerList.add(new Answer("bill","throw", "kite"));
-//		answerList.add(new Answer("joe","throw", "ball"));
-//		answerList.add(new Answer("sally","throw", "hat"));
-
-
-		//ArrayList masterList = cardRepository.findAll(myListAnswerListID);
-
-
-//		cardSimpleTestArray = Helpers.SimpleCompareCardInfoArrays(masterList, answerList);
-//
-//		finalScore = Helpers.CalcFinalScore(cardSimpleTestArray);
-
-		model.addAttribute("finalScore", 80 + "%");
-//		model.addAttribute("scores", myList);
-//		model.addAttribute("tests", answerList);
-//		model.addAttribute("masterList", masterList);
-
-		return "score/singleCardTestScores";
+		return "score/singlesimpleCardTestScores";
 	}
 
 
@@ -232,7 +201,6 @@ public class CardScoreController {
 		exam.setFinalScore(finalScore);
 
 		scoreRepository.save(exam);
-
 
 	}
 

@@ -225,8 +225,6 @@ public abstract class Helpers {
 			}
 		}
 
-		//finalScore = (finalScore / 52) * 100;
-
 		BigDecimal b = new BigDecimal((finalScore / 52) * 100);
 		b = b.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 

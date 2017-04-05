@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Single Test View</title>
+    <th:block th:include="fragments/headerinc :: head"></th:block>
+
+</head>
+
+<th:block th:include="fragments/header :: header"></th:block>
+<body>
+<div class="container">
+    <div class="row">
+        <div> <h1 th:class="formHeader">Card Test Answers</h1><h2>Final Score =   <span th:text="${finalScore}">Name</span></h2></div>
+        <div>
+            <form class="form-horizontal" th:object="${clickForm}" th:action="@{/scoreAnswers}" method="post">
+                <div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID</th>
+                            <th>Question Card Name</th>
+                            <th>Answer Card Name</th>
+                            <th>Answer Card Name Correct</th>
+                            <th>Test ID</th>
+                        </tr>
+                        <tr th:each="simpleCardTest, testStat : ${tests}">
+                            <td th:text="${testStat.index}"><a href="/${simpleCardTest(1).id}">Id</a></td>
+                            <td th:text="${simpleCardTest.questionCardName}">Person Name</td>
+                            <td th:text="${simpleCardTest.answerCardName}">Object</td>
+                            <td th:text="${simpleCardTest.answerCardNameCorrect}">Object</td>
+                            <td th:text="${simpleCardTest.examId}">Object</td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--<div class="dougOne" th:type="hidden">Hey You</div>-->
+</body>
+</html>
