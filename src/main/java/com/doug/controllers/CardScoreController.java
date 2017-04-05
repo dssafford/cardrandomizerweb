@@ -125,7 +125,7 @@ public class CardScoreController {
 
 		//Add to Session
 		ArrayList<SimpleCardTest> cardSimpleTestArray = (ArrayList<SimpleCardTest>)session.getAttribute("cardSimpleTestArray");
-		for(int i =0;i<cardSimpleTestArray.size()-1;i++){
+		for(int i =0;i<cardSimpleTestArray.size();i++){
 			cardSimpleTestArray.get(i).setExamId(((Exam) myObj).getId());
 		}
 
