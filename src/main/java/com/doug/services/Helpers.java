@@ -251,21 +251,23 @@ public abstract class Helpers {
 		return null;
 	}
 
-	public static CardInfo getCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
 
-		for (int i = 0; i < masterCardList.size(); i++) {
-			if (cardName.equals(masterCardList.get(i).getCardName())) {
-				CardInfo cardInfo = new CardInfo();
-				cardInfo.setCardName(cardName);
-				cardInfo.setPersonName(masterCardList.get(i).getPersonName());
-				cardInfo.setActionName(masterCardList.get(i).getActionName());
-				cardInfo.setObjectName(masterCardList.get(i).getObjectName());
-				return cardInfo;
-			}
-		}
-//		TODO: throw cardNotFoundException
-		return null;
-	}
+
+//	public static CardInfo getCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
+//
+//		for (int i = 0; i < masterCardList.size(); i++) {
+//			if (cardName.equals(masterCardList.get(i).getCardName())) {
+//				CardInfo cardInfo = new CardInfo();
+//				cardInfo.setCardName(cardName);
+//				cardInfo.setPersonName(masterCardList.get(i).getPersonName());
+//				cardInfo.setActionName(masterCardList.get(i).getActionName());
+//				cardInfo.setObjectName(masterCardList.get(i).getObjectName());
+//				return cardInfo;
+//			}
+//		}
+////		TODO: throw cardNotFoundException
+//		return null;
+//	}
 
 	public static String heyAnswerListSmallx(HttpSession session) {
 

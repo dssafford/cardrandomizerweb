@@ -41,8 +41,6 @@ public class CardScoreController {
 	@Autowired
 	private AnswerServiceImpl answerService;
 
-	@Autowired
-	CardRepository cardRepository;
 
 	@Autowired
 	ExamRepository examRepository;
@@ -60,6 +58,11 @@ public class CardScoreController {
 	SimpleCardTestRepository cardTestRepository;
 
 	BigDecimal finalScore;
+
+
+
+
+
 
 	@RequestMapping(value = "/scoreSimpleCardAnswersTest", method = RequestMethod.GET)
 	public String scoreAnswersTest(HttpSession session, Model model) {
@@ -113,13 +116,9 @@ public class CardScoreController {
 	@RequestMapping("/saveCardScore")
 	public String testScore(HttpSession session, Model model) {
 
-//		Exam myScore = examRepository.save(createTestScore());
 
 		Exam exam = new Exam(finalScore,Helpers.getTimeStamp(), "card",  "my comments here", true);
 
-
-//public CardTest(String answerPersonName, String answerPersonAction, String answerPersonObject, Boolean answerPersonNameCorrect,
-//				  Boolean answerPersonActionCorrect, Boolean answerPersonObjectCorrect, Integer testid) {
 		//save new entry in SimpleCardTest table
 		Object myObj = examRepository.save(exam);
 
@@ -129,17 +128,6 @@ public class CardScoreController {
 			cardSimpleTestArray.get(i).setExamId(((Exam) myObj).getId());
 		}
 
-//		ArrayList<SimpleCardTest> cardTests = new ArrayList<SimpleCardTest>();
-
-
-
-/*		for(int i = 0; i< simpleCardSimpleCardTestEnteredAnswers.size()-1; i++){
-			cardTests.add(new SimpleCardTest(simpleCardSimpleCardTestEnteredAnswers.get(i).getQuestionCardName(),
-					  simpleCardSimpleCardTestEnteredAnswers.get(i).getAnswerCardName(),
-					  simpleCardSimpleCardTestEnteredAnswers.get(i).isAnswerCardCorrect()));
-
-		}*/
-//		cardTests.add(new CardTest("Doug","swing","bat",false,false,true, ((Exam) myObj).getId()));
 
 
 		//then save in LocationTest
@@ -164,18 +152,27 @@ public class CardScoreController {
 		return "score/showScores";
 
 	}
-	@RequestMapping("/showCardScoreHistory")
+	@RequestMapping("/showSimpleCardScoreHistory")
 	public String getAllScores(Model model) {
 
-		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("card");
+		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("simpleCard");
 
 		model.addAttribute("scores", mylist);
 
 
-		return "score/showCardScoresHistory";
+		return "score/showSimpleCardScoresHistory";
 	}
 
+	@RequestMapping("/showComplexCardScoreHistory")
+	public String getAllComplexScores(Model model) {
 
+		ArrayList<Exam> mylist = (ArrayList<Exam>)examRepository.findByTesttype("complexcard");
+
+		model.addAttribute("scores", mylist);
+
+
+		return "score/showComplexCardScoresHistory";
+	}
 
 
 	@RequestMapping("cardScore/{id}")

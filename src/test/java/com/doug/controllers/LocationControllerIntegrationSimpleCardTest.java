@@ -1,11 +1,10 @@
 package com.doug.controllers;
 
 import com.doug.domain.LocationTest;
-import com.doug.repositories.LocationRepository;
 import com.doug.repositories.LocationTestRepository;
-import com.doug.repositories.TestRepository;
 import com.doug.services.LocationServiceImpl;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
@@ -27,14 +27,9 @@ public class LocationControllerIntegrationSimpleCardTest {
 	private LocationServiceImpl locationServiceImpl;
 	private MockMvc mockMvc;
 
-	@Autowired
-	LocationRepository locationRepository;
 
 	@Autowired
 	LocationTestRepository locationTestRepository;
-
-	@Autowired
-	TestRepository testRepository;
 
 
 	@Autowired
@@ -47,6 +42,12 @@ public class LocationControllerIntegrationSimpleCardTest {
 		mockMvc = MockMvcBuilders.standaloneSetup(locationController)
 				  .build();
 	}
+
+	@Test
+	public void simpleTest(){
+		assertEquals("test", "test");
+	}
+
 
 	private void loadLocationTests(){
 

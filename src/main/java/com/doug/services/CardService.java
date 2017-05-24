@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by Doug on 12/17/16.
  */
 public interface CardService {
+
 	ArrayList<Card> listAllCards();
 
 	ArrayList<CardInfo> listAllCardsForLearning();

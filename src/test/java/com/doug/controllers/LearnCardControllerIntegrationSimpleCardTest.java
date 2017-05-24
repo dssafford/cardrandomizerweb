@@ -1,10 +1,9 @@
 package com.doug.controllers;
 
 import com.doug.domain.Card;
-import com.doug.domain.CardInfo;
 import com.doug.domain.Exam;
-import com.doug.repositories.CardRepository;
 import com.doug.repositories.ExamRepository;
+import com.doug.repositories.SimpleCardTestRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import org.junit.After;
@@ -19,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,13 +38,10 @@ public class LearnCardControllerIntegrationSimpleCardTest {
     private CardServiceImpl cardServiceImpl;
 
     @Autowired
-    CardRepository cardRepository;
+    SimpleCardTestRepository simpleCardTestRepository;
 
     @Autowired
     ExamRepository examRepository;
-
-    @Autowired
-    LearnCardController learnCardController;
 
     @Before
     public void setUp() {
@@ -57,12 +52,12 @@ public class LearnCardControllerIntegrationSimpleCardTest {
     public void tearDown() throws Exception {
 
     }
-    @Test
-    public void findByCardNameLikeTest() {
-        List<CardInfo> cards = cardRepository.findByCardNameLike("%diamonds%");
-
-        assertEquals(13, cards.size());
-    }
+//    @Test
+//    public void findByCardNameLikeTest() {
+//        List<SimpleCardTest> cards = simpleCardTestRepository.findByCardNameLike("%diamonds%");
+//
+//        assertEquals(13, cards.size());
+//    }
 
     @Test
     public void name() throws Exception {
@@ -91,15 +86,6 @@ public class LearnCardControllerIntegrationSimpleCardTest {
 
     }
 
-    @Test
-    public void makeCardString() throws Exception {
-
-        String cardName = Helpers.makeCardString("ace_of_hearts");
-        assertEquals("ace_of_hearts.png", cardName);
-
-        cardName = Helpers.makeCardString("ace_of_hearts.png");
-        assertEquals("ace_of_hearts.png", cardName);
-    }
 
     @Test
     public void getNextRandomLearningCard1() throws Exception {
@@ -118,16 +104,16 @@ public class LearnCardControllerIntegrationSimpleCardTest {
     }
 
 
-    @Test
-    public void testCreateMasterCardList() {
-
-
-        ArrayList<Card> cards = cardServiceImpl.createmasterCardList(session);
-
-        assertEquals(52, 52);
-
-
-    }
+//    @Test
+//    public void testCreateMasterCardList() {
+//
+//
+//        ArrayList<Card> cards = cardServiceImpl.createmasterCardList(session);
+//
+//        assertEquals(52, 52);
+//
+//
+//    }
 
     @Test
     public void testList() throws Exception {
@@ -190,13 +176,7 @@ public class LearnCardControllerIntegrationSimpleCardTest {
 
 
 
-    @Test
-    public void testCreateMasterList() throws Exception {
-//        mockMvc.perform(get("/masterCardLearningRandomList"))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("learning/masterCardLearningRandomList"));
 
-    }
 
 
     @Test

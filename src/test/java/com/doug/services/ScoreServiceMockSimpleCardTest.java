@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -22,6 +21,7 @@ public class ScoreServiceMockSimpleCardTest {
 
     @Mock
     private CardService cardService;
+
     @Mock
     private CardInfo cardInfo;
 
@@ -47,6 +47,7 @@ public class ScoreServiceMockSimpleCardTest {
     public void testMockCreation() {
         assertNotNull(cardInfo);
         assertNotNull(cardService);
+        assertNotNull(masterDeckList);
     }
 
 
@@ -59,9 +60,9 @@ public class ScoreServiceMockSimpleCardTest {
 
     }
 
-    @Test
-    public void testGetCardInfoFromCardNameTimes() {
-        cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
-        verify(cardService).GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
-    }
+//    @Test
+//    public void testGetCardInfoFromCardNameTimes() {
+//        Helpers.GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
+//        verify(Helpers).GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
+//    }
 }

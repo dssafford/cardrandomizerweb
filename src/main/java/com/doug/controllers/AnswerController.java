@@ -57,12 +57,12 @@ public class AnswerController {
     }
 
 
-    @RequestMapping(value = "/enterAnswers", method = RequestMethod.GET)
+    @RequestMapping(value = "/enterSimpleAnswers", method = RequestMethod.GET)
     public String enterAnswers(Model model) {
         model.addAttribute("deckAnswer", new DeckAnswer());
 
 
-        return "enterAnswers";
+        return "enterSimpleAnswers";
 
     }
 
@@ -76,7 +76,9 @@ public class AnswerController {
         return testAnswers;
     }
 
-    @RequestMapping(value = "/enterAnswers", method = RequestMethod.POST)
+
+
+    @RequestMapping(value = "/enterSimpleAnswers", method = RequestMethod.POST)
     public String getAnswersTestOnly(HttpSession session, DeckAnswer deckAnswer) throws Exception {
 
         ArrayList<Card> enteredAnswers = new ArrayList<Card>();

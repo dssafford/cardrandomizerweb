@@ -48,11 +48,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.h2database</groupId>-->
+            <!--<artifactId>h2</artifactId>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -96,9 +96,9 @@
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
         <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-firefox-driver</artifactId>
-        <version>3.0.1</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
@@ -117,29 +117,46 @@
     <build>
         <plugins>
             <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <!--<version>2.0.0.BUILD-SNAPSHOT</version>-->
-            <executions>
-                <execution>
-                    <id>pre-integration-simpleCardTest</id>
-                    <goals>
-                        <goal>start</goal>
-                    </goals>
-                    <configuration>
-                        <skip>${skip.it}</skip>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>post-integration-simpleCardTest</id>
-                    <goals>
-                        <goal>stop</goal>
-                    </goals>
-                    <configuration>
-                        <skip>${skip.it}</skip>
-                    </configuration>
-                </execution>
-            </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--<version>2.0.0.BUILD-SNAPSHOT</version>-->
+                <executions>
+                    <execution>
+                        <id>pre-integration-simpleCardTest</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skip.it}</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-simpleCardTest</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skip.it}</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>dssafford/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <serverId>docker.io</serverId>
+                </configuration>
             </plugin>
         </plugins>
     </build>

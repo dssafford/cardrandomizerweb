@@ -1,14 +1,19 @@
 package com.doug.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Doug on 12/20/16.
  */
 
-//@Entity
+@Entity
 public class ComplexCardTest {
 
-	//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String questionCardName;
 	private String questionCardObject;

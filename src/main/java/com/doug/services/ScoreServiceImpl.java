@@ -19,6 +19,9 @@ public class ScoreServiceImpl implements ScoreService{
     @Autowired
     LocationScoreRepository locationScoreRepository;
 
+    @Autowired
+    CardServiceImpl cardService;
+
     @Override
     public ArrayList<LocationTest> GetLocationTestAnswers(Integer testId) {
 
@@ -53,22 +56,22 @@ public class ScoreServiceImpl implements ScoreService{
 
 
 
-    public CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
-
-        for(int i=0;i< masterCardList.size();i++){
-            if(cardName.equals(masterCardList.get(i).getCardName())){
-                return masterCardList.get(i);
-            }
-        }
-        return null;
-    }
+//    public CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterCardList) {
+//
+//        for(int i=0;i< masterCardList.size();i++){
+//            if(cardName.equals(masterCardList.get(i).getCardName())){
+//                return masterCardList.get(i);
+//            }
+//        }
+//        return null;
+//    }
 
 
 
     public SingleCardScore ScoreSingleCard(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList) {
 
         // Get the master card
-        CardInfo masterCardInfo = GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
+        CardInfo masterCardInfo = cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterDeckList);
 
         SingleCardScore singleCardScore = new SingleCardScore();
         singleCardScore.setCardName(cardInfo.getCardName());

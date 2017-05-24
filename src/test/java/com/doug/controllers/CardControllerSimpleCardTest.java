@@ -1,9 +1,12 @@
 package com.doug.controllers;
 
-
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,8 +14,8 @@ import static org.junit.Assert.assertEquals;
  * Created by Doug on 12/19/16.
  */
 
-//@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+//@RunWith(SpringJUnit4ClassRunner.class)
 	public class CardControllerSimpleCardTest {
 
 		private MockMvc mockMvc;
@@ -22,38 +25,33 @@ import static org.junit.Assert.assertEquals;
 			assertEquals("one", "one");
 		}
 
-//		private CardController cardController;
-//
-//		@Before
-//		public void setup(){
-//			cardController = new CardController();
-//				  mockMvc = MockMvcBuilders.standaloneSetup(cardController).build();
-//				  }
+		private DougController cardController;
 
-//		@Ignore
-//		@SimpleCardTest
-//		public void testlocationMasterListView() throws Exception{
-//				  mockMvc.perform(get("/locationMasterList"))
-//				  .andExpect(status().isOk())
-//				  .andExpect(view().name("learning/locationMasterList"));
-//		}
-//
-//
-//
-//		@Ignore
-//		@SimpleCardTest
-//		public void testStudyListView() throws Exception{
-//			mockMvc.perform(get("/studyList"))
-//					.andExpect(status().isOk())
-//					.andExpect(view().name("learning/studyList"));
-//		}
+		@Before
+		public void setup(){
+			cardController = new DougController();
+				  mockMvc = MockMvcBuilders.standaloneSetup(cardController).build();
+				  }
 
-//		@SimpleCardTest
-//		public void testMasterListView() throws Exception{
-//			mockMvc.perform(get("/masterList"))
-//					.andExpect(status().isOk())
-//					.andExpect(view().name("masterList"));
-//		}
 
+		@Test
+		public void testStudyListView() throws Exception{
+			mockMvc.perform(MockMvcRequestBuilders.get("/studyList"))
+					.andExpect(MockMvcResultMatchers.status().isOk())
+					.andExpect(MockMvcResultMatchers.view().name("learning/studyList"));
+		}
+
+		@Test
+		public void testMasterListView() throws Exception{
+			mockMvc.perform(MockMvcRequestBuilders.get("/masterCardList"))
+					.andExpect(MockMvcResultMatchers.status().isOk())
+					.andExpect(MockMvcResultMatchers.view().name("learning/masterCardList"));
+		}
+	@Test
+	public void testLocationMasterListView() throws Exception{
+		mockMvc.perform(MockMvcRequestBuilders.get("/locationMasterCardList"))
+				  .andExpect(MockMvcResultMatchers.status().isOk())
+				  .andExpect(MockMvcResultMatchers.view().name("learning/locationMasterCardList"));
+	}
 
 }

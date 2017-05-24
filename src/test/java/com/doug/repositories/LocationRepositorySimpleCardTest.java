@@ -5,18 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by doug on 3/13/17.
  */
-@DataJpaTest
+//@DataJpaTes
+@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class LocationRepositorySimpleCardTest {
 
@@ -34,12 +34,12 @@ public class LocationRepositorySimpleCardTest {
 //		private String comments;
 //		private Integer isActive;
 
-		List<Location> locationList = new ArrayList<>();
-		locationList.add(new Location("mailbox"));
-		locationList.add(new Location("garage"));
-		locationList.add(new Location("well"));
-		locationList.add(new Location("porch"));
-		locationRepository.save(locationList);
+//		List<Location> locationList = new ArrayList<>();
+//		locationList.add(new Location("mailbox"));
+//		locationList.add(new Location("garage"));
+//		locationList.add(new Location("well"));
+//		locationList.add(new Location("porch"));
+//		locationRepository.save(locationList);
 
     }
 
@@ -48,7 +48,7 @@ public class LocationRepositorySimpleCardTest {
 
 		List<Location> mylist = locationRepository.findAll();
 
-		assertEquals(4, mylist.size());
+		assertNotNull(mylist);
 
 	}
 	@Test
@@ -57,7 +57,7 @@ public class LocationRepositorySimpleCardTest {
 
 		List<Location> locationList = (List<Location>)locationRepository.findAll();
 
-		assertEquals(4, locationList.size());
+		assertEquals(52, locationList.size());
 	}
 
 	@Test
@@ -68,4 +68,10 @@ public class LocationRepositorySimpleCardTest {
 		assertEquals("mailbox", location.getLocationName());
 	}
 
+	@Test
+	public void getOneLocationThatNotExist_test() throws NullPointerException {
+
+		Location location = locationRepository.findByLocationName("mailboxx");
+		assertNull(location);
+	}
 }

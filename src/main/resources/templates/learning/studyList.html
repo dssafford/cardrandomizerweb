@@ -9,73 +9,75 @@
 <th:block th:include="fragments/header :: header"></th:block>
 
 <body>
-<div class="container">
-    <a href="/nextOneLearnMasterCards?cardVisible=false&amp;firstTime=true" th:class="crap">Get the next one</a>
-    <!--<div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>-->
-    <h2>Your Master Study List</h2>
-    <div th:unless="${#lists.isEmpty(cards)}">
+<h2>Your Master Study List</h2>
+
+<!--<div class="container">-->
+    <!--<a href="/nextOneLearnMasterCards?cardVisible=false&amp;firstTime=true" th:class="crap">Get the next one</a>-->
+    <!--&lt;!&ndash;<div><a href="/enterAnswers" th:class="crap">Enter Answers</a></div>&ndash;&gt;-->
+    <!--<h2>Your Master Study List</h2>-->
+    <!--&lt;!&ndash;<div th:unless="${#lists.isEmpty(cards)}">&ndash;&gt;-->
 
 
 
-        <div class="panel-body">
-            <table class="table table-bordered" bgcolor="#f0f8ff">
-                <tr>
-                    <th class="col-sm-1">ID</th>
-                    <th class="col-sm-1">Machine</th>
-                    <th class="col-sm-2">Project</th>
-                    <th class="col-sm-4">Directory</th>
-                    <th class="col-sm-5">Comments</th>
-                    <th class="col-sm-1">View</th>
-                    <th class="col-sm-1">Edit</th>
-                    <th class="col-sm-1">Delete</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="text" th:name="machineQuery"></input></td>
-                    <td><input type="text" th:name="machineQuery"></input></td>
-                    <td><input type="text" th:name="machineQuery"></input></td>
-                    <td><input type="text" th:name="machineQuery"></input></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr th:each="journal : ${journals}">
-                    <td th:text="${journal.id}"><a href="/journals/${journal.id}">Id</a></td>
-                    <td th:text="${journal.machine}">machine</td>
-                    <td th:text="${journal.project}">project</td>
-                    <td th:text="${journal.directory}">directory</td>
-                    <td th:text="${journal.comments}">comments</td>
-                    <td><a th:href="${'/journal/' + journal.id}">View</a></td>
-                    <td><a th:href="${'/journal/edit/' + journal.id}">Edit</a></td>
-                    <td><a th:href="${'/journal/delete/' + journal.id}">Delete</a></td>
-                </tr>
-            </table>
-        </div>
+        <!--<div class="panel-body">-->
+            <!--<table class="table table-bordered" bgcolor="#f0f8ff">-->
+                <!--<tr>-->
+                    <!--<th class="col-sm-1">ID</th>-->
+                    <!--<th class="col-sm-1">Machine</th>-->
+                    <!--<th class="col-sm-2">Project</th>-->
+                    <!--<th class="col-sm-4">Directory</th>-->
+                    <!--<th class="col-sm-5">Comments</th>-->
+                    <!--<th class="col-sm-1">View</th>-->
+                    <!--<th class="col-sm-1">Edit</th>-->
+                    <!--<th class="col-sm-1">Delete</th>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td></td>-->
+                    <!--<td><input type="text" th:name="machineQuery"></input></td>-->
+                    <!--<td><input type="text" th:name="machineQuery"></input></td>-->
+                    <!--<td><input type="text" th:name="machineQuery"></input></td>-->
+                    <!--<td><input type="text" th:name="machineQuery"></input></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                    <!--<td></td>-->
+                <!--</tr>-->
+                <!--<tr th:each="journal : ${journals}">-->
+                    <!--<td th:text="${journal.id}"><a href="/journals/${journal.id}">Id</a></td>-->
+                    <!--<td th:text="${journal.machine}">machine</td>-->
+                    <!--<td th:text="${journal.project}">project</td>-->
+                    <!--<td th:text="${journal.directory}">directory</td>-->
+                    <!--<td th:text="${journal.comments}">comments</td>-->
+                    <!--<td><a th:href="${'/journal/' + journal.id}">View</a></td>-->
+                    <!--<td><a th:href="${'/journal/edit/' + journal.id}">Edit</a></td>-->
+                    <!--<td><a th:href="${'/journal/delete/' + journal.id}">Delete</a></td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
 
 
-        <dl th:each="card : ${cards}">
-            <dt class="bookHeadline">
-            <div th:each="card, cardStat: ${cards}"></div>
-            <h3><span th:text="${cardStat.index}">index | </span></h3>
-            <h3><span th:text="${card.cardName}">Card Name | </span></h3>
-            <h3><span th:text="${card.personName}">Person | </span></h3>
-            <h3><span th:text="${card.action}">Action | </span></h3>
-            <h3><span th:text="${card.object}">Object</span></h3>
-            <!--<div class="col-md-12">-->
-            <img src=""
-                 th:src="@{'/images/'+${card.cardName} + '.png'}"
-                 class="center-block" style="border:5px solid black"/>
-            <!--</div>-->
-            </dt>
-        </dl>
-    </div>
-    <div th:if="${#lists.isEmpty(cards)}">
-        <p>You have no cards in your deck</p>
-    </div>
+        <!--<dl th:each="card : ${cards}">-->
+            <!--<dt class="bookHeadline">-->
+            <!--<div th:each="card, cardStat: ${cards}"></div>-->
+            <!--<h3><span th:text="${cardStat.index}">index | </span></h3>-->
+            <!--<h3><span th:text="${card.cardName}">Card Name | </span></h3>-->
+            <!--<h3><span th:text="${card.personName}">Person | </span></h3>-->
+            <!--<h3><span th:text="${card.action}">Action | </span></h3>-->
+            <!--<h3><span th:text="${card.object}">Object</span></h3>-->
+            <!--&lt;!&ndash;<div class="col-md-12">&ndash;&gt;-->
+            <!--<img src=""-->
+                 <!--th:src="@{'/images/'+${card.cardName} + '.png'}"-->
+                 <!--class="center-block" style="border:5px solid black"/>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</dt>-->
+        <!--</dl>-->
+    <!--</div>-->
+    <!--<div th:if="${#lists.isEmpty(cards)}">-->
+        <!--<p>You have no cards in your deck</p>-->
+    <!--</div>-->
 
 
-    <hr/>
-</div>
+    <!--<hr/>-->
+<!--</div>-->
 </body>
 
 </html>

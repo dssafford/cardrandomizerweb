@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public interface ScoreService {
 
-    CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterDeckList);
+//    CardInfo GetCardInfoFromCardName(String cardName, ArrayList<CardInfo> masterDeckList);
 
     SingleCardScore ScoreSingleCard(CardInfo cardInfo, ArrayList<CardInfo> masterDeckList);
 

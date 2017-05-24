@@ -1,14 +1,9 @@
 package com.doug.controllers;
 
-import com.doug.domain.CardInfo;
-import com.doug.domain.Exam;
-import com.doug.domain.ScoreList;
-import com.doug.domain.SingleCardScore;
-import com.doug.repositories.CardRepository;
+import com.doug.domain.*;
 import com.doug.repositories.ExamRepository;
 import com.doug.repositories.ScoreRepository;
 import com.doug.services.CardService;
-import com.doug.services.Helpers;
 import com.doug.services.ScoreService;
 import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +17,6 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by doug on 1/24/17.
@@ -45,9 +39,6 @@ public class CardController {
 	@Autowired
 	private LearnCardController learnCardController;
 
-	@Autowired
-	private CardRepository cardRepository;
-
 
 	@Autowired
 	ExamRepository examRepository;
@@ -61,19 +52,12 @@ public class CardController {
 	SingleCardScore singleCardScore;
 	ArrayList<SingleCardScore> singleCardScoreArrayList;
 
-
-	@RequestMapping(value = "/crap")
-	public String getDiamonds() {
-		List<CardInfo> cards = cardRepository.findByCardNameLike("%diamonds%");
-
-		return "index";
-	}
 	@RequestMapping(value = "/showAnswerSingle", method = RequestMethod.GET)
 	public String showSingleAnswer(HttpSession session, Model model) {
 		ArrayList<CardInfo> masterCardDeck;
 		deckIndex = (Integer)session.getAttribute("deckIndex");
 
-		if (deckIndex <= 3) {
+		if (deckIndex <= 52) {
 			masterCardDeck = (ArrayList<CardInfo>) session.getAttribute("masterCardDeck");
 
 			CardInfo masterCard = (CardInfo) session.getAttribute("singleCardResults");
@@ -116,7 +100,7 @@ public class CardController {
 			}
 
 
-			CardInfo masterCardInfo = Helpers.getCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
+			CardInfo masterCardInfo = cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
 
 			singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
 			session.setAttribute("singleCardScore", singleCardScore);
@@ -162,12 +146,55 @@ public class CardController {
 		return "answer/showAnswerSingle";
 	}
 
+	//Just run through a random deck of cards
+	//at any point give the option to take the test
+	@RequestMapping(value="/runRandomTestStart", method = RequestMethod.GET)
+	public String runRandomTest(HttpSession session, Model model) {
+		//set the initial random shuffled deck of cards
+		cachedRandomLearningCards = learnCardController.CreateRandomLearningDeck();
+		deckIndex=0;
+
+		//start with first card
+		ArrayList<Card> cachedShuffledCardNames = (ArrayList<Card>)session.getAttribute("cachedShuffledCardNames");
+		CardInfo cardInfo = new CardInfo();
+		cardInfo.setCardName(cachedShuffledCardNames.get(deckIndex).getCardName());
+
+		session.setAttribute("randomTestingDeck", cachedRandomLearningCards);
+
+		model.addAttribute("cardInfo", cardInfo);
+		model.addAttribute("cardNumber", deckIndex.toString());
+
+		return "testing/testCardsOneAtATime";
+
+	}
+	@RequestMapping(value="/runRandomTestNextCard", method = RequestMethod.POST)
+	public String runRandomTest(HttpSession session, Model model, Integer deckIndex) {
+		//get the next card in the deck
+
+		deckIndex=deckIndex+1;
+
+		ArrayList<Card> randomTestingDeck = (ArrayList<Card>)session.getAttribute("randomTestingDeck");
+
+		CardInfo cardInfo = new CardInfo();
+		cardInfo.setCardName(randomTestingDeck.get(deckIndex).getCardName());
+
+
+		model.addAttribute("cardInfo", cardInfo);
+		model.addAttribute("cardNumber", deckIndex.toString());
+
+		return "testing/testCardsOneAtATime";
+
+	}
+
 	@RequestMapping(value = "/singleCardTestStart", method = RequestMethod.GET)
 	public String startSingleCardScoring(HttpSession session) {
 
-		session.setAttribute("randomLearningDeck", null);
-		session.setAttribute("scoreSoFar", null);
-		session.setAttribute("cumulativeScore", null);
+		cachedRandomLearningCards = learnCardController.CreateRandomLearningDeck();
+		session.setAttribute("randomLearningDeck", cachedRandomLearningCards);
+		deckIndex = 0;
+		session.setAttribute("deckIndex", 0);
+
+
 
 		return "redirect:/singleCardTest";
 
@@ -229,7 +256,7 @@ public class CardController {
 			singleCardScore = scoreService.ScoreSingleCard(cardInfo, masterCardDeck);
 			session.setAttribute("singleCardScore", singleCardScore);
 
-			CardInfo masterCardInfo = Helpers.getCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
+			CardInfo masterCardInfo = cardService.GetCardInfoFromCardName(cardInfo.getCardName(), masterCardDeck);
 
 			//Add to score
 			singleCardScoreArrayList =

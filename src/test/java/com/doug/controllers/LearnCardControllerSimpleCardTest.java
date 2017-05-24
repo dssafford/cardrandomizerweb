@@ -7,22 +7,31 @@ import com.doug.services.Helpers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * Created by doug on 1/21/17.
  */
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class LearnCardControllerSimpleCardTest {
+
     @Mock //Mockito Mock object
     private CardService cardService;
 
@@ -38,11 +47,43 @@ public class LearnCardControllerSimpleCardTest {
     @Autowired
     ExamRepository examRepository;
 
+    @Before
+    public void setup(){
+        initMocks(this); //initilizes controller and mocks
+        mockMvc = MockMvcBuilders.standaloneSetup(learnCardController).build();
+    }
+
+
     @After
     public void tearDown() throws Exception {
 
     }
 
+    @Test
+    public void testCreateMasterList() throws Exception {
+        mockMvc.perform(get("/masterCardLearningRandomList"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("learning/masterCardLearningRandomList"));
+
+    }
+
+
+
+    @Test
+    public void mocksInitializationTest() {
+        assertNotNull(cardService);
+
+    }
+
+    @Test
+    public void makeCardString() throws Exception {
+
+        String cardName = Helpers.makeCardString("ace_of_hearts");
+        assertEquals("ace_of_hearts.png", cardName);
+
+        cardName = Helpers.makeCardString("ace_of_hearts.png");
+        assertEquals("ace_of_hearts.png", cardName);
+    }
 
 //    @SimpleCardTest
 //    public void saveCardTest() throws Exception {
@@ -159,15 +200,7 @@ public class LearnCardControllerSimpleCardTest {
 
     }
 
-    @Test
-    public void makeCardString() throws Exception {
 
-        String cardName = Helpers.makeCardString("ace_of_hearts");
-        assertEquals("ace_of_hearts.png", cardName);
-
-        cardName = Helpers.makeCardString("ace_of_hearts.png");
-        assertEquals("ace_of_hearts.png", cardName);
-    }
 
     @Test
     public void getNextRandomLearningCard1() throws Exception {
@@ -185,11 +218,7 @@ public class LearnCardControllerSimpleCardTest {
 //    }
 
 
-    @Before
-    public void setup(){
-        MockitoAnnotations.initMocks(this); //initilizes controller and mocks
-        mockMvc = MockMvcBuilders.standaloneSetup(learnCardController).build();
-    }
+
 
 //    @SimpleCardTest
 //    public void testCreateMasterCardList() {

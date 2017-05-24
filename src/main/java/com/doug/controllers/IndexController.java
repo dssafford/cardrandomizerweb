@@ -1,9 +1,6 @@
 package com.doug.controllers;
 
 import com.doug.commands.LoginCommand;
-import com.doug.repositories.LocationRepository;
-import com.doug.repositories.LocationTestRepository;
-import com.doug.repositories.TestRepository;
 import com.doug.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,15 +17,6 @@ public class IndexController {
 
 	@Autowired
 	CardService cardService;
-
-	@Autowired
-	private LocationTestRepository locationTestRepository;
-
-	@Autowired
-	private LocationRepository locationRepository;
-
-	@Autowired
-	private TestRepository testRepository;
 
 
 	@RequestMapping({"/", ""})
