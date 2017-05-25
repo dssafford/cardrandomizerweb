@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 /**
  * Created by doug on 3/13/17.
  */
-//@DataJpaTes
+
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class LocationRepositorySimpleCardTest {
@@ -64,7 +64,6 @@ public class LocationRepositorySimpleCardTest {
 	public void getOneLocation_test() {
 
 		Location location = locationRepository.findByLocationName("mailbox");
-//		Location location = locationRepository.findOne(10);
 		assertEquals("mailbox", location.getLocationName());
 	}
 

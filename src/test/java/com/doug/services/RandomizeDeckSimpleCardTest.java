@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -25,4 +26,9 @@ public class RandomizeDeckSimpleCardTest {
 		assertNotNull(myList);
 	}
 
+	@Test
+	public void getRandomDeckCount_test() throws Exception {
+		ArrayList myList = randomizeDeck.Randomize();
+		assertEquals(52, myList.size());
+	}
 }
