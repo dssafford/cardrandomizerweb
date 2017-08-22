@@ -3,7 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.*;
 import com.doug.repositories.ExamRepository;
 import com.doug.repositories.LocationScoreRepository;
-import com.doug.repositories.LocationTestRepository;
+import com.doug.repositories.LocationQuizRepository;
 import com.doug.services.Helpers;
 import com.doug.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class LocationScoreController {
 
 	@Autowired
-	LocationTestRepository locationTestRepository;
+	LocationQuizRepository locationQuizRepository;
 
 	@Autowired
 	ExamRepository examRepository;
@@ -114,7 +114,7 @@ public class LocationScoreController {
 
 		Double finalScoreRight = 0.00;
 
-		ArrayList<TestLocation> locationTestArray = new ArrayList<>();
+		ArrayList<TestLocation> locationQuizArray = new ArrayList<>();
 
 		//get test answers
 		ArrayList<Location> enteredLocationAnswers = (ArrayList<Location>)session.getAttribute("enteredLocationAnswers");
@@ -132,11 +132,11 @@ public class LocationScoreController {
 
 		for(int i=0;i<enteredLocationAnswers.size();i++){
 			if(enteredLocationAnswers.get(i).getLocationName().equals(masterLocationList.get(i).getLocationName())){
-				locationTestArray.add(new TestLocation(masterLocationList.get(i).getLocationName(),enteredLocationAnswers.get(i).getLocationName(),
+				locationQuizArray.add(new TestLocation(masterLocationList.get(i).getLocationName(),enteredLocationAnswers.get(i).getLocationName(),
 						  true));
 				finalScoreRight = finalScoreRight +1;
 			} else {
-				locationTestArray.add(new TestLocation(masterLocationList.get(i).getLocationName(),enteredLocationAnswers.get(i).getLocationName(),
+				locationQuizArray.add(new TestLocation(masterLocationList.get(i).getLocationName(),enteredLocationAnswers.get(i).getLocationName(),
 						  false));
 			}
 
@@ -145,37 +145,37 @@ public class LocationScoreController {
 		BigDecimal b = new BigDecimal((finalScoreRight / 52) * 100);
 		b = b.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-		session.setAttribute("locationTestArray", locationTestArray);
+		session.setAttribute("locationQuizArray", locationQuizArray);
 
 		model.addAttribute("finalScore", b + "%");
-		model.addAttribute("scores", locationTestArray);
+		model.addAttribute("scores", locationQuizArray);
 
 		return "answer/showLocationAnswerSingleTest";
 
 	}
 
-	@RequestMapping(value = "/saveLocationTestScore", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveLocationQuizScore", method = RequestMethod.POST)
 	public String saveLocationScore(){
 
 		//test data
 		Exam exam = new Exam(new BigDecimal(92.5), Helpers.getTimeStamp(), "location",  "my comments here", true);
 
 
-//		LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
+//		LocationQuiz(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 //				  Boolean answerIsCorrect, Integer testId)
-		//save new entry in SimpleCardTest table
+		//save new entry in SimpleCardQuiz table
 		Object myObj = examRepository.save(exam);
 
-		ArrayList<LocationTest> locationTests = new ArrayList<>();
-		LocationTest locationTest = new LocationTest();
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
-		locationTests.add(new LocationTest(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		ArrayList<LocationQuiz> locationQuizs = new ArrayList<>();
+		LocationQuiz locationQuiz = new LocationQuiz();
+		locationQuizs.add(new LocationQuiz(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationQuizs.add(new LocationQuiz(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationQuizs.add(new LocationQuiz(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationQuizs.add(new LocationQuiz(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
+		locationQuizs.add(new LocationQuiz(1,"mailbox", "driveway", false, ((Exam) myObj).getId()));
 
-		//then save in LocationTest
-		locationTestRepository.save(locationTests);
+		//then save in LocationQuiz
+		locationQuizRepository.save(locationQuizs);
 
 		return "index";
 	}
@@ -192,15 +192,15 @@ public class LocationScoreController {
 	}
 
 	@RequestMapping("locationScore/{id}")
-	public String showSingleLocationTest(@PathVariable Integer id, Model model){
+	public String showSingleLocationQuiz(@PathVariable Integer id, Model model){
 
-		ArrayList<LocationTest> myList = (ArrayList<LocationTest>)locationScoreRepository.findByTestId(id);
+		ArrayList<LocationQuiz> myList = (ArrayList<LocationQuiz>)locationScoreRepository.findByTestId(id);
 
 		model.addAttribute("finalScore", 80 + "%");
 		model.addAttribute("scores", myList);
 		model.addAttribute("tests", myList);
 //		model.addAttribute("masterList", masterList);
 
-		return "score/singleLocationTestScores";
+		return "score/singleLocationQuizScores";
 	}
 }

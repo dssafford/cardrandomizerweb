@@ -1,0 +1,8 @@
+---
+applications:
+- name: cardrandomizerweb
+  memory: 1G
+  random-route: true
+  path: target/cardrandomizerweb-0.0.1-SNAPSHOT.JAR
+  services:
+    - mysqlCard

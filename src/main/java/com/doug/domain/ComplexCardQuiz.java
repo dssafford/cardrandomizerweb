@@ -10,7 +10,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class ComplexCardTest {
+public class ComplexCardQuiz {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class ComplexCardTest {
 	private boolean answerCardObjectCorrect;
 	private boolean answerCardActionCorrect;
 
-	public ComplexCardTest(Integer id, String questionCardName, String questionCardObject, String questionCardAction,
+	public ComplexCardQuiz(Integer id, String questionCardName, String questionCardObject, String questionCardAction,
 								  String answerCardName, String answerCardObject, String answerCardAction,
 								  boolean answerCardNameCorrect, boolean answerCardObjectCorrect,
 								  boolean answerCardActionCorrect) {

@@ -23,12 +23,12 @@
                             <th>Answer Card Name Correct</th>
                             <th>Test ID</th>
                         </tr>
-                        <tr th:each="simpleCardTest, testStat : ${tests}">
-                            <td th:text="${testStat.index}"><a href="/${simpleCardTest(1).id}">Id</a></td>
-                            <td th:text="${simpleCardTest.questionCardName}">Person Name</td>
-                            <td th:text="${simpleCardTest.answerCardName}">Object</td>
-                            <td th:text="${simpleCardTest.answerCardNameCorrect}">Object</td>
-                            <td th:text="${simpleCardTest.examId}">Object</td>
+                        <tr th:each="SimpleCardQuiz, testStat : ${tests}">
+                            <td th:text="${testStat.index}"><a href="/${SimpleCardQuiz(1).id}">Id</a></td>
+                            <td th:text="${SimpleCardQuiz.questionCardName}">Person Name</td>
+                            <td th:text="${SimpleCardQuiz.answerCardName}">Object</td>
+                            <td th:text="${SimpleCardQuiz.answerCardNameCorrect}">Object</td>
+                            <td th:text="${SimpleCardQuiz.examId}">Object</td>
                         </tr>
                     </table>
                 </div>

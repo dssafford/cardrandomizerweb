@@ -15,31 +15,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 
-
 @SpringBootTest
 public class IndexControllerSimpleCardTest {
 
-private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-private IndexController indexController;
+    private IndexController indexController;
 
-@Before
-public void setup(){
-		  indexController = new IndexController();
-		  mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
-		  }
+    @Before
+    public void setup() {
+        indexController = new IndexController();
+        mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+    }
 
-@Test
-public void testIndex() throws Exception{
-		  mockMvc.perform(get("/"))
-		  .andExpect(status().isOk())
-		  .andExpect(view().name("index"));
-}
-
-
-
-
-
+    @Test
+    public void testIndex() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
+    }
 
 
 }

@@ -30,14 +30,14 @@ public class DougController {
 //    }
 
 
-//	@RequestMapping(value = "/singleLocationTestStart", method = RequestMethod.GET)
+//	@RequestMapping(value = "/singleLocationQuizStart", method = RequestMethod.GET)
 //	public String startSingleCardScoring(HttpSession session) {
 //
 //		session.setAttribute("randomLocationList", null);
 //		session.setAttribute("scoreSoFar", null);
 //		session.setAttribute("cumulativeScore", null);
 //
-//		return "redirect:/singleLocationTest";
+//		return "redirect:/singleLocationQuiz";
 //
 //	}
 }

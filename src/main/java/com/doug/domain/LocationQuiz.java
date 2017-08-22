@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Created by Doug on 2/25/17.
  */
 @Entity
-public class LocationTest {
+public class LocationQuiz {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -94,8 +94,8 @@ public class LocationTest {
 		this.testId = testId;
 	}
 
-	public LocationTest(){}
-	public LocationTest(Integer locationNumber, String locationName, String answerPlaceName,
+	public LocationQuiz(){}
+	public LocationQuiz(Integer locationNumber, String locationName, String answerPlaceName,
 							  Boolean answerIsCorrect, Integer testId){
 		this.locationNumber=locationNumber;
 		this.locationName=locationName;
@@ -104,7 +104,7 @@ public class LocationTest {
 		this.testId=testId;
 
 	}
-	public LocationTest(Integer locationNumber, String locationName, String answerPlaceName,
+	public LocationQuiz(Integer locationNumber, String locationName, String answerPlaceName,
 							  Boolean answerIsCorrect){
 		this.locationNumber=locationNumber;
 		this.locationName=locationName;
@@ -112,7 +112,7 @@ public class LocationTest {
 		this.answerIsCorrect=answerIsCorrect;
 
 	}
-	public LocationTest(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
+	public LocationQuiz(Integer id, Integer locationNumber, String locationName, String answerPlaceName,
 						  Boolean answerIsCorrect, Integer testId){
 		this.locationNumber=locationNumber;
 		this.locationName=locationName;
@@ -120,7 +120,7 @@ public class LocationTest {
 		this.answerIsCorrect=answerIsCorrect;
 		this.testId=testId;
 	}
-	public LocationTest(Integer locationNumber, String locationName){
+	public LocationQuiz(Integer locationNumber, String locationName){
 		this.locationNumber=locationNumber;
 		this.locationName=locationName;
 	}

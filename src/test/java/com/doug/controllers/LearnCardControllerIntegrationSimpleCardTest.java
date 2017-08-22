@@ -3,7 +3,7 @@ package com.doug.controllers;
 import com.doug.domain.Card;
 import com.doug.domain.Exam;
 import com.doug.repositories.ExamRepository;
-import com.doug.repositories.SimpleCardTestRepository;
+import com.doug.repositories.SimpleCardQuizRepository;
 import com.doug.services.CardServiceImpl;
 import com.doug.services.Helpers;
 import org.junit.After;
@@ -38,7 +38,7 @@ public class LearnCardControllerIntegrationSimpleCardTest {
     private CardServiceImpl cardServiceImpl;
 
     @Autowired
-    SimpleCardTestRepository simpleCardTestRepository;
+    SimpleCardQuizRepository simpleCardTestRepository;
 
     @Autowired
     ExamRepository examRepository;
@@ -63,17 +63,17 @@ public class LearnCardControllerIntegrationSimpleCardTest {
     public void name() throws Exception {
     }
 
-    @Test
-    public void saveCardTest() throws Exception {
-
-        //test data
-        Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
-
-        Object myObj = examRepository.saveAndFlush(exam);
-        assertNotNull(myObj);
-        assert(((Exam)myObj).getId()>0);
-
-    }
+//    @Test
+//    public void saveCardTest() throws Exception {
+//
+//        //test data
+//        Exam exam = new Exam(new BigDecimal(92.5),Helpers.getTimeStamp(), "card",  "my comments here", true);
+//
+//        Object myObj = examRepository.saveAndFlush(exam);
+//        assertNotNull(myObj);
+//        assert(((Exam)myObj).getId()>0);
+//
+//    }
 
 
     @Test

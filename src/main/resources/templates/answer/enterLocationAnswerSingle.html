@@ -12,7 +12,7 @@
 <th:block th:include="fragments/header :: header"></th:block>
 <div class="container">
     <h2 th:class="formHeader">Single Location Test</h2>
-    <form class="form-horizontal" th:object="${locationInfo}" th:action="@{/singleLocationTest}" method="post">
+    <form class="form-horizontal" th:object="${locationInfo}" th:action="@{/singleLocationQuiz}" method="post">
         <div class="col-sm-6 col-sm-offset-2">
             <h3>Count: <span th:text="${locationIndex+1}"></span></h3>
             <h3>Score: <span th:text="${score}"></span></h3>

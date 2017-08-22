@@ -1,7 +1,7 @@
 package com.doug.services;
 
 import com.doug.domain.CardInfo;
-import com.doug.domain.LocationTest;
+import com.doug.domain.LocationQuiz;
 import com.doug.domain.SingleCardScore;
 import com.doug.repositories.LocationScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +23,9 @@ public class ScoreServiceImpl implements ScoreService{
     CardServiceImpl cardService;
 
     @Override
-    public ArrayList<LocationTest> GetLocationTestAnswers(Integer testId) {
+    public ArrayList<LocationQuiz> GetLocationQuizAnswers(Integer testId) {
 
-        ArrayList<LocationTest> myList = locationScoreRepository.findByTestId(testId);
+        ArrayList<LocationQuiz> myList = locationScoreRepository.findByTestId(testId);
         return myList;
 
     }

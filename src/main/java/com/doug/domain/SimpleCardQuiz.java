@@ -10,7 +10,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class SimpleCardTest {
+public class SimpleCardQuiz{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +21,7 @@ public class SimpleCardTest {
 	private Integer examId;
 
 
-	public SimpleCardTest(){}
+	public SimpleCardQuiz(){}
 
 	public Integer getExamId() {
 		return examId;
@@ -31,13 +31,13 @@ public class SimpleCardTest {
 		this.examId = examId;
 	}
 
-	public SimpleCardTest(String questionCardName, String answerCardName, boolean answerCardNameCorrect) {
+	public SimpleCardQuiz(String questionCardName, String answerCardName, boolean answerCardNameCorrect) {
 		this.questionCardName = questionCardName;
 		this.answerCardName = answerCardName;
 		this.answerCardNameCorrect = answerCardNameCorrect;
 	}
 
-	public SimpleCardTest(String questionCardName, String answerCardName, boolean answerCardNameCorrect,
+	public SimpleCardQuiz(String questionCardName, String answerCardName, boolean answerCardNameCorrect,
 								 Integer examId) {
 		this.questionCardName = questionCardName;
 		this.answerCardName = answerCardName;

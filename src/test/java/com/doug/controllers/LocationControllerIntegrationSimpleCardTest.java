@@ -1,7 +1,7 @@
 package com.doug.controllers;
 
-import com.doug.domain.LocationTest;
-import com.doug.repositories.LocationTestRepository;
+import com.doug.domain.LocationQuiz;
+import com.doug.repositories.LocationQuizRepository;
 import com.doug.services.LocationServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class LocationControllerIntegrationSimpleCardTest {
 
 
 	@Autowired
-	LocationTestRepository locationTestRepository;
+	LocationQuizRepository locationTestRepository;
 
 
 	@Autowired
@@ -54,8 +54,8 @@ public class LocationControllerIntegrationSimpleCardTest {
 //		loadTest1();
 //		loadTest2();
 
-		List<LocationTest> mylist = locationTestRepository.findByTest(1);
-		List<LocationTest> mylist1 = locationTestRepository.findByTest(2);
+		List<LocationQuiz> mylist = locationTestRepository.findByTest(1);
+		List<LocationQuiz> mylist1 = locationTestRepository.findByTest(2);
 		String dude = "hey";
 
 

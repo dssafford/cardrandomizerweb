@@ -32,7 +32,7 @@
                             <th>Score</th>
                         </tr>
                         <tr th:each="score,  scoreStat : ${scores}">
-                            <td th:text="${scoreStat.index}"><a href="/${simpleCardTest(1).id}">Id</a></td>
+                            <td th:text="${scoreStat.index}"><a href="/${SimpleCardQuiz(1).id}">Id</a></td>
                             <td th:text="${score.id}">index</td>
                             <td th:text="${score.masterCardName}">index</td>
                             <td th:text="${score.answerCardName}">index</td>

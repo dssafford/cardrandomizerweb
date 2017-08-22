@@ -106,55 +106,55 @@ public abstract class Helpers {
 
 	}
 	public static ArrayList SimpleCompareCardInfoArrays(ArrayList<CardInfo> masterDeck, ArrayList<SingleCardScore> answerCardList) {
-		ArrayList<SimpleCardTest> simpleCardTestArray = new ArrayList();
-		SimpleCardTest simpleCardTest;
+		ArrayList<SimpleCardQuiz> SimpleCardQuizArray = new ArrayList();
+		SimpleCardQuiz SimpleCardQuiz;
 
 		for (int i = 0; i < answerCardList.size(); i++) {
-			simpleCardTest = new SimpleCardTest();
-			simpleCardTest.setQuestionCardName(masterDeck.get(i).getCardName());
-			simpleCardTest.setAnswerCardName(answerCardList.get(i).getCardName());
+			SimpleCardQuiz = new SimpleCardQuiz();
+			SimpleCardQuiz.setQuestionCardName(masterDeck.get(i).getCardName());
+			SimpleCardQuiz.setAnswerCardName(answerCardList.get(i).getCardName());
 
 			if (masterDeck.get(i).getCardName().equals(answerCardList.get(i).getCardName())) {
-				simpleCardTest.setAnswerCardNameCorrect(true);
+				SimpleCardQuiz.setAnswerCardNameCorrect(true);
 //				finalScore = finalScore + 1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerCardList.get(i).getCardName());
 			} else {
-				simpleCardTest.setAnswerCardNameCorrect(false);
+				SimpleCardQuiz.setAnswerCardNameCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerCardList.get(i).getCardName());
 			}
-			simpleCardTestArray.add(i, simpleCardTest);
+			SimpleCardQuizArray.add(i, SimpleCardQuiz);
 		}
 
-		return simpleCardTestArray;
+		return SimpleCardQuizArray;
 
 
 	}
 
 	public static ArrayList ComplexCompareCardInfoArrays(ArrayList<CardInfo> masterDeck, ArrayList<SingleCardScore> answerLocationList) {
-		ArrayList<SimpleCardTest> simpleCardTestArray = new ArrayList();
-		SimpleCardTest simpleCardTest;
+		ArrayList<SimpleCardQuiz> SimpleCardQuizArray = new ArrayList();
+		SimpleCardQuiz SimpleCardQuiz;
 		Double finalScore = 0.00;
 
 		for (int i = 0; i < answerLocationList.size(); i++) {
-			simpleCardTest = new SimpleCardTest();
-//			simpleCardTest.setId(i);
-			simpleCardTest.setQuestionCardName(masterDeck.get(i).getCardName());
-			simpleCardTest.setAnswerCardName(answerLocationList.get(i).getCardName());
+			SimpleCardQuiz = new SimpleCardQuiz();
+//			SimpleCardQuiz.setId(i);
+			SimpleCardQuiz.setQuestionCardName(masterDeck.get(i).getCardName());
+			SimpleCardQuiz.setAnswerCardName(answerLocationList.get(i).getCardName());
 
 			if (masterDeck.get(i).getCardName().equals(answerLocationList.get(i).getCardName())) {
-				simpleCardTest.setAnswerCardNameCorrect(true);
+				SimpleCardQuiz.setAnswerCardNameCorrect(true);
 				finalScore = finalScore + 1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerLocationList.get(i).getCardName());
 			} else {
-				simpleCardTest.setAnswerCardNameCorrect(false);
+				SimpleCardQuiz.setAnswerCardNameCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerLocationList.get(i).getCardName());
 			}
-			simpleCardTestArray.add(i, simpleCardTest);
+			SimpleCardQuizArray.add(i, SimpleCardQuiz);
 		}
 
-		return simpleCardTestArray;
+		return SimpleCardQuizArray;
 
 
 	}
@@ -189,38 +189,38 @@ public abstract class Helpers {
 //	}
 
 	public static ArrayList SimpleCompareArrays(ArrayList<Card> masterDeck, ArrayList<Card> answerLocationList) {
-		ArrayList<SimpleCardTest> simpleCardTestArray = new ArrayList();
-		SimpleCardTest simpleCardTest;
+		ArrayList<SimpleCardQuiz> SimpleCardQuizArray = new ArrayList();
+		SimpleCardQuiz SimpleCardQuiz;
 		Double finalScore = 0.00;
 
 		for (int i = 0; i < masterDeck.size(); i++) {
-			simpleCardTest = new SimpleCardTest();
-//			simpleCardTest.setId(i);
-			simpleCardTest.setQuestionCardName(masterDeck.get(i).getCardName());
-			simpleCardTest.setAnswerCardName(answerLocationList.get(i).getCardName());
+			SimpleCardQuiz = new SimpleCardQuiz();
+//			SimpleCardQuiz.setId(i);
+			SimpleCardQuiz.setQuestionCardName(masterDeck.get(i).getCardName());
+			SimpleCardQuiz.setAnswerCardName(answerLocationList.get(i).getCardName());
 
 			if (masterDeck.get(i).getCardName().equals(answerLocationList.get(i).getCardName())) {
-				simpleCardTest.setAnswerCardNameCorrect(true);
+				SimpleCardQuiz.setAnswerCardNameCorrect(true);
 				finalScore = finalScore + 1;
 				System.out.println("Found equal on number " + i + " - " + masterDeck.get(i).getCardName() + " = " + answerLocationList.get(i).getCardName());
 			} else {
-				simpleCardTest.setAnswerCardNameCorrect(false);
+				SimpleCardQuiz.setAnswerCardNameCorrect(false);
 				System.out.println("Found not equal on number " + i + " - " + masterDeck.get(i).getCardName() + " != " +
 						  answerLocationList.get(i).getCardName());
 			}
-			simpleCardTestArray.add(i, simpleCardTest);
+			SimpleCardQuizArray.add(i, SimpleCardQuiz);
 		}
 
-		return simpleCardTestArray;
+		return SimpleCardQuizArray;
 
 
 	}
 
-	public static BigDecimal CalcFinalScore(ArrayList<SimpleCardTest> simpleCardTestArray) {
+	public static BigDecimal CalcFinalScore(ArrayList<SimpleCardQuiz> SimpleCardQuizArray) {
 		Double finalScore = 0.00;
 
-		for (int i = 0; i < simpleCardTestArray.size(); i++) {
-			if (simpleCardTestArray.get(i).isAnswerCardNameCorrect()) {
+		for (int i = 0; i < SimpleCardQuizArray.size(); i++) {
+			if (SimpleCardQuizArray.get(i).isAnswerCardNameCorrect()) {
 				finalScore = finalScore + 1;
 			}
 		}

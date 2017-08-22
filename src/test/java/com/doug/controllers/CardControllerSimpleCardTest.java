@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 		private MockMvc mockMvc;
 
 		@Test
-	public void simple() {
+		public void simple() {
 			assertEquals("one", "one");
 		}
 
@@ -47,9 +47,9 @@ import static org.junit.Assert.assertEquals;
 					.andExpect(MockMvcResultMatchers.status().isOk())
 					.andExpect(MockMvcResultMatchers.view().name("learning/masterCardList"));
 		}
-	@Test
-	public void testLocationMasterListView() throws Exception{
-		mockMvc.perform(MockMvcRequestBuilders.get("/locationMasterCardList"))
+		@Test
+		public void testLocationMasterListView() throws Exception{
+			mockMvc.perform(MockMvcRequestBuilders.get("/locationMasterCardList"))
 				  .andExpect(MockMvcResultMatchers.status().isOk())
 				  .andExpect(MockMvcResultMatchers.view().name("learning/locationMasterCardList"));
 	}

@@ -73,7 +73,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create SimpleCardTest Score
+			//Create SimpleCardQuiz Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
@@ -135,7 +135,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create SimpleCardTest Score
+			//Create SimpleCardQuiz Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);
@@ -186,7 +186,7 @@ public class CardController {
 
 	}
 
-	@RequestMapping(value = "/singleCardTestStart", method = RequestMethod.GET)
+	@RequestMapping(value = "/singleCardQuizStart", method = RequestMethod.GET)
 	public String startSingleCardScoring(HttpSession session) {
 
 		cachedRandomLearningCards = learnCardController.CreateRandomLearningDeck();
@@ -196,12 +196,12 @@ public class CardController {
 
 
 
-		return "redirect:/singleCardTest";
+		return "redirect:/singleCardQuiz";
 
 	}
 
-	@RequestMapping(value = "/singleCardTest", method = RequestMethod.GET)
-	public String getSingleCardTest(HttpSession session, Model model) {
+	@RequestMapping(value = "/singleCardQuiz", method = RequestMethod.GET)
+	public String getSingleCardQuiz(HttpSession session, Model model) {
 		//Create master random list and put in session
 
 
@@ -235,8 +235,8 @@ public class CardController {
 		return "answer/enterAnswerSingle";
 	}
 
-	@RequestMapping(value = "/singleCardTest", method = RequestMethod.POST)
-	public String scoreSingleCardTest(HttpSession session, CardInfo cardInfo, Model model) {
+	@RequestMapping(value = "/singleCardQuiz", method = RequestMethod.POST)
+	public String scoreSingleCardQuiz(HttpSession session, CardInfo cardInfo, Model model) {
 
 		deckIndex = (Integer)session.getAttribute("deckIndex");
 
@@ -311,7 +311,7 @@ public class CardController {
 			model.addAttribute("score", cumulativeScore + "%");
 			model.addAttribute("cardNumber", "end of deck");
 
-			//Create SimpleCardTest Score
+			//Create SimpleCardQuiz Score
 			ScoreList scoreList = new ScoreList();
 //			scoreList.setMasterList(cachedRandomLearningCards);
 //			scoreList.setAnswerList(singleCardScoreArrayList);

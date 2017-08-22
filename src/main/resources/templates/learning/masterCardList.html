@@ -20,7 +20,7 @@
             <th  style="text-align:center" >Comments</th>
             <th  style="text-align:center" >isActive</th>
             <tr th:each="location,  locationStat : ${locations}">
-                <td th:align="center" th:text="${locationStat.index}"><a href="/${simpleCardTest(1).id}">Id</a></td>
+                <td th:align="center" th:text="${locationStat.index}"><a href="/${SimpleCardQuiz(1).id}">Id</a></td>
                 <td  th:align="center" th:text="${location.location_id}">index</td>
                 <td  th:align="center" th:text="${location.location_name}">index</td>
                 <td  th:align="center" th:text="${location.comments}">index</td>

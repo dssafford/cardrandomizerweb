@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class CardRepositorySimpleCardTest {
 
 	@Autowired
-	SimpleCardTestRepository simpleCardTestRepository;
+	SimpleCardQuizRepository simpleCardTestRepository;
 
 	@Test
 	public void initialTest(){

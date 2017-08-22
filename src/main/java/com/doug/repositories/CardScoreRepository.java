@@ -1,6 +1,6 @@
 package com.doug.repositories;
 
-import com.doug.domain.SimpleCardTest;
+import com.doug.domain.SimpleCardQuiz;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 @Repository
-public interface CardScoreRepository extends JpaRepository<SimpleCardTest, Integer> {
+public interface CardScoreRepository extends JpaRepository<SimpleCardQuiz, Integer> {
 
-	ArrayList<SimpleCardTest> findByExamId(Integer id);
+	ArrayList<SimpleCardQuiz> findByExamId(Integer id);
 }

@@ -22,7 +22,7 @@ public class IndexController {
 	@RequestMapping({"/", ""})
 	public String index(){
 
-//		loadLocationTests();
+//		loadLocationQuizs();
 
 
 

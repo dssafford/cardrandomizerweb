@@ -2,7 +2,7 @@ package com.doug.services;
 
 import com.doug.domain.Card;
 import com.doug.domain.CardInfo;
-import com.doug.domain.SimpleCardTest;
+import com.doug.domain.SimpleCardQuiz;
 
 import java.util.ArrayList;
 
@@ -56,25 +56,25 @@ public abstract class TestHelper {
         return answerList;
     }
 
-    public static ArrayList<SimpleCardTest> createScoreTestList() {
-        ArrayList<SimpleCardTest> simpleCardTestList = new ArrayList<SimpleCardTest>();
-        SimpleCardTest simpleCardTest;
+    public static ArrayList<SimpleCardQuiz> createScoreTestList() {
+        ArrayList<SimpleCardQuiz> SimpleCardQuizList = new ArrayList<SimpleCardQuiz>();
+        SimpleCardQuiz SimpleCardQuiz;
 
-        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
-        simpleCardTestList.add(0, simpleCardTest);
+        SimpleCardQuiz = new SimpleCardQuiz("ace_of_hearts", "ace_of_hearts", false);
+        SimpleCardQuizList.add(0, SimpleCardQuiz);
 
-        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", true);
-        simpleCardTestList.add(0, simpleCardTest);
+        SimpleCardQuiz = new SimpleCardQuiz("ace_of_hearts", "ace_of_hearts", true);
+        SimpleCardQuizList.add(0, SimpleCardQuiz);
 
-        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
-        simpleCardTestList.add(0, simpleCardTest);
+        SimpleCardQuiz = new SimpleCardQuiz("ace_of_hearts", "ace_of_hearts", false);
+        SimpleCardQuizList.add(0, SimpleCardQuiz);
 
-        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", true);
-        simpleCardTestList.add(0, simpleCardTest);
+        SimpleCardQuiz = new SimpleCardQuiz("ace_of_hearts", "ace_of_hearts", true);
+        SimpleCardQuizList.add(0, SimpleCardQuiz);
 
-        simpleCardTest = new SimpleCardTest("ace_of_hearts", "ace_of_hearts", false);
-        simpleCardTestList.add(0, simpleCardTest);
+        SimpleCardQuiz = new SimpleCardQuiz("ace_of_hearts", "ace_of_hearts", false);
+        SimpleCardQuizList.add(0, SimpleCardQuiz);
 
-        return simpleCardTestList;
+        return SimpleCardQuizList;
     }
 }

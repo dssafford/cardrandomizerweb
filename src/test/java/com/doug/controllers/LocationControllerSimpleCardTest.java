@@ -2,7 +2,7 @@ package com.doug.controllers;
 
 import com.doug.domain.Exam;
 import com.doug.domain.Location;
-import com.doug.domain.LocationTest;
+import com.doug.domain.LocationQuiz;
 import com.doug.repositories.LocationRepository;
 import com.doug.services.Helpers;
 import com.doug.services.LocationServiceImpl;
@@ -104,7 +104,7 @@ public class LocationControllerSimpleCardTest {
 		when(location.getLocationName()).thenReturn("eat shit");
 
 
-		locationController.scoreSingleCardTestPOST(session, location, model);
+		locationController.scoreSingleCardQuizPOST(session, location, model);
 
 //
 //
@@ -264,8 +264,8 @@ public class LocationControllerSimpleCardTest {
 		//save new entry in SimpleCardTest table
 //        Object myObj = examRepository.save(exam);
 
-		ArrayList<LocationTest> locationTests = new ArrayList<>();
-		LocationTest locationTest = new LocationTest();
+		ArrayList<LocationQuiz> locationTests = new ArrayList<>();
+		LocationQuiz locationTest = new LocationQuiz();
 //        locationTests.add(new LocationTest(1, "mailbox", "driveway", false, ((Exam) myObj).getId()));
 //        locationTests.add(new LocationTest(1, "mailbox", "driveway", false, ((Exam) myObj).getId()));
 //        locationTests.add(new LocationTest(1, "mailbox", "driveway", false, ((Exam) myObj).getId()));
@@ -309,15 +309,15 @@ public class LocationControllerSimpleCardTest {
 
 	}
 
-	private ArrayList<LocationTest> createLocationTests_DummyData() {
+	private ArrayList<LocationQuiz> createLocationTests_DummyData() {
 		////
-		ArrayList<LocationTest> locationTests = new ArrayList<>();
-		LocationTest locationTest = new LocationTest();
-		locationTests.add(new LocationTest(1, "mailbox", "mailbox", true, 1));
-		locationTests.add(new LocationTest(2, "driveway", "driveway", true, 1));
-		locationTests.add(new LocationTest(3, "garage", "garage", true, 1));
-		locationTests.add(new LocationTest(4, "sidewalk", "porch", false, 1));
-		locationTests.add(new LocationTest(5, "well", "well", true, 1));
+		ArrayList<LocationQuiz> locationTests = new ArrayList<>();
+		LocationQuiz locationQuiz = new LocationQuiz();
+		locationTests.add(new LocationQuiz(1, "mailbox", "mailbox", true, 1));
+		locationTests.add(new LocationQuiz(2, "driveway", "driveway", true, 1));
+		locationTests.add(new LocationQuiz(3, "garage", "garage", true, 1));
+		locationTests.add(new LocationQuiz(4, "sidewalk", "porch", false, 1));
+		locationTests.add(new LocationQuiz(5, "well", "well", true, 1));
 		return locationTests;
 
 	}

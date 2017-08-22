@@ -10,7 +10,4 @@ public class CardrandomizerwebApplicationTests {
 	public void contextLoads() {
 	}
 
-
-
-
 }
