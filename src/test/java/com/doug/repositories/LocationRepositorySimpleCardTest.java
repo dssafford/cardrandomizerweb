@@ -2,6 +2,7 @@ package com.doug.repositories;
 
 import com.doug.domain.Location;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class LocationRepositorySimpleCardTest {
 //		locationRepository.save(locationList);
 
     }
+	@Ignore
 
 	@Test
 	public void verifyLocationListTest(){
@@ -51,6 +53,7 @@ public class LocationRepositorySimpleCardTest {
 		assertNotNull(mylist);
 
 	}
+	@Ignore
 	@Test
 	public void getAllLocations_test() {
 
@@ -59,14 +62,14 @@ public class LocationRepositorySimpleCardTest {
 
 		assertEquals(52, locationList.size());
 	}
-
+	@Ignore
 	@Test
 	public void getOneLocation_test() {
 
 		Location location = locationRepository.findByLocationName("mailbox");
 		assertEquals("mailbox", location.getLocationName());
 	}
-
+	@Ignore
 	@Test
 	public void getOneLocationThatNotExist_test() throws NullPointerException {
 
