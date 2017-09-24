@@ -1,13 +1,27 @@
 package com.doug.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import com.sun.javafx.beans.IDProperty;
+
+import javax.persistence.*;
 
 /**
  * Created by jt on 12/14/15.
  */
+
 @Entity
-public class User extends AbstractDomainClass {
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     private String username;
 
@@ -55,6 +69,22 @@ public class User extends AbstractDomainClass {
         this.enabled = enabled;
     }
 
+    //    public String getEncryptedPassword() {
+//        return encryptedPassword;
+//    }
+//
+//    public void setEncryptedPassword(String encryptedPassword) {
+//        this.encryptedPassword = encryptedPassword;
+//    }
+//
+//    public Boolean getEnabled() {
+//        return enabled;
+//    }
+//
+//    public void setEnabled(Boolean enabled) {
+//        this.enabled = enabled;
+//    }
+
 //    public List<Role> getRoles() {
 //        return roles;
 //    }
@@ -77,4 +107,5 @@ public class User extends AbstractDomainClass {
 //        this.roles.remove(role);
 //        role.getUsers().remove(this);
 //    }
+
 }

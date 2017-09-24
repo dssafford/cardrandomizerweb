@@ -1,15 +1,23 @@
 package com.doug.services;
 
+import com.doug.domain.User;
+import com.doug.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by doug on 3/3/17.
  */
 @Service
-public class UserServiceImpl{
+public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserRepository userRepository;
 
-	//	private UserRepository userRepository;
 //
 //	@Override
 //	public List<User> findAll() {
@@ -28,10 +36,13 @@ public class UserServiceImpl{
 //		this.encryptionService = encryptionService;
 //	}
 //
-//	@Override
-//	public Iterable<User> listAllUsers() {
-//		return userRepository.findAll();
-//	}
+	@Override
+	public Iterable<User> listAllUsers() {
+		List<User> users =  userRepository.findAll();
+
+		return users;
+
+	}
 //
 //	@Override
 //	public List<?> listAll() {
@@ -76,12 +87,12 @@ public class UserServiceImpl{
 
 
 
-//	@Override
-//	@Transactional
-//	public void delete(Integer id) {
-//		User user = userRepository.findOne(id);
-//		userRepository.delete(user);
-//	}
+	@Override
+	@Transactional
+	public void delete(Integer id) {
+		User user = userRepository.findOne(id);
+		userRepository.delete(user);
+	}
 
 //	@Override
 //	public User findByUserName(String userName) {
