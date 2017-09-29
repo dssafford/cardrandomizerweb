@@ -48,18 +48,10 @@
             <!--<scope>runtime</scope>-->
         <!--</dependency>-->
 
-<<<<<<< HEAD
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-=======
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
->>>>>>> 142b2c83ada137f47587446b787cc03c82dd8bc5
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -101,30 +93,8 @@
         <!--testing deps-->
 
 
-<<<<<<< HEAD
+
          <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java-->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-
-
-         <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver-->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-
-         <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver-->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-=======
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java &ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>org.seleniumhq.selenium</groupId>-->
             <!--<artifactId>selenium-java</artifactId>-->
@@ -132,20 +102,19 @@
         <!--</dependency>-->
 
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver &ndash;&gt;-->
+         <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver-->
         <!--<dependency>-->
             <!--<groupId>org.seleniumhq.selenium</groupId>-->
             <!--<artifactId>selenium-firefox-driver</artifactId>-->
             <!--<version>3.0.1</version>-->
         <!--</dependency>-->
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver &ndash;&gt;-->
+         <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver-->
         <!--<dependency>-->
             <!--<groupId>org.seleniumhq.selenium</groupId>-->
             <!--<artifactId>selenium-chrome-driver</artifactId>-->
             <!--<version>3.0.1</version>-->
         <!--</dependency>-->
->>>>>>> 142b2c83ada137f47587446b787cc03c82dd8bc5
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
