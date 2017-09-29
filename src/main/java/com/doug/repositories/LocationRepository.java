@@ -2,15 +2,18 @@ package com.doug.repositories;
 
 import com.doug.domain.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 /**
  * Created by Doug on 2/12/17.
  */
-public interface LocationRepository extends JpaRepository<Location, Integer> {
+public interface LocationRepository extends CrudRepository<Location, Integer> {
 
 //	Location findOne(Integer id);
 //
-//	List<Location> findAll();
+	List<Location> findAll();
 
 	Location findByLocationName(String locationName);
 
