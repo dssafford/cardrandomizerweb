@@ -6,15 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by doug on 3/3/17.
  */
-public interface UserService extends JpaRepository<User, Integer> {
+public interface UserService {
 
 //	User findByUserName(String userName);
 //
-//	Iterable<User> listAllUsers();
+	Iterable<User> listAllUsers();
 //
 //	User getById(Integer id);
 //
-//	void delete(Integer id);
+	void delete(Integer id);
 //
 //	User saveOrUpdateUser(User user);
 
