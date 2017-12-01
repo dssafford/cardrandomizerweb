@@ -1,7 +1,5 @@
 package com.doug.domain;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
 
 /**
@@ -12,7 +10,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     public Integer getId() {
