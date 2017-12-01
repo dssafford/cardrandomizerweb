@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Location {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private Integer locationNumber;
